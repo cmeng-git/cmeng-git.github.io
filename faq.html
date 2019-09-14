@@ -106,10 +106,10 @@ ul li {
          <li><a href=#feature_09>[20190620] XEP-0048: Bookmarks and autoJoin option for conference</a></li>
          <li><a href=#feature_10>[20190626] XEP-0070: Verifying HTTP Requests via XMPP and WebView Implementation</a></li>
          <li><a href=#feature_04>[20190526] Stickers, Bitmoji and Emoji rich content sharing </a></li>
-         <li><a href=#feature_05>[20190526] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
+         <li><a href=#feature_05>[20190902] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
          <li><a href=#feature_06>[20180710] XEP-0198:Stream Management and ReConnection Manager</a></li>
          <li><a href=#feature_07>[20181015] Network Keep Alive - Ping Interval Optimization</a></li>
-         <li><a href=#feature_08>[20190814] Android Runtime Permissions Request</a></li>
+         <li><a href=#feature_08>[20190823] Android Runtime Permissions Request</a></li>
      </ul>
       <h4>OMEMO Messaging</h4>
       <ul>
@@ -284,9 +284,9 @@ ul li {
 
    <span id='account_04'></span>
    <div class='blueText'>Do I have to enable IB Registration option when I setup a new account? <a href=#content>{ Content }</a></div>
-   <div class='innerText'> <image src="./img/atalk_ibr_captcha.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'>"IB Registration" stands for "In-Band Registration" and is defined in
    <a href="https://xmpp.org/extensions/xep-0077.html">XEP-0077</a> standard. In general, if an account already has
+   <div class='innerText'> <image src="./img/atalk_ibr_captcha.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
      been created and assigned to you by your server administrator, you do not need to enable IBR option during account
      setup. This is usually not true if you want to register an account on an online free xmpp server. Some server
      needs you to create an account via their web interface before you can setup the account on your xmpp client.
@@ -694,7 +694,7 @@ ul li {
    </ul>
 
    <span id='feature_05'></span>
-   <div class='blueText'>[20190526] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20190902] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements <a href=#content>{ Content }</a></div>
    <div class='innerText'>aTalk file sharing implementation uses the following XEP protocols:
      <li><a href="https://xmpp.org/extensions/xep-0096.html">XEP-0096: SI File Transfer</a></li>
      <li><a href="https://xmpp.org/extensions/xep-0363.html">XEP-0363: HTTP File Upload</a></li>
@@ -702,27 +702,36 @@ ul li {
      <li><a href="https://xmpp.org/extensions/inbox/omemo-media-sharing.html">XEP-xxxx: OMEMO Media Sharing</a></li>
    </div>
    <div class='innerText'>aTalk supports send and receive files for all document types and images. There is an option
-     to enable thumbnail preview before the images file is being sent. To send or receipt of thumbnail, both the sender
-     and recipient devices must have this option enabled; and the transfer file size is larger than the 'Auto accept max
-     file size'. The actual file is sent upon acceptance by your buddy. aTalk allows automatic acceptance of file
-     transfer request or stickers sending with user defined max file size option when XEP-0096 protocol is used.</div>
+     to enable thumbnail preview before the actual file is being sent. To send or receipt of thumbnail, both the sender
+     and recipient devices must have this option enabled; and the transfer file size is smaller than the 'Auto accept
+     max file size'. The actual file is sent upon acceptance by your buddy. When XEP-0096 protocol is used, aTalk
+     allows automatic acceptance of file transfer request or stickers sending if the size of the file to be transferred
+     is less than the user defined max file size option.</div>
    <div class='innerText'><image src="./img/atalk_file_sharing.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'>aTalk implements fault-tolerance file sharing to ensure reliability. aTalk SI File Transfer
      protocol supports both the SOCK5 and IBB bytesStream options, with IBB as fallback if SOCK5 failed. During file
      transfer, aTalk attempts to use the more efficient SOCK5 bytestreams method if the recipient client supports it.
-     However if SOCK5 byestream method failed for reason e.g. client symmetric NAT fireware, aTalk automatically fallback
-     to use IBB method to ensure a successful file transfer.</div>
-   <div class='innerText'>However if your buddy client e.g conversations, does not support the legacy SI File Transfer
-     protocol, aTalk will automatic proceed to use the HTTP File Upload to share file with the buddy.</div>     
+     However if SOCK5 byestream method failed for reason e.g. client symmetric NAT fireware, aTalk automatically
+     fallback to use IBB method to ensure a successful file transfer.</div>
+   <div class='innerText'>In the event if your buddy client e.g conversations, does not support the legacy SI File
+     Transfer protocol, aTalk will automatic proceed to use the <b>HTTP File Upload service</b> to share file with the buddy.</div>
    <div class='innerText'>When aTalk detects your buddy is offline, it automatically selects the HTTP File Upload facitiy,
-     if supported by your xmpp service, to continue with the file transfer. XEP-0096: SI File Transfer specification
-     has no provision to transfer file when you are in a muc/conference chat room. Under this condition, aTalk checks
-     the server for HTTP File Upload service support, and uses it if availabe to support file sharing between chat
-     members in conference room.</div>
-   <div class='innerText'>aTalk also supports 'OMEMO Media Sharing' procotol. During an OMEMO chat session either in 1-1 or muc, all file sharing
-     will be ecrypted before sending.</div>
+     if the protocol is supported by your xmpp service, to continue with the file transfer.</div>
+   <div class='innerText'>XEP-0096: SI File Transfer specification has no provision to transfer file when you are in
+     a muc/conference chat room. Under this condition, aTalk checks the server for HTTP File Upload service support,
+     and uses it if availabe to support file sharing between chat members in conference room.</div>
+   <div class='innerText'><image src="./img/atalk_file_xfer_prompt.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
+   <div class='innerText'>aTalk also supports 'OMEMO Media Sharing' procotol. During an OMEMO chat session either in
+     1-1 or muc, all file sharing will be ecrypted before sending via <b>HTTP File Upload service</b>.</div>
    <div class='innerText'>aTalk harmonizes and uses a common UI in file sharing irrespective of which file sharing
-     protocols is being used, and in all the various chat sessions.</div> 
+     protocols is being used, and in all the various chat sessions. Unlike all other file transfer protocols, when file
+     transfer is via <b>HTTP File Upload service</b>, the sender is unaware of the recipient status. After the sender
+     has succesfully uploaded the file to the server, it forwards the file download link embedded as a chat message
+     to the recipient. To allow recipient to retrieve the file, aTalk always shows the received file download link as
+     a file transfer request. Selecting the <b>Reject</b> button does not actually delete the file link message. aTalk
+     will show the prompt after user returns to the chat session later, even the user has previosuly selected the
+     <b>Reject</b> button, either intentionally or unintentionally. To remove the prompt, user must manually select
+     and delete the link message/prompt.</div>
 
    <span id='feature_06'></span>
    <div class='blueText'>[20180710] XEP-0198:Stream Management and ReConnection Manager <a href=#content>{ Content }</a></div>
@@ -791,11 +800,12 @@ ul li {
      keep alive ping at regular interval to detect this condition for Reconnection Manager to work.</div>
 
    <span id='feature_08'></span>
-   <div class='blueText'>[20190814] Android Runtime Permissions Request <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20190823] Android Runtime Permissions Request <a href=#content>{ Content }</a></div>
    <div class='innerText'>Starting with Android 6.0 Marshmallow (API 23), a new runtime permission model has been
      introduced; Users are not prompted for permissions at the time of installing the app, rather app needs to check
-     for and request permissions at runtime. Users can then allow or deny the permissions for the app, users can also
-     grant or revoke permission anytime from the android settings.</div>
+     for and request permissions at runtime. Users can then allow or deny the permissions for the app. Users can also
+     grant or revoke permission anytime from within the android settings to override the permission granted during
+     aTalk permission requests.</div>
    <div class='innerText'>Whenever user launches aTalk on Android-M or higher, it prompts the user to grant if there is
      any missing required permission. For aTalk maximum performance and full features support, aTalk requires the user
      to grant permissions for the following services.</div>
@@ -805,13 +815,30 @@ ul li {
          <li>Location - GPS SteetView and Map display for a 360° panoramic view; Location sharing with buddy</li>
          <li>Audio - audio chat, voice and video calls</li>
          <li>Phone - phone features support - telephony gateway</li>
-   <div class='innerText'> <image src="./img/atalk_permission_dontaskagain.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
-         <li>Storage - Android storage for saving data and files.</li>
+         <li>Storage - Access to android local storage for saving aTalk vital operational data and files. aTalk will
+         fail unexpectly if this basic permission is denied.</li>
       </ul>
 
+   <div class='innerText'> <image src="./img/atalk_permission_dontaskagain.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'>If any of the permissions is denied, aTalk may not work properly or may have unexpected
      behavior. If you have selected <b>Don't ask again</b> option, you will not be prompt on next aTalk launch;
      You need to go to android Settings -> APP INFO for aTalk to enable the permissions.</div>
+   <div class='innerText'>Followings are also hold truth on aTalk reacts to the permissions grants.
+      <ul>
+         <li>aTalk will always prompt for permission grant if none are set to permanently denied on every aTalk
+           new launch. This is to take care of users whom had unintentionally denied the permission on initial use;
+           later want to use features that required new permissions. Normally user should not <b>Exit</b> aTalk as this
+           ends and termates aTalk completely. Instead user should use <b>Back Button</b> to close aTalk window.</li>
+         <li>aTalk will repeatedly prompts user for actions if there are less than 3 permissions being granted even
+           users had permanently denied them. Most aTalk features will not operate properly under these condition.
+           If you understand and accept aTalk unexpected behavior, but do not wish to be bothered by aTalk
+           repeated permission prompts; then always use <b>Back Button</b> to close aTalk window.</li>
+         <li>It was found that some android devices have incorrectly implemented the <b>PERMANENTLY DENIED</b> options;
+           hence aTalk will always prompt user for permission grants even the above conditions are being met. 
+           It seems that the affected android devices have init all requested permissions to <b>PERMANENTLY DENIED</b>
+           states, and OS returns incorrect results when aTalk performs the check.</li>
+      </ul>
+   </div>
 
    <div class='innerText'><b>Note</b>: If you change any of the resouce permissions via android <b>Settings</b>, you 
      must exit and restart aTalk for the granted permission to take effect. This is because some of the permission
