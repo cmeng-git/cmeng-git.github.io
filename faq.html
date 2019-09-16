@@ -113,8 +113,8 @@ ul li {
      </ul>
       <h4>OMEMO Messaging</h4>
       <ul>
-         <li><a href=#omemo_01>[20190424] Why the OMEMO option is grayed out in my chat session menu?</a></li>
-         <li><a href=#omemo_02>Why am I being asked to authenticate the contact during secured chat?</a></li>
+         <li><a href=#omemo_01>[20190916] Why the OMEMO option is grayed out in my chat session menu?</a></li>
+         <li><a href=#omemo_02>[20190916] Why am I being asked to authenticate the contact during secured chat?</a></li>
          <li><a href=#omemo_03>[20190716] What is Blind Trust Before Verification?</a></li>
          <li><a href=#omemo_04>[20190716] When do I have to perform "Regenerate Omemo identity"?</a></li>
       </ul>
@@ -853,45 +853,61 @@ ul li {
    <div id='subSection'>OMEMO Messaging</div>
 
    <span id='omemo_01'></span>
-   <div class='blueText'>[20190424] Why the OMEMO option is grayed out in my chat session menu? <a href=#content>{ Content }</a></div>
-   <div class='innerText'>In order to support omemo session, both your buddy client and the registered servers'
+   <div class='blueText'>[20190916] Why the OMEMO option is grayed out in my chat session menu? <a href=#content>{ Content }</a></div>
+   <div class='innerText'>In order to support omemo session, both the buddies' clients and the registered servers'
      xmpp services must support OMEMO required protocols.
+   <div class='innerText'> <image src="./img/atalk_omemo_greyed.png" align="right" width="20%" style="margin:5px 0px 0px 15px"/></div>
       <ul>
          <li>Your registered server and the servers of your chat partners must support PEP (XEP-0163) to store and
          exchange key bundles. Optionally your server should support Message Carbons (XEP-0280) and Message Archive
          Management (XEP-0313) to achieve message synchronization across all (on- and off-line) devices.</li>
-
-         <li>Your buddy installed client must also implement omemo service.</li>
+         <li>Your buddy installed client must implement omemo messaging encryption service.</li>
+         <li>Non-Anonymous Room: A room in which an occupant's full JID is exposed to all other occupants;
+           contrast with Semi-Anonymous Room where occupant's full JID can only be discovered by room admins only.</li>
       </ul>
    </div>
-   <div class='innerText'>aTalk checks both server and jid entities to ensure both entities can support OMEMO before
+   <div class='innerText'>aTalk checks both server and jid entities to ensure all entities can support OMEMO before
    the OMEMO option is enabled i.e. aTalk sends xmpp request for disco#info with jid='&lt;service>', the server must
-   include all the pubsub.&lt;service> in the replied disco#info &lt;feature/> list as per the standard xmpp specifications.
-   Some xmpp services do support the required pubsub protocols but does not advertise in disco#info &lt;feature/> list
-   reply e.g. prosody version 0.11.2 (released: 2019-01-09). aTalk v1.8.2 (20190424) has added an 
-   alternative verification specifically for this deviation and enable OMEMO option. See link for more info:
+   include all the pubsub.&lt;service> in the replied disco#info &lt;feature/> list as per the standard xmpp specifications.</div>
+   <div class='innerText'>In a Semi-Anonymous Room, since not all the recipients' fullJid's are known to every participant,
+     therefore omemo messagging is again disabled for this session.</div>
+   <div class='innerText'>Some xmpp services do support the required pubsub protocols but does not advertise in disco#info &lt;feature/> list
+   reply e.g. prosody version 0.11.2 (released: 2019-01-09). aTalk v1.8.2 (20190424) has added an alternative
+     verification specifically for this deviation and enable OMEMO option. See link for more info:
    <a href="https://github.com/cmeng-git/atalk-android/issues/31#issuecomment-476927987">
    omemo encryption not available (option is greyed out)</a></div>
 
    <span id='omemo_02'></span>
-   <div class='blueText'>Why am I being asked to authenticate the contact during secured chat? <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20190916] Why am I being asked to authenticate the contact during secured chat? <a href=#content>{ Content }</a></div>
+   <div class='innerText'> <image src="./img/atalk_corruptedOmemoKey_auth.png" align="right" width="28%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'>In order for a cryptographic system to make sense, decisions must be made whether a secure
       chat session is trustworthy. Authenticating a buddy helps to ensure that the person you are talking to is
       who he or she claims to be. This is done by verify the person fingerprint(s) that are presented to you; contact
       your buddy via an external channel, such as reading it out on the phone, scanning QR codes etc. If everything
       matches up, you then indicate in the dialog to trust or untrust the fingerprint(s). This process needs only be
-      done once. However if you later decided to distrust a contact, you can change the trust state of the contact
+      performed once. However if you later decided to distrust a contact, you can change the trust state of the contact
       in menu "Settings... | Messaging Security | Crypto buddy fingerprints". During an omemo conference session,
       OMEMO messages will not be sent to all your defined untrusted buddies</div>
+   <div class='innerText'>An unlikely event may occured during omemo chat session; aTalk has detected that one of yours
+     or the buddy omemoDevices key bundle retrieved from the server is corrupted. This corrupted device key is also 
+     presented for your action in the <b>Authenticate Buddy</b> dialog. Beside authenticate new omemoDevice fingerprint,
+     you need also to take action on the correupted omemoDevice key. The only available option for a corrupted omemoKey
+     is to select the option <b>Corrupted OmemoKey, purge?</b> currently. This will remove the corrupted omemoDevice
+     from your receipient list. Otherwise, aTalk cannot proceed to send omemo message to other recipients.</div>
+   <div class='innerText'>When the corrupted omemoDevice is purged from your recipient list, the affected device will
+     not be able to receive your omemo messages that you have sent. If the affect device is one of your other 
+     omemoDevies, you need to perform <b>Regenerate OMEMO identities</b> on the specific physical device; Or send an
+     unenrypted message to your buddy to alert him; he/she too needs to perform <b>Regenerate OMEMO identities</b>
+     on the affect device.</div>
 
    <span id='omemo_03'></span>
    <div class='blueText'>[20190716] What is Blind Trust Before Verification? <a href=#content>{ Content }</a></div>
-   <div class='innerText'> <image src="./img/atalk_message_security.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'>aTalk implements <a href ="https://gultsch.de/trust.html">Blind Trust Before Verification</a>
       with an option to enable or disable it. With the option:
       <ul>
          <li>enabled: first installed new device of contact that has not been verified before will be auto-trusted.
          However you will be prompted for manual confirmation when a verified contact adds new devices.</li>
+   <div class='innerText'> <image src="./img/atalk_message_security.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
          <li>disabled: you will be prompted for manual confirmation on all devices installed by your contact.</li>
       </ul>
    </div>
