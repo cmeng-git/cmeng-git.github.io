@@ -95,7 +95,7 @@ ul li {
        <li><a href=#account_02>[20190731] What information to enter in "Override server setting" when I setup a new account?</a></li>
        <li><a href=#account_03>[20180818] SSL Certificate Authentication, DNSSEC and DANE Security Implementation for Connection Establishment</a></li>
        <li><a href=#account_04>Do I have to enable IB Registration option when I setup a new account?</a></li>
-       <li><a href=#account_05>Google Talk account setup</a></li>
+       <li><a href=#account_05>[20191002] Google Talk account setup</a></li>
        <li><a href=#account_06>[20190620] Why my first login in sometimes fails when a new account is created?</a></li>
      </ul>
      <h4>Enhanced Features</h4>
@@ -104,9 +104,10 @@ ul li {
          <li><a href=#feature_02>[20181017] StreetViews & Map</a></li>
          <li><a href=#feature_03>XEP-0045: Multi-User Chat</a></li>
          <li><a href=#feature_09>[20190620] XEP-0048: Bookmarks and autoJoin option for conference</a></li>
-         <li><a href=#feature_10>[20190626] XEP-0070: Verifying HTTP Requests via XMPP and WebView Implementation</a></li>
+         <li><a href=#feature_10>[20191004] XEP-0070: Verifying HTTP Requests via XMPP and WebView Implementation</a></li>
          <li><a href=#feature_04>[20190526] Stickers, Bitmoji and Emoji rich content sharing </a></li>
          <li><a href=#feature_05>[20190902] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
+         <li><a href=#feature_11>[20191008] aTalk Notification Events</a></li>
          <li><a href=#feature_06>[20180710] XEP-0198:Stream Management and ReConnection Manager</a></li>
          <li><a href=#feature_07>[20181015] Network Keep Alive - Ping Interval Optimization</a></li>
          <li><a href=#feature_08>[20190823] Android Runtime Permissions Request</a></li>
@@ -135,7 +136,7 @@ ul li {
 
      <h4>User Avatar</h4>
       <ul>
-         <li><a href=#avatar_01>Why some of the avatars for my contacts in main menu are blank or with incorrect pictures?</a></li>
+         <li><a href=#avatar_01>[20190926] Why some of the avatars for my contacts in main menu are blank or with incorrect pictures?</a></li>
          <li><a href=#avatar_02>How do I update my user avatar?</a></li>
       </ul>
      <h4>General</h4>
@@ -183,7 +184,6 @@ ul li {
    
    <span id='account_02'></span>
    <div class='blueText'>[20190731] What information to enter in "Override server setting" when I setup a new account? <a href=#content>{ Content }</a></div>
-   <div class='innerText'> <image src="./img/atalk_account_setup.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'>In today advance technology, a physical xmpp machine can actually support multiple virtual
     hosts/services. The virtual host/service name is usually tag with the user xmpp account e.g. alice@example.org, 
     where <b>example.org</b> is usually referred to as service domain or virtual host.</div>
@@ -192,6 +192,7 @@ ul li {
        i.e. the hostname and port number, of servers for specified services.</li>
    </ul>
    
+   <image src="./img/atalk_account_setup.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
    <div class='innerText'>If you leave the <b>Override server setting</b> option unchecked, aTalk first checks to
      ensure the specified service domain is reachable; it searches for the actual internet ip address on a Domain Name
      Server (DNS). On success, aTalk proceeds to lookup the SRV record on the server which contains the required
@@ -317,11 +318,17 @@ ul li {
    </div>
 
    <span id='account_05'></span>
-   <div class='blueText'>Google Talk account setup <a href=#content>{ Content }</a></div>
-   <div class='innerText'>To setup a Google Talk account on aTalk, follow the steps below</div>
+   <div class='blueText'>[20191002] Google Talk account setup <a href=#content>{ Content }</a></div>
+   
+   <div class='innerText'><b>Note:</b> Google server has its own xmpp implementation which may not compliant fully with
+     the standard XEP standards. You may found that certain features are not supported e.g. Omemo messaging. Therefore
+     it is not encouraged for user to use aTalk to sign in to the google server. You may send chat messages to another
+     Google account login using google own Hangouts app.</div>
+
    <div class='innerText'><image src="./img/gtalk_account_setup.png" width="30%" align="middle" style="margin:10px 5px 10px 5px"/>
    <image src="./img/gtalk_account_signin.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
 
+   <div class='innerText'>To setup a Google Talk account on aTalk, follow the steps below</div>
      <ul>
        <li>From the main menu, choose Account Settings... | Add new account.</li>
        <li>Enter your goole gmail account and the regular password as shown above.</li>
@@ -336,14 +343,11 @@ ul li {
        <li>Enter the App password which is a 16-digit passcode, exactly as provided including the spaces into the password
          field, and click <b>Sign in</b>.</li>
        <li>You should now be able to chat and make media call with another Google account signed in using aTalk.</li>
+       <image src="./img/atalk_certificate_verify.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
        <li>The media call option is not available if your buddy is using Google own client e.g. Hangouts. This is beacuse
          Google Hangouts does not advertise its media call capability via XMPP discovery protocol. However your buddy
          on Hangouts can initia a media call with you.</li>
      </ul>
-   <image src="./img/atalk_certificate_verify.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
-   <div class='innerText'><b>Note:</b> Google server has its own xmpp implementation which may deviate from the standard
-     XEP standards. You may found that certain features are not supported e.g. Omemo messaging. You can actually send
-     chat messages to another Google account login using Hangouts.</div>
 
    <span id='account_06'></span>
    <div class='blueText'>[20190620] Why my first login in sometimes fails when a new account is created? <a href=#content>{ Content }</a></div>
@@ -357,8 +361,8 @@ ul li {
      certificate validity during the SSL secure socket connection setup. If the site certificate is signed by a trusted
      certificate authority and is also listed in android certified trusted authority list; android proceeds normally
      with the SSL socket connection, otherwise it throws CertificateException.</div>
-     <image src="./img/atalk_certificate_show.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
 
+    <image src="./img/atalk_certificate_show.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
     <div class='innerText'>aTalk captures this CertificateException thrown by androis OS when the certificate is self-signed.
       aTalk then downloads the site certificate and check against its database. It prompts user for manual confirmation
       if the certificate is new to aTalk as shown on the right i.e. <b>Certificate Verfication.</b>. You can procced 
@@ -479,9 +483,9 @@ ul li {
      the received location message on his/her device, your current location is displayed on his/her device screen.
      The steetViews and map display on your buddy device automatically gets updated each time your new location
      is being streamed via continuous mode; tracking your move in realtime.</div>
+   <image src="./img/08.gps_map.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
    <div class='innerText'><b>Note:</b> To protect your privacy, this feature can neither be accessed nor enabled
      remotely; neither it can be accessed from any other applications installed on your device.</div>
-   <div class='innerText'> <image src="./img/08.gps_map.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'><b>Show GPS Location:</b> You may use the tool as it without sending any of your current
      GPS location as message. This feature is accessed from the contact list main menu <b>StreetViews &amp; Map</b>.
    </div>
@@ -570,7 +574,7 @@ ul li {
    <div class='innerText'>Each chatRoom item in the list is accompanied with two indicators/buttons. The two icons both
      served as an status indication and user input options. 
      <ul>
-         <li><b><image src="./img/cb_autojoin_on.png" width="24" height="24" align="middle" style="margin:5px 5px"/>autoJon:</b>
+         <li><b><image src="./img/cb_autojoin_on.png" width="24" height="24" align="middle" style="margin:5px 5px"/>autoJoin:</b>
           Toggle the autoJoin option on/off. The autoJoin state will be saved to bookmark on server if the bookmark
           state is on/enabeld.</li>
          <li><b><image src="./img/cb_bookmark.png" width="24" height="24" align="middle" style="margin:5px 5px"/>bookmark:</b>
@@ -616,31 +620,33 @@ ul li {
 
 
   <span id='feature_10'></span>
-   <div class='blueText'>[20190626] XEP-0070: Verifying HTTP Requests via XMPP and WebView Implementation <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20191004] XEP-0070: Verifying HTTP Requests via XMPP and WebView Implementation <a href=#content>{ Content }</a></div>
    <div class='innerText'> <image src="./img/atalk_http_auth_demo.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
-   <div class='innerText'><b>XEP-0070</b> specification defines an XMPP protocol extension that enables verification of an
-     HTTP request via XMPP. HTTP (RFC 2616) is a nearly-ubiquitous mechanism for the publication and retrieval of
-     information over the Internet. Sometimes it is appropriate for an HTTP Server to allow access to that information
-     only if the HTTP Client first provides authentication credentials. While there exist several standardized HTTP
-     authentication schemes (RFC 2617), it may be useful in some applications to enforce verification of an HTTP
-     request by requiring an XMPP entity (normally an IM user) to confirm that it made the request. This request
-     verification can be combined with native HTTP authentication to provide a stronger association between the request
-     and a particular user, as well as to take advantage of the strong user authentication provided in XMPP.</div>
-   <div class='innerText'>aTalk v1.8.8 has implemented the XEP-0070 protocol and intergrated a webView within the
+   <div class='innerText'>HTTP (RFC 2616) is a nearly-ubiquitous mechanism for the publication and retrieval of information
+     over the Internet. Sometimes it is appropriate for an HTTP Server to allow access to its site information only if
+     the HTTP client first provides authentication credentials. While there exist several standardized HTTP authentication
+     schemes (RFC 2617), it may be useful in some applications to enforce verification of an HTTP request by requiring
+     an XMPP entity (normally an IM user) to confirm that it made the request.</div>
+   <div class='innerText'><a href="https://xmpp.org/extensions/xep-0070.html"><b>XEP-0070</b></a> specification defines
+     an XMPP protocol extension that enables verification of an HTTP request via XMPP. The XEP-0070 request verification
+     can be combined with native HTTP authentication to provide a stronger association between the request and a particular
+     user; as well as to take advantage of the strong user authentication provided in XMPP.</div>
+   <div class='innerText'>aTalk since v1.8.8 has implemented the XEP-0070 protocol and intergrated a webView within the
     application. To have a better understanding the operation of XEP-0070, there actually exist an online demo site i.e.
     <a href="https://blog.agayon.be/xmpp_auth_django_demo.html">Demo Website: Authentication with XMPP</a> for this
-    purpose. Folowings detailed the steps on showing the demo on aTalk.</div>
-   <div class='innerText'> 
-     <ul>
-         <li>From the [main menu | Settings... | Web Access Page], enter the following site link 'https://demo.agayon.be/'</li>
-         <li>Exit main menu, slide left until you arrive at the webView page.</li>
+    purpose.</div>
+   <div class='innerText'>Folowing details the steps to show XEP-0070 demo on aTalk.
+        <ul>
+         <li>From the [main menu | Settings... | Web Access Page], enter the following site link <b>https://demo.agayon.be/</b></li>
+         <li>Exit main menu, then slide left until you arrive at the webView page.</li>
          <li>aTalk will automatic load the defind webpage that you have entered earlier.</li>
          <li>Click the <b>login</b> link on the webpage, login page as shown on the right will be displayed.</li>
-         <li>In the Username field, enter the xmpp user account that you are currently login.</li>
+         <li>In the <b>Username</b> field, enter the xmpp user account that you are currently login.</li>
          <li>Then clik the <b>Sign In</b> button on the webPage.</li>
-         <li>Via s2s connection, the site sends the XMPP Server Requests Confirmation via XMPP protocol; using either
-           an IQ staza or a Message stanza pending whether the user account ending with/without a reource.</li>
           <image src="./img/atalk_http_auth_request.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
+         <li>Via s2s connection, the visting site sends the XMPP Server Requests Confirmation via XMPP protocol. Pending
+           whether the entered user account ends with/without a reource; the site sends either an IQ stanza or a Message
+           stanza request to the login entity.</li>
          <li><b>Http Authorization Reqest</b> as shown on the left is returned if you have entered the username ends with
            a resource. A similar one will be shown if the username is entered without a resource attribute, its dialog
            content is defined by the site admin. The demo site actually supports client that does not implement
@@ -733,13 +739,53 @@ ul li {
      <b>Reject</b> button, either intentionally or unintentionally. To remove the prompt, user must manually select
      and delete the link message/prompt.</div>
 
+   <span id='feature_11'></span>
+   <div class='blueText'>[20191008] aTalk Notification Events <a href=#content>{ Content }</a></div>
+   <image src="./img/atalk_notification_event.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>   <div class='innerText'></div>
+   <div class='innerText'>aTalk provides UI support for user to fine tune the notification actions for each of the events as
+    shown in the image on the right i.e.</div>
+    <ul>
+      <li><b>Busy Call:</b> When making a call, busy tone is heard if the called party is already engaged in another call.</li>
+      <li><b>Call Security Error:</b> Default event type for security error on a call.</li>
+      <li><b>Call Security On:</b> This event is triggered whenever a call with a given peer is going secure.</li>
+      <li><b>Dailing:</b> A sound is played to simulate the aTalk dailing process.</li>
+      <li><b>Hang Up:</b> Event triggered on hang up a call.</li>
+      <li><b>Incoming Call:</b> The event is triggered when there is an incoming call being received.</li>
+      <li><b>Incoming File:</b> The event is triggered when there a file transfer request is being received.</li>
+      <li><b>Incoming Message:</b> Event triggered on receiving an incoming message.</li>
+      <li><b>Missed Call:</b> An incoming call is not being answered or ignored.</li>
+      <li><b>Outgoing Call:</b> Event triggered when making an outgoing call.</li>
+      <li><b>Security Message:</b> This event is triggered whenever a problem has occurred during call security proces</li>
+      <li><b>Type Notifications:</b>The event is triggered when a typing notification is received from the remote contact.</li>
+   </ul>
+   <div class='innerText'>Pending on the type of notification, each notification may be associated with one or more
+     actions that are activated when the specific event occurs.</div>
+    <ul>
+      <li><b>Popup notification:</b> The popup notification is a message that Android displays outside aTalk's UI to
+        provide the user with reminder on an occurred event. Users may tap the notification to open aTalk or take an
+        action directly from the notification. The popup notification is temporary disabled whenever you are active and
+        in focus on the UI to which the notification is associated e.g. <b>Incomng Message.</b> during chat session.</li>
+      <li><b>Sound on notification device:</b> Enabled the alert playback on the device speaker.</li>
+      <li><b>Sound on playback device:</b> Enabled the playback on the device receiver piece. This option takes
+        priority over <b>Sound on notification device</b> option if both are enabled; and your device cannot support
+        playback on both the speaker and receiver piece.</li>
+      <image src="./img/atalk_notification_event_incoming_call.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
+      <li><b>vibratation:</b> Enabled the device vibration mode.</li>
+      <li><image src="./img/atalk_notification_sound_file.png" align="middle" width="22%" style="margin:5px 5px"/>
+        <b>Sound file:</b> The sound file is used for the notification alert playback. Click the button to open android
+         ringtone panel for selection. All selected android ringtone will always be playback via the device speaker
+         independent of other sound option settings.</li>
+      <li><image src="./img/atalk_notification_playback.png" align="middle" width="5%" style="margin:5px 5px"/>
+        <b>Playback:</b> Click this button to playback the selected sound file.</li>
+   </ul>
+
    <span id='feature_06'></span>
    <div class='blueText'>[20180710] XEP-0198:Stream Management and ReConnection Manager <a href=#content>{ Content }</a></div>
    <div class='innerText'>In wireless communications, fading is variation of signal with time, geographical position,
      and radio frequency. Fading is frequent in mobile devices and may cause momentarily newtork data lost or
      disconnection. To improve network communication reliablity and minimize data lost, aTalk implements both
      XEP-0198: Stream Management and Reconnection Manager.</div>
-   <div class='innerText'> In Stream Management, all stanza data exchanges between client and server are verified
+   <div class='innerText'>In Stream Management, all stanza data exchanges between client and server are verified
      and acknowledged. When a stanza data is lost during fading, either entities will attempt to resend stanza data
      that has not been acknowledged by the recipient.
    </div>
@@ -775,7 +821,7 @@ ul li {
      A good starting value is 240-second for the ping interval; and tweak the value if necessary with 20-second steps
      for the optimal device performance.
    </div>
-   <div class='innerText'> <image src="./img/atalk_ping_setting.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
+   <div class='innerText'><image src="./img/atalk_ping_setting.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'>aTalk has implemented an user option <b>Enable Ping Interval optimization</b> to
     allow aTalk to auto tune and optimize the Ping Interval time for network connection for each user account.
     This option is enabled by default until user disables it. The Ping Interval optimization is active only when
@@ -793,7 +839,6 @@ ul li {
     <div class='innerText'>Manual tuning is needed when &lt;120s is required. When optimization is completed or you
      want to set Ping Interval manually, you may disable <b>Enable Ping Interval optimization</b> option.</div>
 
-   <div class='innerText'> <image src="./img/atalk_permission_request.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'><b>Note:</b> When an established TCP data channel is terminated by network, neither android
      nor aTalk is able to detect this condition, until it failed while attempting to send data. Therefore Reconnection
      Manager is not being triggered when the TCP data channel is removed. It is therefore necessary to send the
@@ -801,6 +846,7 @@ ul li {
 
    <span id='feature_08'></span>
    <div class='blueText'>[20190823] Android Runtime Permissions Request <a href=#content>{ Content }</a></div>
+   <image src="./img/atalk_permission_request.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
    <div class='innerText'>Starting with Android 6.0 Marshmallow (API 23), a new runtime permission model has been
      introduced; Users are not prompted for permissions at the time of installing the app, rather app needs to check
      for and request permissions at runtime. Users can then allow or deny the permissions for the app. Users can also
@@ -819,7 +865,6 @@ ul li {
          fail unexpectly if this basic permission is denied.</li>
       </ul>
 
-   <div class='innerText'> <image src="./img/atalk_permission_dontaskagain.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'>If any of the permissions is denied, aTalk may not work properly or may have unexpected
      behavior. If you have selected <b>Don't ask again</b> option, you will not be prompt on next aTalk launch;
      You need to go to android Settings -> APP INFO for aTalk to enable the permissions.</div>
@@ -829,6 +874,7 @@ ul li {
            new launch. This is to take care of users whom had unintentionally denied the permission on initial use;
            later want to use features that required new permissions. Normally user should not <b>Exit</b> aTalk as this
            ends and termates aTalk completely. Instead user should use <b>Back Button</b> to close aTalk window.</li>
+         <image src="./img/atalk_permission_dontaskagain.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
          <li>aTalk will repeatedly prompts user for actions if there are less than 3 permissions being granted even
            users had permanently denied them. Most aTalk features will not operate properly under these condition.
            If you understand and accept aTalk unexpected behavior, but do not wish to be bothered by aTalk
@@ -878,7 +924,7 @@ ul li {
    omemo encryption not available (option is greyed out)</a></div>
 
    <span id='omemo_02'></span>
-   <div class='blueText'>[20190916] Why am I being asked to authenticate the contact during secured chat? <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20190916] Why am I being asked to authenticate the contact during secured chat? <a href=#content>{ Content }</a></div>0
    <div class='innerText'> <image src="./img/atalk_corruptedOmemoKey_auth.png" align="right" width="28%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'>In order for a cryptographic system to make sense, decisions must be made whether a secure
       chat session is trustworthy. Authenticating a buddy helps to ensure that the person you are talking to is
@@ -894,6 +940,11 @@ ul li {
      you need also to take action on the correupted omemoDevice key. The only available option for a corrupted omemoKey
      is to select the option <b>Corrupted OmemoKey, purge?</b> currently. This will remove the corrupted omemoDevice
      from your receipient list. Otherwise, aTalk cannot proceed to send omemo message to other recipients.</div>
+   <div class='innerText'>If you leave any undecided omemoDevices' fingerPrint unauthencated on exit, aTalk will display
+     an error message. Click on the <b>OMEMO</b> encryption option to have the <b>Authenticate Buddy</b> dialog prompt
+     for correction, then resend the last message. Alternatively, just click on the last unsent message and re-send.
+     aTalk will auto resend the message once all the undecided omemoDevices have been authenticated.</div>
+   <div class='innerText'> <image src="./img/atalk_omemo_send_failed.png" align="right" width="32%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'>When the corrupted omemoDevice is purged from your recipient list, the affected device will
      not be able to receive your omemo messages that you have sent. If the affect device is one of your other 
      omemoDevies, you need to perform <b>Regenerate OMEMO identities</b> on the specific physical device; Or send an
@@ -1219,27 +1270,34 @@ ul li {
    <div id='subSection'>User Avatar</div>
 
    <span id='avatar_01'></span>
-   <div class='blueText'>Why some of the avatars for my contacts in main menu are blank or with incorrect pictures? <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20190926] Why some of the avatars for my contacts in main menu are blank or with incorrect pictures? <a href=#content>{ Content }</a></div>
    <div class='innerText'>aTalk implementation supports both XEP's defined specifications in handling the contact avatars i.e:
-         <ul>
-         <li><a href="https://xmpp.org/extensions/xep-0084.html">XEP-0084: User Avatar</a></li>
-         <li><a href="https://xmpp.org/extensions/xep-0153.html">vCard-Based Avatar</a></li>
-      </ul>
-         Your contact installed client must use either of these methods to update and publish his avatar on the server.
-         aTalk can then retrieve your buddies' avatars from the server for display. Otherwise aTalk will display
-         the default avatar i.e. blank figure picture for contacts without one. 
-      </div>
-      <div class='innerText'>Each avatar images stored on server can be few KBytes in size. During the process of
-      avatars retrieving from server, sometimes network communications may get interrupted or aTalk encountered
-      reply timeout from server. This can lead to incorrect avatars being associated with your buddies. If the
-      problem persist after you relaunch aTalk, please following the steps below to refresh your buddies' avatars.
-      <ul>
-         <li>From the main menu, select "Account settings ... | <image src="./img/ic_sweep.png"
-         width="24" height="24" align="middle" style="margin:5px 5px"/>Refresh persistent stores</li>
-         <li>Select "XEP-0084/XEP-0153: Avatar" option and Apply</li>
-         <li>Exit and relaunch aTalk</li>
-      </ul>
-      </div>
+     <ul>
+       <li><a href="https://xmpp.org/extensions/xep-0084.html">XEP-0084: User Avatar</a></li>
+       <li><a href="https://xmpp.org/extensions/xep-0153.html">XEP-0153: vCard-Based Avatar</a></li>
+     </ul>
+     Your contact device client must use either of these methods to publish or update his avatar on the server.
+     If you buddy client implements <b>XEP-0084: User Avatar</b>, the server automatic sends event info on avatar hash
+     for the buddy that is stored on the server, aTalk then procceds to retreive from the server if the received
+     hash is different from the local stored avatar hash. The avatar hash update event is again triggered if the
+     buddy changes his avatar with new image.</div>
+   <div class='innerText'>
+     If your buddy client supports only <b>XEP-0153: vCard-Based Avatar</b> protocol; the server only sends the avatar
+     hash info embedded in the &lt;presence/> stanza when the buddy is online. If one or more of your buddies are
+     offline when you first login, aTalk will display the avatars that were previously saved in the local store;
+     or the default avatar i.e. blank figure if none is available.
+   </div>
+   <div class='innerText'>Each avatar images stored on server can be few KBytes in size. During the process of
+     avatars retrieving from server, sometimes network communications may get interrupted or aTalk encountered
+     reply timeout from server. This can lead to incorrect avatars being associated with your buddies. If the
+     problem persist after you relaunch aTalk, please following the steps below to refresh your buddies' avatars.
+     <ul>
+       <li>From the main menu, select "Account settings ... | <image src="./img/ic_sweep.png"
+       width="24" height="24" align="middle" style="margin:5px 5px"/>Refresh persistent stores</li>
+       <li>Select "XEP-0084/XEP-0153: Avatar" option and Apply</li>
+       <li>Exit and relaunch aTalk</li>
+     </ul>
+   </div>
 
    <span id='avatar_02'></span>
    <div class='blueText'>How do I update my user avatar? <a href=#content>{ Content }</a></div>
