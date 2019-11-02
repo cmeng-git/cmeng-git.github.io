@@ -94,6 +94,7 @@ ul li {
        <li><a href=#account_01>Does aTalk communicate with all the available xmpp clients in the market?</a></li>
        <li><a href=#account_02>[20190731] What information to enter in "Override server setting" when I setup a new account?</a></li>
        <li><a href=#account_03>[20180818] SSL Certificate Authentication, DNSSEC and DANE Security Implementation for Connection Establishment</a></li>
+       <li><a href=#account_07>[20191102] Bidirectional-streams Over Synchronous HTTP (BOSH) with Proxy support</a></li>
        <li><a href=#account_04>Do I have to enable IB Registration option when I setup a new account?</a></li>
        <li><a href=#account_05>[20191002] Google Talk account setup</a></li>
        <li><a href=#account_06>[20190620] Why my first login in sometimes fails when a new account is created?</a></li>
@@ -107,7 +108,7 @@ ul li {
          <li><a href=#feature_10>[20191004] XEP-0070: Verifying HTTP Requests via XMPP and WebView Implementation</a></li>
          <li><a href=#feature_04>[20190526] Stickers, Bitmoji and Emoji rich content sharing </a></li>
          <li><a href=#feature_05>[20190902] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
-         <li><a href=#feature_11>[20191008] aTalk Notification Events</a></li>
+         <li><a href=#feature_11>[20191010] aTalk Notification Events</a></li>
          <li><a href=#feature_06>[20180710] XEP-0198:Stream Management and ReConnection Manager</a></li>
          <li><a href=#feature_07>[20181015] Network Keep Alive - Ping Interval Optimization</a></li>
          <li><a href=#feature_08>[20190823] Android Runtime Permissions Request</a></li>
@@ -126,7 +127,7 @@ ul li {
       </ul>
      <h4>Media Call Communications</h4>
       <ul>
-         <li><a href=#media_01>[20180613] Why the call options button are not shown on some of my contacts in the contact list?</a></li>
+         <li><a href=#media_01>[20191102] Why the call options button are not shown on some of my contacts in the contact list?</a></li>
          <li><a href=#media_02>[20181228] Media Call and Chat Message sessions</a></li>
          <li><a href=#media_03>[20181228] Video Call session</a></li>
          <li><a href=#media_04>[20181016] Jabber VoIP-PBX gateway Telephony (experimental)</a></li>
@@ -282,6 +283,70 @@ ul li {
        <li><a href="https://www.ietfjournal.org/dane-taking-tls-authentication-to-the-next-level-using-dnssec/">
          DANE: Taking TLS Authentication to the Next Level Using DNSSEC</a></li>
      </ul>
+
+   <span id='account_07'></span>
+   <div class='blueText'>[20191102] Bidirectional-streams Over Synchronous HTTP (BOSH) with Proxy support <a href=#content>{ Content }</a></div>
+   <div class='innerText'>Bidirectional-streams Over Synchronous HTTP (BOSH) is a transport protocol that emulates a
+     bidirectional stream between two entities (such as a client and a server) by using multiple synchronous HTTP
+     request/response pairs without requiring the use of frequent polling or asynchronous chunked responses.</div>
+     <image src="./img/atalk_bosh_proxy_configuration.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
+   <div class='innerText'>Hypertext Transfer Protocol Secure (HTTPS) is an extension of the Hypertext Transfer Protocol
+     (HTTP). It is used for secure communication over a computer network, and is widely used on the Internet. In HTTPS,
+     the communication protocol is encrypted using Transport Layer Security (TLS), or formerly its predecessor Secure
+     Sockets Layer (SSL). The protocol is therefore also often referred to as HTTP over TLS or HTTP over SSL.</div>
+   <div class='innerText'>Most companies restrict their internet access for their employees with a firewall and proxy.
+     Normally only port 80 (HTTP) and 443 (HTTPS) are opened, which means no access to the xmpp port 5222. With aTalk
+     xmpp client, you can tunnel through the firewall to reach your desired xmpp server via BOSH connection.</div>
+   <div class='innerText'>
+       For Bosh to work on aTalk properly, the xmpp server certificate must be issued by Certification
+       Authority (CA) trusted by android. The trusted CAs list can be accessed via <b>View security certificates</b>
+       in android Setting. If androd OS detects an untrusted certificate during network connection, it will deny access
+       via https:// scheme protocol, and BOSH connection is not possible. Starting with Android 9 (API-28), cleartext
+       support is disabled by default. BOSH connection via http:// scheme protocol is not supported by aTalk on these
+       devices. 
+   </div>
+   <div class='innerText'>aTalk client supports the following BOSH standards:
+     <ul>
+       <li><a href="https://xmpp.org/extensions/xep-0124.html">XEP-0124: Bidirectional-streams Over Synchronous HTTP (BOSH)</a></li>
+       <li><a href="https://xmpp.org/extensions/xep-0206.html">XEP-0206: XMPP Over BOSH</a></li>
+     </ul>
+   <div class='innerText'>Below gives a brief description on how to setup BOSH for an xmpp user. From aTalk main menu,
+     select <b>Account settings...</b>. Follow the instructions herein on how to create a new account. By default aTalk
+     will connect to the user server via XMPPTCP connection on first login. You will need to cancel the login prompt
+     upon login failure in order to configure the BOSH settings.<br/>
+     <ul>
+       <image src="./img/atalk_bosh_proxy_configuration_setting.png" align="right" width="32%" style="margin:5px 0px 0px 15px"/>
+       <li>On returning to the account list, click on the newly created account.</li>
+       <li>From the account settings menu, select <b>BOSH-Proxy Configuration</b> to setup connection via BOSH/Proxy
+         for the account.</li>
+       <li>The default configuration is <b>NONE</b>. Select <b>BOSH</b> from the <b>Type</b> pull down menu</li>
+       <image src="./img/atalk_bosh_proxy_option.png" align="right" width="20%" style="margin:5px 0px 5px 15px"/>
+       <li>Enter the <b>BOSH URL</b> link e.g. https://example.net:443/http-bind. You need to refer to the xmpp service
+         provider to find the correct setting.</li>
+       <li>If the firewall was your only problem, then you are done with the BOSH settings. If not, you then have to
+         configure the Proxy settings too.</li>
+       <li>There is a checkbox <b>Use HTTP-Proxy</b> in the dialog when you enable BOSH option. Choose this
+         checkpox and enter the proxy data. Enter the autentification info if needed. Leave both the
+         <b>Username</b> and <b>Password</b> blank if proxy authentification is not required.</li>
+     </ul>
+   <div class='innerText'>A proxy server is a dedicated computer system or router that acts as an intermediary between
+     an endpoint device, such as a computer, and another server from which a user or client is requesting a service.
+     Proxy servers are used for the following purposes.</div>
+   <div class='innerText'>In the enterprise, a proxy server is used to facilitate security, administrative control or
+     caching services, among other purposes. In a personal computing context, proxy servers are used to enable user
+     privacy and anonymous surfing. Proxy servers can also be used for the opposite purpose: To monitor traffic and
+     undermine user privacy.</div>
+   <div class='innerText'>To the user, the proxy server is transparent; all Internet requests and returned responses
+     appear to be directly with the addressed Internet server. The proxy is not actually invisible; its IP address
+     has to be specified as a configuration option to the browser or other protocol program. You may use and setup
+     proxy only if you do not need BOSH connection</b>
+     <ul>
+      <li>In this case, select <b>NONE</b> in the <b>Type</b> pull down menu</li>
+      <li>Then enter only the proxy settings as required.</li>
+      <li>Enter the autentification info if needed. Leave both the <b>Username</b> and <b>Password</b> blank if proxy
+        authentification is not required.</li>
+     </ul>
+   </div>
 
    <span id='account_04'></span>
    <div class='blueText'>Do I have to enable IB Registration option when I setup a new account? <a href=#content>{ Content }</a></div>
@@ -740,7 +805,7 @@ ul li {
      and delete the link message/prompt.</div>
 
    <span id='feature_11'></span>
-   <div class='blueText'>[20191008] aTalk Notification Events <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20191010] aTalk Notification Events <a href=#content>{ Content }</a></div>
    <image src="./img/atalk_notification_event.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>   <div class='innerText'></div>
    <div class='innerText'>aTalk provides UI support for user to fine tune the notification actions for each of the events as
     shown in the image on the right i.e.</div>
@@ -758,26 +823,40 @@ ul li {
       <li><b>Security Message:</b> This event is triggered whenever a problem has occurred during call security proces</li>
       <li><b>Type Notifications:</b>The event is triggered when a typing notification is received from the remote contact.</li>
    </ul>
-   <div class='innerText'>Pending on the type of notification, each notification may be associated with one or more
-     actions that are activated when the specific event occurs.</div>
+   <div class='innerText'>Each notification event state can be set to active or inactive by toggling the button next
+     to the event. Click the event title for more event setting options. Pending on the type of notification event,
+     each notification event may be associated with one or more actions that are to be performed when the specific
+     event occurs.</div>
     <ul>
+      <li><image src="./img/atalk_notification_event_incoming.png" align="middle" width="25%" style="margin:5px 5px"/>
+        <b>Event state:</b> Click the button to turn off the notification event. When a notification event
+        is disabled, all the associated actions will also be ignored when the event occurs.</li>
       <li><b>Popup notification:</b> The popup notification is a message that Android displays outside aTalk's UI to
-        provide the user with reminder on an occurred event. Users may tap the notification to open aTalk or take an
-        action directly from the notification. The popup notification is temporary disabled whenever you are active and
-        in focus on the UI to which the notification is associated e.g. <b>Incomng Message.</b> during chat session.</li>
-      <li><b>Sound on notification device:</b> Enabled the alert playback on the device speaker.</li>
-      <li><b>Sound on playback device:</b> Enabled the playback on the device receiver piece. This option takes
-        priority over <b>Sound on notification device</b> option if both are enabled; and your device cannot support
-        playback on both the speaker and receiver piece.</li>
+        provide the user with reminder on an occurred event. User may tap the notification to open aTalk or take an
+        action directly from the notification.<br/>
+        Whenevr you are active/in focus with the UI to which the notification is associated, the popup notification is
+        temporary disabled e.g. <b>Incomng Message</b> popup is disabled during chat session.
+        </li>
       <image src="./img/atalk_notification_event_incoming_call.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
-      <li><b>vibratation:</b> Enabled the device vibration mode.</li>
+      <li><b>Sound on notification device:</b> Enable the alert playback on the device speaker.</li>
+      <li><b>Sound on playback device:</b> Enable the playback on the device receiver piece. This option takes
+        priority over <b>Sound on notification device</b> option if both are enabled; or your device cannot support
+        playback on both the speaker and receiver piece.</li>
+      <li><b>vibratation:</b> Enable the device vibration mode.</li>
       <li><image src="./img/atalk_notification_sound_file.png" align="middle" width="22%" style="margin:5px 5px"/>
         <b>Sound file:</b> The sound file is used for the notification alert playback. Click the button to open android
-         ringtone panel for selection. All selected android ringtone will always be playback via the device speaker
-         independent of other sound option settings.</li>
+         ringtone panel for custom selection.<br/>
+         All selected android ringtone will always be playback via the device speaker independent of other sound option
+         settings. The playback volume is determined by the device system ring tone volume setting, or muted if the
+         device is in silent mode.</li>
       <li><image src="./img/atalk_notification_playback.png" align="middle" width="5%" style="margin:5px 5px"/>
-        <b>Playback:</b> Click this button to playback the selected sound file.</li>
+        <b>Playback:</b> Click this button to playback the selected sound file once.</li>
    </ul>
+   <div class='innerText'>Starting in Android 8.0 (API level 26), android has enforced that all notifications must be
+     assigned to a channel. For each channel, user can set the visual and auditory behavior that is applied to all
+     notifications in that channel. Users can change these settings and decide which notification channels from the
+     app should be visible at all. In aTalk implementation, users are given full control to all the notification evetns
+     as explain above. You may ignore the android notification channel.</div>
 
    <span id='feature_06'></span>
    <div class='blueText'>[20180710] XEP-0198:Stream Management and ReConnection Manager <a href=#content>{ Content }</a></div>
@@ -1030,15 +1109,23 @@ ul li {
    <div id='subSection'>Media Call Communications</div>
 
    <span id='media_01'></span>
-   <div class='blueText'>[20180613] Why the call options button are not shown on some of my contacts in the contact list? <a href=#content>{ Content }</a></div>
-   <div class='innerText'><image src="./img/atalk_media_call_buttons.png" align="right" width="30%" style="margin:5px 5px" /></div>
-   <div class='innerText'>aTalk supports both voice and video call sessions. To allow setting up any of these media
-    call with your buddy, your buddy installed xmpp client must also support the respective media call service. During
-    aTalk initial start up, all buddies will send its features supported via capability version hash embedded within its
-    &lt;presence/> stanza. aTalk then perform check on each buddy supported features via service discovery (XEP-0030)
-    protocol; and enable only the respective media call options that are supported by your buddy client.<br/>
-    Note: The contact must support XEP-0115: Entity Capabilities, version 1.5.1. for aTalk features discovery</div>
-
+   <div class='blueText'>[20191102] Why the call options button are not shown on some of my contacts in the contact list? <a href=#content>{ Content }</a></div>
+   <div class='innerText'><image src="./img/atalk_media_call_buttons.png" align="right" width="30%" style="margin:5px 0px 10px 15px" /></div>
+   <div class='innerText'>aTalk supports both voice and video call sessions. In order to have media call with your
+     contact, your buddy installed xmpp client must also support the required media call services. The buddy media call
+     supported capablities will be shown as icons next to the contact name in the list. To make video or voice call
+     with your buddy, just click the appropriate media call icon next to the contact whom you want to make call with.</div>
+   <div class='innerText'>During aTalk initial start up, each buddy device will send its supported features via
+     capability version-hash embedded within its &lt;presence/> stanza. aTalk then performs check on each buddy supported
+     features via service discovery (XEP-0030) protocol request; and enable only the respective media call options that
+     are supported by your buddy xmpp client. Therefore it is necessary for your contact xmpp clients to support
+     XEP-0115: Entity Capabilities, version 1.5.1.in order for aTalk proper features discovery. Without which, the call
+     icon option will not be shown even if your buddy's client supports media call. In this case, the call can only be
+     initiated from your buddy; aTalk will response and take the call.</div>
+   <image src="./img/atalk_media_call_menu.png" align="right" width="20%" style="margin:5px 0px 10px 15px"/>
+   <div class='innerText'>While you are in a chat session, you may also make call using the pull down menu as shown on
+     the right, if you buddy client supports the media call services.</div>
+      
    <span id='media_02'></span>
    <div class='blueText'>[20181228] Media Call and Chat Message sessions <a href=#content>{ Content }</a></div>
    <div class='innerText'>aTalk allows user to send chat messages while an active call is in progress. User may start
@@ -1078,7 +1165,7 @@ ul li {
      <li><b>Call-HangUp</b>: Click to end the call</li>
    </ul>
 
-   <div class='innerText'><image src="./img/atalk_video_call.png" align="right" width="20%" style="margin:5px 5px" /></div>
+   <div class='innerText'><image src="./img/atalk_video_call.png" align="right" width="20%" style="margin:5px 5px 0px 15px" /></div>
    <div class='innerText'><b>Note:</b> Switching video stream on/off is a complex task and it requires reliable communication.
      When the secured call option is enabled, the replay protection is also enabled against MitM. Due to interruption in
      video streaming, it may at time triggers a false MitM attack and all violated streaming packets are discarded.
