@@ -108,7 +108,8 @@ ul li {
          <li><a href=#feature_10>[20191004] XEP-0070: Verifying HTTP Requests via XMPP and WebView Implementation</a></li>
          <li><a href=#feature_04>[20190526] Stickers, Bitmoji and Emoji rich content sharing </a></li>
          <li><a href=#feature_05>[20190902] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
-         <li><a href=#feature_11>[20191010] aTalk Notification Events</a></li>
+         <li><a href=#feature_11>[20191218] Share, Quote and Forward of messages and media contents</a></li>
+         <li><a href=#feature_12>[20191010] aTalk Notification Events</a></li>
          <li><a href=#feature_06>[20180710] XEP-0198:Stream Management and ReConnection Manager</a></li>
          <li><a href=#feature_07>[20181015] Network Keep Alive - Ping Interval Optimization</a></li>
          <li><a href=#feature_08>[20190823] Android Runtime Permissions Request</a></li>
@@ -630,7 +631,7 @@ ul li {
    <div class='innerText'> <image src="./img/atalk_muc_bookmark_row.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'>For ease-of-use in a Jabber client, it is desirable to have a way to store shortcuts to
      various services and resources (such as conference rooms and web pages) as "bookmarks" that can be displayed
-     or duplicate in other user's client. In aTalk implementation, the bookmark attribute autoJoin is also extended to
+     or duplicated in other user's client. In aTalk implementation, the bookmark attribute autoJoin is also extended to
      be used as local standalone opton.</div>
    <div class='innerText'>When you slide to the chatRoom list upon first login, the chatRoom list will be populated, 
      in additional to your exisitng local chatRooms, with the chatRoom bookmarks you have previously saved (from another
@@ -648,11 +649,12 @@ ul li {
    </div>
 
    <div class='innerText'><image src="./img/atalk_muc_bookmark.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
-   <div class='innerText'>When you click on the bookmark icon on the chatRoom list item, it brigns up the bookmark form
+   <div class='innerText'>When you click on the bookmark icon on the chatRoom list item, it brings up the bookmark form
      as shown on the right for user update. Below provides a brief descriptions of each field in the form.
      <ul>
          <li><b>Account:</b> The user account to whom the chatRoom is associated with.</li>
-         <li><b>Name:</b> A name of the bookmark for human readable information.</li>
+         <li><b>Name:</b> A name of the bookmark for human readable information. This information is displayed in
+         the main titile of the chat Room list item.</li>
          <li><b>Nick Name:</b> The user nick name used when joining the chatRoom. The Nick Name must not be set to null.</li>
          <li><b>Password:</b> Password to use to join the chatRoom if required. Leave blank if no required.</li>
          <li><b>Bookmark:</b> Toggel bookmark option on/off. When enabled, all the specified chatRoom attributes are
@@ -660,7 +662,8 @@ ul li {
          <li><b>AutoJoin:</b> Toggle the autoJoin option on/off. When enabled, aTalk auto joins the chatRoom with the
           newly specified room attributes. The autoJoin state will be saved to bookmark on server if the bookmark is
           enabled, and/or use as a local standalone flag to join chatRoomo on next user login.</li>
-         <li><b>Chat Room:</b> The chat room to which all the attributes in this form belog to.</li>
+         <li><b>Chat Room:</b> The chat room to which all the attributes in this form belog to. This chatRoom
+           name/EntityBareJid is displayed as the sub-Title of the chatRoom list item. </li>
       </ul>
    </div>
    <div class='innerText'>From the main menu, you may also access to the chatRoom bookmarks. The new form is very
@@ -805,6 +808,51 @@ ul li {
      and delete the link message/prompt.</div>
 
    <span id='feature_11'></span>
+   <div class='blueText'>[20191218] Share, Quote and Forward of messages and media contents <a href=#content>{ Content }</a></div>
+   <div class='innerText'><image src="./img/atalk_share_action_bar.png" align="right" width="35%" style="margin:0px 0px 15px 15px"/>
+     aTalk supports messages and media contents sharing either from an external application or sharing with an external
+     application. Within aTalk app, it also supports features like Quote of message in reply, and Forward of contents
+     to contacts within aTalk application.</div>
+   <div class='innerText'>aTalk can receive simple data from other applications with the various MIME types i.e.
+     text/*, image/*, video/*, application/* etc. After you have selected the contents e.g. from web browser or media
+     picker, click the sharing tool if supported by the application. aTalk will be listed as one of the app in the
+     chooser for user selection. On choosing aTalk, the UI as shown on the right is displayed. From here you can select
+     the contact to share. On return to the same UI after sharing with a contact, you can select another contact to
+     share the same contents. Once you have done with sharing the contents, just press the BackKey or click the Done
+     action icon in the action bar.</div>
+    <div class='innerText'>From within aTalk app, while you are in a chat session, following actions are possible with
+      the selected messages or media contents. Below provide a brief description on each of the action icon and its
+      supported function starting from left to right.</div>
+      <div class='innerText'><image src="./img/atalk_share_action_icon.png" align="right" width="40%" style="margin:0px 0px 15px 15px"/></div>
+    <ul>
+      <li><b>Edit:</b> Last sent message correction edit. If the selected message is the last sent message, click on 
+        this icon to perform the last message correction. You may also just click on the last sent message to access
+        to the message correction option.</li>
+      <li><b>Quote:</b> Quote the selected message in the reply message send to a contact. The image on the right shows
+        the quoted content that is displayed on the contact received message.
+        <image src="./img/atalk_quote.png" align="right" width="40%" style="margin:10px 0px 15px 15px"/></li>
+      <li><b>Delete:</b> Purge the selcted messages and media contents from database. Media contents deletion is
+        only performed if user enable the Delete Media option in the confirmation dialog. aTalk will not delete any
+        sent media file unless it is a voice message file or media file in tmp directory created by aTalk app.</li>
+      <li><b>Share:</b> Share the messages and media contents of a user to an external application. You may select
+        messages and/or media contents from the chat window to share with an external application. Android allows only
+        one type of content i.e. text or media content to be shared at any one time.  If you have selected both the
+        messages and media contents for sharing, aTalk will start with text message sharing followed by the media
+        sharing. Upon chosen the app for text sharing by user, aTalk will wait for 6 seconds for user to complete the
+        first transaction before lauching the chooser for the media contents.</li>
+      <li><b>Forward:</b> Forward the messages and media contents of a user to other contacts within aTalk. The
+        operation is similar to Share option. However forward operation does not have time bound. Text message
+        will be shown for edit and send, followed by media contents. User is allow the share the same selected contents
+        to more than on contacts. In both Share and Forward operation, all the selected messages are merged into a
+        single text string before sending.</li>
+      <li><b>Copy:</b> Copy all the selected messages text and merged all messages into a single text message before
+        placing it on the clipboard for pasting.</li>
+      <li><b>Select All:</b> Select all the messages and media contents that are currently visible in the chat view
+        window.</li>
+    </ul>
+    </div>
+
+   <span id='feature_12'></span>
    <div class='blueText'>[20191010] aTalk Notification Events <a href=#content>{ Content }</a></div>
    <image src="./img/atalk_notification_event.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>   <div class='innerText'></div>
    <div class='innerText'>aTalk provides UI support for user to fine tune the notification actions for each of the events as
