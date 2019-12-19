@@ -473,9 +473,9 @@ ul li {
          the selector for a list of options.</li>
        <li><b>Contact Display Name:</b> The new contact name you would like to show on your contact list. aTalk uses
          the Jid if you leave this field empty.</li>
-       <image src="./img/atalk_contact_group_add.png" align="right" width="31%" style="margin:5px 0px 0px 15px"/>
        <li><b>Add Button:</b> Click on Add button once you have entered all the new contacts properties.</li>
        <li><b>Cancel Button: </b> Click Cacel to abort the request and discard all the information entered.</li>
+       <image src="./img/atalk_contact_group_add.png" align="right" width="31%" style="margin:5px 0px 0px 15px"/>
      </ul>
     <div class='innerText'>Click on the <b>Contact Assigned Group</b> selector will bring up the group assigning 
       options.</div>
@@ -515,9 +515,9 @@ ul li {
      automatically, by enable the option <b>Presence subscribe approval</b> auto accept all in the [menu | Settings...].
      In this case, aTalk automatically approves upon received a Presence Subscription Request from your
      buddy. It will also revert a request to your buddy for approval.</div>
-   <image src="./img/atalk_contact_presence_accept.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
    <div class='innerText'><b>Note:</b> When you remove a buddy from your contact list, it automatically triggers the
-     server to remove him/her from your Presence Subscription.</div>
+     server to remove him/her from your Presence Subscription.
+   <image src="./img/atalk_contact_presence_accept.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'>Your XMPP service admin may choose to create share-rosters on the server, grouping all the
     related members in each categorid roster group. Upon first login, every member of the group will have his/her
     contactList populated with all the members within his/her roster group. This saves the memeber to manually subcribe
@@ -711,10 +711,10 @@ ul li {
          <li>Click the <b>login</b> link on the webpage, login page as shown on the right will be displayed.</li>
          <li>In the <b>Username</b> field, enter the xmpp user account that you are currently login.</li>
          <li>Then clik the <b>Sign In</b> button on the webPage.</li>
-          <image src="./img/atalk_http_auth_request.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
          <li>Via s2s connection, the visting site sends the XMPP Server Requests Confirmation via XMPP protocol. Pending
            whether the entered user account ends with/without a reource; the site sends either an IQ stanza or a Message
            stanza request to the login entity.</li>
+         <image src="./img/atalk_http_auth_request.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
          <li><b>Http Authorization Reqest</b> as shown on the left is returned if you have entered the username ends with
            a resource. A similar one will be shown if the username is entered without a resource attribute, its dialog
            content is defined by the site admin. The demo site actually supports client that does not implement
@@ -1083,9 +1083,9 @@ ul li {
    <div class='innerText'>aTalk implements <a href ="https://gultsch.de/trust.html">Blind Trust Before Verification</a>
       with an option to enable or disable it. With the option:
       <ul>
+         <image src="./img/atalk_message_security.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
          <li>enabled: first installed new device of contact that has not been verified before will be auto-trusted.
          However you will be prompted for manual confirmation when a verified contact adds new devices.</li>
-   <div class='innerText'> <image src="./img/atalk_message_security.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
          <li>disabled: you will be prompted for manual confirmation on all devices installed by your contact.</li>
       </ul>
    </div>
@@ -1269,9 +1269,9 @@ ul li {
          client proxy gateways to legacy services; but disco#info must be updated to confirm to XEP-0115</li>
      </ul>
 
+    <image src="./img/atalk_telephony.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
     <div class='innerText'>aTalk Telepohny option uses the following two paramteres, and are requires to be setup if
      you want to override the defaults. These parameters can be found in [Account settings... | Telephony} section</div>
-    <div class='innerText'> <image src="./img/atalk_telephony.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>  
      <ul>
        <li><b>Telephony Domain</b>: The override domain name when making telephone call. If Jabber account is able to
          make call using PSTN number; but the domain name of the telephony switch is different from the service domain
@@ -1290,12 +1290,12 @@ ul li {
    <div class='innerText'>The Voice over IP (VoIP) and other media applications uses Real-time Transfer Protocol (RTP).
      Many VoIP applications send RTP data over the public Internet in clear, thus the data is not protected from
      eavesdropping or modification. Therefore most VoIP applications are considered insecure today. aTalk supports SRTP
+     <image src="./img/atalk_call_encryption.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
      and ZRTP etc to enhance the security for VoIP communications.</div>
        <ul>
          <li><b>SRTP</b>: Secure Real-time Transfer Protocol enhances security for RTP and provides integrity and
            privacy for RTP media connections. To use SRTP in an efficient way, VoIP applications should be
-           able to negotiate keys and other parameters automatically.</li>
-     <div class='innerText'> <image src="./img/atalk_call_encryption.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
+           able to negotiate keys and other parameters automatically.
          <li><b>ZRTP</b>: Media Path Diffie-Hellman session key exchange Agreement for Unicast Secure RTP, is a
            protocol that negotiates the keys and other information required to setup a SRTP audio and video session,
            without additional infrastructure, server programs, registration, and alike. It indicates to the VoIP user
@@ -1316,14 +1316,14 @@ ul li {
                  as the voice equivalent of OTR</li>
                <li><b>SDES</b>: Session Description Protocol Security Descriptions for Media Streams and is a way
                  to negotiate the key for Secure Real-time Transport Protocol.</li>
-         <div class='innerText'> <image src="./img/atalk_zrtp_off.png" align="right" width="25%" style="margin:5px 0px 0px 15px"/></div>
+               <image src="./img/atalk_zrtp_off.png" align="right" width="25%" style="margin:5px 0px 0px 15px"/>
                <li><b>DTLS_SRTP</b>: This is another way to negotiate keys but rather than use an extension to SIP
                  to do it, SIP simply indicates the media stream uses DTLS-SRTP and key negotiation happens in the
                  media stream. Key negotiation happens as in TLS and thus relies on PKI.</li>
             </ul>
-         <div class='innerText'> <image src="./img/atalk_zrtp_info.png" align="right" width="25%" style="margin:5px 0px 0px 15px"/></div>
          <li><b>SDES cipher suites</b>: Simplified Data Encryption Standard, the process of encrypting a plain data
            to an encrypted data stream with the use of SDES cipher as defined below</li>
+           <image src="./img/atalk_zrtp_info.png" align="right" width="25%" style="margin:5px 0px 0px 15px"/>
            <ul>
              <li><b>AES_CM_128_HMAC_SHA1_80</b>:</li>
              <li><b>AES_CM_128_HMAC_SHA1_32</b>:</li>
@@ -1351,11 +1351,11 @@ ul li {
       
    <span id='media_06'></span>
    <div class='blueText'>[20181126] STUN, TURN, ICE &amp; Jingle for NAT Traversal in media call setup</div>
+   <image src="./img/atalk_ice.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
    <div class='innerText'>NATs (Network Address Translation) and firewalls play a very important role in securing and
      enhancing the usability of internal networks, however impose significant challenges in setting up a reliable VoIP
      call bewteen two end-points. STUN, TURN, and ICE are a set of IETF standard protocols for negotiating traversing
      NATs when establishing peer-to-peer communication sessions.</div>
-   <div class='innerText'> <image src="./img/atalk_ice.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'>A host uses <b>Session Traversal Utilities for NAT (STUN)</b> to discover its public IP
      address and type of firwall when it is located behind a NAT/Firewall. It then uses this information to assist in
      establishing peer-to-peer VoIP connectivity.</div>
@@ -1378,7 +1378,7 @@ ul li {
        <ul>
        <li><b>Use ICE, Use UPnP &amp; Use jingle nodes</b>: It is good ideas to check all these options so as to
          facilitae higher possibliity of a succesful media connection.</li>
-       <div class='innerText'> <image src="./img/atalk_stun_turn.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
+         <image src="./img/atalk_stun_turn.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
        <li><b>Auto discover STUN/TURN servers</b>: When this option is checked, aTalk will attempt to discover
          STUN/TURN using service domain from the user account i.e. via SRV records fetching. You should NOT enable
          this option if the account service domain is a virtual host, and cannot be resolved to a valid IP for actual
