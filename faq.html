@@ -112,7 +112,7 @@ ul li {
          <li><a href=#feature_12>[20191010] aTalk Notification Events</a></li>
          <li><a href=#feature_06>[20180710] XEP-0198:Stream Management and ReConnection Manager</a></li>
          <li><a href=#feature_07>[20181015] Network Keep Alive - Ping Interval Optimization</a></li>
-         <li><a href=#feature_08>[20190823] Android Runtime Permissions Request</a></li>
+         <li><a href=#feature_08>[20200113] Android Battery Optimization &amp; Runtime Permissions Request</a></li>
      </ul>
       <h4>OMEMO Messaging</h4>
       <ul>
@@ -138,8 +138,8 @@ ul li {
 
      <h4>User Avatar</h4>
       <ul>
-         <li><a href=#avatar_01>[20190926] Why some of the avatars for my contacts in main menu are blank or with incorrect pictures?</a></li>
-         <li><a href=#avatar_02>How do I update my user avatar?</a></li>
+         <li><a href=#avatar_01>[20200214] How do I update my user avatar?</a></li>
+         <li><a href=#avatar_02>[20200214] Why some of the avatars for my contacts in main menu are blank?</a></li>
       </ul>
      <h4>General</h4>
       <ul>
@@ -965,6 +965,7 @@ ul li {
       </ul>
     <div class='innerText'>Manual tuning is needed when &lt;120s is required. When optimization is completed or you
      want to set Ping Interval manually, you may disable <b>Enable Ping Interval optimization</b> option.</div>
+    <image src="./img/atalk_permission_request.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
 
    <div class='innerText'><b>Note:</b> When an established TCP data channel is terminated by network, neither android
      nor aTalk is able to detect this condition, until it failed while attempting to send data. Therefore Reconnection
@@ -972,8 +973,7 @@ ul li {
      keep alive ping at regular interval to detect this condition for Reconnection Manager to work.</div>
 
    <span id='feature_08'></span>
-   <div class='blueText'>[20190823] Android Runtime Permissions Request <a href=#content>{ Content }</a></div>
-   <image src="./img/atalk_permission_request.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
+   <div class='blueText'>[20200113] Android Battery Optimization &amp; Runtime Permissions Request <a href=#content>{ Content }</a></div>
    <div class='innerText'>Starting with Android 6.0 Marshmallow (API 23), a new runtime permission model has been
      introduced; Users are not prompted for permissions at the time of installing the app, rather app needs to check
      for and request permissions at runtime. Users can then allow or deny the permissions for the app. Users can also
@@ -985,13 +985,15 @@ ul li {
       <ul>
          <li>Camera - for video call or capture picture or record video for sharing</li>
          <li>Contacts - needed for phone state access and call setup e.g. telephony</li>
-         <li>Location - GPS SteetView and Map display for a 360° panoramic view; Location sharing with buddy</li>
+         <li>Location - GPS SteetView and Map display for a 360° panoramic view; Location sharing with buddy.
+           <b> Note:</b> Fdroid version does not support Location sharing.</li>
          <li>Audio - audio chat, voice and video calls</li>
          <li>Phone - phone features support - telephony gateway</li>
          <li>Storage - Access to android local storage for saving aTalk vital operational data and files. aTalk will
          fail unexpectly if this basic permission is denied.</li>
       </ul>
 
+   <image src="./img/atalk_permission_dontaskagain.png" align="right" width="30%" style="margin:0px 0px 5px 15px"/>
    <div class='innerText'>If any of the permissions is denied, aTalk may not work properly or may have unexpected
      behavior. If you have selected <b>Don't ask again</b> option, you will not be prompt on next aTalk launch;
      You need to go to android Settings -> APP INFO for aTalk to enable the permissions.</div>
@@ -1001,7 +1003,7 @@ ul li {
            new launch. This is to take care of users whom had unintentionally denied the permission on initial use;
            later want to use features that required new permissions. Normally user should not <b>Exit</b> aTalk as this
            ends and termates aTalk completely. Instead user should use <b>Back Button</b> to close aTalk window.</li>
-         <image src="./img/atalk_permission_dontaskagain.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
+         <image src="./img/atalk_battery_opt_warn.png" align="right" width="30%" style="margin:5px 0px 5px 15px"/>
          <li>aTalk will repeatedly prompts user for actions if there are less than 3 permissions being granted even
            users had permanently denied them. Most aTalk features will not operate properly under these condition.
            If you understand and accept aTalk unexpected behavior, but do not wish to be bothered by aTalk
@@ -1012,6 +1014,17 @@ ul li {
            states, and OS returns incorrect results when aTalk performs the check.</li>
       </ul>
    </div>
+
+   <div class='innerText'><b>Disabling Doze & App Standby for aTalk</b></div>
+   <div class='innerText'>Battery optimization is a function (known as Doze) built into Android 6.0 Marshmallow and above.
+     It preserves battery life by limiting what apps can do when the device is in standby (doze mode). You must not put
+     aTalk under android battery optimization. Otherwise android OS will put aTalk to sleep (offline) when the device
+     <image src="./img/atalk_battery_opt_prompt.png" align="right" width="30%" style="margin:5px 0px 5px 15px"/>
+     is in standby mode. When this happen, aTalk will not alert you when there are new messages sent from your buddy.
+     All messages will be delayed and received as offline messages when aTalk is online again. Your buddy cannot set up
+     media call with you as aTalk appears offline to the buddy.</div>
+   <div class='innerText'>Whenever user launches aTalk on Android-M or higher, aTalk will alert user if it detects
+     aTalk has been put under android battery optimization. Click <b>Next</b> and select <b>Allow</b> on android prompt.</div>
 
    <div class='innerText'><b>Note</b>: If you change any of the resouce permissions via android <b>Settings</b>, you 
      must exit and restart aTalk for the granted permission to take effect. This is because some of the permission
@@ -1405,27 +1418,57 @@ ul li {
    <div id='subSection'>User Avatar</div>
 
    <span id='avatar_01'></span>
-   <div class='blueText'>[20190926] Why some of the avatars for my contacts in main menu are blank or with incorrect pictures? <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20200214] How do I update my user avatar? <a href=#content>{ Content }</a></div>
+   <image src="./img/09.atalk_avatar.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
+   <div class='innerText'>aTalk has an integrated photo editor that supports zoom, scale, rotate and crop functions. This
+     simple tool helps publishing the user avatar an easy task. The following steps describe on how to add an user avatar:</div>
+     <ul>
+       <li>From main menu, select <b>Account settings...</b></li>
+       <li>In <b>Account settings...</b>, click and hold the account to access the context menu. Select <b>Account Info</b></li>
+       <li>Click on the account avatar near the top-left corner of the account info display page. Then select
+         <b>Choose picture</b> to pick a picture from your storage.</li>
+       <li> This will launch the photo editor and display your selected picture.</li>
+       <li>Use the editor, select, zoom, rotate and crop the image area you want.</li>
+       <li>Click the tick arrow on the top right corner to save.</li>
+     </ul>
+     
+     <div class='innerText'>Please click <a href="./index.html">here</a> to
+     return to main page, and playback the demo video for "User avatar" to get help on how to publish user avatar.
+   </div>
+   <div class='innerText'>In order to allow your buddy installed client that supports only either one of the avatar
+      protocols, aTalk uses both methods to update the avatar on the server i.e.
+     <ul>
+       <li><a href="https://xmpp.org/extensions/xep-0084.html">XEP-0084: User Avatar</a></li>
+       <li><a href="https://xmpp.org/extensions/xep-0153.html">XEP-0153: vCard-Based Avatar</a></li>
+     </ul>
+     This does take some times to store the avatar on the server. So be patient when you update your own user avatar. 
+   </div>
+
+   <span id='avatar_02'></span>
+   <div class='blueText'>[20200214] Why some of the avatars for my contacts in main menu are blank? <a href=#content>{ Content }</a></div>
    <div class='innerText'>aTalk implementation supports both XEP's defined specifications in handling the contact avatars i.e:
      <ul>
        <li><a href="https://xmpp.org/extensions/xep-0084.html">XEP-0084: User Avatar</a></li>
        <li><a href="https://xmpp.org/extensions/xep-0153.html">XEP-0153: vCard-Based Avatar</a></li>
      </ul>
-     Your contact device client must use either of these methods to publish or update his avatar on the server.
-     If you buddy client implements <b>XEP-0084: User Avatar</b>, the server automatic sends event info on avatar hash
-     for the buddy that is stored on the server, aTalk then procceds to retreive from the server if the received
-     hash is different from the local stored avatar hash. The avatar hash update event is again triggered if the
-     buddy changes his avatar with new image.</div>
+     Your contact device client must use either of these methods to publish or update his avatar on the server.</br>
+     If you buddy client implements <b>XEP-0084: User Avatar</b> protocol, the server automatic sends an event on
+     avatar hash for the buddy that is stored on the server after you have logged in. If the received avatar hash
+     is different from the local stored avatar hash, aTalk then procceds to retrive the buddy avatar from the server.
+     The avatar hash update event is sent whenever your buddy update his avatar with new image.</div>
    <div class='innerText'>
      If your buddy client supports only <b>XEP-0153: vCard-Based Avatar</b> protocol; the server only sends the avatar
      hash info embedded in the &lt;presence/> stanza when the buddy is online. If one or more of your buddies are
      offline when you first login, aTalk will display the avatars that were previously saved in the local store;
      or the default avatar i.e. blank figure if none is available.
+   <div class='innerText'><b>Refresh Contact Avatar:</b> If you want to refresh the avatar of any contact; you may
+     long click on the contact avatar shown in the contact list. aTalk will fetch and update the contact avatar immediately.
    </div>
    <div class='innerText'>Each avatar images stored on server can be few KBytes in size. During the process of
      avatars retrieving from server, sometimes network communications may get interrupted or aTalk encountered
-     reply timeout from server. This can lead to incorrect avatars being associated with your buddies. If the
-     problem persist after you relaunch aTalk, please following the steps below to refresh your buddies' avatars.
+     reply timeout from server. This can lead to incorrect avatars being associated with your buddies. You may use the
+     above method to update the avatar of the contact. Alternative, please following the steps below to refresh your
+     buddies' avatars.
      <ul>
        <li>From the main menu, select "Account settings ... | <image src="./img/ic_sweep.png"
        width="24" height="24" align="middle" style="margin:5px 5px"/>Refresh persistent stores</li>
@@ -1434,16 +1477,6 @@ ul li {
      </ul>
    </div>
 
-   <span id='avatar_02'></span>
-   <div class='blueText'>How do I update my user avatar? <a href=#content>{ Content }</a></div>
-   <div class='innerText'>aTalk has an integrated picture editor that supports zooming, scaling and cropping. This
-     simple tool helps publishing of user avatar an easy task. Please click <a href="./index.html">here</a> to
-     return to main page, and playback the demo video for "User avatar" to get help on how to publish user avatar.
-   </div>
-   <div class='innerText'>In order to allow your buddy installed client that supports only either one of the avatar
-      protocols, aTalk uses both methods to update the avatar on the server. This does take some times to store the
-      avatar on the server. So be patient when you update your own user avatar. 
-   </div>
 
    <span id=''></span>
    <div class='blueText'></div>
