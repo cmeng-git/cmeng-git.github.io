@@ -94,7 +94,8 @@ ul li {
        <li><a href=#account_01>Does aTalk communicate with all the available xmpp clients in the market?</a></li>
        <li><a href=#account_02>[20190731] What information to enter in "Override server setting" when I setup a new account?</a></li>
        <li><a href=#account_03>[20180818] SSL Certificate Authentication, DNSSEC and DANE Security Implementation for Connection Establishment</a></li>
-       <li><a href=#account_07>[20191102] Bidirectional-streams Over Synchronous HTTP (BOSH) with Proxy support</a></li>
+       <li><a href=#account_07>[20200228] XEP-0178: Best Practices for Use of SASL EXTERNAL with Certificates for client authentication (experimental)</a></li>
+       <li><a href=#account_08>[20191102] Bidirectional-streams Over Synchronous HTTP (BOSH) with Proxy support</a></li>
        <li><a href=#account_04>Do I have to enable IB Registration option when I setup a new account?</a></li>
        <li><a href=#account_05>[20191002] Google Talk account setup</a></li>
        <li><a href=#account_06>[20190620] Why my first login in sometimes fails when a new account is created?</a></li>
@@ -109,7 +110,8 @@ ul li {
          <li><a href=#feature_04>[20190526] Stickers, Bitmoji and Emoji rich content sharing </a></li>
          <li><a href=#feature_05>[20190902] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
          <li><a href=#feature_11>[20191218] Share, Quote and Forward of messages and media contents</a></li>
-         <li><a href=#feature_12>[20191010] aTalk Notification Events</a></li>
+         <li><a href=#feature_12>[20200228] aTalk Heads-Up Notification and Quiet-Hours</a></li>
+         <li><a href=#feature_13>[20191010] aTalk Notification Events</a></li>
          <li><a href=#feature_06>[20180710] XEP-0198:Stream Management and ReConnection Manager</a></li>
          <li><a href=#feature_07>[20181015] Network Keep Alive - Ping Interval Optimization</a></li>
          <li><a href=#feature_08>[20200113] Android Battery Optimization &amp; Runtime Permissions Request</a></li>
@@ -269,6 +271,7 @@ ul li {
          service's SSL certificate to be verified using DANE.</li>
      </ul>
 
+   <image src="./img/atalk_client_cert_config.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
    <div class='innerText'>Plese refer to the following sites for more information:</div>
      <ul>
        <li><a href="https://developer.android.com/training/articles/security-ssl">Security with HTTPS and SSL</a></li>
@@ -286,6 +289,58 @@ ul li {
      </ul>
 
    <span id='account_07'></span>
+   <div class='blueText'>[20200228] XEP-0178: Best Practices for Use of SASL EXTERNAL with Certificates for client authentication (experimental) <a href=#content>{ Content }</a></div>
+   <div class='innerText'>XMPP standard allows the use of any SASL mechanism in the authentication of XMPP entities.
+     aTalk supports use of the SASL EXTERNAL mechanism with PKIX certificates for client to server authentication,
+     especially when an XMPP service indicates that TLS is mandatory-to-negotiate. During the stream negotiation process,
+     an XMPP client can present a certificate ("client certificate"), included with zero or more than one JabberID
+     encapsulated as id-on-xmppAddr Object Identifier i.e "xmppAddr".</div>
+   <image src="./img/atalk_client_cert_entry.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
+   <div class='innerText'>The SASL EXTERNAL authentication method requires a digital client certificate. This digital
+     certificate should contain xmppAddr field(s), which is always checked first. If there is more than one JID
+     specified in the xmppAddr fields, the client must include the authorisation entity which corresponds to the one
+     of the specified JIDs. When no xmppAddr is specified, the cn (common name) field might be used to provide client's
+     username. If the client certificate does not contain a JID, the client must provide one in authorisation entity.
+     For the details of the "xmppAddr" usage, please refer to
+     <a href="https://xmpp.org/extensions/xep-0178.html">XEP-0178 Best Practices for Use of SASL EXTERNAL with Certificates.</a></div>
+   <div class='innerText'><b>Self-signed certificates for regular TCP/TLS connections:</b> If your xmpp service accepts
+     self-signed certs for connection, you may use the following method to generate the client certificate:</div>
+     <ul>
+       <li>openssl genrsa -des3 -out rootCA.key 4096</li>
+       <li>openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 1024 -out rootCA.crt</li>
+       <li>openssl genrsa -out client.key 2048</li>
+       <li>openssl req -new -key client.key -out client.csr<br/># Remember to provide username as Common Name!</li>
+       <li>openssl x509 -req -in client.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial -out client.crt -days 500 -sha256</li>
+       <li>openssl pkcs12 -export -inkey client.key -in client.crt -out client.p12</li>
+       <li><b>Note: </b> You may change the client.p12 name to userId.p12 for easy identification, but must retain the .p12 ext.
+         The ext .p12 is used for keystore type identification in TLS client certificate entry menu.</li>
+     </ul>         
+   <div class='innerText'><b>Adding client certificate to keyStore: </b> After the generation of the certificate, you
+     need to add the client certificate to android keystore for use by aTalk.</div>
+     <ul>
+       <li>From the main menu, select <b>Account settings...</b></li>
+       <li>Select the certificate tool icon to enter the TLS Certificate Conguration menu</li>
+       <li>Click <b>Add</b> to enter the TLS Client Certificate entry menu.</li>
+       <li>Click to open the folder, navigate to the required folder and pick the client.p12 or the given certificate name to use</li>
+       <li>You will be prompt to enter password to access the client.p12 certificate.</li>
+   <image src="./img/atalk_client_cert_auth.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
+       <li>Check the <b>Save password</b> option if you want aTalk to remember the password for later use when accessing
+       to the client certificate.</li>
+       <li>You may click the <b>Certicate icon</b> to view the client.p12 certificate content</li>
+       <li>Press <b>OK</b> to return to entry menu; and <b>Back Key</b> to exit the TLS configuration</li>
+     </ul>         
+   <div class='innerText'><b>Enabling client certificate:</b></div>
+     <ul>
+       <li>From the <b>Account List</b>, select the account to use TLS certificate.</li>
+       <li>Select <b>[Connection Settings | Client TLS certificate]</b> to define the certificate to use.</li>
+       <li>Check the clinet.p12 certificate to use</li>
+       <li>Exit <b>Account setting ...</b>. aTalk will attempt to login the server using the clinet.p12 certificate
+         for authentication.</li>
+     </ul>
+   <div class='innerText'><b>Note: </b> Your xmpp server must support and configured to accept clinet TLS certificate
+     authentication via SASL EXTERNAL mechanism.</div>
+
+   <span id='account_08'></span>
    <div class='blueText'>[20191102] Bidirectional-streams Over Synchronous HTTP (BOSH) with Proxy support <a href=#content>{ Content }</a></div>
    <div class='innerText'>Bidirectional-streams Over Synchronous HTTP (BOSH) is a transport protocol that emulates a
      bidirectional stream between two entities (such as a client and a server) by using multiple synchronous HTTP
@@ -845,6 +900,7 @@ ul li {
         will be shown for edit and send, followed by media contents. User is allow the share the same selected contents
         to more than on contacts. In both Share and Forward operation, all the selected messages are merged into a
         single text string before sending.</li>
+   <image src="./img/atalk_chat_message_notification_settings.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
       <li><b>Copy:</b> Copy all the selected messages text and merged all messages into a single text message before
         placing it on the clipboard for pasting.</li>
       <li><b>Select All:</b> Select all the messages and media contents that are currently visible in the chat view
@@ -853,8 +909,47 @@ ul li {
     </div>
 
    <span id='feature_12'></span>
+   <div class='blueText'>[20200228] aTalk Heads-Up Notification and Quiet-Hours <a href=#content>{ Content }</a></div>
+   <div class='innerText'><b>Notifications Overview: </b>A notification is a message that android displays outside
+     the app's UI to provide the user with reminders, communication from other contact, or other schedule information
+     from the app. Users can tap the notification to open the app or take an action directly from the notification.
+     Following android notifications applied to aTalk:</div>
+      <ul>
+         <li><b>Status bar and notification drawer: </b>The basic notification type where the notification is displayed
+           as an icon and can be viewed in more detail using the notification drawer.</li>
+         <li><b>Heads-up notification: </b>Beginning with Android 5.0, notifications can briefly appear in a floating
+           window called a heads-up notification. The heads-up notification appears the moment the app issues the
+           notification and it disappears after a moment, but remains visible in the notification drawer as usual.</li>
+         <li><b>App icon badge: </b>Android 8.0 (API level 26) and higher, app icons indicate new notifications with
+           a colored "badge" (also known as a "notification dot") on the corresponding app launcher icon.</li>
+      </ul>
+   <div class='innerText'><b>Status bar and notification drawer: </b>Please see <a href=#feature_13>aTalk Notification Events</a>
+     for the support and configuration of aTalk individual notification.</div>
+   <image src="./img/atalk_heads_up_notification.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
+     <div class='innerText'><b>Heads-Up Notification: </b>Starting with aTalk v2.2.0, it has added support for the android
+     heads-up notifications; with options for 'Reply', 'Mark as read' and 'Snooze'. To allow aTalk heads-up option to
+     work correctly on devices with android-N and above, user needs to ensure android <b>[Settings | Notifications]</b>
+     for aTalk has been configured as shown in the image on the right. i.e. both the <b>Alert</b> and <b>Show as pop-up</b>
+     options must be checked for the <b>Chat Message Notification</b> notification category.</div>
+      <ul>
+         <li><b>Reply: </b> The reply option is not available on android devices lower than android-N, as this is not
+           supported by the OS. User may click <b>Reply </b> and enter the text message to send without open the
+           aTalk app. The message will use the encryption mode as defined in the entity chat session.</li>
+           <image src="./img/atalk_quiet_hours.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
+         <li><b>Mark as Read: </b> Select this option will clear the content in the notification and reset the unread
+           counter for the specific entity chat session to zero.</li>
+         <li><b>Snooze: </b>This option is being shown starting on the 4th message notifications if user did not take
+           any action on all previous notificatons. Upon user selection, heads-up notifiations are disabled for all
+           subsequent incoming messages from the specific entity. The snooze period is fixed at 60 minutes.
+           <b>Snooze</b> action does not affect the normal notification i.e. <b>Status bar and notification drawer</b></li>
+      </ul>
+   <div class='innerText'><b>Quiet Hours: </b> User can defined the quiet hours period for all the aTalk notification.
+     During the quiet hours, all alerts are muted for all the aTalk notfications. Quiet hours does not apply to 
+     heads-up pop-up floating window.</div>
+
+   <span id='feature_13'></span>
    <div class='blueText'>[20191010] aTalk Notification Events <a href=#content>{ Content }</a></div>
-   <image src="./img/atalk_notification_event.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>   <div class='innerText'></div>
+   <image src="./img/atalk_notification_event.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
    <div class='innerText'>aTalk provides UI support for user to fine tune the notification actions for each of the events as
     shown in the image on the right i.e.</div>
     <ul>
