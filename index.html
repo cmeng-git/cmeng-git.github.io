@@ -58,43 +58,49 @@
 	</section><!--  End billboard  -->
 
 	<div class="feature dark">
-      <h2>Features</h2>
-      <h4>aTalk is an xmpp client designed for android and supports the following features:</h4>
-      <ul>
+    <h2>Features</h2>
+    <h4>aTalk is an xmpp client designed for android and supports the following features:</h4>
+    <ul>
       <li>Instant messaging in plain text and End-to-End encryption with <a href="http://conversations.im/omemo/">OMEMO</a>
 			  or <a href="https://otr.cypherpunks.ca/">OTR</a></li>
-      <li><a href="./faq.html#account_03">SSL Certificate authentication, DNSSEC and DANE Security implementation</a> for enhanced secure Connection Establishment</li>
-      <li>OMEMO encryption in multi-user-chat session, giving users' maximum privacy and security</li>
-      <li><a href="https://xmpp.org/extensions/inbox/omemo-media-sharing.html">OMEMO Media File Sharing for all files including Stickers, Bitmoji and Emoji rich contents</a></li>
-      <li>Support <a href="https://xmpp.org/extensions/xep-0363.html">HTTP File Upload</a> for file sharing with offline contact and members in conference room</li>
-      <li>Support downloadable <a href="./faq.html#feature_04">Stickers, Bitmoji and Emoji rich content sharing</a> via Google Gboard</li>
-      <li>Send and receive files for all document types and images, with thumbnail preview before file is sent </li>
+      <li><a href="./faq.html#account_03">SSL Certificate authentication, DNSSEC and DANE Security</a> implementation for enhanced secure Connection Establishment</li>
+      <li>OMEMO encryption in group chat session enhancing privacy and security</li>
+      <li><a href="https://xmpp.org/extensions/inbox/omemo-media-sharing.html">OMEMO Media File Sharing</a> for all files including Stickers, Bitmoji and Emoji rich contents</li>
+      <li>Support <a href="https://xmpp.org/extensions/xep-0363.html">HTTP File Upload</a> for file sharing with offline contact and in group chat</li>
+      <li>Support <a href="./faq.html#feature_04">Stickers, Bitmoji and Emoji</a> rich content sharing via Google Gboard</li>
+      <li>Send and receive files for all document types and images, with thumbnail preview and gif animation</li>
       <li>Auto accept file transfer request with max file size option</li>
-      <li><a href="./faq.html#feature_05">Implement fault-tolerance file transfer to ease and enhance file sharing reliability (1-1 chat and chatRoom)</a></li>
+      <li>Implement <a href="./faq.html#feature_05">fault-tolerance file transfer</a> to ease and enhance file sharing reliability</li>
       <li>Enhance and harmonize UI for file sharing in chat and chatRoom</li>
-	  <li>Support share, quote and forward of messages and media files with preview before sending</li>
+	    <li>Support share, quote and forward of messages and medias with preview prior to sending</li>
+	    <li>Support multi-instances of audio media player with functions: Play, Pause, Resume, Stop and Seek</li>
       <li>Support unread message badges in contact and chatRoom list views</li>
-      <li>XEP-0012: Last Activity to show the time of the last activity associated with a contact</li>
+      <li>User selectable option for heads-up notification and quite hours</li>
+      <li>Share of social media links are tagged with thumbnail and title</li>
+      <li>XEP-0012: Last Activity time associated with contacts</li>
       <li>XEP-0048: Bookmarks for conference room and autoJoin on login</li>			  
-      <li>XEP-0070: Verifying HTTP Requests via XMPP entity to confirm it made the request</li>
-	  <li>XEP-0071: Support send and receive of instant messages that contain lightweight text markup</li>
-	  <li>XEP-0085: Chat State Notifications</li>
-	  <li>XEP-0124: Bidirectional-streams Over Synchronous HTTP (BOSH) with Proxy support</li>
+      <li>XEP-0070: Verifying HTTP Requests via XMPP entity for user authentication without password entry</li>
+	    <li>XEP-0071: XHTML-IM Support chat messages containing lightweight text markup</li>
+	    <li>XEP-0085: Chat State Notifications</li>
+	    <li>XEP-0124: Bidirectional-streams Over Synchronous HTTP (BOSH) with Proxy support</li>
+	    <li>XEP-0178: Use of SASL EXTERNAL with TLS Certificates for client authentication</li>
       <li>XEP-0184: Message Delivery Receipts with user enable/disable option</li>
-      <li>Implement Jabber VoIP-PBX gateway Telephony, allowing PBX phone call via service gateway (experimental)</li>
-      <li>Support <a href="./faq.html#feature_03">multi-user chat</a> in room creation, server chat rooms discovery and joining chat room with captcha protection</li>
-      <li>Support both voice and video call with <a href="./faq.html#media_05">ZRTP, SDES and DTLS SRTP encryption modes</a></li>
+      <li>Implement Jabber VoIP-PBX gateway Telephony, allowing PBX phone call via service gateway</li>
+      <li><a href="./faq.html#feature_03">Multi-user chat</a> Join or create room with full room configuration support for owner</li>
+      <li>Integrated captcha protected room user interface with retry on failure</li>
+      <li>Support both voice and video call with <a href="./faq.html#media_05">ZRTP, SDES and DTLS SRTP</a> encryption modes</li>
+      <li>ZRTP crypto algorithms uses SHA-2 384, 256bit ciphers AES256 &amp; TWOFISH-256, enabling elliptic with Curve 25519</li>
+      <li>SDES encryption with AES256 and AES192, acceleration using OpenSSL</li>
       <li>Support <a href="./faq.html#media_02">simultaneous media call and message chat sessions</a></li>
-      <li>Unique <a href="./faq.html#feature_02">GPS-Location implementation</a>; Standalone tool, or sending locations to your chosen buddy for
-			  real-time tracking or playback animation.</li>
-      <li>A 360° street view of your current location, may use for self-guided tour. The street view tracks and
-			  follows your direction of sight.</li>
+      <li>Unique <a href="./faq.html#feature_02">GPS-Location</a> implementation; Unique GPS-Location implementation as standalone tool, send locations to your desired buddy for real-time tracking or playback animation</li>
+      <li>A 360° street view of your current location use for self-guided tour. The street view tracks and follows your direction of sight.</li>
       <li>Built-in demo for GPS-Location features</li>
       <li>Integrated photo editor with zooming and cropping, user can update the avatar with ease</li>
       <li>Last message correction, message carbons and offline messages (OMEMO)</li>
-      <li><a href="./faq.html#feature_06">Stream Management and mobile network ping interval self-tune optimization</a></li>
-      <li><a href="./faq.html#feature_05">In-Band Registration with captcha option support</li>
+      <li><a href="./faq.html#feature_06">Stream Management</a> and mobile network ping interval self-tune optimization support</li>
+      <li><a href="./faq.html#account_04">In-Band Registration</a> with Captcha option support</li>
       <li>Multiple accounts creation</li>
+      <li>User selectable Themes support</li>
       <li>Multi-language UI support (Bahasa Indonesia, English, German, Russian, and Spanish).</li>
       <li><a href="./faq.html">Online help support</a></li>
 	</ul>

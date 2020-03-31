@@ -104,8 +104,8 @@ ul li {
       <ul>
          <li><a href=#feature_01>[20190626] Adding Contact</li>
          <li><a href=#feature_02>[20181017] StreetViews & Map</a></li>
-         <li><a href=#feature_03>XEP-0045: Multi-User Chat</a></li>
-         <li><a href=#feature_09>[20190620] XEP-0048: Bookmarks and autoJoin option for conference</a></li>
+         <li><a href=#feature_03>[20200330] XEP-0045: Multi-User Chat</a></li>
+         <li><a href=#feature_09>[20200330] XEP-0048: Bookmarks and autoJoin option for conference</a></li>
          <li><a href=#feature_10>[20191004] XEP-0070: Verifying HTTP Requests via XMPP and WebView Implementation</a></li>
          <li><a href=#feature_04>[20190526] Stickers, Bitmoji and Emoji rich content sharing </a></li>
          <li><a href=#feature_05>[20190902] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
@@ -191,17 +191,17 @@ ul li {
    <div class='innerText'>In today advance technology, a physical xmpp machine can actually support multiple virtual
     hosts/services. The virtual host/service name is usually tag with the user xmpp account e.g. alice@example.org, 
     where <b>example.org</b> is usually referred to as service domain or virtual host.</div>
+    <image src="./img/atalk_account_setup.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
     <ul>
      <li> A Service record (SRV record) is a specification of data in the Domain Name System defining the location,
        i.e. the hostname and port number, of servers for specified services.</li>
    </ul>
    
-   <image src="./img/atalk_account_setup.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
    <div class='innerText'>If you leave the <b>Override server setting</b> option unchecked, aTalk first checks to
      ensure the specified service domain is reachable; it searches for the actual internet ip address on a Domain Name
      Server (DNS). On success, aTalk proceeds to lookup the SRV record on the server which contains the required
      ip:port network information for connection.</div>
-     <div class='innerText'>Initial connection attempt wil fail if neither of the following conditions is met, and
+     <div class='innerText'>Initial connection attempt will fail if neither of the following conditions is met, and
        you may need to enable the <b>Override server setting</b> option:</div>
     <ul>
      <li>The service domain host/server does not implement or contain the required SRV record</li>
@@ -254,15 +254,15 @@ ul li {
          suffered serious security breaches, allowing the issuance of certificates for well-known domains to those
          who don't own those domains. DANE enables the administrator of a domain name to certify the keys used in
          that domain's TLS clients or servers by storing them in the DNS TLSA Record. DANE needs the DNS records to
-         be signed with DNSSEC for its security model to work, hence DANCE requries DNSSEC. Additionally DANE allows
+         be signed with DNSSEC for its security model to work, hence DANCE requires DNSSEC. Additionally DANE allows
          a domain owner to specify which CA is allowed to issue certificates for a particular resource, which solves
          the problem of any CA being able to issue certificates for any domain.</li>
       </ul>
 
    <div class='innerText'>aTalk supports the following connection establishment security mode. Please note
-     that both DNSSEC and DANE implementations are still at expermental implementation by miniDNS/smack/aTalk. 
+     that both DNSSEC and DANE implementations are still at experimental implementation by miniDNS/smack/aTalk. 
      DNSSEC does not work on server with a self-signed certificate or certificate signed by untrusted root CA's.
-     You may refer to android Seurity Settings for a list of trusted CA certificates.</div>
+     You may refer to android Security Settings for a list of trusted CA certificates.</div>
      <ul>
        <li><b>SSL Certificate Authentication</b>: Perform only authentication of service's SSL certificate, verifying
          against the trusted root CAs who signed the certificate.</li>
@@ -271,8 +271,7 @@ ul li {
          service's SSL certificate to be verified using DANE.</li>
      </ul>
 
-   <image src="./img/atalk_client_cert_config.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
-   <div class='innerText'>Plese refer to the following sites for more information:</div>
+   <div class='innerText'>Please refer to the following sites for more information:</div>
      <ul>
        <li><a href="https://developer.android.com/training/articles/security-ssl">Security with HTTPS and SSL</a></li>
        <li><a href="https://www.globalsign.com/en-sg/blog/what-is-a-man-in-the-middle-attack/">
@@ -290,6 +289,7 @@ ul li {
 
    <span id='account_07'></span>
    <div class='blueText'>[20200228] XEP-0178: Best Practices for Use of SASL EXTERNAL with Certificates for client authentication (experimental) <a href=#content>{ Content }</a></div>
+   <image src="./img/atalk_client_cert_config.png" align="left" width="30%" style="margin:5px 15px 0px 0px"/>
    <div class='innerText'>XMPP standard allows the use of any SASL mechanism in the authentication of XMPP entities.
      aTalk supports use of the SASL EXTERNAL mechanism with PKIX certificates for client to server authentication,
      especially when an XMPP service indicates that TLS is mandatory-to-negotiate. During the stream negotiation process,
@@ -298,9 +298,9 @@ ul li {
    <image src="./img/atalk_client_cert_entry.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
    <div class='innerText'>The SASL EXTERNAL authentication method requires a digital client certificate. This digital
      certificate should contain xmppAddr field(s), which is always checked first. If there is more than one JID
-     specified in the xmppAddr fields, the client must include the authorisation entity which corresponds to the one
+     specified in the xmppAddr fields, the client must include the authorization entity which corresponds to the one
      of the specified JIDs. When no xmppAddr is specified, the cn (common name) field might be used to provide client's
-     username. If the client certificate does not contain a JID, the client must provide one in authorisation entity.
+     username. If the client certificate does not contain a JID, the client must provide one in authorization entity.
      For the details of the "xmppAddr" usage, please refer to
      <a href="https://xmpp.org/extensions/xep-0178.html">XEP-0178 Best Practices for Use of SASL EXTERNAL with Certificates.</a></div>
    <div class='innerText'><b>Self-signed certificates for regular TCP/TLS connections:</b> If your xmpp service accepts
@@ -319,25 +319,25 @@ ul li {
      need to add the client certificate to android keystore for use by aTalk.</div>
      <ul>
        <li>From the main menu, select <b>Account settings...</b></li>
-       <li>Select the certificate tool icon to enter the TLS Certificate Conguration menu</li>
+       <li>Select the certificate tool icon to enter the TLS Certificate Configuration menu</li>
+   <image src="./img/atalk_client_cert_auth.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
        <li>Click <b>Add</b> to enter the TLS Client Certificate entry menu.</li>
        <li>Click to open the folder, navigate to the required folder and pick the client.p12 or the given certificate name to use</li>
        <li>You will be prompt to enter password to access the client.p12 certificate.</li>
-   <image src="./img/atalk_client_cert_auth.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
        <li>Check the <b>Save password</b> option if you want aTalk to remember the password for later use when accessing
        to the client certificate.</li>
-       <li>You may click the <b>Certicate icon</b> to view the client.p12 certificate content</li>
+       <li>You may click the <b>Certificate icon</b> to view the client.p12 certificate content</li>
        <li>Press <b>OK</b> to return to entry menu; and <b>Back Key</b> to exit the TLS configuration</li>
      </ul>         
    <div class='innerText'><b>Enabling client certificate:</b></div>
      <ul>
        <li>From the <b>Account List</b>, select the account to use TLS certificate.</li>
        <li>Select <b>[Connection Settings | Client TLS certificate]</b> to define the certificate to use.</li>
-       <li>Check the clinet.p12 certificate to use</li>
-       <li>Exit <b>Account setting ...</b>. aTalk will attempt to login the server using the clinet.p12 certificate
+       <li>Check the client.p12 certificate to use</li>
+       <li>Exit <b>Account setting ...</b>. aTalk will attempt to login the server using the client.p12 certificate
          for authentication.</li>
      </ul>
-   <div class='innerText'><b>Note: </b> Your xmpp server must support and configured to accept clinet TLS certificate
+   <div class='innerText'><b>Note: </b> Your xmpp server must support and configured to accept client TLS certificate
      authentication via SASL EXTERNAL mechanism.</div>
 
    <span id='account_08'></span>
@@ -356,7 +356,7 @@ ul li {
    <div class='innerText'>
        For Bosh to work on aTalk properly, the xmpp server certificate must be issued by Certification
        Authority (CA) trusted by android. The trusted CAs list can be accessed via <b>View security certificates</b>
-       in android Setting. If androd OS detects an untrusted certificate during network connection, it will deny access
+       in android Setting. If android OS detects an untrusted certificate during network connection, it will deny access
        via https:// scheme protocol, and BOSH connection is not possible. Starting with Android 9 (API-28), cleartext
        support is disabled by default. BOSH connection via http:// scheme protocol is not supported by aTalk on these
        devices. 
@@ -382,8 +382,8 @@ ul li {
        <li>If the firewall was your only problem, then you are done with the BOSH settings. If not, you then have to
          configure the Proxy settings too.</li>
        <li>There is a checkbox <b>Use HTTP-Proxy</b> in the dialog when you enable BOSH option. Choose this
-         checkpox and enter the proxy data. Enter the autentification info if needed. Leave both the
-         <b>Username</b> and <b>Password</b> blank if proxy authentification is not required.</li>
+         checkbox and enter the proxy data. Enter the authentication info if needed. Leave both the
+         <b>Username</b> and <b>Password</b> blank if proxy authentication is not required.</li>
      </ul>
    <div class='innerText'>A proxy server is a dedicated computer system or router that acts as an intermediary between
      an endpoint device, such as a computer, and another server from which a user or client is requesting a service.
@@ -399,16 +399,16 @@ ul li {
      <ul>
       <li>In this case, select <b>NONE</b> in the <b>Type</b> pull down menu</li>
       <li>Then enter only the proxy settings as required.</li>
-      <li>Enter the autentification info if needed. Leave both the <b>Username</b> and <b>Password</b> blank if proxy
-        authentification is not required.</li>
+      <li>Enter the authentication info if needed. Leave both the <b>Username</b> and <b>Password</b> blank if proxy
+        authentication is not required.</li>
      </ul>
    </div>
 
    <span id='account_04'></span>
    <div class='blueText'>Do I have to enable IB Registration option when I setup a new account? <a href=#content>{ Content }</a></div>
+   <div class='innerText'> <image src="./img/atalk_ibr_captcha.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'>"IB Registration" stands for "In-Band Registration" and is defined in
    <a href="https://xmpp.org/extensions/xep-0077.html">XEP-0077</a> standard. In general, if an account already has
-   <div class='innerText'> <image src="./img/atalk_ibr_captcha.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
      been created and assigned to you by your server administrator, you do not need to enable IBR option during account
      setup. This is usually not true if you want to register an account on an online free xmpp server. Some server
      needs you to create an account via their web interface before you can setup the account on your xmpp client.
@@ -426,7 +426,7 @@ ul li {
           "XMPPError: conflict - cancel: User already exists" or similar. Click OK and aTalk will prompt you with
           the login screen. Check your password entry before trying to login.</li>
        <li> Many of the xmpp servers have a default connection timeout of 30 seconds, therefore you need to response
-          to the captcha challenge within this time period. When timeout happens, just click OK to retry</li>
+          to the Captcha challenge within this time period. When timeout happens, just click OK to retry</li>
        <li>Password Strength: Minimum informational entropy for passwords. The value Entropy is a number of bits
           of entropy. The recommended minimum is 32 bits. Server will reject weak password entry. Just click
           OK to retry with new password entry.</li>
@@ -446,8 +446,8 @@ ul li {
      it is not encouraged for user to use aTalk to sign in to the google server. You may send chat messages to another
      Google account login using google own Hangouts app.</div>
 
-   <div class='innerText'><image src="./img/gtalk_account_setup.png" width="30%" align="middle" style="margin:10px 5px 10px 5px"/>
-   <image src="./img/gtalk_account_signin.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
+   <div class='innerText'><image src="./img/gtalk_account_setup.png" width="30%" align="left" style="margin:5px 25px 5px 0px"/></div>
+   <div class='innerText'><image src="./img/gtalk_account_signin.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
 
    <div class='innerText'>To setup a Google Talk account on aTalk, follow the steps below</div>
      <ul>
@@ -464,14 +464,14 @@ ul li {
        <li>Enter the App password which is a 16-digit passcode, exactly as provided including the spaces into the password
          field, and click <b>Sign in</b>.</li>
        <li>You should now be able to chat and make media call with another Google account signed in using aTalk.</li>
-       <image src="./img/atalk_certificate_verify.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
-       <li>The media call option is not available if your buddy is using Google own client e.g. Hangouts. This is beacuse
+       <li>The media call option is not available if your buddy is using Google own client e.g. Hangouts. This is because
          Google Hangouts does not advertise its media call capability via XMPP discovery protocol. However your buddy
-         on Hangouts can initia a media call with you.</li>
+         on Hangouts can initial a media call with you.</li>
      </ul>
 
    <span id='account_06'></span>
    <div class='blueText'>[20190620] Why my first login in sometimes fails when a new account is created? <a href=#content>{ Content }</a></div>
+       <image src="./img/atalk_certificate_verify.png" align="left" width="30%" style="margin:5px 15px 5px 0px"/>
    <div class='innerText'>Most of the servers today have SSL certificates installed on their sites. The certificates
       usually are signed with the private key of a trusted certificate authority. The certificate contains the
       domain name and/or ip address of the server. When you visit the site, this certificate is fetched and
@@ -484,15 +484,15 @@ ul li {
      with the SSL socket connection, otherwise it throws CertificateException.</div>
 
     <image src="./img/atalk_certificate_show.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
-    <div class='innerText'>aTalk captures this CertificateException thrown by androis OS when the certificate is self-signed.
+    <div class='innerText'>aTalk captures this CertificateException thrown by android OS when the certificate is self-signed.
       aTalk then downloads the site certificate and check against its database. It prompts user for manual confirmation
-      if the certificate is new to aTalk as shown on the right i.e. <b>Certificate Verfication.</b>. You can procced 
-      with login by clicking on the <b>Procced</b> button. Under this condition, the certificate info is not saved
+      if the certificate is new to aTalk as shown on the right i.e. <b>Certificate Verification.</b>. You can proceed 
+      with login by clicking on the <b>Proceed</b> button. Under this condition, the certificate info is not saved
       in aTalk database, and you will be prompted again in your next login.</div>
 
       <div class='innerText'>Alternatively, you can click the <b>Show Certification</b> button, the site certificate is
         shown with an user option <b>Always trust this certificate</b>. You must check this option if you do not want
-        aTalk to prompt for manual confirmation on your next login. You can then proceed to login with the <b>Procced</b> button.
+        aTalk to prompt for manual confirmation on your next login. You can then proceed to login with the <b>Proceed</b> button.
         </div>
       <div class='innerText'>If you take some time to confirm the certificate before proceed, the server login hold
        time may have expired and the established connection gets disconnected. Under this case, you need to login a
@@ -529,7 +529,7 @@ ul li {
        <li><b>Contact Display Name:</b> The new contact name you would like to show on your contact list. aTalk uses
          the Jid if you leave this field empty.</li>
        <li><b>Add Button:</b> Click on Add button once you have entered all the new contacts properties.</li>
-       <li><b>Cancel Button: </b> Click Cacel to abort the request and discard all the information entered.</li>
+       <li><b>Cancel Button: </b> Click Cancel to abort the request and discard all the information entered.</li>
        <image src="./img/atalk_contact_group_add.png" align="right" width="31%" style="margin:5px 0px 0px 15px"/>
      </ul>
     <div class='innerText'>Click on the <b>Contact Assigned Group</b> selector will bring up the group assigning 
@@ -548,9 +548,9 @@ ul li {
    <div class='innerText'><br/><b>Adding Contact Process Flow:</b></div>
    <div class='innerText'>When you add a buddy to your contact list, aTalk actually makes an online subscription
      request to your buddy for his/her approval. In this process, your hosted server routes your subscription request
-     on local machine if the buddy is of the same server; otherwise via remotel connection to the buddy hosted
+     on local machine if the buddy is of the same server; otherwise via remote connection to the buddy hosted
      server. The server-to-server (s2s) connection setup uses the IP derived from your buddy account service name
-     i.e. example.org from "buddy@example.org". If the derived domain is not a Fully Qualified Domain Name (DQDN)
+     i.e. example.org from "buddy@example.org". If the derived domain is not a Fully Qualified Domain Name (FQDN)
      and canno be resolved to an IP, the subscription request process will fail.</div>
    <div class='innerText'>With the current XMPP standard defined for
      Presence Subscription, it is therefore not possible to add buddy whom resides on a different server
@@ -560,13 +560,13 @@ ul li {
    <div class='innerText'>When you receive the Presence Subscription Request from your buddy via the hosted server, an 
      <b>Authorization Request</b> dialog is launched for your approval. You may Ignore, Deny or Authorize the request.
      If you accept your buddy request, reciprocally a Presence Subscription Request will be reverted by aTalk to your
-     buddy for approval. Meantime your buddy will receive the acknowledgement of your acceptance.</div>
+     buddy for approval. Meantime your buddy will receive the acknowledgment of your acceptance.</div>
   <div class='innerText'>In the event if you choose to ignore your buddy request; any further re-authorization request
      from your buddy will not trigger another Authorization Request. However the server will resend the request 
      when you exit and login again. This process continues until you have made a decision either to Deny
      or Authorize the request.</div>
      <image src="./img/atalk_contact_presence_auto.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
-   <div class='innerText'>Instead of manually approve upon each received Subcription Request, you may made this process
+   <div class='innerText'>Instead of manually approve upon each received Subscription Request, you may made this process
      automatically, by enable the option <b>Presence subscribe approval</b> auto accept all in the [menu | Settings...].
      In this case, aTalk automatically approves upon received a Presence Subscription Request from your
      buddy. It will also revert a request to your buddy for approval.</div>
@@ -575,7 +575,7 @@ ul li {
    <image src="./img/atalk_contact_presence_accept.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'>Your XMPP service admin may choose to create share-rosters on the server, grouping all the
     related members in each categorid roster group. Upon first login, every member of the group will have his/her
-    contactList populated with all the members within his/her roster group. This saves the memeber to manually subcribe
+    contactList populated with all the members within his/her roster group. This saves the member to manually subscribe
     to everyone in the related entity.</div>
    <div class='innerText'>For more information on Presence Subscription, please see    
      <a href="https://xmpp.org/rfcs/rfc6121.html#sub">Managing Presence Subscriptions</a></div>
@@ -588,7 +588,7 @@ ul li {
     streetViews and map of the location understand by human.</div>
    <div class='innerText'>aTalk has implemented GPS location tracking, displaying both the streetViews and map on user
      device screen. The tool allows either a single location fix update or in continuous locations fix update mode.
-     The continous mode update is triggered by two parameters changes i.e. <b>distance delta</b> or <b>elapsed time</b>.
+     The continuous mode update is triggered by two parameters changes i.e. <b>distance delta</b> or <b>elapsed time</b>.
      Either condition will trigger a new location fix fetch. The user selectable distance range varies from 0~500m
      with 5m steps; while the elapse time can range from 5~1000S in 10S interval. In continuous mode, user may choose
      only to send the location messages without displaying the realtime updates of streetViews and map information.
@@ -598,12 +598,12 @@ ul li {
      according to the new selected map location. You can also change the device pointing direction for a 360° panoramic
      view of the current select location on the map.</div>
    <div class='innerText'><b>Send GPS-Location message:</b> The tool allows user to relay his/her current GPS
-     location in a single or continuous mode to his/her buddy as Geo-Location chat messages, i.e. only the longtitue
-     and latitute information are being sent to conserve data usage. This feature is enabled from within the chat
+     location in a single or continuous mode to his/her buddy as Geo-Location chat messages, i.e. only the longitude
+     and latitude information are being sent to conserve data usage. This feature is enabled from within the chat
      window menu <b>Send GPS-Location</b> option. When your buddy clicks the <b>SteetView &amp; Map</b> button on
      the received location message on his/her device, your current location is displayed on his/her device screen.
      The steetViews and map display on your buddy device automatically gets updated each time your new location
-     is being streamed via continuous mode; tracking your move in realtime.</div>
+     is being streamed via continuous mode; tracking your move in real time.</div>
    <image src="./img/08.gps_map.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
    <div class='innerText'><b>Note:</b> To protect your privacy, this feature can neither be accessed nor enabled
      remotely; neither it can be accessed from any other applications installed on your device.</div>
@@ -622,84 +622,128 @@ ul li {
    </div>
    <div class='innerText'>Followings are some possible use of the StreetViews & Map feature:</div>
      <ul>
-       <li>Allow your love one at home to virtual travel with you while you are visting places on tour. Sharing nice
-         scenary viedo wtihout consumming big data usage.</li>
-       <li>When you are back from travelling, you can play back the location messages. A sweet memory recall or share
-         with friends of all the places you have vistied.</li>
-       <li>Lost your way while visting your friend? Just share your gps-location and start a voice call. Your friend
+       <li>Allow your love one at home to virtual travel with you while you are visiting places on tour. Sharing nice
+         scenery viedo without consumming big data usage.</li>
+       <li>When you are back from traveling, you can play back the location messages. A sweet memory recall or share
+         with friends of all the places you have visited.</li>
+       <li>Lost your way while visiting your friend? Just share your gps-location and start a voice call. Your friend
          can guide you until you have safely arrived at the destination.</li>
-       <li>In the remote chance that you are in trouble; just start the continous location update to activate the 
+       <li>In the remote chance that you are in trouble; just start the continuous location update to activate the 
          location streaming. Your love one can track your location and help will be on the way.</li>
        <li>standalone feature without sending location messages: Travel alone and lost your direction bearing?
          Just enable the feature, realign your current location and direction using the streetViews and map information.
-         This should help you to avoid unneccsary walking in the wrong direction.</li>
+         This should help you to avoid unnecessary walking in the wrong direction.</li>
      </ul> 
 
    <span id='feature_03'></span>
-   <div class='blueText'>XEP-0045: Multi-User Chat <a href=#content>{ Content }</a></div>
-   <div class='innerText'>With multi-user chat (MUC) or group chat, in which XMPP XEP-0045 chat rooms are designated;
-     several users can share chat messages at the same time. aTalk implements most of the common features for
-     MUC messaging. Followings are few of the terminology pertaining to MUC operations.
+   <div class='blueText'>[20200330] XEP-0045: Multi-User Chat <a href=#content>{ Content }</a></div>
+   <div class='innerText'>Multi-User Chat (MUC) or group chat protocols are defined in XMPP XEP-0045 specifications;
+     several users participate in room discussion can exchange chat messages at the same time. aTalk implements most
+     of the room common features for MUC messaging. Please refer to <a href="https://xmpp.org/extensions/xep-0045.html">XEP-0045: Multi-User Chat</a>
+      for more information. Followings are few of the terminologies pertaining to MUC operations.
+   <div class='innerText'> <image src="./img/atalk_groupchat_invitation.png" align="right" width="30%" style="margin:5px 0px 15px 15px"/></div>
      <ul>
-         <li><b>Invitation:</b> A special message sent from one user to another asking the recipient to join a MUC room.</li>
-         <li><b>Member:</b> A user who is on the "whitelist" for a members-only room or who is registered with a MUC room.</li>
-         <li><b>Members-Only Room:</b> A room that a user cannot enter without being on the member list.</li>
+         <li><b>Invitation:</b> A dedicated message that is sent from one user to another asking the recipient to join
+           a chat room. aTalk displays this invitation message as shown on the right, to the recipient for his/her action.</li>
+         <li><b>Room Member:</b> A user who is on the "whitelist" for a members-only room or whom has been registered
+           with a MUC room.</li>
+         <li><b>Members-Only Room:</b> A room where a user cannot enter without being on the member list. Only the room
+           owner or room configuration that has granted the privileges to member can invite user to join the member-only
+           room. An non-member attempts to join will automatically be rejected by the room management. To support OMEMO
+           message chat, the room must be configured as members-only room</li>
+         <li><b>Persistent Room:</b> A room that is not destroyed by server even the last occupant has exited.</li>
          <li><b>Occupant:</b> Any user who is in a room, uses &lt;room@service/nick> by which an occupant is identified
            within the context of a room.</li>
-         <li><b>Persistent Room:</b> A room that is not destroyed if the last occupant exits.</li>
          <li><b>Participant: </b> An occupant who does not have admin status; in a moderated room, a participant is
            further defined as having voice, in contrast to a visitor.</li>
-         <li><b>Room Owner:</b> The user who created the room or a user who has been designated by the room creator
+         <li><b>Room Owner:</b> The user who has created the room or a user who has been designated by the room creator
            or owner as someone with owner status; an owner is allowed to change the room configuration and destroy
            the room, in addition to all admin status.</li>
+         <li><b>Discussion History:</b> Depending on service policy or room configuration, a room may send discussion
+           history to the newly joined occupant. Whether such history is sent, and how many messages comprise the
+           history, are determined by the chat service implementation or specific deployment depending on local service
+           policy or room configuration. aTalk can receive and display all the history messages, while removing any
+           previously received duplicated messages.
+           <br/>Note: When a group chat is setup for OMEMO chat messages, the history messages which are sent to a newly
+           joined participant cannot be decrypted nor displayed, as the history encrypted messages do not contain the
+           rid key information. The rid key is required to decrypt an OMEMO encrypted message.</li>
       </ul>
    </div>
-   <div class='innerText'> <image src="./img/atalk_muc_join.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
-   <div class='innerText'>In the main menu, sliding right will show a list of the chatRoom's in which you have once
-     being actively participated in the MUC chat. These are likely to be persistent rooms. aTalk has the following
-     MUC features implemented.</div>
-   <div class='innerText'><b>Join Chat Room:</b> Select this option from the main menu to create new or re-join an existing room.
-     Pending on your room privilege, you may supply the NickName and ChatRoom subject when joining the MUC.</div>
-   <div class='innerText'><b>Invite:</b> While in MUC session, you may select this option to invite new participants
-     to join the MUC room. An invitation message will be sent to all the invitees you have selected. Your contacts
-     may accept, reject or ignore the invitation. Except for ignore option selected, the accept or reject reply
-     from your buddy is displayed in the chat window.</div>
-   <div class='innerText'><b>Discussion History:</b> Depending on local service policy or room configuration, a room may
-     send discussion history to the newly join occupant. Whether such history is sent, and how many messages
-     comprise the history, are determined by the chat service implementation or specific deployment depending on
-     local service policy or room configuration. Talk can receive and display all the history messages, while
-     removing any duplicated messages.</div>
-   <div class='innerText'><b>Chat room occupants:</b> Anytime during MUC session, you may select this opton to query
-     a list of the Room Occupants currently have active participation in the MUC room. The list is displayed in the
-     chat window.</div>
-   <div class='innerText'><b>Converting a One-to-One Chat Into a Multi-User Conference:</b> Sometimes it is desirable to
-     convert a one-to-one chat into a multi-user conference. In a one-to-one chat, just select <b>Invite</b> option
-     to add existing buddy and other new buddies to the chat. A new MUC room will be created including all the new
-     participants selected.</div> 
-   <div class='innerText'>If you attempt to open a member-only room when you are not in the room member list, the
-     process will failed with an error message. You will no be able to receive or send any messages in the chat
-     room. Likewise you will receive an error message if you attempt to destroy chatRoom when you are not the
-     room owever. </div>
+   <div class='innerText'> <image src="./img/atalk_room_configuration.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
+   <div class='innerText'>From the contact list, sliding left will show a list of the chatRooms or none. These are the
+     rooms where you have being actively participated in group discussion. A room item is added to this list; either
+     when you joined the room via invitation or you have manually created the room for group chat. From within the group
+     chat session, pending your designated role in the room, you may not have all of the room options as shown on the
+     right, listed in the pull-down menu.</div> 
+     <div class='innerText'> <image src="./img/atalk_room_menu.png" align="left" width="20%" style="margin:5px 25px 5px 0px"/></div>
+     <ul>
+       <li><b>Invite:</b> While in group chat session, you may select this option to invite new participants to join
+         the chat room. An invitation message will be sent to each of the invitees you have selected. The invitees
+         may accept, reject or ignore the invitation. Except for ignore option selected, the accept or reject response
+         from the invitees are displayed in the chat window.</li>
+       <li><b>Send GPS-Location:</b> aTalk supports sending a GPS message of your current location to all the occupants
+         in the room if so desired.</li>
+       <li><b>Erase this chatRoom history:</b> Purge all the chat messages in the current room. This action is irreversible.</li>
+       <li><b>Leave chatRoom:</b> Leave the group chat discussion. After you have left the room, the room item will
+         also be removed from the room list.
+         <br/>Note: If you leave a members-only room, you may only re-join the room via an invitation from member of the
+         room, or you are the room owner.</li>
+       <li><b>Destroy chatRoom:</b> Only room owner can destroy a chat room. Otherwise you will receive an error message
+         and given an option only to remove the room item from the room list.</li>
+       <li><b>ChatRoom info:</b> Provide a list of the chat room properties of the currently joined room. Note the list
+         does not necessary list all the room configurable items.</li>
+       <li><b>ChatRoom info change:</b> Change the chat room info i.e. nick and room subject only if allowed in room
+         configuration settings.</li>
+       <li><b>ChatRoom configuration:</b> Only room owner can change the room configuration settings. When selected.
+         a room configuration form as shown on the right is displayed. The option list may varies pending on server
+         implementation. After all the changes, you must submit the changes to the server to take effect.</li>
+       <li><b>ChatRoom occupants:</b> Anytime during the chat session, you may select this option to query a list of
+         the occupants currently have active participation in the room. The list is displayed in the chat window..</li>
+      </ul>
+
+   <div class='innerText'>The privilege of a registered user to create a new room on server is defined by the XMPP
+     server configuration set by the administrator. In aTalk, with the right privilege, you may create a new room
+     using one of the two methods described below.</div> 
+   <div class='innerText'> <image src="./img/atalk_muc_join.png" align="left" width="30%" style="margin:5px 25px 5px 0px"/></div>
+   <div class='innerText'><b>Create / Join Chat Room:</b> Select this option from the main menu to create a new or
+     join an existing room on the server. You need to provide a Nick Name, if necessary update the room subject if
+     permitted pending room configuration settings. You must also provide a valid password when the room is configured
+     with password protected. Check the <b>Save password</b> if you do not want to re-enter the password whenever you
+     rejoin the room at a later time. If you edited the room name in the selector, aTalk will proceed to create a new
+     room when you click the <b>Join</b> button. The creation of a new room may fail if you do have the privilege to do so.</div>
+   <div class='innerText'><b>Converting 1:1 chat into a group chat:</b> While in a chat session with a buddy, there may
+     a need to have more people to join the dicussion i.e. convert a 1:1 chat session into a multi-user conference.
+     To do this, just select <b>Invite</b> option from the pull-down menu; you then add the existing buddy and other
+     contacts to the chat room. A new chat room will be created, and invitation sent to all the participants selected.
+     <br/>Note: the chat history discussed thus far prior to the new room creation are not sent automatically under
+     this case. User needs to perform copy and past of any message to share if so desire.</div>
+   <div class='innerText'><b>Room configuration:</b> By default, all new rooms created by aTalk support OMEMO chat,
+     hence it is designated as members-only room. However after a new room has been created, you may procced to change
+     the room configuration as required e.g. to include pasword protection and make it a persistent room etc</div>
+   <div class='innerText'><b>Note:</b> If you attempt to join a member-only or not public room while you are not in
+     the room member list, the process will failed with an error message. You will no be able to receive or send any
+     messages in the chat room. Likewise you will receive an error message if you attempt to destroy chatRoom when
+     you are not the room owener.</div>
 
    <span id='feature_09'></span>
-   <div class='blueText'>[20190620] XEP-0048: Bookmarks and autoJoin option for conference <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20200330] XEP-0048: Bookmarks and autoJoin option for conference <a href=#content>{ Content }</a></div>
    <div class='innerText'> <image src="./img/atalk_muc_bookmark_row.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'>For ease-of-use in a Jabber client, it is desirable to have a way to store shortcuts to
      various services and resources (such as conference rooms and web pages) as "bookmarks" that can be displayed
      or duplicated in other user's client. In aTalk implementation, the bookmark attribute autoJoin is also extended to
      be used as local standalone opton.</div>
-   <div class='innerText'>When you slide to the chatRoom list upon first login, the chatRoom list will be populated, 
-     in additional to your exisitng local chatRooms, with the chatRoom bookmarks you have previously saved (from another
-     client) on server. aTalk auto joins chatRoom if the autoJoin option is being enabled in the newly downloaded
-     bookmark or via locally specified autoJoin option.</div>
+   <div class='innerText'>When you slide left to the chatRoom list after login, the chatRoom list will be populated, 
+     with all the chatRooms you have once joined previously, tagged with bookmarks that you have previously saved (from
+     another client) on server. aTalk auto joins chatRoom if the autoJoin option is enabled in the newly downloaded
+     bookmarked room or via locally specified autoJoin option.</div>
    <div class='innerText'>Each chatRoom item in the list is accompanied with two indicators/buttons. The two icons both
-     served as an status indication and user input options. 
+     served as an status indication and user selectable options. 
      <ul>
          <li><b><image src="./img/cb_autojoin_on.png" width="24" height="24" align="middle" style="margin:5px 5px"/>autoJoin:</b>
           Toggle the autoJoin option on/off. The autoJoin state will be saved to bookmark on server if the bookmark
-          state is on/enabeld.</li>
+          state is on/enabled.</li>
          <li><b><image src="./img/cb_bookmark.png" width="24" height="24" align="middle" style="margin:5px 5px"/>bookmark:</b>
-         Click on the icon brigns up the bookmark form for user update.</li>
+         Click on the icon brings up the bookmark form for user update.</li>
       </ul>
    </div>
 
@@ -709,19 +753,19 @@ ul li {
      <ul>
          <li><b>Account:</b> The user account to whom the chatRoom is associated with.</li>
          <li><b>Name:</b> A name of the bookmark for human readable information. This information is displayed in
-         the main titile of the chat Room list item.</li>
+         the main title of the chat Room list item.</li>
          <li><b>Nick Name:</b> The user nick name used when joining the chatRoom. The Nick Name must not be set to null.</li>
          <li><b>Password:</b> Password to use to join the chatRoom if required. Leave blank if no required.</li>
-         <li><b>Bookmark:</b> Toggel bookmark option on/off. When enabled, all the specified chatRoom attributes are
+         <li><b>Bookmark:</b> Toggle bookmark option on/off. When enabled, all the specified chatRoom attributes are
            saved as bookmark on server. This bookmark is retrieved and applied when user login on another device.</li>
          <li><b>AutoJoin:</b> Toggle the autoJoin option on/off. When enabled, aTalk auto joins the chatRoom with the
           newly specified room attributes. The autoJoin state will be saved to bookmark on server if the bookmark is
           enabled, and/or use as a local standalone flag to join chatRoomo on next user login.</li>
-         <li><b>Chat Room:</b> The chat room to which all the attributes in this form belog to. This chatRoom
+         <li><b>Chat Room:</b> The chat room to which all the attributes in this form belong to. This chatRoom
            name/EntityBareJid is displayed as the sub-Title of the chatRoom list item. </li>
       </ul>
    </div>
-   <div class='innerText'>From the main menu, you may also access to the chatRoom bookmarks. The new form is very
+   <div class='innerText'>From the main menu, you may also access to the chatRoom bookmarks. The new form is
    <div class='innerText'> <image src="./img/atalk_muc_bookmarks.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
      similar to the one described earlier for the specific chatRoom; the differences are described below.</div>
      <ul>
@@ -729,11 +773,11 @@ ul li {
         select a user from this spinner, the <b>Chat Room</b> spinner will automatically be populated with the list
         of chatRooms that are associated with the selected user account.</li>
        <li><b>Chat Room:</b> The spinner contains a list of the all the chatRooms that are associated with the
-        selected user in Account field. The chat room spinner includes all the local persistent chatRooms that are
-        listed in the chat room list slider page i.e. local and bookmarked. In additional it also includes all the
-        chatRooms that are resided on the server, to which user has once joined as a participant on invitation but has
-        left. If you enabled autoJoin and/or bookmark option(s) on any of these server chatRooms, aTalk will include
-        this chatRoom in the chatRoom slider page when you click the <b>Apply</b> button.</li>
+        selected user in Account field. The chat room spinner includes all the chatRooms that were previously joined i.e.
+        listed in the chat room list page. In additional it also includes all the chatRooms that are available on the
+        server, were created by all the registered users on server. Pending on each room configurations and privileges
+        inherited; if you enable autoJoin and/or bookmark option(s) on any of these server chatRooms, aTalk will include
+        this chatRoom in the chatRoom list page when you click the <b>Apply</b> button.</li>
      </ul>
    </li>
    <div class='innerText'>If you have made any changes to any of the chatRooms in this form, you must click the <b>Apply</b>
@@ -754,7 +798,7 @@ ul li {
      an XMPP protocol extension that enables verification of an HTTP request via XMPP. The XEP-0070 request verification
      can be combined with native HTTP authentication to provide a stronger association between the request and a particular
      user; as well as to take advantage of the strong user authentication provided in XMPP.</div>
-   <div class='innerText'>aTalk since v1.8.8 has implemented the XEP-0070 protocol and intergrated a webView within the
+   <div class='innerText'>aTalk since v1.8.8 has implemented the XEP-0070 protocol and integrated a webView within the
     application. To have a better understanding the operation of XEP-0070, there actually exist an online demo site i.e.
     <a href="https://blog.agayon.be/xmpp_auth_django_demo.html">Demo Website: Authentication with XMPP</a> for this
     purpose.</div>
@@ -762,15 +806,15 @@ ul li {
         <ul>
          <li>From the [main menu | Settings... | Web Access Page], enter the following site link <b>https://demo.agayon.be/</b></li>
          <li>Exit main menu, then slide left until you arrive at the webView page.</li>
-         <li>aTalk will automatic load the defind webpage that you have entered earlier.</li>
+         <li>aTalk will automatic load the defined webpage that you have entered earlier.</li>
          <li>Click the <b>login</b> link on the webpage, login page as shown on the right will be displayed.</li>
          <li>In the <b>Username</b> field, enter the xmpp user account that you are currently login.</li>
          <li>Then clik the <b>Sign In</b> button on the webPage.</li>
          <li>Via s2s connection, the visting site sends the XMPP Server Requests Confirmation via XMPP protocol. Pending
-           whether the entered user account ends with/without a reource; the site sends either an IQ stanza or a Message
+           whether the entered user account ends with/without a resource; the site sends either an IQ stanza or a Message
            stanza request to the login entity.</li>
          <image src="./img/atalk_http_auth_request.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
-         <li><b>Http Authorization Reqest</b> as shown on the left is returned if you have entered the username ends with
+         <li><b>Http Authorization Request</b> as shown on the left is returned if you have entered the username ends with
            a resource. A similar one will be shown if the username is entered without a resource attribute, its dialog
            content is defined by the site admin. The demo site actually supports client that does not implement
            XEP-0070 to just reply chat message with the ID for authorization confirmation.</li>
@@ -780,11 +824,11 @@ ul li {
      must ensure that the user account virtual host (i.e. domain part of the account) must be resolved to a valid IP. 
      Otherwise the HTTP will not be able to reach you.</div>
    <div class='innerText'><br/><b>aTalk integrated WebView Interface: </b>aTalk has also integrated a WebView interface
-     within the application. When user slides left until this WebView is in view, it automatically loads the site
+     within the application. When user slides left until this WebView is in view, it automatically loads the sitez
      address as defined in the main Settings....</div>
      <image src="./img/atalk_http_auth_signin.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
-   <div class='innerText'> The purpose of the WebView is to allow an organation to display its official web page. The
-     page can be used to provide the organisation latest news update and even for RSS feed. By default, if you leave
+   <div class='innerText'> The purpose of the WebView is to allow an organization to display its official web page. The
+     page can be used to provide the organization latest news update and even for RSS feed. By default, if you leave
      the main Settings... <b>Web Access Page</b> blank, aTalk automatically loads the movim page. From here you can
      sign in to the site for their news update, RSS feed, chat etc.</div>
    <div class='innerText'>When a HTTP Server allows user access to the information only if the HTTP Client first
@@ -795,14 +839,14 @@ ul li {
      for the web page display.</div>
    <div class='innerText'>You can go back to the previous page by using the <b>Back Press</b> button; or slide right
     to leave the WebView and return to other slider pages. If you change the <b>Web Access Page</b> settings, you must
-    navigate the slider to the ContactList page. This is to trigger android OS to invalidate the last accesed web page.
+    navigate the slider to the Contact list page. This is to trigger android OS to invalidate the last accessed web page.
     Only then, WebView can load the new user defined web page.</div>
 
    <span id='feature_04'></span>
    <div class='blueText'>[20190526] Stickers, Bitmoji and Emoji rich content sharing <a href=#content>{ Content }</a></div>
    <div class='innerText'> <image src="./img/atalk_emoji.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'>aTalk v1.5.2 has added support for Stickers, Bitmoji and Emoji rich content sharing using
-     Google Gboard keybard. The Google Gboard keyboad is normally pre-installed on the latest android devices. If
+     Google Gboard keyboard. The Google Gboard keyboard is normally pre-installed on the latest android devices. If
      your android device does not have the Gboard, you may install it from Google play store.</div>
    <div class='innerText'>Android device with Google Gboard keyboard, it allows user to share sticker and Bitmoji in
     addition to the current emoji, in messaging apps like aTalk.</div>
@@ -840,31 +884,31 @@ ul li {
    <div class='innerText'>aTalk implements fault-tolerance file sharing to ensure reliability. aTalk SI File Transfer
      protocol supports both the SOCK5 and IBB bytesStream options, with IBB as fallback if SOCK5 failed. During file
      transfer, aTalk attempts to use the more efficient SOCK5 bytestreams method if the recipient client supports it.
-     However if SOCK5 byestream method failed for reason e.g. client symmetric NAT fireware, aTalk automatically
+     However if SOCK5 byestream method failed for reason e.g. client symmetric NAT firewall, aTalk automatically
      fallback to use IBB method to ensure a successful file transfer.</div>
    <div class='innerText'>In the event if your buddy client e.g conversations, does not support the legacy SI File
      Transfer protocol, aTalk will automatic proceed to use the <b>HTTP File Upload service</b> to share file with the buddy.</div>
-   <div class='innerText'>When aTalk detects your buddy is offline, it automatically selects the HTTP File Upload facitiy,
+   <div class='innerText'>When aTalk detects your buddy is offline, it automatically selects the HTTP File Upload faciliity,
      if the protocol is supported by your xmpp service, to continue with the file transfer.</div>
    <div class='innerText'>XEP-0096: SI File Transfer specification has no provision to transfer file when you are in
      a muc/conference chat room. Under this condition, aTalk checks the server for HTTP File Upload service support,
      and uses it if availabe to support file sharing between chat members in conference room.</div>
    <div class='innerText'><image src="./img/atalk_file_xfer_prompt.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
-   <div class='innerText'>aTalk also supports 'OMEMO Media Sharing' procotol. During an OMEMO chat session either in
-     1-1 or muc, all file sharing will be ecrypted before sending via <b>HTTP File Upload service</b>.</div>
+   <div class='innerText'>aTalk also supports 'OMEMO Media Sharing' protocol. During an OMEMO chat session either in
+     1-1 or muc, all file sharing will be encrypted before sending via <b>HTTP File Upload service</b>.</div>
    <div class='innerText'>aTalk harmonizes and uses a common UI in file sharing irrespective of which file sharing
      protocols is being used, and in all the various chat sessions. Unlike all other file transfer protocols, when file
      transfer is via <b>HTTP File Upload service</b>, the sender is unaware of the recipient status. After the sender
-     has succesfully uploaded the file to the server, it forwards the file download link embedded as a chat message
+     has succcsfully uploaded the file to the server, it forwards the file download link embedded as a chat message
      to the recipient. To allow recipient to retrieve the file, aTalk always shows the received file download link as
      a file transfer request. Selecting the <b>Reject</b> button does not actually delete the file link message. aTalk
-     will show the prompt after user returns to the chat session later, even the user has previosuly selected the
+     will show the prompt after user returns to the chat session later, even the user has previously selected the
      <b>Reject</b> button, either intentionally or unintentionally. To remove the prompt, user must manually select
      and delete the link message/prompt.</div>
 
    <span id='feature_11'></span>
    <div class='blueText'>[20191218] Share, Quote and Forward of messages and media contents <a href=#content>{ Content }</a></div>
-   <div class='innerText'><image src="./img/atalk_share_action_bar.png" align="right" width="35%" style="margin:0px 0px 15px 15px"/>
+   <div class='innerText'><image src="./img/atalk_share_action_bar.png" align="right" width="30%" style="margin:0px 0px 15px 15px"/>
      aTalk supports messages and media contents sharing either from an external application or sharing with an external
      application. Within aTalk app, it also supports features like Quote of message in reply, and Forward of contents
      to contacts within aTalk application.</div>
@@ -878,29 +922,28 @@ ul li {
     <div class='innerText'>From within aTalk app, while you are in a chat session, following actions are possible with
       the selected messages or media contents. Below provide a brief description on each of the action icon and its
       supported function starting from left to right.</div>
-      <div class='innerText'><image src="./img/atalk_share_action_icon.png" align="right" width="40%" style="margin:0px 0px 15px 15px"/></div>
     <ul>
       <li><b>Edit:</b> Last sent message correction edit. If the selected message is the last sent message, click on 
         this icon to perform the last message correction. You may also just click on the last sent message to access
         to the message correction option.</li>
+      <div class='innerText'><image src="./img/atalk_share_action_icon.png" align="right" width="30%" style="margin:0px 0px 15px 15px"/></div>
       <li><b>Quote:</b> Quote the selected message in the reply message send to a contact. The image on the right shows
-        the quoted content that is displayed on the contact received message.
-        <image src="./img/atalk_quote.png" align="right" width="40%" style="margin:10px 0px 15px 15px"/></li>
-      <li><b>Delete:</b> Purge the selcted messages and media contents from database. Media contents deletion is
+        the quoted content that is displayed on the contact received message.</li>
+      <li><b>Delete:</b> Purge the selected messages and media contents from database. Media contents deletion is
         only performed if user enable the Delete Media option in the confirmation dialog. aTalk will not delete any
         sent media file unless it is a voice message file or media file in tmp directory created by aTalk app.</li>
+      <div class='innerText'><image src="./img/atalk_quote.png" align="right" width="30%" style="margin:10px 0px 15px 15px"/></div>
       <li><b>Share:</b> Share the messages and media contents of a user to an external application. You may select
         messages and/or media contents from the chat window to share with an external application. Android allows only
         one type of content i.e. text or media content to be shared at any one time.  If you have selected both the
         messages and media contents for sharing, aTalk will start with text message sharing followed by the media
         sharing. Upon chosen the app for text sharing by user, aTalk will wait for 6 seconds for user to complete the
-        first transaction before lauching the chooser for the media contents.</li>
+        first transaction before launching the chooser for the media contents.</li>
       <li><b>Forward:</b> Forward the messages and media contents of a user to other contacts within aTalk. The
         operation is similar to Share option. However forward operation does not have time bound. Text message
         will be shown for edit and send, followed by media contents. User is allow the share the same selected contents
         to more than on contacts. In both Share and Forward operation, all the selected messages are merged into a
         single text string before sending.</li>
-   <image src="./img/atalk_chat_message_notification_settings.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
       <li><b>Copy:</b> Copy all the selected messages text and merged all messages into a single text message before
         placing it on the clipboard for pasting.</li>
       <li><b>Select All:</b> Select all the messages and media contents that are currently visible in the chat view
@@ -914,6 +957,7 @@ ul li {
      the app's UI to provide the user with reminders, communication from other contact, or other schedule information
      from the app. Users can tap the notification to open the app or take an action directly from the notification.
      Following android notifications applied to aTalk:</div>
+     <div class='innerText'><image src="./img/atalk_chat_message_notification_settings.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
       <ul>
          <li><b>Status bar and notification drawer: </b>The basic notification type where the notification is displayed
            as an icon and can be viewed in more detail using the notification drawer.</li>
@@ -925,26 +969,26 @@ ul li {
       </ul>
    <div class='innerText'><b>Status bar and notification drawer: </b>Please see <a href=#feature_13>aTalk Notification Events</a>
      for the support and configuration of aTalk individual notification.</div>
-   <image src="./img/atalk_heads_up_notification.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
      <div class='innerText'><b>Heads-Up Notification: </b>Starting with aTalk v2.2.0, it has added support for the android
      heads-up notifications; with options for 'Reply', 'Mark as read' and 'Snooze'. To allow aTalk heads-up option to
      work correctly on devices with android-N and above, user needs to ensure android <b>[Settings | Notifications]</b>
      for aTalk has been configured as shown in the image on the right. i.e. both the <b>Alert</b> and <b>Show as pop-up</b>
      options must be checked for the <b>Chat Message Notification</b> notification category.</div>
-      <ul>
+     <div class='innerText'><image src="./img/atalk_quiet_hours.png" align="left" width="30%" style="margin:5px 25px 5px 0px"/></div>
+     <ul>
          <li><b>Reply: </b> The reply option is not available on android devices lower than android-N, as this is not
            supported by the OS. User may click <b>Reply </b> and enter the text message to send without open the
            aTalk app. The message will use the encryption mode as defined in the entity chat session.</li>
-           <image src="./img/atalk_quiet_hours.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
          <li><b>Mark as Read: </b> Select this option will clear the content in the notification and reset the unread
            counter for the specific entity chat session to zero.</li>
+     <div class='innerText'><image src="./img/atalk_heads_up_notification.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
          <li><b>Snooze: </b>This option is being shown starting on the 4th message notifications if user did not take
-           any action on all previous notificatons. Upon user selection, heads-up notifiations are disabled for all
+           any action on all previous notifications. Upon user selection, heads-up notifications are disabled for all
            subsequent incoming messages from the specific entity. The snooze period is fixed at 60 minutes.
            <b>Snooze</b> action does not affect the normal notification i.e. <b>Status bar and notification drawer</b></li>
       </ul>
    <div class='innerText'><b>Quiet Hours: </b> User can defined the quiet hours period for all the aTalk notification.
-     During the quiet hours, all alerts are muted for all the aTalk notfications. Quiet hours does not apply to 
+     During the quiet hours, all alerts are muted for all the aTalk notifications. Quiet hours does not apply to 
      heads-up pop-up floating window.</div>
 
    <span id='feature_13'></span>
@@ -956,14 +1000,14 @@ ul li {
       <li><b>Busy Call:</b> When making a call, busy tone is heard if the called party is already engaged in another call.</li>
       <li><b>Call Security Error:</b> Default event type for security error on a call.</li>
       <li><b>Call Security On:</b> This event is triggered whenever a call with a given peer is going secure.</li>
-      <li><b>Dailing:</b> A sound is played to simulate the aTalk dailing process.</li>
+      <li><b>Dailing:</b> A sound is played to simulate the aTalk dialing process.</li>
       <li><b>Hang Up:</b> Event triggered on hang up a call.</li>
       <li><b>Incoming Call:</b> The event is triggered when there is an incoming call being received.</li>
       <li><b>Incoming File:</b> The event is triggered when there a file transfer request is being received.</li>
       <li><b>Incoming Message:</b> Event triggered on receiving an incoming message.</li>
       <li><b>Missed Call:</b> An incoming call is not being answered or ignored.</li>
       <li><b>Outgoing Call:</b> Event triggered when making an outgoing call.</li>
-      <li><b>Security Message:</b> This event is triggered whenever a problem has occurred during call security proces</li>
+      <li><b>Security Message:</b> This event is triggered whenever a problem has occurred during call security process</li>
       <li><b>Type Notifications:</b>The event is triggered when a typing notification is received from the remote contact.</li>
    </ul>
    <div class='innerText'>Each notification event state can be set to active or inactive by toggling the button next
@@ -978,7 +1022,7 @@ ul li {
         provide the user with reminder on an occurred event. User may tap the notification to open aTalk or take an
         action directly from the notification.<br/>
         Whenevr you are active/in focus with the UI to which the notification is associated, the popup notification is
-        temporary disabled e.g. <b>Incomng Message</b> popup is disabled during chat session.
+        temporary disabled e.g. <b>Incoming Message</b> popup is disabled during chat session.
         </li>
       <image src="./img/atalk_notification_event_incoming_call.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
       <li><b>Sound on notification device:</b> Enable the alert playback on the device speaker.</li>
@@ -1060,7 +1104,6 @@ ul li {
       </ul>
     <div class='innerText'>Manual tuning is needed when &lt;120s is required. When optimization is completed or you
      want to set Ping Interval manually, you may disable <b>Enable Ping Interval optimization</b> option.</div>
-    <image src="./img/atalk_permission_request.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
 
    <div class='innerText'><b>Note:</b> When an established TCP data channel is terminated by network, neither android
      nor aTalk is able to detect this condition, until it failed while attempting to send data. Therefore Reconnection
@@ -1069,6 +1112,7 @@ ul li {
 
    <span id='feature_08'></span>
    <div class='blueText'>[20200113] Android Battery Optimization &amp; Runtime Permissions Request <a href=#content>{ Content }</a></div>
+   <div class='innerText'><image src="./img/atalk_permission_request.png" align="left" width="30%" style="margin:5px 30px 5px 0px"/></div>
    <div class='innerText'>Starting with Android 6.0 Marshmallow (API 23), a new runtime permission model has been
      introduced; Users are not prompted for permissions at the time of installing the app, rather app needs to check
      for and request permissions at runtime. Users can then allow or deny the permissions for the app. Users can also
@@ -1266,11 +1310,12 @@ ul li {
 
    <span id='media_01'></span>
    <div class='blueText'>[20191102] Why the call options button are not shown on some of my contacts in the contact list? <a href=#content>{ Content }</a></div>
-   <div class='innerText'><image src="./img/atalk_media_call_buttons.png" align="right" width="30%" style="margin:5px 0px 10px 15px" /></div>
+   <div class='innerText'><image src="./img/atalk_media_call_buttons.png" align="left" width="30%" style="margin:5px 15px 5px 0px" /></div>
    <div class='innerText'>aTalk supports both voice and video call sessions. In order to have media call with your
      contact, your buddy installed xmpp client must also support the required media call services. The buddy media call
      supported capablities will be shown as icons next to the contact name in the list. To make video or voice call
      with your buddy, just click the appropriate media call icon next to the contact whom you want to make call with.</div>
+   <div class='innerText'><image src="./img/atalk_media_call_menu.png" align="right" width="20%" style="margin:0px 0px 5px 15px"/></div>
    <div class='innerText'>During aTalk initial start up, each buddy device will send its supported features via
      capability version-hash embedded within its &lt;presence/> stanza. aTalk then performs check on each buddy supported
      features via service discovery (XEP-0030) protocol request; and enable only the respective media call options that
@@ -1278,7 +1323,6 @@ ul li {
      XEP-0115: Entity Capabilities, version 1.5.1.in order for aTalk proper features discovery. Without which, the call
      icon option will not be shown even if your buddy's client supports media call. In this case, the call can only be
      initiated from your buddy; aTalk will response and take the call.</div>
-   <image src="./img/atalk_media_call_menu.png" align="right" width="20%" style="margin:5px 0px 10px 15px"/>
    <div class='innerText'>While you are in a chat session, you may also make call using the pull down menu as shown on
      the right, if you buddy client supports the media call services.</div>
       
@@ -1288,7 +1332,7 @@ ul li {
      a media call while in chat mode or vice-versa. When simultaneous call and chat sessions are in progress, switching
      between the two modes is easily performed with the two special buttons i.e. Back-To-Chat while in call mode, and
      Back-To-Call while in chat mode. </div>
-   <div class='innerText'><image src="./img/atalk_call_backtochat.png" align="middle" width="35%" style="margin:5px 5px" /></div>
+   <div class='innerText'><image src="./img/atalk_call_backtochat.png" align="right" width="30%" style="margin:5px 0px 5px 15px"/></div>
    <ul>
      <li><b>Back-To-Chat</b>: Click to switch to start the message chat</li>
      <li><b>Speaker-Phone/Volume</b>: Enable or disable speaker mode. Long Press to adjust incoming audio volume</li>
@@ -1300,7 +1344,7 @@ ul li {
    <div class='innerText'>When the handsfree/speaker-phone mode is not enabled, the received audio is heard via the
      phone internal receiver piece or the headset that is connected to the phone audio jack.</div>
    
-   <div class='innerText'><image src="./img/atalk_chat_backtocall.png" align="right" width="35%" style="margin:5px 5px" /></div>
+   <div class='innerText'><image src="./img/atalk_chat_backtocall.png" align="right" width="30%" style="margin:5px 5px" /></div>
    <div class='innerText'>During chat mode, the Back-To-Call will only be shown when there is an active call in progess.
      Otherwise a voice message (mic) send button is shown instead.</div>
    <ul>
@@ -1312,7 +1356,7 @@ ul li {
      the video streaming will resume automatically.</div>
    <div class='innerText'>When in chat mode, user may peform some simple tasks with the active call using the 
      call notification panel as shown below, without actually switching back to call mode.</div>
-   <div class='innerText'><image src="./img/atalk_call_notifications.png" align="middle" width="35%" style="margin:5px 5px" /></div>
+   <div class='innerText'><image src="./img/atalk_call_notifications.png" align="right" width="30%" style="margin:5px 0px 5px 15px" /></div>
    <ul>
      <li><b>Back-To-Call</b>: Click to return to media call that is in progress</li>
      <li><b>Speaker-Phone</b>: Click to route incoming audio via phone receiver piece or speaker</li>
@@ -1514,7 +1558,7 @@ ul li {
 
    <span id='avatar_01'></span>
    <div class='blueText'>[20200214] How do I update my user avatar? <a href=#content>{ Content }</a></div>
-   <image src="./img/09.atalk_avatar.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
+   <image src="./img/09.atalk_avatar.png" align="right" width="25%" style="margin:5px 0px 0px 15px"/>
    <div class='innerText'>aTalk has an integrated photo editor that supports zoom, scale, rotate and crop functions. This
      simple tool helps publishing the user avatar an easy task. The following steps describe on how to add an user avatar:</div>
      <ul>
