@@ -109,12 +109,13 @@ ul li {
          <li><a href=#feature_10>[20191004] XEP-0070: Verifying HTTP Requests via XMPP and WebView Implementation</a></li>
          <li><a href=#feature_04>[20190526] Stickers, Bitmoji and Emoji rich content sharing </a></li>
          <li><a href=#feature_05>[20190902] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
+         <li><a href=#feature_10>[20200417] Text to Speech and speech recognition in chat/groupchat session</a></li>
          <li><a href=#feature_11>[20191218] Share, Quote and Forward of messages and media contents</a></li>
          <li><a href=#feature_12>[20200228] aTalk Heads-Up Notification and Quiet-Hours</a></li>
          <li><a href=#feature_13>[20191010] aTalk Notification Events</a></li>
          <li><a href=#feature_06>[20180710] XEP-0198:Stream Management and ReConnection Manager</a></li>
          <li><a href=#feature_07>[20181015] Network Keep Alive - Ping Interval Optimization</a></li>
-         <li><a href=#feature_08>[20200113] Android Battery Optimization &amp; Runtime Permissions Request</a></li>
+         <li><a href=#feature_08>[20200113] Android Battery Optimization &amp; Run-time Permissions Request</a></li>
      </ul>
       <h4>OMEMO Messaging</h4>
       <ul>
@@ -148,7 +149,7 @@ ul li {
          <li><a href=#general_01>[20190607] Why aTalk is not working properly on my old android devices?</a></li>
          <li><a href=#general_02>[20190716] aTalk - android OS API compatibility</a></li>
          <li><a href=#general_03>Why do I see screen displaying "shutting down ..." message on re-launch after exit?</a></li>
-         <li><a href=#general_04>How can I give feedback to the developer for any aTalk problem encountered?</a></li>
+         <li><a href=#general_04>[20200418] How can I give feedback to the developer for any aTalk problem encountered?</a></li>
       </ul>
    </div>
 
@@ -906,6 +907,65 @@ ul li {
      <b>Reject</b> button, either intentionally or unintentionally. To remove the prompt, user must manually select
      and delete the link message/prompt.</div>
 
+   <span id='feature_10'></span>
+   <div class='blueText'>[20200417] Text to speech and speech recognition in chat/groupchat session <a href=#content>{ Content }</a></div>
+   <div class='innerText'><image src="./img/atalk_tts_settings.png" align="right" width="30%" style="margin:0px 0px 15px 15px"/></div>
+   <div class='innerText'>aTalk supports speech synthesis from an incoming chat messages for immediate playback
+     during chat or group chat session. To allow speech syntehsis on an incoming message, user must enable both the
+     global TTS and the specific chat session option for speech playback. The global TTS option is accessed via the
+     main menu <b>General TTS settins...</b>. The main TTS settings menu provides the following options:</div>
+     <ul>
+       <li><b>Default TTS voice:</b> displays the current selected voice speech. During playback of the text message,
+         android auto-detect the text language type and playback with the correct spoken language. However android
+         will playback language independent text e.g. 140,000 in the default selected language voice.</li>
+       <li><b>Message Text to Speech delay (ms)</b>In android, all notification alerts always have higher priority over
+         any other media including the speech playback. aTalk waits for this specified delay (ms) before starting the
+         text to speech synthesis. If you enable and change the incoming message alert to other than the default,
+         then adjust this duration until the start of the text speech is not being clipped by the alert.</li>
+       <li><b>Enable Text &#x27A1; Speech</b> You must check this global option to enable TTS feature on aTalk. If you
+         do not enable this global option, then the <b>Enable/Disable Text &#x27A1; Speech</b> option for the chat
+         or group chat session will not be available for user selection.</li>
+       <li><b>General TTS settings...</b> Select this option to enter the android OS <b>Text-to-speech output</b>
+         configuration menu as shown on the right. The menu allows user to select his/her desired voice output, the
+         playback rate and pitch of the speech. If the user selected language resource is not found on the device,
+         android will procced to download the required voice synthesis files. Other More advance voice options can be
+         accessed via the <b>Setting</b> icon. Click the <b>Play</b> button to play back a short demo message.</li>
+       <div class='innerText'><image src="./img/atalk_tts_output.png" align="right" width="30%" style="margin:0px 0px 15px 15px"/></div>
+       <li><b>Demo text entry box:</b></li> User may copy some longer message text from e.g. web browser and paste
+         them in this entry box, to be playbacked or coverted and save into a voice file.</li>
+       <li><b>Save</b> Save the demo text synthesized speech into the a voice file.</li>
+       <li><b>Play</b> Playback the demo text using the user default selected voice output</li>
+       <li><b>OK</b> Exit the user configuraton settins menu.</li>
+     </ul>
+   <div class='innerText'><image src="./img/atalk_tts_enable_opt.png" align="left" width="30%" style="margin:0px 15px 15px 0px"/></div>
+   <div class='innerText'>After you have enabled the global TTS option from the main menu, you may now procced to
+     enable/disable the TTS operation for the individual chat or group chat session. To enable TTS feature for the
+     desired chat session, long click on the specific contact or chatroom item in the respective item list diplay;
+     a pop-up menu will appear containing the TTS toggle option for user selection. This TTS enable/disable option is
+     also  available during the chat seesion access, that is accessed via the chat session main pull down menu.</div>
+   <div class='innerText'>When a chat/group session has the Text to Speech option enabled; aTalk automatically synthesize
+     any incoming message text to speech, and playback after the specific delay. When you tab on the message text in
+     the incoming or outgoing message view holder, the selected text will also be playback in synthesized voice.</div>
+
+   <div class='innerText'><br/><b>Speech Recognition Input</b></div>
+   <div class='innerText'><image src="./img/atalk_tts_sk_mic_input.png" align="right" width="30%" style="margin:0px 0px 15px 15px"/></div>
+   <div class='innerText'>aTalk supports input of message text via speech recognition. Voice input recognition can be
+     acheive with either of the methods described below.</div>
+   <ul>
+     <li><b>Soft keyboard mic input: </b> This method is always available even without the Global TTS being enabled.
+       When user click in the text entry box, android soft keyboard is activated, together with the voice input option
+       for user selection. Click on the mic icon will bring up the voice recognition input menu. In this mode, user has
+       full control on voice input for voice recognition and place each captured text in the enry box. User may pause
+       the speech at any time, make correction to the text and continue. If the neccessary, edit the caputed text
+       before sending the message.</li>
+     <div class='innerText'><image src="./img/atalk_tts_mic_input.png" align="right" width="30%" style="margin:0px 0px 15px 15px"/></div>
+     <li><b>Direct mic input:</b> If you have enabled the TTS option for the chat session, just click on the mic icon
+       next to the text entry box; this is a quick access to the speech recognition mode with opening a soft keyboad.
+       During the flashing of mic, any user voice is converted to text input. Voice recognition process stops when it
+       detects a user long pause. In this mode, user has only one time to speak to input text. If you need to input
+       more text, then active the soft keyboard mic as before. Edit the captured text if necessary before seding.</li>
+   </ul>
+
    <span id='feature_11'></span>
    <div class='blueText'>[20191218] Share, Quote and Forward of messages and media contents <a href=#content>{ Content }</a></div>
    <div class='innerText'><image src="./img/atalk_share_action_bar.png" align="right" width="30%" style="margin:0px 0px 15px 15px"/>
@@ -1111,7 +1171,7 @@ ul li {
      keep alive ping at regular interval to detect this condition for Reconnection Manager to work.</div>
 
    <span id='feature_08'></span>
-   <div class='blueText'>[20200113] Android Battery Optimization &amp; Runtime Permissions Request <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20200113] Android Battery Optimization &amp; Run-time Permissions Request <a href=#content>{ Content }</a></div>
    <div class='innerText'><image src="./img/atalk_permission_request.png" align="left" width="30%" style="margin:5px 30px 5px 0px"/></div>
    <div class='innerText'>Starting with Android 6.0 Marshmallow (API 23), a new runtime permission model has been
      introduced; Users are not prompted for permissions at the time of installing the app, rather app needs to check
@@ -1628,12 +1688,12 @@ ul li {
 
    <span id='general_01'></span>
    <div class='blueText'>[20190607] Why aTalk is not working properly on my old android devices? <a href=#content>{ Content }</a></div>
-   <div class='innerText'>aTalk installation requires android device with API 5.0 and above for full features
+   <div class='innerText'>aTalk installation requires device with android OS 5.0 Lollipop and above for full features
       support. To have satisfactory performance for both video call and cryptography etc, aTalk also requires
       reasonable fast multi-core CPUs. A slow android device is likely to have problem in handling the vast amount of
       information from incoming &amp; outgoing streaming media data and cryptography processing. With aTalk installed
       on slow device, you may find response to user action is sluggish, and at time the screen turns black for a
-      while before returning. Please be patient to wait if you are in love and cannot part with your old android devices.
+      while before returning.
    </div>
    <div class='innerText'><div>Android N introduces Android Runtime (ART) with Ahead-Of-Time (AOT) compilation and
       improved garbage collection (GC), replacing Dalvik that combines bytecode interpretation with trace-based
@@ -1659,8 +1719,8 @@ ul li {
    </div>
    <div class='innerText'>aTalk uses many third parties libraries; some of these libraries have migrated and dropped
      support for lower android OS. In order for aTalk to continue using these libraries, it must tag along with these
-     libraries migration paths. Starting with aTalk v2.0.0 release, the min android OS support has moved to KitKat-v4.4
-     or API-19. All aTalk releases have been tested to run on android-9.0 (Pie) or API-28.
+     libraries migration paths. Starting with aTalk v2.2.3 release, the min android OS support has moved to android OS
+     Lillipop or API-21. All aTalk releases have been tested to run on android-9.0 (Pie) or API-28.
    </div>
 
    <span id='general_03'></span>
@@ -1674,17 +1734,19 @@ ul li {
       high latency and for slow devices to operate properly.</div>
 
    <span id='general_04'></span>
-   <div class='blueText'>How can I give feedback to the developer for any aTalk problem encountered? <a href=#content>{ Content }</a></div>
-   <div class='innerText'>aTalk has a built-in debug log utility that capture any runtime exceptions. In the event
-      if you experienced problem with aTalk, you can forward this log information to the developer to identity
-      the cause of the problem and to provide solutions in the next release if possible. To send the debug log,
-      from main menu select "Help | Report Bugs", then pick your email client to send. To help developer to
-      quickly identity the problem. a brief description of how the problem happen certainly help. Send the mail
-      after you are done.
-   </div>
-   <div class='innerText'>The log contains only the required information necessary to help identify the problem.
-     No personnel sensitive inform are being included. The log will be deleted once the problem is identified and
-     no copies of the log are being kept.
+   <div class='blueText'>[20200418] How can I give feedback to the developer for any aTalk problem encountered? <a href=#content>{ Content }</a></div>
+   <div class='innerText'>aTalk has a built-in debug log utility that capture any runtime exceptions. In the event that
+     you experienced problem with aTalk, you can forward this log information to help the developer to identity the
+     cause of the problem, and to provide solutions in the next release if possible.</div>
+   <div class='innerText'> Android clear all the previoulsy logged info once you have exited aTalk. If you have exited
+     aTalk after encoutered the problem, you need to perform all the steps again that are causing the problem to
+     allow aTalk to re-captured the info. Otherwise the log sent will not have the info of the problem. The log
+     contains only minimum information to help identify the problem. No personnel sensitive inform are being included.</div>
+   <div class='innerText'>To send the debug log, from main menu select "Help | Report Bugs", then pick your email
+    client to send. To help developer to quickly identity the problem. a brief description and the steps to reproduce
+    the problem happen is important. As the log contains only minimum info, and may not neccessary have the details
+    that pin point the root cause. The description and the steps provided by you can help developer to recreate the
+    problem and capture more log data in a developer software development environment.   
    </div>
 
    <span id=''></span>
