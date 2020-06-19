@@ -89,6 +89,11 @@ ul li {
    <span id='content'></span>
    <div id='subSection' onclick=$("#accordion").accordion("disable")>CONTENT</div> 
    <div id="accordion">
+     <h4>aTalk UI desgin &amp; Implementation</h4>
+     <ul>
+       <li><a href=#ui_01>[20200619] aTalk UI design &amp; Implementation</a></li>
+     </ul>
+
      <h4>Account Setup &amp; Login</h4>
      <ul>
        <li><a href=#account_01>Does aTalk communicate with all the available xmpp clients in the market?</a></li>
@@ -111,8 +116,8 @@ ul li {
          <li><a href=#feature_05>[20190902] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
          <li><a href=#feature_10>[20200417] Text to Speech and speech recognition in chat/groupchat session</a></li>
          <li><a href=#feature_11>[20191218] Share, Quote and Forward of messages and media contents</a></li>
-         <li><a href=#feature_12>[20200228] aTalk Heads-Up Notification and Quiet-Hours</a></li>
-         <li><a href=#feature_13>[20191010] aTalk Notification Events</a></li>
+         <li><a href=#feature_12>[20200619] aTalk Heads-Up Notification and Quiet-Hours</a></li>
+         <li><a href=#feature_13>[20200619] aTalk Notification Events</a></li>
          <li><a href=#feature_06>[20180710] XEP-0198:Stream Management and ReConnection Manager</a></li>
          <li><a href=#feature_07>[20181015] Network Keep Alive - Ping Interval Optimization</a></li>
          <li><a href=#feature_08>[20200113] Android Battery Optimization &amp; Run-time Permissions Request</a></li>
@@ -164,9 +169,66 @@ ul li {
    </script>
 
    <hr/>
+   <!-- ========================= User UI Implementation ====================== -->
+   <div id='subSection'>aTalk UI design &amp; Implementation</div>
+
+   <span id='ui_01'></span>
+   <div class='blueText'>[20200619] aTalk UI design &amp; Implementation <a href=#content>{ Content }</a></div>
+   <div class='innerText'>In aTalk UI design, user interaction with the application uses mainly android device touch
+     screen and gestures to navigate or access to other menu. Generally aTalk uses the following gestures and click
+     actions to access to other part of the menus.
+     <ul>
+       <li><b>ViewPager</b>: aTalk uses android ViewPager concept to present mutiple menus. User slides left/right
+         to access to other menus of similar category. ViewPager navigation is used in main UI, and during chat
+         sessions for 1:1 chats and Group chats.
+         <a href="https://developer.android.com/training/animation/screen-slide">Slide between fragments using ViewPager</a></li>
+       <li><b>Pull Down Menu</b>: Each menu is usually accompanied with other user selectable options. These options are
+         accessed via tool icons shown in the navigation bar, or pull down for menu overflow options. On some older
+         android device, there is a dedicated Menu button.</li>
+       <li><b>Chat/Info Access</b>: Some of the information or aTalk feature is accessed via a quick touch/clik on the
+         item or displayed icon on the view page e.g. presence status icon, call buttons and avatar etc. Click on the
+         contact or chat room listed item launches the chat session.</li>
+       <li><b>Context Menu</b>: All aTalk context menus are accessed via long click/press on the item. Long press on
+         contact item in the main menu will pop up the context menu e.g. to activate Text->Speech for incoming message
+         during the chat chat session. <a href=#feature_10>Text to Speech and speech recognition in chat/groupchat session</a></li>
+       <li><b>Heads-up Notification</b>: When there is an incoming call or an incoming message, an heads-up notification
+         will pop-up. The heads-up is used by user to answer or dismiss an incoming call. In the case of the incoming
+         message, the heads-up notification allow user to mark the message as read, or directly reply to the message 
+         without open the chat session. You may put the incoming message heads-up to snooze for half hour.
+         <a href=#feature_12>aTalk Heads-Up Notification and Quiet-Hours</a></li>
+       <li><b>Event Notification</b>: aTalk implements systray notifications for many of the incoming events e.g.
+         incoming call (busy, missed, secured), incoming message etc. In many of these events, there are user defined
+         alert options i.e. pop-up, playback sound, and vibrate. <a href=#feature_13>aTalk Notification Events</a></li>
+     </ul>
+   </div>
+
+   <div class='innerText'><br/><b>Main user UI:</b></div>
+   <div class='innerText'>Use slide left/right gesture on the main menu to access to the following pages i.e.:</div>
+   <div class='innerText'>
+     <image src="./img/atalk_web_intf.png" align="right" width="23%" style="margin:5px 0px 20px 15px"/>
+     <image src="./img/atalk_call_log.png" align="right" width="23%" style="margin:5px 0px 20px 15px"/>
+     <image src="./img/atalk_muc_bookmark_row.png" align="right" width="23%" style="margin:5px 0px 20px 15px"/>   
+     <image src="./img/atalk_contact_list.png" align="right" width="23%" style="margin:5px 0px 20px 15px"/><br>
+   </div>
+
+   <div class='innerText'><b>Chat Sessions ViewPager:</b></div>
+   <div class='innerText'>Whenever user opens a new chat session, the chat session view is automatically added to the
+     chat session viewPager group. All the active chat sessions remain in viewPager until user closes the chat. When
+     there are more than one active chat sessions, user may navigate between all active chat sessions by slide right/left
+     gesture to navigate without exit the chat session view.</div>
+   <div class='innerText'><image src="./img/atalk_chat_viewpager.png" align="right" width="30%" style="margin:5px 0px 20px 15px"/></div>
+
+   <div class='innerText'><b>Heads-up Notification</b></div>
+   <div class='innerText'>Both aTalk incoming call and incomming message use anroid heads-up notifications as UI
+     interface for user action. In order for these two heads-up UI's to work properly, user must ensure the android
+     notification popo-up is enabled. Please refer to the attached screenshot for the correct android notification
+     settings.</div>
+   <div class='innerText'><image src="./img/atalk_heads-up_notification_setting.png" align="inline" width="30%" style="margin:5px 0px 20px 15px"/>
+   <image src="./img/atalk_incoming_call_heads-up.png" align="inline" width="30%" style="margin:5px 0px 230px 15px"/></div>
+
+   <hr/>
    <!-- ========================= Account setup ====================== -->
    <div id='subSection'>Account Setup &amp; Login</div>
-
 
    <span id='account_01'></span>
    <div class='blueText'>Does aTalk communicate with all the available xmpp clients in the market? <a href=#content>{ Content }</a></div>
@@ -1012,7 +1074,7 @@ ul li {
     </div>
 
    <span id='feature_12'></span>
-   <div class='blueText'>[20200228] aTalk Heads-Up Notification and Quiet-Hours <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20200619] aTalk Heads-Up Notification and Quiet-Hours <a href=#content>{ Content }</a></div>
    <div class='innerText'><b>Notifications Overview: </b>A notification is a message that android displays outside
      the app's UI to provide the user with reminders, communication from other contact, or other schedule information
      from the app. Users can tap the notification to open the app or take an action directly from the notification.
@@ -1030,10 +1092,11 @@ ul li {
    <div class='innerText'><b>Status bar and notification drawer: </b>Please see <a href=#feature_13>aTalk Notification Events</a>
      for the support and configuration of aTalk individual notification.</div>
      <div class='innerText'><b>Heads-Up Notification: </b>Starting with aTalk v2.2.0, it has added support for the android
-     heads-up notifications; with options for 'Reply', 'Mark as read' and 'Snooze'. To allow aTalk heads-up option to
-     work correctly on devices with android-N and above, user needs to ensure android <b>[Settings | Notifications]</b>
-     for aTalk has been configured as shown in the image on the right. i.e. both the <b>Alert</b> and <b>Show as pop-up</b>
-     options must be checked for the <b>Chat Message Notification</b> notification category.</div>
+     heads-up notifications; with options for 'Reply', 'Mark as read' and 'Snooze'.<br/><b>Note:</b> To allow aTalk
+     heads-up option to work correctly on devices with android-N and above, user needs to ensure android
+     <b>[Settings | Notifications]</b> for aTalk is configured as shown in the screenshot on the right. i.e. both the
+     <b>Alert</b> and <b>Show as pop-up</b> options must be checked for the <b>Chat Message Notification</b>
+     notification category.</div>
      <div class='innerText'><image src="./img/atalk_quiet_hours.png" align="left" width="30%" style="margin:5px 25px 5px 0px"/></div>
      <ul>
          <li><b>Reply: </b> The reply option is not available on android devices lower than android-N, as this is not
@@ -1052,10 +1115,17 @@ ul li {
      heads-up pop-up floating window.</div>
 
    <span id='feature_13'></span>
-   <div class='blueText'>[20191010] aTalk Notification Events <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20200619] aTalk Notification Events <a href=#content>{ Content }</a></div>
    <image src="./img/atalk_notification_event.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
-   <div class='innerText'>aTalk provides UI support for user to fine tune the notification actions for each of the events as
-    shown in the image on the right i.e.</div>
+   <div class='innerText'>aTalk provides support for user to fine tune the notification actions for each of the
+     events as shown in the screenshot on the right. Starting in Android 8.0 (API level 26), all aTalk event notifications
+     must be assigned to a channel. See <a href="https://developer.android.com/training/notify-user/channels">
+     Create and Manage Notification Channels</a>. For each channel, user can set the visual and auditory behavior that
+     is applied to all notifications in that channel. If you disable any of the android notification channel, all
+     aTalk notification events which are assigned to that channel will also be disabled. In addition to the android
+     notification channel grouping, android also added its own playback sound and vibrate option for that channel. The
+     android playback sound must be set to silent in order not to mix with the atalk playback sound. You may enable the
+     android vibrate option if it is not defined/unavailable in aTalk.</div>
     <ul>
       <li><b>Busy Call:</b> When making a call, busy tone is heard if the called party is already engaged in another call.</li>
       <li><b>Call Security Error:</b> Default event type for security error on a call.</li>
@@ -1684,7 +1754,8 @@ ul li {
 
   <hr/>
   <!-- ========================= General ====================== -->
-   <div id='subSection'>General</div>
+  <hr/>
+  <div id='subSection'>General</div>
 
    <span id='general_01'></span>
    <div class='blueText'>[20190607] Why aTalk is not working properly on my old android devices? <a href=#content>{ Content }</a></div>
