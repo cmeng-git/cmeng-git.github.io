@@ -113,7 +113,7 @@ ul li {
          <li><a href=#feature_09>[20200330] XEP-0048: Bookmarks and autoJoin option for conference</a></li>
          <li><a href=#feature_10>[20191004] XEP-0070: Verifying HTTP Requests via XMPP and WebView Implementation</a></li>
          <li><a href=#feature_04>[20190526] Stickers, Bitmoji and Emoji rich content sharing </a></li>
-         <li><a href=#feature_05>[20190902] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
+         <li><a href=#feature_05>[20200714] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
          <li><a href=#feature_10>[20200417] Text to Speech and speech recognition in chat/groupchat session</a></li>
          <li><a href=#feature_11>[20191218] Share, Quote and Forward of messages and media contents</a></li>
          <li><a href=#feature_12>[20200619] aTalk Heads-Up Notification and Quiet-Hours</a></li>
@@ -124,7 +124,7 @@ ul li {
      </ul>
       <h4>OMEMO Messaging</h4>
       <ul>
-         <li><a href=#omemo_01>[20190916] Why the OMEMO option is grayed out in my chat session menu?</a></li>
+         <li><a href=#omemo_01>[20200714] Why the OMEMO option is grayed out in my chat session menu?</a></li>
          <li><a href=#omemo_02>[20190916] Why am I being asked to authenticate the contact during secured chat?</a></li>
          <li><a href=#omemo_03>[20190716] What is Blind Trust Before Verification?</a></li>
          <li><a href=#omemo_04>[20190716] When do I have to perform "Regenerate Omemo identity"?</a></li>
@@ -930,7 +930,7 @@ ul li {
    </ul>
 
    <span id='feature_05'></span>
-   <div class='blueText'>[20190902] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20200714] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements <a href=#content>{ Content }</a></div>
    <div class='innerText'>aTalk file sharing implementation uses the following XEP protocols:
      <li><a href="https://xmpp.org/extensions/xep-0096.html">XEP-0096: SI File Transfer</a></li>
      <li><a href="https://xmpp.org/extensions/xep-0363.html">XEP-0363: HTTP File Upload</a></li>
@@ -938,28 +938,28 @@ ul li {
      <li><a href="https://xmpp.org/extensions/inbox/omemo-media-sharing.html">XEP-xxxx: OMEMO Media Sharing</a></li>
    </div>
    <div class='innerText'>aTalk supports send and receive files for all document types and images. There is an option
-     to enable thumbnail preview before the actual file is being sent. To send or receipt of thumbnail, both the sender
-     and recipient devices must have this option enabled; and the transfer file size is smaller than the 'Auto accept
-     max file size'. The actual file is sent upon acceptance by your buddy. When XEP-0096 protocol is used, aTalk
-     allows automatic acceptance of file transfer request or stickers sending if the size of the file to be transferred
-     is less than the user defined max file size option.</div>
+     to enable thumbnail preview for media file before the actual file is being sent. To send or receipt of thumbnail,
+     both the sender and recipient devices must have this option enabled; and the transfer file size is larger than
+     the 'Auto accept max file size'. The actual file is sent upon acceptance by your buddy. aTalk allows automatic
+     acceptance of file transfer request or stickers sending if the size of the file to be transferred is less than
+     or equal to the user defined max file size option.</div>
    <div class='innerText'><image src="./img/atalk_file_sharing.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'>aTalk implements fault-tolerance file sharing to ensure reliability. aTalk SI File Transfer
-     protocol supports both the SOCK5 and IBB bytesStream options, with IBB as fallback if SOCK5 failed. During file
-     transfer, aTalk attempts to use the more efficient SOCK5 bytestreams method if the recipient client supports it.
-     However if SOCK5 byestream method failed for reason e.g. client symmetric NAT firewall, aTalk automatically
-     fallback to use IBB method to ensure a successful file transfer.</div>
+     protocol supports both the SOCK5 and IBB bytesStream options. During file transfer negotiation, aTalk uses the 
+     agreed SI protocol for sharing the file. However if the agreed SI protocol method failed for reason e.g. client
+     symmetric NAT firewall, aTalk automatically fallback to use <b>HTTP File Upload service</b> to ensure a successful
+     file transfer.</div>
    <div class='innerText'>In the event if your buddy client e.g conversations, does not support the legacy SI File
      Transfer protocol, aTalk will automatic proceed to use the <b>HTTP File Upload service</b> to share file with the buddy.</div>
-   <div class='innerText'>When aTalk detects your buddy is offline, it automatically selects the HTTP File Upload faciliity,
-     if the protocol is supported by your xmpp service, to continue with the file transfer.</div>
+   <div class='innerText'>When aTalk detects your buddy is offline, it automatically selects the HTTP File Upload
+     faciliity, if the protocol is supported by your xmpp service, to continue with the file transfer.</div>
    <div class='innerText'>XEP-0096: SI File Transfer specification has no provision to transfer file when you are in
      a muc/conference chat room. Under this condition, aTalk checks the server for HTTP File Upload service support,
      and uses it if availabe to support file sharing between chat members in conference room.</div>
    <div class='innerText'><image src="./img/atalk_file_xfer_prompt.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'>aTalk also supports 'OMEMO Media Sharing' protocol. During an OMEMO chat session either in
      1-1 or muc, all file sharing will be encrypted before sending via <b>HTTP File Upload service</b>.</div>
-   <div class='innerText'>aTalk harmonizes and uses a common UI in file sharing irrespective of which file sharing
+   <div class='innerText'>aTalk harmonizes and uses a common UI in file sharing, irrespective of which file sharing
      protocols is being used, and in all the various chat sessions. Unlike all other file transfer protocols, when file
      transfer is via <b>HTTP File Upload service</b>, the sender is unaware of the recipient status. After the sender
      has succcsfully uploaded the file to the server, it forwards the file download link embedded as a chat message
@@ -1308,32 +1308,37 @@ ul li {
    <div id='subSection'>OMEMO Messaging</div>
 
    <span id='omemo_01'></span>
-   <div class='blueText'>[20190916] Why the OMEMO option is grayed out in my chat session menu? <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20200714] Why the OMEMO option is grayed out in my chat session menu? <a href=#content>{ Content }</a></div>
    <div class='innerText'>In order to support omemo session, both the buddies' clients and the registered servers'
      xmpp services must support OMEMO required protocols.
    <div class='innerText'> <image src="./img/atalk_omemo_greyed.png" align="right" width="20%" style="margin:5px 0px 0px 15px"/></div>
-      <ul>
-         <li>Your registered server and the servers of your chat partners must support PEP (XEP-0163) to store and
-         exchange key bundles. Optionally your server should support Message Carbons (XEP-0280) and Message Archive
+     <ul>
+       <li>Your client's registered server and the server of your chat partners must support PEP (XEP-0163) to store and
+         exchange key bundles. Optionally your server should also support Message Carbons (XEP-0280) and Message Archive
          Management (XEP-0313) to achieve message synchronization across all (on- and off-line) devices.</li>
-         <li>Your buddy installed client must implement omemo messaging encryption service.</li>
-         <li>Non-Anonymous Room: A room in which an occupant's full JID is exposed to all other occupants;
-           contrast with Semi-Anonymous Room where occupant's full JID can only be discovered by room admins only.</li>
-      </ul>
+       <li>Your buddy installed client must implement OMEMO messaging encryption service.</li>
+       <li>Member Ony (Non-Anonymous) Room: OMEMO encryption is only available in a room in which each occupant's full
+         JID is exposed to all other occupants; Contrast with Semi-Anonymous Room, OMEMO option is greyed out, as
+         occupant's full JID can only be discovered by room admins only.</li>
+     </ul>
    </div>
-   <div class='innerText'>aTalk checks both server and jid entities to ensure all entities can support OMEMO before
-   the OMEMO option is enabled i.e. aTalk sends xmpp request for disco#info with jid='&lt;service>', the server must
-   include all the pubsub.&lt;service> in the replied disco#info &lt;feature/> list as per the standard xmpp specifications.</div>
+   <div class='innerText'>aTalk checks both server and client jid entities to ensure all entities can support OMEMO
+     before the OMEMO option is enabled i.e. aTalk sends xmpp request for disco#info with jid='&lt;service>', the server
+     must include all the pubsub.&lt;service> in the replied disco#info &lt;feature/> list as per the standard xmpp
+     specifications. aTalk then retrieves the buddy OMEMO devicelist data published on the server. This info is
+     published by client that support OMEMO.</div>
    <div class='innerText'>In a Semi-Anonymous Room, since not all the recipients' fullJid's are known to every participant,
      therefore omemo messagging is again disabled for this session.</div>
-   <div class='innerText'>Some xmpp services do support the required pubsub protocols but does not advertise in disco#info &lt;feature/> list
-   reply e.g. prosody version 0.11.2 (released: 2019-01-09). aTalk v1.8.2 (20190424) has added an alternative
-     verification specifically for this deviation and enable OMEMO option. See link for more info:
+   <div class='innerText'>Some xmpp services do support the required pubsub protocols but does not advertise in
+    disco#info &lt;feature/> list reply e.g. prosody version 0.11.2 (released: 2019-01-09). aTalk v1.8.2 (20190424) has
+    added an alternative verification specifically for this deviation and enable OMEMO option. See link for more info:
    <a href="https://github.com/cmeng-git/atalk-android/issues/31#issuecomment-476927987">
    omemo encryption not available (option is greyed out)</a></div>
+   <div class='innerText'>Note: During the server and client OMEMO capability discovery process, the server must respond
+     to aTalk query within a time-out grace periond of 5 secods. Otherwise OMEMO option will also be disabled.</div>
 
    <span id='omemo_02'></span>
-   <div class='blueText'>[20190916] Why am I being asked to authenticate the contact during secured chat? <a href=#content>{ Content }</a></div>0
+   <div class='blueText'>[20190916] Why am I being asked to authenticate the contact during secured chat? <a href=#content>{ Content }</a></div>
    <div class='innerText'> <image src="./img/atalk_corruptedOmemoKey_auth.png" align="right" width="28%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'>In order for a cryptographic system to make sense, decisions must be made whether a secure
       chat session is trustworthy. Authenticating a buddy helps to ensure that the person you are talking to is
