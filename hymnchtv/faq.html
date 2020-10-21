@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <title>hymnchtv.org</title>
+   <meta charset="utf-8" />
+   <meta name="author" content="cmeng" />
+   <meta name="description" content="Sublime Stunning free HTML5/CSS3 website template" />
+
+	<link rel="icon" type="image/png" href="img/hymnchtv.png">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+   <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+   <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<style>
+#ppBody {
+   max-width: 920px;
+   margin: 0 auto;
+   padding: 50px 100px;
+   font-size: 11pt;
+   font-family: "raleway-regular", arial;
+   text-align: justify;
+   background: url("./img/bg-body.gif");
+   background-position: top;
+   background-repeat: repeat-x;
+   background-color: #f0f0f0;
+}
+
+#ppHeader {
+   width: 100%;
+   margin: 0 auto;
+   font-size: 24pt;
+   color: DarkBlue;
+}
+
+#subSection {
+   width: 100%;
+   margin-top: 30px;
+   margin-bottom: 0px;
+   font-size: 18px;
+   font-weight: bold;
+   color: LightBlue;
+}
+
+.blueText {
+   width: 100%;
+   margin-top: 30px;
+   font-size: 14px;
+   font-weight: bold;
+   color: DarkBlue;
+}
+
+.innerText {
+   width: 100%;
+   margin-top: 5px;
+   font-size: 11pt;
+   color: grey;
+}
+
+ul {
+   margin-top: 5px;
+   color: grey;
+}
+
+ul li {
+   margin-top: 3px;
+   color: grey;
+}
+</style>
+</head>
+<body>
+   
+<div id='ppBody'>
+   <div id='ppHeader'>Frequently Ask Question (FAQ)</div>
+   <p id="fm_date"></p>
+   <script>
+      var x = new Date(document.lastModified);
+      document.getElementById("fm_date").innerHTML= "Last update: " + x;
+   </script>
+   
+   <div style='clear: both; height: 10px;'></div>
+
+   <div class='innerText'>This FAQ section is created to provide a better understanding
+      to hymnchtv users on the application features and observed behaviour. This section
+      will continuously to be updated as more inputs are feedback from hymnchtv users.
+   </div>
+   <!-- ====================== accordion Content =================== -->
+
+   <span id='content'></span>
+   <div id='subSection' onclick=$("#accordion").accordion("disable")>CONTENT</div> 
+   <div id="accordion">
+     <h4>hymnchtv UI desgin &amp; Implementation</h4>
+     <ul>
+       <li><a href=#ui_01>[20201019] hymnchtv UI design &amp; Implementation</a></li>
+     </ul>
+
+   </div>
+
+   <script>
+    $("#accordion").accordion({
+      animate: 100,
+      collapsible: false,
+      disabled: true
+      header: "h4",
+      heightStyle: "content"
+    });
+   </script>
+
+   <hr/>
+   <!-- ========================= User UI Implementation ====================== -->
+   <div id='subSection'>hymnchtv UI design &amp; Implementation</div>
+
+   <span id='ui_01'></span>
+   <div class='blueText'>[20201019] hymnchtv UI design &amp; Implementation <a href=#content>{ Content }</a></div>
+   <div class='innerText'>In hymnchtv UI design, user interaction with the application uses mainly android device touch
+     screen and gestures to navigate or access to other menu. Generally hymnchtv uses the following gestures and click
+     actions to access to other part of the menus.
+     <ul>
+       <li><b>Pull Down Menu</b>: Each menu is usually accompanied with other user selectable options. These options are
+         accessed via tool icons shown in the navigation bar, or pull down for menu overflow options. On some older
+         android device, there is a dedicated Menu button.</li>
+       <li><b>Context Menu</b>: All hymnchtv context menus are accessed via long click/press on the item. Long press on
+         hymn content will pop up the context menu e.g. to show/hide the media player ui.
+       <li><b>ViewPager</b>: hymnchtv uses android ViewPager concept to present multiple hymn content display. User
+         slides left/right to access to other hymn contents of the similar category. ViewPager navigation is mmainly
+         used in the hymn content display.
+         <a href="https://developer.android.com/training/animation/screen-slide">Slide between fragments using ViewPager</a></li>
+     </ul>
+   </div>
+
+   <span id=''></span>
+   <div class='blueText'> <a href=#content>{ Content }</a></div>
+   <div class='innerText'></div>
+
+     <ul>
+       <li></li>
+       <li></li>
+       <li></li>
+     </ul>
+
+   <div class='blueText'> <a href="./index.html">...back</a></div>
+</div>
+</div>
+</body>
+</html>
