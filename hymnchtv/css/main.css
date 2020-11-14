@@ -14,7 +14,7 @@
    - testimonials
    - blog posts
    - feature
-	 - footer
+   - footer
 
 */
 
@@ -126,6 +126,7 @@ h5, h6          { font-weight: bolder }
     -o-background-size: cover;
 }
 
+
 .billboard .shadow{
     position: absolute;
     width: 100%;
@@ -195,6 +196,8 @@ h5, h6          { font-weight: bolder }
     background: #5d5d5d;
 }
 
+
+
 /*    header    */
 header{
     width: 100%;
@@ -248,6 +251,8 @@ header.dark nav ul li a{
 header.dark nav ul li a:hover{
     color: #919191;
 }
+
+
 
 /*    Services    */
 .services ul{
@@ -326,6 +331,7 @@ header.dark nav ul li a:hover{
     background: url('../img/play_btn.png') no-repeat;
     margin-top: 40px;
 }
+
 
 
 .title{
@@ -439,6 +445,8 @@ header.dark nav ul li a:hover{
     font-weight: normal;
 }
 
+
+
 /*    blog posts    */
 .blog_posts{
     margin-top: 20px;
@@ -470,8 +478,8 @@ header.dark nav ul li a:hover{
 
 .blog_posts ul li .media{
     position: relative;
-	  width: 240px;
-    height: 450px;
+	width: 240px;
+    height: 480px;
     margin-bottom: 110px;
 }
 
