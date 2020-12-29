@@ -91,7 +91,7 @@ ul li {
    <div id="accordion">
      <h4>hymnchtv UI desgin &amp; Implementation</h4>
      <ul>
-       <li><a href=#hymnch_0010>[20201225] hymnchtv UI design &amp; Implementation</a></li>
+       <li><a href=#hymnch_0010>[20201229] hymnchtv UI design &amp; Implementation</a></li>
      </ul>
      <ul>
        <li><a href=#hymnch_0020>[20201220] hymnchtv main user interface</a></li>
@@ -103,16 +103,16 @@ ul li {
        <li><a href=#hymnch_0040>[20201222] Hymn lyrics and media player UI interface</a></li>
      </ul>
      <ul>
-       <li><a href=#hymnch_0050>[20201222] Hymn media player UI interface, control and playback operations</a></li>
+       <li><a href=#hymnch_0050>[20201229] Hymn media player UI interface, control and playback operations</a></li>
      </ul>
      <ul>
        <li><a href=#hymnch_0060>[20201224] Hymn media storage and selection algorithm for playback</a></li>
      </ul>
      <ul>
-       <li><a href=#hymnch_0070>[20201225] User defined media configuration</a></li>
+       <li><a href=#hymnch_0070>[20201229] User defined media configuration</a></li>
      </ul>
      <ul>
-       <li><a href=#hymnch_0080>[20201225] User defined media database configuration</a></li>
+       <li><a href=#hymnch_0080>[20201229] User defined media database configuration</a></li>
      </ul>
 
 
@@ -133,7 +133,7 @@ ul li {
    <div id='subSection'>hymnchtv UI design &amp; Implementation</div>
 
    <span id='hymnch_0010'></span>
-   <div class='blueText'>[20201225] hymnchtv UI design &amp; Implementation <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20201229] hymnchtv UI design &amp; Implementation <a href=#content>{ Content }</a></div>
    <div class='innerText'>In hymnchtv UI design, user interaction with the application uses mainly android device touch
      screen and gestures to navigate or access to other menu. Generally hymnchtv uses the following gestures and click
      actions to access to other part of the menus.
@@ -143,12 +143,9 @@ ul li {
          android device, there is a dedicated Menu button.</li>
        <li><b>Context Menu</b>: All hymnchtv context menus are accessed via long click/press on the item. Long press on
          hymn content will pop up the context menu e.g. to show/hide the media player ui.
-       <li><b>ViewPager</b>: hymnchtv uses android ViewPager concept to present multiple hymn content display. User
-         slides left/right to access to other hymn contents of the similar category. ViewPager navigation is mainly
-         used in the hymn content display. Android stores all the lyrics content pages in the memory caches as the user
-         navigates to different hymn pages. This cache memory is released only after user returns to the main UI. Android
-         aborted hymnchtv if the devices runs Out Of Memory (OOM) and cause hymnchtv to crash. Avoid navigate to other
-         hymn lyrics pages using this method if your android device does not have equipped with large memory.
+       <li><b>ViewPager</b>: hymnchtv uses android ViewPager concept to present user selected hymn content for display.
+         User slides up/down to place hymn score or lyrics into screen view area; or left/right to access to other hymn
+         number contents of the similar category.
          <br/><a href="https://developer.android.com/training/animation/screen-slide">Slide between fragments using ViewPager</a></li>
      </ul>
    </div>
@@ -213,13 +210,15 @@ ul li {
    </div>
 
    <span id='hymnch_0050'></span>
-   <div class='blueText'>[20201222] Hymn media player UI interface, control and playback operations <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20201229] Hymn media player UI interface, control and playback operations <a href=#content>{ Content }</a></div>
    <div class='innerText'>Beside showing the hymn lyrics of the user selected HymnNo, Hymnchtv allows the playback of the
      media content of the user selected HymnNo. Below lists the various hymn media available for the playback.
      <ul>
        <div class='innerText'><image src="./img/hymnchtv_media_player_ui.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/></div>
-       <li><b>媒体</b>: User defined media contents; these include video, audio and youtube/internet media url links.</li>
-       <li><b>伴奏</b>: Hymn accompany music only media playback.</li>
+       <li><b>媒体</b>: User defined media contents; these may include video, audio and youtube/internet media url links.
+         The button text grayed out when there is no user media content defined in the database.</li>
+       <li><b>伴奏</b>: Hymn accompany music only media playback. The playback media can be using embedded midi files or
+         downloaded from the predefined site.</li>
        <li><b>教唱</b>: Hymn singing practice. Currently this is only available for 大本诗歌 DaBen HymnType.</li>
        <li><b>唱诗</b>: Hymn singing music with lyrics.</li>
        <li><b>Repeat/Loop Count</b>: Disable/Enable repeat playback with user defined loop count.</li>
@@ -294,7 +293,7 @@ ul li {
    </div>
 
    <span id='hymnch_0070'></span>
-   <div class='blueText'>[20201225] User defined media configuration <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20201229] User defined media configuration <a href=#content>{ Content }</a></div>
    <div class='innerText'>Hymnchtv allows user to define a given media content playback to be associated with a
      HymnType/MediaType/HymnNo. The media content can either be a local saved medium file or an url web link, including
      the youtube shared link. Hymnchtv supports both the video, and audio media playback. The user defined media is 
@@ -314,6 +313,13 @@ ul li {
        <li>Click the <b>加添</b> button to add/save the media record into the database.</li>
        <li>This newly added media content will be used for the playback when user selects its associated hymn data i.e.
          HymnType/MediaType/HymnNo in the lyrics display window.</li>
+       <li><b>删除</b>: Use this button to delete media record that is no further required. If you re-assign/move a medium
+         content to a different HymnType, user must peform the re-assignment, then followed by a deletion of the old media 
+         record of the previous HymnType manually; else the old media record will remain in the old HymnType database.
+         This is not necessary if you are just modified the HymnNo of a media record within the same HymnType category. 
+       </li>
+       <li><b>退出</b>: Click the 退出 button to close the media record listing window, or exit the user defined media
+         configuration setup.</li>
      </ul>
    </div>
    <div class='innerText'>Follow the steps given below, if the desired medium content to associate with a given
@@ -396,7 +402,9 @@ ul li {
          is shown in the <b>数据库导入文件</b> field, and the RichText Editor is launched with the exported file content
          inserted for verification.</li>
        <li><image src="./img/ic_help_video.png" width="24" height="24" align="middle" style="margin:5px 5px"/> When user 
-       clicks on this icon, hymnchtv will display this help content.</li>
+       clicks on this icon, hymnchtv will playback two demo media for user defined media configuration setup i.e.
+         android share sheet from a youtube link, and auto create export file from media contents stored in the local
+         hymnchtv media directory.</li>
      </ul>
 
      <b>自建导出 process and operation:</b>
@@ -435,7 +443,8 @@ ul li {
        <li><b>HymnType</b>: This is the hymnType with possible values of <b>[hymn_db|hymn_bb|hymn_xb|hymn_er]</b>.
          Note the text are in lower case.</li>
        <li><b>HymnNo</b>: The associated hymnNo for the given HymnType's media content. For 大本诗歌附歌 (Fu), the actual
-         hymnNo stored in database starts with 781 for 附1 respectively, this is shown in the exported file above.</li>
+         hymnNo stored in database starts with 781 for 附1 respectively, this is shown in the exported file above.
+         User however may use '1' for 附1 when creating the export file. Hymnchtv can accept either one.</li>
        <li><b>Fu</b>: 大本诗歌附歌 flag; Set this to '1' if the hymnNo denotes 附歌 else set it to '0' e.g.:
          <br/>hymn_db,781,1,HYMN_MEDIA,null,/storage/emulated/0/Download/hymnchtv/hymn_db/media_media/ChHymns-c001.mp3</li>
        <li><b>MediaType</b>: The hymn mediaType with all the possible string text values specified in upper case i.e.:
