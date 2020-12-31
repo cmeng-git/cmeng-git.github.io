@@ -94,7 +94,7 @@ ul li {
        <li><a href=#hymnch_0010>[20201229] hymnchtv UI design &amp; Implementation</a></li>
      </ul>
      <ul>
-       <li><a href=#hymnch_0020>[20201220] hymnchtv main user interface</a></li>
+       <li><a href=#hymnch_0020>[20201231] hymnchtv main user interface</a></li>
      </ul>
      <ul>
        <li><a href=#hymnch_0030>[20201220] <b>Hymn Category</b> and <b>Content Search</b> result display</a></li>
@@ -106,7 +106,7 @@ ul li {
        <li><a href=#hymnch_0050>[20201229] Hymn media player UI interface, control and playback operations</a></li>
      </ul>
      <ul>
-       <li><a href=#hymnch_0060>[20201224] Hymn media storage and selection algorithm for playback</a></li>
+       <li><a href=#hymnch_0060>[20201231] Hymn media storage and selection algorithm for playback</a></li>
      </ul>
      <ul>
        <li><a href=#hymnch_0070>[20201229] User defined media configuration</a></li>
@@ -146,13 +146,13 @@ ul li {
        <li><b>ViewPager</b>: hymnchtv uses android ViewPager concept to present user selected hymn content for display.
          User slides up/down to place hymn score or lyrics into screen view area; or left/right to access to other hymn
          number contents of the similar category.
-         <br/><a href="https://developer.android.com/training/animation/screen-slide">Slide between fragments using ViewPager</a></li>
+         <br /><a href="https://developer.android.com/training/animation/screen-slide">Slide between fragments using ViewPager</a></li>
      </ul>
    </div>
 
    <span id='hymnch_0020'></span>
-   <div class='blueText'>[20201220] hymnchtv main user interface <a href=#content>{ Content }</a></div>
    <div class='innerText'><image src="./img/hymnchtv_main_ui.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/></div>
+   <div class='blueText'>[20201220] hymnchtv main user interface <a href=#content>{ Content }</a></div>
    <div class='innerText'>This is the main hymnchtv UI that is shown when user launches the hymnchtv application. From
      this main UI window, you can access to all the hymnchtv features implementation, pop-up menu and the main pull down menu.
      <ul>
@@ -160,16 +160,34 @@ ul li {
          Then select the HymnType <b>[儿诗|新颂|补充|大本]</b> to enter the hymn lyrics display and media playback UI page.</li>
        <li><b>目录 Hymn Categories</b>: The user desired hymn title can also be entered via the Hymn Category spinner options.
          Every HymnType are sub-categorised according to:
-         <br/><b>诗歌类别</b>: Hymn content category types as given in the various printed hymn books;
-         <br/><b>笔画索引</b>: The number of strokes of the first character in the hymn title;
-         <br/><b>拼音索引</b>: The first alpha letter of the hymn title first character's PinYin;
-         <br/><b>英中对照</b>: Cross reference table from English to Chinese hymn number.</li>
+         <br /><b>诗歌类别</b>: Hymn content category types as given in the various printed hymn books;
+         <br /><b>笔画索引</b>: The number of strokes of the first character in the hymn title;
+         <br /><b>拼音索引</b>: The first alpha letter of the hymn title first character's PinYin;
+         <br /><b>英中对照</b>: Cross reference table from English to Chinese hymn number.</li>
        <li><b>内容搜索: Hymn Content Search</b>: Allow searching the contents for all the HymnType with the search string
          entered by the user. Hymnchtv supports only search string in simplified Chinese. For special character i.e. ‘祂’,
          user can input ‘他’, then long press the <b>Content Search</b> button to convert ‘他’&#10145;‘祂’.</li>
        <li><b>附 Fu</b>: Supplement song titles are only available in <b>大本诗歌</b>. Press <b>附</b> follows by number;
          then press DaBu to enter the selection.</li>
        <li><b>Del</b>: Press to <b>Del</b> button to erase the number entry, before enter a new hymn number.</li>
+     </ul>
+   </div>
+
+   <div class='innerText'><b>Main UI pull down menu</b></div>
+   <div class='innerText'><image border="2px solid blue" src="./img/hymnchtv_main_menu.png" align="right" width="20%" style="margin:5px 0px 20px 15px"/></div>
+   <div class='innerText'>The main UI pull down menu is acessed via the oveflow icon on the top-right corner of the
+     main UI. It contains the following user selectable options:
+     <ul>
+       <li><b>墙纸</b>: This option allows user to selected one of the 15 hymnchtv predefined images to use as the
+         main UI wallpaper. The sub-menu also contains the option to allow user to define and use own photo as the 
+         wallpaper. <a href="./index.html#wallpaper_user">Watch demo video for details.</a>.  
+				</li>   
+       <li><b>设置主面版字体颜色</b>: The main UI font color can be changed via this option; there are 8 predefined colors
+         for user selection.</li>     
+       <li><b>用户定义媒体设置</b>: User defined media configuration setup. See below for details.</li>     
+       <li><b>网上帮助</b>: Click on option will display this online help page/</li>     
+       <li><b>关于</b>: About the basic info of the hymnchtv, including install apk version and history.</li>     
+       <li><b>退出</b>: This will closed the hymnchtv app and exit. The BackKey only close the main UI.</li>     
      </ul>
    </div>
 
@@ -227,10 +245,10 @@ ul li {
      </ul>
        For hymn media playback: user first selects the required MediaType, the desired repeat/loop count and the playback
        speed; then followed by:
-       <br/>a. Click the play button to start;
-       <br/>b. Click again to pause the playback;
-       <br/>c. Click again to resume playback;
-       <br/>d. Long click to stop the playback and return to start of the hymn media.
+       <br />a. Click the play button to start;
+       <br />b. Click again to pause the playback;
+       <br />c. Click again to resume playback;
+       <br />d. Long click to stop the playback and return to start of the hymn media.
    </div>
    <div class='innerText'>User may scroll left/right to a different HymnNo lyrics while the hymn playback is in progress.
      The current playing hymn will continue until the end, without any disruption. If user wants to play the newly
@@ -250,19 +268,25 @@ ul li {
    </div>
 
    <span id='hymnch_0060'></span>
-   <div class='blueText'>[20201224] Hymn media storage and selection algorithm for playback <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20201231] Hymn media storage and selection algorithm for playback <a href=#content>{ Content }</a></div>
    <div class='innerText'>The screenshot on the right shows the directory structure for hymnchtv, where all the media
      files for each of the HymnType and MediaType, either downloaded or added by user are saved to. The main hymnchtv
      directory are placed below the android Download directory. Each of the hymnchtv sub-directories gets created
      whenever user initiates playback the respective HymnType/MediaType on the very first instance.
-     <div class='innerText'><image src="./img/hymnchtv_dir_structure.png" align="right" width="30%" style="margin:5px 0px 20px 15px"/></div>
+     <div class='innerText'>
+       <image border="2px solid blue" src="./img/hymnchtv_dir_structure.png" align="right" width="30%" style="margin:5px 0px 20px 15px"/></div>
      <ul>
        <li><b>hymn_bb</b>: 补充本 HymnType sub-directory</li>
        <li><b>hymn_db</b>: 大本诗歌 HymnType sub-directory</li>
        <li><b>hymn_er</b>: 儿童诗歌 HymnType sub-directory</li>
        <li><b>hymn_xb</b>: 新歌颂咏 HymnType sub-directory</li>
+       <li><b>import_export</b>: A directory where all the generated export files are saved to. User is responsible
+         to upkeep this directory. A copy of the user selected external export/import file will also be kept here.</li>
+       <li><b>tmp</b>: A temporary directory location to keep user selected hymnchtv media files during user defined
+         media configuration. All files are deleted after user committed the changes.</li>
+       <li><b>wallpaper</b>: A directory where all the user defined wallpaper are kept</li>
      </ul>
-     Below each of the HymnType directories, it contains the sub-directories for each of the four hymnchtv MediaTypes
+     Under each of the HymnType directories, it contains the sub-directories for each of the four hymnchtv MediaTypes
      as listed below. All the media files in these locations may be downloaded automatically by hymnchtv from the
      predefined site location i.e. https://heavenlyfood.cn/hymns/, or added in by the user during user defined media
      configuration 用户定义的媒体内容 process.
@@ -272,7 +296,7 @@ ul li {
        <li><b>media_changshi</b>: 唱诗 MediaType sub-directory; containing the downloaded files for the 唱诗 playback.</li>
        <li><b>media_jiachang</b>: 教唱 MediaType sub-directory; currently, the media are only available for 大本诗歌.</li>
        <li><b>media_media</b>: 媒体 MediaType sub-directory; saving location for the media files added in by user during
-         <br/><b>User defined media configuration</b> process.</li>
+         <br /><b>User defined media configuration</b> process.</li>
      </ul>
    </div>
    <div class='innerText'><b>Media content selection algorithm for playback</b></div>
@@ -325,7 +349,7 @@ ul li {
    <div class='innerText'>Follow the steps given below, if the desired medium content to associate with a given
      HymnType/MediaType is a medium from youtube site or a linked item from website. Below gives detailed descriptions
      on how to associate for each type of the content sources:
-     <br/><br/><b>Youtube url link association</b>
+     <br /><br /><b><a href="./index.html#media_share">Youtube url link association</a></b>
      <div class='innerText'><image src="./img/hymnchtv_share_link_youtube.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/></div>
      <ul>
        <li>Launch the youtube app; find the desired youtube media link to be associated with.</li>
@@ -377,7 +401,7 @@ ul li {
          text file. The exported file is saved in the hymnchtv pre-defined directory 
          e.g. Download/hymnchtv/import_export/hymn_bb-20201213_142504.txt. The format of the filename used is
          HymnType-timestamp, where HymnType is hymn_xx and the timestamp format is "YYYYMMDD_HHMMSS".</li>
-       <li><b>自建导出</b>: Instead of creating an individual media record per user desired media content, as described
+       <li><b><a href="./index.html#create_export">自建导出</a></b>: Instead of creating an individual media record per user desired media content, as described
          in the <a href='#hymnch_0070'>previous section</a>; one can actually use the auto-create export file for a
          batch media contents import. See below on the actual process and operation.</li>
        <li><b>数库列项</b>: Select this option to show a list of all the media records saved in the database. The list
@@ -398,7 +422,7 @@ ul li {
        <li><image src="./img/ic_edit.png" width="24" height="24" align="middle" style="margin:5px 5px"/> When user clicks
          on this icon while there is a valid export filename entry in the <b>数据库导入文件</b> field, hymnchtv opens the
          RichText editor with the inserted file content for editing.
-         <br/>When the user has peformed one of the <b>[数库导出|自建导出]</b> operations, the generated export filepath
+         <br />When the user has peformed one of the <b>[数库导出|自建导出]</b> operations, the generated export filepath
          is shown in the <b>数据库导入文件</b> field, and the RichText Editor is launched with the exported file content
          inserted for verification.</li>
        <li><image src="./img/ic_help_video.png" width="24" height="24" align="middle" style="margin:5px 5px"/> When user 
@@ -408,7 +432,7 @@ ul li {
      </ul>
 
      <b>自建导出 process and operation:</b>
-     <br/>One can use the <b>自建导出</b> to auto-create the export file for a batch media contents import; instead of
+     <br />One can use the <b>自建导出</b> to auto-create the export file for a batch media contents import; instead of
      doing the media record one at a time. Follow the steps given below to perform this operation. For this to work
      properly and effectively, the media file should contain the actual HymnNo as part of the filename.
      <div class='innerText'><image src="./img/hymnchtv_rich_editor.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/></div>
@@ -432,13 +456,13 @@ ul li {
          database properly.</li>
        <li>If there is any error found in <b>数库列项</b>, you can make minor correction, using either one of the
         following methods:
-        <br/>* click on the error item in the list and use the media record UI to make changes before saving the
+        <br />* click on the error item in the list and use the media record UI to make changes before saving the
         updated record; or
-        <br/>* return to the exported file using the embedded RichText Editor to do the correction. Then perform the
+        <br />* return to the exported file using the embedded RichText Editor to do the correction. Then perform the
         <b>数据库导入</b> process with <b>覆盖现有记录</b> option checked.</li>
      </ul>
      <b>Export file media record string format:</b>
-     <br/>Each media record string is consisted of the following parameters separated by commas:
+     <br />Each media record string is consisted of the following parameters separated by commas:
      <ul>
        <li><b>HymnType</b>: This is the hymnType with possible values of <b>[hymn_db|hymn_bb|hymn_xb|hymn_er]</b>.
          Note the text are in lower case.</li>
@@ -446,16 +470,19 @@ ul li {
          hymnNo stored in database starts with 781 for 附1 respectively, this is shown in the exported file above.
          User however may use '1' for 附1 when creating the export file. Hymnchtv can accept either one.</li>
        <li><b>Fu</b>: 大本诗歌附歌 flag; Set this to '1' if the hymnNo denotes 附歌 else set it to '0' e.g.:
-         <br/>hymn_db,781,1,HYMN_MEDIA,null,/storage/emulated/0/Download/hymnchtv/hymn_db/media_media/ChHymns-c001.mp3</li>
+         hymn_db,781,1,HYMN_MEDIA,null,/storage/emulated/0/
+         <br />Download/hymnchtv/hymn_db/media_media/ChHymns-c001.mp3</li>
        <li><b>MediaType</b>: The hymn mediaType with all the possible string text values specified in upper case i.e.:
-         <b>[HYMN_MEDIA|HYMN_BANZOU|HYMN_JIAOCHANG|HYMN_CHANGSHI]</b>;
+         <b>[HYMN_MEDIA|HYMN_BANZOU|HYMN_JIAOCHANG |HYMN_CHANGSHI]</b>;
          </li>
        <li><b>Media Url</b>: This parameter specifies the actual web/youtube url link. Otherwise it is set to null if the
          associated media content is a local media file. e.g.:
-         <br/>hymn_bb,015,0,HYMN_MEDIA,https://youtu.be/432RvdcGaM4,null</li>
+         <br />hymn_bb,015,0,HYMN_MEDIA,
+         <br />https://youtu.be/432RvdcGaM4,null</li>
        <li><b>Media FilePath</b>: This parameter specifies the full path for the local stored medium file. This field should
          be set to 'null' if the media content is referring to an url link. e.g.:
-         <br/>hymn_db,616,0,HYMN_MEDIA,null,/storage/emulated/0/Download/hymnchtv/hymn_db/media_media/ChHymns-0616.mp3</li>
+         <br />hymn_db,616,0,HYMN_MEDIA,null,/storage/emulated/0/
+         <br />Download/hymnchtv/hymn_db/media_media/ChHymns-0616.mp3</li>
      </ul>
    </div> 
 
