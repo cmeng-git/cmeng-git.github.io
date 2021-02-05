@@ -344,6 +344,8 @@ ul li {
        </li>
        <li><b>退出</b>: Click the 退出 button to close the media record listing window, or exit the user defined media
          configuration setup.</li>
+       <li><b>播放</b>: After you have saved the new media record, or selected an item from the media record list; click
+         the 播放 button to play the media content.</li>
      </ul>
    </div>
    <div class='innerText'>Follow the steps given below, if the desired medium content to associate with a given
@@ -397,10 +399,13 @@ ul li {
      using the tools described below: 
      <ul>
        <div class='innerText'><image src="./img/hymnchtv_media_db_config.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/></div>
-       <li><b>数库导出</b>: Use this option to export all the media records in the database, and save them to a normal
-         text file. The exported file is saved in the hymnchtv pre-defined directory 
+       <li><b>数库导出</b>: Click this option button to export all the media records in the database, and save them to
+         a normal text file. The exported file is saved in the hymnchtv pre-defined directory 
          e.g. Download/hymnchtv/import_export/hymn_bb-20201213_142504.txt. The format of the filename used is
-         HymnType-timestamp, where HymnType is hymn_xx and the timestamp format is "YYYYMMDD_HHMMSS".</li>
+         HymnType-&lt;timestamp>, where HymnType is hymn_xx and the timestamp format is "YYYYMMDD_HHMMSS". The exported file
+         contains only the media records from the currently selected HymnType. If you long click on the button, the
+         file will contain all the media records for all the four defined HymnType's and the file is named with
+         hymn_all-&lt;timestamp>.txt. </li>
        <li><b><a href="./index.html#create_export">自建导出</a></b>: Instead of creating an individual media record per user desired media content, as described
          in the <a href='#hymnch_0070'>previous section</a>; one can actually use the auto-create export file for a
          batch media contents import. See below on the actual process and operation.</li>
