@@ -121,6 +121,7 @@ ul li {
          <li><a href=#feature_06>[20180710] XEP-0198:Stream Management and ReConnection Manager</a></li>
          <li><a href=#feature_07>[20181015] Network Keep Alive - Ping Interval Optimization</a></li>
          <li><a href=#feature_08>[20200113] Android Battery Optimization &amp; Run-time Permissions Request</a></li>
+         <li><a href=#feature_20>[20210208] Persistent Store Refresh</a></li>
      </ul>
       <h4>OMEMO Messaging</h4>
       <ul>
@@ -139,7 +140,7 @@ ul li {
          <li><a href=#media_01>[20191102] Why the call options button are not shown on some of my contacts in the contact list?</a></li>
          <li><a href=#media_02>[20181228] Media Call and Chat Message sessions</a></li>
          <li><a href=#media_03>[20181228] Video Call session</a></li>
-         <li><a href=#media_04>[20181016] Jabber VoIP-PBX gateway Telephony (experimental)</a></li>
+         <li><a href=#media_04>[20210208] Jabber VoIP-PBX gateway Telephony (experimental)</a></li>
          <li><a href=#media_05>[20181228] VoIP communications security via SRTP with ZRTP, DTLS and SDES protocol.</a></li>
          <li><a href=#media_06>[20181126] STUN, TURN, ICE &amp; Jingle for NAT Traversal in media call setup</a></li>
       </ul>
@@ -1300,6 +1301,44 @@ ul li {
      must exit and restart aTalk for the granted permission to take effect. This is because some of the permission
      is only checked during aTalk start up e.g. Permission.CAMERA.</div>
 
+   <span id='feature_20'></span>
+   <div class='blueText'>[20210208] Persistent Store Refresh <a href=#content>{ Content }</a></div>
+   <div class='innerText'>aTalk saves all the user data in the android application specific directory, accessible only
+     to aTalk. In rare cases under unexpected condtions and out of aTalk control; some of the user data may be
+     corrupted. Without resorting to a complete re-install of the aTalk app, and loosing all the other user data e.g. chat
+     messages history; aTalk provides some manual recovery procedures. These are done via the persistent store cleanup.
+     User needs to understand each of the database cleanup and its effect; and should only be used if all other attempts
+     have failed. As the cleaning/refreshing of the data is performed independent of aTalk normal operations, please
+     relaunch aTalk after you have performed any of the operations.
+     <div class='innerText'> <image src="./img/atalk_persistent_store.png" align="right" width="20%" style="margin:5px 0px 0px 15px"/></div>
+     <li>From the main menu, select "Account settings ... | <image src="./img/ic_sweep.png"
+       width="24" height="24" align="middle" style="margin:5px 5px"/>  to access to the aTalk Refresh persistent
+       stores refresh menu.</li>
+     <ul>
+       <li><b>XEP-0237: Roster</b>: Process to refresh roster store for all registered accounts. This data is being 
+         updated with roster stanza data received from the server whenever the user logs into the server. If the main
+         contacts list displays incorrect information, you may safely refresh this roster content.</li>
+       <li><b>XEP-0115: Entity Capabilities</b>: Process to refresh the Entity Capabilities store for all accounts.
+         This data is being updated with disco features stanza data broadcasted by the server whenever the contact goes online.
+         If you find that some contacts' features are not properly reflected in the contact list, you may safely
+         refresh this content.</li>
+       <li><b>XEP-0030: Service Discovery</b>: Process to refresh Disco#info for all the services; Operation similars
+        to Entity Capabilities but for Disco info stanza.</li>
+       <li><b>XEP-0084/XEP-0153: Avatar</b>: Process to clear the VCard Avatar Index and purge persistent storage for
+         all accounts.
+         <br/>See <a href="https://atalk.sytes.net/atalk/faq.html#avatar_02">Why some of the avatars for my contacts in main menu are blank?</a></li>
+       <li><b>XEP-0384: OMEMO Encryption</b>: Process to purge persistent storage for OMEMO_Store. The purged contents
+         contain all the OMEMO database tables. If you find that aTalk is unable to receive or send any OMEMO message;
+         and you have exhausted all the steps i.e. "Regenerate OMEMO identities", "Purge unused identities" and
+         "Purge Corrupted OmemoKey"; then the last resort is to perform OMEMO Encryption cleanup, which reverts all user
+         accounts to when they were newly created; all OMEMO tables data will be reconstructed when the user first
+         log into the server.</li>
+       <li><b>Purge aTalk Debug Log File</b>: Process to purge all android logcat files for aTalk app; in case it gets
+         too large to handle. Normally this is not necessary as android itself has mechanism for its own database
+         maintenance</li>
+     </ul>   
+   </div>
+
    <span id=''></span>
    <div class='blueText'></div>
    <div class='innerText'></div>
@@ -1531,11 +1570,12 @@ ul li {
      display.</div>
 
    <span id='media_04'></span>
-   <div class='blueText'>[20181016] Jabber VoIP-PBX gateway Telephony (experimental) <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20210208] Jabber VoIP-PBX gateway Telephony (experimental) <a href=#content>{ Content }</a></div>
    <div class='innerText'>One distinguishing characteristic of Jabber technologies has been the existence of gateways
      (also called "transports") between the Jabber network and legacy services. The legacy services can be other IM
      protocols like SIP, AIM, ICQ or even a PBX gateway allowing a jabber entity to make voice/video call to phones
      via landline or GSM network.</div>
+     <image src="./img/12.atalk_telephony.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
      <ul>
        <li><b>Gateway</b>: A service on the Jabber network that translates between the Jabber/XMPP protocols and
          the protocol used by a Legacy Service (non-XMPP instant messaging service etc); in this context, "gateway"
@@ -1543,7 +1583,8 @@ ul li {
          "masquerades" as a user on such a service.</li>
      </ul>
    <div class='innerText'>aTalk provides the necessary interface to allow user to make jabber voice/video call to
-     PBX gateway installed on the user registered service. The gateway however must support the following XEP protocols</div>
+     PBX gateway installed on the user registered service as shown on the right. The gateway however must support
+     the following XEP protocols.</div>
      <ul>
        <li><b>XEP-0166: Jingle</b> This specification defines an XMPP protocol extension for initiating and managing
          peer-to-peer media sessions between two XMPP entities in a way that is interoperable with existing Internet
@@ -1558,7 +1599,7 @@ ul li {
      </ul>
 
     <image src="./img/atalk_telephony.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
-    <div class='innerText'>aTalk Telepohny option uses the following two paramteres, and are requires to be setup if
+    <div class='innerText'>aTalk Telepohny option uses the following two paramteres, and are required to be setup if
      you want to override the defaults. These parameters can be found in [Account settings... | Telephony} section</div>
      <ul>
        <li><b>Telephony Domain</b>: The override domain name when making telephone call. If Jabber account is able to
