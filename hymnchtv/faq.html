@@ -80,6 +80,7 @@ ul li {
    
    <div style='clear: both; height: 10px;'></div>
 
+   <div class='innerText'><image src="./img/qrcode_hymnchtv.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/></div>
    <div class='innerText'>This FAQ section is created to provide a better understanding
       to hymnchtv users on the application features and observed behaviour. This section
       will continuously be updated as inputs are feedback from hymnchtv users.
@@ -94,7 +95,7 @@ ul li {
        <li><a href=#hymnch_0010>[20201229] hymnchtv UI design &amp; Implementation</a></li>
      </ul>
      <ul>
-       <li><a href=#hymnch_0020>[20201231] hymnchtv main user interface</a></li>
+       <li><a href=#hymnch_0020>[20210216] hymnchtv main user interface</a></li>
      </ul>
      <ul>
        <li><a href=#hymnch_0030>[20201220] <b>Hymn Category</b> and <b>Content Search</b> result display</a></li>
@@ -109,7 +110,7 @@ ul li {
        <li><a href=#hymnch_0060>[20201231] Hymn media storage and selection algorithm for playback</a></li>
      </ul>
      <ul>
-       <li><a href=#hymnch_0070>[20201229] User defined media configuration</a></li>
+       <li><a href=#hymnch_0070>[20210216] User defined media configuration</a></li>
      </ul>
      <ul>
        <li><a href=#hymnch_0080>[20201229] User defined media database configuration</a></li>
@@ -152,7 +153,7 @@ ul li {
 
    <span id='hymnch_0020'></span>
    <div class='innerText'><image src="./img/hymnchtv_main_ui.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/></div>
-   <div class='blueText'>[20201220] hymnchtv main user interface <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20210216] hymnchtv main user interface <a href=#content>{ Content }</a></div>
    <div class='innerText'>This is the main hymnchtv UI that is shown when user launches the hymnchtv application. From
      this main UI window, you can access to all the hymnchtv features implementation, pop-up menu and the main pull down menu.
      <ul>
@@ -178,13 +179,18 @@ ul li {
    <div class='innerText'>The main UI pull down menu is acessed via the oveflow icon on the top-right corner of the
      main UI. It contains the following user selectable options:
      <ul>
-       <li><b>墙纸</b>: This option allows user to selected one of the 15 hymnchtv predefined images to use as the
-         main UI wallpaper. The sub-menu also contains the option to allow user to define and use own photo as the 
+       <li><b>墙纸</b>: This option allows user to select one of the 15 hymnchtv predefined images to use as the
+         main UI wallpaper. The sub-menu also contains the option to allow user to define and use own image as the 
          wallpaper. <a href="./index.html#wallpaper_user">Watch demo video for details.</a>.  
 				</li>   
+       <li><b>设置主面版文字大小</b>: The main UI font size can be changed via this option; there are 4 predefined sizes i.e.
+         小 (30sp); 默认 (35sp); 大 (40sp); 超大 (45sp); and 加大/减小 +2/-2 of the current set font size for user selection.</li>     
        <li><b>设置主面版字体颜色</b>: The main UI font color can be changed via this option; there are 8 predefined colors
          for user selection.</li>     
-       <li><b>用户定义媒体设置</b>: User defined media configuration setup. See below for details.</li>     
+       <li><b>歌词文字最大比例</b>: The hymn lyrics display text size can be changed i.e. toggle via 2-fingers double click,
+         between the predefined default and this user defined scaling factor. User may also use pinch-to-zoom gesture
+         to change he lyrics display text size.</li>     
+       <li><b>用户定义媒体设置</b>: User defined media configuration setup. See <a href=#hymnch_0070>below</a> for details.</li>     
        <li><b>网上帮助</b>: Click on option will display this online help page/</li>     
        <li><b>关于</b>: About the basic info of the hymnchtv, including install apk version and history.</li>     
        <li><b>退出</b>: This will closed the hymnchtv app and exit. The BackKey only close the main UI.</li>     
@@ -317,7 +323,7 @@ ul li {
    </div>
 
    <span id='hymnch_0070'></span>
-   <div class='blueText'>[20201229] User defined media configuration <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20210216] User defined media configuration <a href=#content>{ Content }</a></div>
    <div class='innerText'>Hymnchtv allows user to define a given media content playback to be associated with a
      HymnType/MediaType/HymnNo. The media content can either be a local saved medium file or an url web link, including
      the youtube shared link. Hymnchtv supports both the video, and audio media playback. The user defined media is 
@@ -351,7 +357,7 @@ ul li {
    <div class='innerText'>Follow the steps given below, if the desired medium content to associate with a given
      HymnType/MediaType is a medium from youtube site or a linked item from website. Below gives detailed descriptions
      on how to associate for each type of the content sources:
-     <br /><br /><b><a href="./index.html#media_share">Youtube url link association</a></b>
+     <br /><br /><b>Youtube url link association <a href="./index.html#media_share">(demo video)</a></b>
      <div class='innerText'><image src="./img/hymnchtv_share_link_youtube.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/></div>
      <ul>
        <li>Launch the youtube app; find the desired youtube media link to be associated with.</li>
