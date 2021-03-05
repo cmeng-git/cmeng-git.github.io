@@ -143,7 +143,7 @@ ul li {
          <li><a href=#media_03>[20181228] Video Call session</a></li>
          <li><a href=#media_04>[20210208] Jabber VoIP-PBX gateway Telephony (experimental)</a></li>
          <li><a href=#media_05>[20181228] VoIP communications security via SRTP with ZRTP, DTLS and SDES protocol.</a></li>
-         <li><a href=#media_06>[20181126] STUN, TURN, ICE &amp; Jingle for NAT Traversal in media call setup</a></li>
+         <li><a href=#media_06>[20210302] STUN, TURN, ICE &amp; Jingle for NAT Traversal in media call setup</a></li>
       </ul>
 
      <h4>User Avatar</h4>
@@ -1680,13 +1680,13 @@ ul li {
      before the secure call can take place. If either party has the option disabled, the call will not be encrypted.</div>
       
    <span id='media_06'></span>
-   <div class='blueText'>[20181126] STUN, TURN, ICE &amp; Jingle for NAT Traversal in media call setup</div>
+   <div class='blueText'>[20210302] STUN, TURN, ICE &amp; Jingle for NAT Traversal in media call setup</div>
    <image src="./img/atalk_ice.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
    <div class='innerText'>NATs (Network Address Translation) and firewalls play a very important role in securing and
      enhancing the usability of internal networks, however impose significant challenges in setting up a reliable VoIP
      call bewteen two end-points. STUN, TURN, and ICE are a set of IETF standard protocols for negotiating traversing
      NATs when establishing peer-to-peer communication sessions.</div>
-   <div class='innerText'>A host uses <b>Session Traversal Utilities for NAT (STUN)</b> to discover its public IP
+   <div class='innerText'>A device uses <b>Session Traversal Utilities for NAT (STUN)</b> to discover its public IP
      address and type of firwall when it is located behind a NAT/Firewall. It then uses this information to assist in
      establishing peer-to-peer VoIP connectivity.</div>
    <div class='innerText'>While STUN is effective in addressing the NAT issue with most consumer NAT devices (routers),
@@ -1707,7 +1707,9 @@ ul li {
      defined options can be found in <b>Account settings... | ICE.</b></div>
        <ul>
        <li><b>Use ICE, Use UPnP &amp; Use jingle nodes</b>: It is good ideas to check all these options so as to
-         facilitae higher possibliity of a succesful media connection.</li>
+         facilitae higher possibliity of a succesful media connection. In the case for UPnP, the feature on the
+         router to which the device is connected must be enabled for it to work. UPnP facitate a successful call when
+         only one of the call parties is behind firewall.</li>
          <image src="./img/atalk_stun_turn.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
        <li><b>Auto discover STUN/TURN servers</b>: When this option is checked, aTalk will attempt to discover
          STUN/TURN using service domain from the user account i.e. via SRV records fetching. You should NOT enable
@@ -1720,7 +1722,10 @@ ul li {
          Candidate Harvesters. You may enter FQDN or the server IP address in the <b>IP Address</b> field. aTalk adds
          this list to the ICE Agent Candicate Harvester after the Auto discover STUN/TURN process has completed. If
          aTalk found zero user configured or from auto discovered stun server, it falls back to use aTalk pre-defined
-         internal stun servers.</li>
+         internal stun servers.
+         <br/><b>Note: </b> The STUN/TURN server must not share the same public ip address as the device i.e. using
+           the same network. Otherwise it is not possible for the device to discover its own public ip address,
+           and the UPnP will not be working either.</li>
        <li><b>Auto discover Jingle Nodes relays</b>: Not use</li>
        <li><b>Additional Jingle Nodes</b>: User defined Jingle Nodes with optional media relay support.</li>
     </ul>
