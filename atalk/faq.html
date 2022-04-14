@@ -114,8 +114,8 @@ ul li {
          <li><a href=#feature_09>[20200330] XEP-0048: Bookmarks and autoJoin option for conference</a></li>
          <li><a href=#feature_10>[20191004] XEP-0070: Verifying HTTP Requests via XMPP and WebView Implementation</a></li>
          <li><a href=#feature_04>[20190526] Stickers, Bitmoji and Emoji rich content sharing </a></li>
-         <li><a href=#feature_05>[20200714] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
-         <li><a href=#feature_10>[20200417] Text to Speech and speech recognition in chat/groupchat session</a></li>
+         <li><a href=#feature_05>[20220414] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
+         <li><a href=#feature_10>[20200417] Text to Speech and speech recognition in chat/groupChat session</a></li>
          <li><a href=#feature_11>[20191218] Share, Quote and Forward of messages and media contents</a></li>
          <li><a href=#feature_12>[20200619] aTalk Heads-Up Notification and Quiet-Hours</a></li>
          <li><a href=#feature_13>[20200619] aTalk Notification Events</a></li>
@@ -126,15 +126,15 @@ ul li {
      </ul>
       <h4>OMEMO Messaging</h4>
       <ul>
-         <li><a href=#omemo_01>[20200714] Why the OMEMO option is grayed out in my chat session menu?</a></li>
+         <li><a href=#omemo_01>[20200714] Why the OMEMO option is greyed out in my chat session menu?</a></li>
          <li><a href=#omemo_02>[20190916] Why am I being asked to authenticate the contact during secured chat?</a></li>
          <li><a href=#omemo_03>[20190716] What is Blind Trust Before Verification?</a></li>
-         <li><a href=#omemo_04>[20190716] When do I have to perform "Regenerate Omemo identity"?</a></li>
+         <li><a href=#omemo_04>[20190716] When do I have to perform "Regenerate OMEMO identity"?</a></li>
       </ul>
      <h4>OTR Messaging</h4>
       <ul>
          <li><a href=#otr_01>[20190716] What are the OTR version supported by aTalk?</a></li>
-         <li><a href=#otr_02>[20190716] Why the OTR option is grayed out in my chat session menu?</a></li>
+         <li><a href=#otr_02>[20190716] Why the OTR option is greyed out in my chat session menu?</a></li>
       </ul>
      <h4>Media Call Communications</h4>
       <ul>
@@ -187,12 +187,12 @@ ul li {
        <li><b>Pull Down Menu</b>: Each menu is usually accompanied with other user selectable options. These options are
          accessed via tool icons shown in the navigation bar, or pull down for menu overflow options. On some older
          android device, there is a dedicated Menu button.</li>
-       <li><b>Chat/Info Access</b>: Some of the information or aTalk feature is accessed via a quick touch/clik on the
+       <li><b>Chat/Info Access</b>: Some of the information or aTalk feature is accessed via a quick touch/click on the
          item or displayed icon on the view page e.g. presence status icon, call buttons and avatar etc. Click on the
          contact or chat room listed item launches the chat session.</li>
        <li><b>Context Menu</b>: All aTalk context menus are accessed via long click/press on the item. Long press on
          contact item in the main menu will pop up the context menu e.g. to activate Text->Speech for incoming message
-         during the chat chat session. <a href=#feature_10>Text to Speech and speech recognition in chat/groupchat session</a></li>
+         during the chat chat session. <a href=#feature_10>Text to Speech and speech recognition in chat/groupChat session</a></li>
        <li><b>Heads-up Notification</b>: When there is an incoming call or an incoming message, a heads-up notification
          will pop-up. The heads-up notification is used by user to answer or dismiss an incoming call. In the case of
          the incoming message, the heads-up notification allow user to mark the message as read, or directly reply to
@@ -219,25 +219,28 @@ ul li {
      chat session viewPager group. All the active chat sessions remain in viewPager until user closes the chat. When
      there are more than one active chat sessions, user may navigate between all active chat sessions by slide right/left
      gesture to navigate without exit the chat session view.</div>
-   <div class='innerText'><image src="./img/atalk_chat_viewpager.png" align="right" width="30%" style="margin:5px 0px 20px 15px"/></div>
 
    <div class='innerText'><b>Heads-up Notification</b></div>
-   <div class='innerText'>Both aTalk incoming call and incomming message use anroid heads-up notifications as an UI
+   <div class='innerText'>Both aTalk incoming call and incoming message use android heads-up notifications as an UI
      interface for user action. In order for these two heads-up UI's to work properly, user must ensure both the android
-     notifications for alert (sound) and popo-up are enabled; set the sound to 'Silent' and disable Vibrate, as aTalk
+     <image src="./img/atalk_heads-up_notification_setting.png" align="left" width="30%" style="margin:15px 15px 20px 0px"/>
+     notifications for alert (sound) and pop-up are enabled; set the sound to 'Silent' and disable Vibrate, as aTalk
      has its own ring tone and vibrator handlers. Please refer to the attached screenshots for the correct android
      notification settings. The UI may be different pending on android OS version.</div>
-   <div class='innerText'><image src="./img/atalk_heads-up_notification_setting.png" align="left" width="30%" style="margin:5px 0px 20px 15px"/>
-   <image src="./img/atalk_heads-up_notification_settings.png" align="inline" width="30%" style="margin:5px 0px 120px 30px"/></div>
-   <hr/>
+   <div class='innerText'>
+     <image src="./img/atalk_heads-up_notification_settings.png" align="left-bottom" width="30%" style="margin:15px 0px 120px 30px"/>
+     <image src="./img/atalk_chat_viewpager.png" align="left" width="30%" style="margin:15px 0px 20px 15px"/>
+   </div>
+  
    <!-- ========================= Account setup ====================== -->
+   <hr/>
    <div id='subSection'>Account Setup &amp; Login</div>
 
    <span id='account_01'></span>
    <div class='blueText'>Does aTalk communicate with all the available xmpp clients in the market? <a href=#content>{ Content }</a></div>
    <div class='innerText'>By definition, if an xmpp client implementation follows XMPP standards as defined in 
       XEP's spefications, then it should be able to work with aTalk. A list of all the XEP's supported by aTalk
-      can be viewed in the About dialog box on your installed device or the site: 
+      can be viewed in the About dialogue box on your installed device or the site: 
       <a href="https://github.com/cmeng-git/atalk-android">atalk-android</a>
    </div>
    <div class='innerText'>aTalk has been verified to work with the following xmpp clients e.g.
@@ -264,7 +267,7 @@ ul li {
    </ul>
    
    <div class='innerText'>If you leave the <b>Override server setting</b> option unchecked, aTalk first checks to
-     ensure the specified service domain is reachable; it searches for the actual internet ip address on a Domain Name
+     ensure the specified service domain is reachable; it searches for the actual internet IP address on a Domain Name
      Server (DNS). On success, aTalk proceeds to lookup the SRV record on the server which contains the required
      ip:port network information for connection.</div>
      <div class='innerText'>Initial connection attempt will fail if neither of the following conditions is met, and
@@ -485,7 +488,7 @@ ul li {
    <div class='innerText'>A few points to note when doing IBR registration as most server has the following rules set:
      <ul>
        <li>If you selected IBR but entered mis-spelled user name or password during login, aTalk will also prompt
-          you with an IBR dialog even the account already exists on the server. For security reason, xmpp server
+          you with an IBR dialogue even the account already exists on the server. For security reason, xmpp server
           always throws the same exception i.e &lt;not-authorized/&gt; for both "Invalid username or password"
           and "non-existence" account on server.</li>
        <li>Server will reject IBR registration for an account already exists on the server with:
@@ -547,10 +550,10 @@ ul li {
    <div class='innerText'>In aTalk, when you setup an account and sign in on new server, android OS checks for the site
      certificate validity during the SSL secure socket connection setup. If the site certificate is signed by a trusted
      certificate authority and is also listed in android certified trusted authority list; android proceeds normally
-     with the SSL socket connection, otherwise it throws CertificateException.</div>
+     with the SSL socket connection, otherwise it throws Certificate Exception.</div>
 
     <image src="./img/atalk_certificate_show.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
-    <div class='innerText'>aTalk captures this CertificateException thrown by android OS when the certificate is self-signed.
+    <div class='innerText'>aTalk captures this Certificate Exception thrown by android OS when the certificate is self-signed.
       aTalk then downloads the site certificate and check against its database. It prompts user for manual confirmation
       if the certificate is new to aTalk as shown on the right i.e. <b>Certificate Verification.</b>. You can proceed 
       with login by clicking on the <b>Proceed</b> button. Under this condition, the certificate info is not saved
@@ -603,10 +606,10 @@ ul li {
      <ul>
        <li><b>No group:</b> Any unassigned contacts will be group under default <b>Contacts</b> group.</li>
        <li><b>atalk member:</b> Any existing groups will be listed here for selections.</li>
-       <li><b>Create group: </b> The "Add Contact" dialog provides the option to categorize your new contact to
+       <li><b>Create group: </b> The "Add Contact" dialogue provides the option to categorize your new contact to
          one of your existing defined groups or a newly created group.</li>
      </ul>
-    <div class='innerText'>If you select the <b>Create group...</b> option from the previous menu, a new dialog will
+    <div class='innerText'>If you select the <b>Create group...</b> option from the previous menu, a new dialogue will
       appear as shown below. You may entered the new group name in the entry box provided. You may
       perform this grouping or moving to another group after the contact has been added. </div>
       <image src="./img/atalk_contact_group_create.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
@@ -624,7 +627,7 @@ ul li {
      this case since the message is delivered via s2s network connection.</div>
    <image src="./img/atalk_contact_presence_approval.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
    <div class='innerText'>When you receive the Presence Subscription Request from your buddy via the hosted server, an 
-     <b>Authorization Request</b> dialog is launched for your approval. You may Ignore, Deny or Authorize the request.
+     <b>Authorization Request</b> dialogue is launched for your approval. You may Ignore, Deny or Authorize the request.
      If you accept your buddy request, reciprocally a Presence Subscription Request will be reverted by aTalk to your
      buddy for approval. Meantime your buddy will receive the acknowledgment of your acceptance.</div>
   <div class='innerText'>In the event if you choose to ignore your buddy request; any further re-authorization request
@@ -657,7 +660,7 @@ ul li {
      The continuous mode update is triggered by two parameters changes i.e. <b>distance delta</b> or <b>elapsed time</b>.
      Either condition will trigger a new location fix fetch. The user selectable distance range varies from 0~500m
      with 5m steps; while the elapse time can range from 5~1000S in 10S interval. In continuous mode, user may choose
-     only to send the location messages without displaying the realtime updates of streetViews and map information.
+     only to send the location messages without displaying the real-time updates of streetViews and map information.
      This is done by not selecting the <b>Continuous StreetViews &amp; Map update</b> option to conserve data usage.</div>
    <div class='innerText'>On the streetViews and map display screen, you can select (press and hold) the little orange
      man figure and then drag to a new location on the display map, the streetView display will also be updated
@@ -678,10 +681,10 @@ ul li {
    </div>
    <div class='innerText'><b>Locations playback animation:</b> If you have the location history messages in the
      chat window, long press <b>SteetView &amp; Map</b> button on any of location messages starts the location
-     playback animation at interval of 2S. The playback anmiation either applies to incoming or outgoing messages
+     playback animation at interval of 2S. The playback animation either applies to incoming or outgoing messages
      grouping pending on which message you have initiated the playback animation mode.</div>
    <div class='innerText'><b>GPS Location Demo:</b> The feature has a built-in demo. Long press the
-     <b>Cont. Location update (xm) @xSec</b> button starts the GeoLocation in demo mode. The streetViews and map
+     <b>Cont. Location update (xm) @xSec</b> button starts the Geo-Location in demo mode. The streetViews and map
      will continuous get updated at 2S interval assuming user is moving in the north-west direction. If you enable
      this demo while in chat mode with another device as your buddy, you can see that the buddy device tracks
      and synchronizes the streetViews and map display following the user device.
@@ -689,14 +692,14 @@ ul li {
    <div class='innerText'>Followings are some possible use of the StreetViews & Map feature:</div>
      <ul>
        <li>Allow your love one at home to virtual travel with you while you are visiting places on tour. Sharing nice
-         scenery viedo without consumming big data usage.</li>
-       <li>When you are back from traveling, you can play back the location messages. A sweet memory recall or share
+         scenery video without consuming big data usage.</li>
+       <li>When you are back from travelling, you can play back the location messages. A sweet memory recall or share
          with friends of all the places you have visited.</li>
-       <li>Lost your way while visiting your friend? Just share your gps-location and start a voice call. Your friend
+       <li>Lost your way while visiting your friend? Just share your GPS-location and start a voice call. Your friend
          can guide you until you have safely arrived at the destination.</li>
        <li>In the remote chance that you are in trouble; just start the continuous location update to activate the 
          location streaming. Your love one can track your location and help will be on the way.</li>
-       <li>standalone feature without sending location messages: Travel alone and lost your direction bearing?
+       <li>stand-alone feature without sending location messages: Travel alone and lost your direction bearing?
          Just enable the feature, realign your current location and direction using the streetViews and map information.
          This should help you to avoid unnecessary walking in the wrong direction.</li>
      </ul> 
@@ -778,14 +781,14 @@ ul li {
      rejoin the room at a later time. If you edited the room name in the selector, aTalk will proceed to create a new
      room when you click the <b>Join</b> button. The creation of a new room may fail if you do have the privilege to do so.</div>
    <div class='innerText'><b>Converting 1:1 chat into a group chat:</b> While in a chat session with a buddy, there may
-     a need to have more people to join the dicussion i.e. convert a 1:1 chat session into a multi-user conference.
+     a need to have more people to join the discussion i.e. convert a 1:1 chat session into a multi-user conference.
      To do this, just select <b>Invite</b> option from the pull-down menu; you then add the existing buddy and other
      contacts to the chat room. A new chat room will be created, and invitation sent to all the participants selected.
      <br/>Note: the chat history discussed thus far prior to the new room creation are not sent automatically under
      this case. User needs to perform copy and past of any message to share if so desire.</div>
    <div class='innerText'><b>Room configuration:</b> By default, all new rooms created by aTalk support OMEMO chat,
-     hence it is designated as members-only room. However after a new room has been created, you may procced to change
-     the room configuration as required e.g. to include pasword protection and make it a persistent room etc</div>
+     hence it is designated as members-only room. However after a new room has been created, you may proceed to change
+     the room configuration as required e.g. to include password protection and make it a persistent room etc</div>
    <div class='innerText'><b>Note:</b> If you attempt to join a member-only or not public room while you are not in
      the room member list, the process will failed with an error message. You will no be able to receive or send any
      messages in the chat room. Likewise you will receive an error message if you attempt to destroy chatRoom when
@@ -876,12 +879,12 @@ ul li {
          <li>Click the <b>login</b> link on the webpage, login page as shown on the right will be displayed.</li>
          <li>In the <b>Username</b> field, enter the xmpp user account that you are currently login.</li>
          <li>Then clik the <b>Sign In</b> button on the webPage.</li>
-         <li>Via s2s connection, the visting site sends the XMPP Server Requests Confirmation via XMPP protocol. Pending
+         <li>Via s2s connection, the visiting site sends the XMPP Server Requests Confirmation via XMPP protocol. Pending
            whether the entered user account ends with/without a resource; the site sends either an IQ stanza or a Message
            stanza request to the login entity.</li>
          <image src="./img/atalk_http_auth_request.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
          <li><b>Http Authorization Request</b> as shown on the left is returned if you have entered the username ends with
-           a resource. A similar one will be shown if the username is entered without a resource attribute, its dialog
+           a resource. A similar one will be shown if the username is entered without a resource attribute, its dialogue
            content is defined by the site admin. The demo site actually supports client that does not implement
            XEP-0070 to just reply chat message with the ID for authorization confirmation.</li>
       </ul>
@@ -923,7 +926,7 @@ ul li {
     to search for the content they would like to share with the buddy.</div>
    <div class='innerText'>Stickers, Bitmoji and Emoji rich content sharing is supported during an 1:1 chat or chatRoom session.</div> 
 
-   <div class='innerText'>Plese refer to the following sites for more information:</div>
+   <div class='innerText'>Please refer to the following sites for more information:</div>
    <ul>
      <li><a href="https://www.adweek.com/digital/googles-gboard-android-app-now-lets-you-send-bitmoji-branded-stickers/">
        Google’s Gboard Android App Now Lets You Send Bitmoji, Branded Stickers</a></li>
@@ -933,11 +936,13 @@ ul li {
    </ul>
 
    <span id='feature_05'></span>
-   <div class='blueText'>[20200714] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20220414] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements <a href=#content>{ Content }</a></div>
    <div class='innerText'>aTalk file sharing implementation uses the following XEP protocols:
+     <li><a href="https://xmpp.org/extensions/xep-0234.html">XEP-0234: Jingle File Transfer</a></li>
      <li><a href="https://xmpp.org/extensions/xep-0096.html">XEP-0096: SI File Transfer</a></li>
      <li><a href="https://xmpp.org/extensions/xep-0363.html">XEP-0363: HTTP File Upload</a></li>
      <li><a href="https://xmpp.org/extensions/xep-0264.html">XEP-0264: Jingle Content Thumbnails</a></li>
+     <li><a href="https://xmpp.org/extensions/xep-0391.html">XEP-0391: Jingle Encrypted Transports</a></li>
      <li><a href="https://xmpp.org/extensions/inbox/omemo-media-sharing.html">XEP-xxxx: OMEMO Media Sharing</a></li>
    </div>
    <div class='innerText'>aTalk supports send and receive files for all document types and images. There is an option
@@ -947,38 +952,46 @@ ul li {
      acceptance of file transfer request or stickers sending if the size of the file to be transferred is less than
      or equal to the user defined max file size option.</div>
    <div class='innerText'><image src="./img/atalk_file_sharing.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
-   <div class='innerText'>aTalk implements fault-tolerance file sharing to ensure reliability. aTalk SI File Transfer
-     protocol supports both the SOCK5 and IBB bytesStream options. During file transfer negotiation, aTalk uses the 
-     agreed SI protocol for sharing the file. However if the agreed SI protocol method failed for reason e.g. client
-     symmetric NAT firewall, aTalk automatically fallback to use <b>HTTP File Upload service</b> to ensure a successful
-     file transfer.</div>
-   <div class='innerText'>In the event if your buddy client e.g conversations, does not support the legacy SI File
-     Transfer protocol, aTalk will automatic proceed to use the <b>HTTP File Upload service</b> to share file with the buddy.</div>
-   <div class='innerText'>When aTalk detects your buddy is offline, it automatically selects the HTTP File Upload
-     faciliity, if the protocol is supported by your xmpp service, to continue with the file transfer.</div>
-   <div class='innerText'>XEP-0096: SI File Transfer specification has no provision to transfer file when you are in
-     a muc/conference chat room. Under this condition, aTalk checks the server for HTTP File Upload service support,
-     and uses it if availabe to support file sharing between chat members in conference room.</div>
+   <div class='innerText'>aTalk implements intelligent fault-tolerance file sharing algorithm. aTalk file sharing methods
+     include the use of <b>Jingle File Transfer</b> and legacy <b>SI File Transfer</b> protocols supporting both the
+     SOCK5 and IBB BytesStreams options; and together with <b>HTTP File Upload service</b> to ensure reliability.
+     Files encryption using OMEMO are supported in both the Jingle File Transfer via XEP-0391: Jingle Encrypted
+     Transports, and HTTP File Upload via XEP-xxxx: OMEMO Media Sharing. aTalk file transfer handling priority is as follow:</br>
+     (online) Jingle File Transfer &#8658 SI File Transfer &#8658 (offline and fallback) HTTP File Upload.</div>
    <div class='innerText'><image src="./img/atalk_file_xfer_prompt.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
-   <div class='innerText'>aTalk also supports 'OMEMO Media Sharing' protocol. During an OMEMO chat session either in
-     1-1 or muc, all file sharing will be encrypted before sending via <b>HTTP File Upload service</b>.</div>
+   <div class='innerText'>During file transfer negotiation, aTalk uses the agreed protocol per predefined priorty for
+     sharing the file. However if the agreed protocol method failed for reason e.g. client symmetric NAT firewall,
+     aTalk automatically fallback to use <b>HTTP File Upload service</b> to ensure a successful file transfer.</div>
+   <div class='innerText'>In the event if the remote client advertised e.g conversations, but does not support the
+    XEP-0391: JET protocol. The trasfer failed with user retry. aTalk will automatic proceed to use the
+    <b>HTTP File Upload service</b> for the next 10 files sharing with your buddy.</div>
+   <div class='innerText'><image src="./img/atalk_file_xfer_failed.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
+   <div class='innerText'>When aTalk detects the remote is offline, it automatically selects the HTTP File Upload
+     facility, if the protocol is supported by your xmpp service, to continue with the file transfer.</div>
+   <div class='innerText'>Both XEP-0234: Jingle File Transfer and XEP-0096: SI File Transfer specification have no
+     provision to transfer file when you are in a muc/conference session. Under this condition, aTalk checks the server
+     for HTTP File Upload service support, and uses it if available to support file sharing between muc members.</div>
+   <div class='innerText'>aTalk supports both the <b>Jingle Encrypted Transports</b> and <b>OMEMO Media Sharing</b>
+     protocol. During 1:1 OMEMO chat session, it uses Jingle File Trasfer with JET if supported by the remote client. 
+     In muc OMEMO chat session, all file sharing will be encrypted using <b>OMEMO Media Sharing</b> before sending via
+     <b>HTTP File Upload</b> service.</div>
    <div class='innerText'>aTalk harmonizes and uses a common UI in file sharing, irrespective of which file sharing
      protocols is being used, and in all the various chat sessions. Unlike all other file transfer protocols, when file
      transfer is via <b>HTTP File Upload service</b>, the sender is unaware of the recipient status. After the sender
-     has succcsfully uploaded the file to the server, it forwards the file download link embedded as a chat message
+     has succcesfully uploaded the file to the server, it forwards the file download link embedded as a chat message
      to the recipient. To allow recipient to retrieve the file, aTalk always shows the received file download link as
-     a file transfer request. Selecting the <b>Reject</b> button does not actually delete the file link message. aTalk
+     a file transfer request. Selecting the <b>Decline</b> button does not actually delete the file link message. aTalk
      will show the prompt after user returns to the chat session later, even the user has previously selected the
-     <b>Reject</b> button, either intentionally or unintentionally. To remove the prompt, user must manually select
+     <b>Decline</b> button, either intentionally or unintentionally. To remove the prompt, user must manually select
      and delete the link message/prompt.</div>
 
    <span id='feature_10'></span>
-   <div class='blueText'>[20200417] Text to speech and speech recognition in chat/groupchat session <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20200417] Text to speech and speech recognition in chat/groupChat session <a href=#content>{ Content }</a></div>
    <div class='innerText'><image src="./img/atalk_tts_settings.png" align="right" width="30%" style="margin:0px 0px 15px 15px"/></div>
    <div class='innerText'>aTalk supports speech synthesis from an incoming chat messages for immediate playback
-     during chat or group chat session. To allow speech syntehsis on an incoming message, user must enable both the
+     during chat or group chat session. To allow speech synthesis on an incoming message, user must enable both the
      global TTS and the specific chat session option for speech playback. The global TTS option is accessed via the
-     main menu <b>General TTS settins...</b>. The main TTS settings menu provides the following options:</div>
+     main menu <b>General TTS settings...</b>. The main TTS settings menu provides the following options:</div>
      <ul>
        <li><b>Default TTS voice:</b> displays the current selected voice speech. During playback of the text message,
          android auto-detect the text language type and playback with the correct spoken language. However android
@@ -993,21 +1006,21 @@ ul li {
        <li><b>General TTS settings...</b> Select this option to enter the android OS <b>Text-to-speech output</b>
          configuration menu as shown on the right. The menu allows user to select his/her desired voice output, the
          playback rate and pitch of the speech. If the user selected language resource is not found on the device,
-         android will procced to download the required voice synthesis files. Other More advance voice options can be
+         android will proceed to download the required voice synthesis files. Other More advance voice options can be
          accessed via the <b>Setting</b> icon. Click the <b>Play</b> button to play back a short demo message.</li>
        <div class='innerText'><image src="./img/atalk_tts_output.png" align="right" width="30%" style="margin:0px 0px 15px 15px"/></div>
        <li><b>Demo text entry box:</b></li> User may copy some longer message text from e.g. web browser and paste
-         them in this entry box, to be playbacked or coverted and save into a voice file.</li>
+         them in this entry box, to be play backed or converted and save into a voice file.</li>
        <li><b>Save</b> Save the demo text synthesized speech into the a voice file.</li>
        <li><b>Play</b> Playback the demo text using the user default selected voice output</li>
-       <li><b>OK</b> Exit the user configuraton settins menu.</li>
+       <li><b>OK</b> Exit the user configuration settings menu.</li>
      </ul>
    <div class='innerText'><image src="./img/atalk_tts_enable_opt.png" align="left" width="30%" style="margin:0px 15px 15px 0px"/></div>
    <div class='innerText'>After you have enabled the global TTS option from the main menu, you may now procced to
      enable/disable the TTS operation for the individual chat or group chat session. To enable TTS feature for the
-     desired chat session, long click on the specific contact or chatroom item in the respective item list diplay;
+     desired chat session, long click on the specific contact or chatroom item in the respective item list display;
      a pop-up menu will appear containing the TTS toggle option for user selection. This TTS enable/disable option is
-     also  available during the chat seesion access, that is accessed via the chat session main pull down menu.</div>
+     also  available during the chat session access, that is accessed via the chat session main pull down menu.</div>
    <div class='innerText'>When a chat/group session has the Text to Speech option enabled; aTalk automatically synthesize
      any incoming message text to speech, and playback after the specific delay. When you tab on the message text in
      the incoming or outgoing message view holder, the selected text will also be playback in synthesized voice.</div>
