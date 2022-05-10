@@ -139,8 +139,9 @@ ul li {
      <h4>Media Call Communications</h4>
       <ul>
          <li><a href=#media_01>[20191102] Why the call options button are not shown on some of my contacts in the contact list?</a></li>
-         <li><a href=#media_02>[20181228] Media Call and Chat Message sessions</a></li>
+         <li><a href=#media_02>[20220510] Media Call and Chat Message sessions</a></li>
          <li><a href=#media_03>[20181228] Video Call session</a></li>
+         <li><a href=#media_07>[20220510] Call Transfer for Unattended and Attended mode</a></li>
          <li><a href=#media_04>[20210208] Jabber VoIP-PBX gateway Telephony (experimental)</a></li>
          <li><a href=#media_05>[20181228] VoIP communications security via SRTP with ZRTP, DTLS and SDES protocol.</a></li>
          <li><a href=#media_06>[20210302] STUN, TURN, ICE &amp; Jingle for NAT Traversal in media call setup</a></li>
@@ -1517,7 +1518,7 @@ ul li {
      the right, if you buddy client supports the media call services.</div>
       
    <span id='media_02'></span>
-   <div class='blueText'>[20181228] Media Call and Chat Message sessions <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20220510] Media Call and Chat Message sessions <a href=#content>{ Content }</a></div>
    <div class='innerText'>aTalk allows user to send chat messages while an active call is in progress. User may start
      a media call while in chat mode or vice-versa. When simultaneous call and chat sessions are in progress, switching
      between the two modes is easily performed with the two special buttons i.e. Back-To-Chat while in call mode, and
@@ -1529,30 +1530,34 @@ ul li {
      <li><b>Mute/Unmute-Mic or Mic Gain</b>: Mute or unmute mic. Long Press to adjust mic gain</li>
      <li><b>Video-Call</b>: Turn on/off camera and video streaming. Long press to toggle between front and back camera</li>
      <li><b>Call-Hold</b>: Hold call - pause both audio and video media streams</li>
-     <li><b>Call-HangUp</b>: End the call. Note: BackPress button does not end call</li>
+     <li><b>Call-Transfer</b>: Call Transfor for Unattended or Attended mode</li>
+     <li><b>Call-HangUp</b>: End the call. Note: Pressing BackKey button does not end call</li>
    </ul>
-   <div class='innerText'>When the handsfree/speaker-phone mode is not enabled, the received audio is heard via the
-     phone internal receiver piece or the headset that is connected to the phone audio jack.</div>
-   
    <div class='innerText'><image src="./img/atalk_chat_backtocall.png" align="right" width="30%" style="margin:5px 5px" /></div>
    <div class='innerText'>During chat mode, the Back-To-Call will only be shown when there is an active call in progess.
      Otherwise a voice message (mic) send button is shown instead.</div>
    <ul>
      <li><b>Back-To-Call</b>: Click to switch to call that is in progress.</li>
    </ul>
-   
+ 
+   <div class='innerText'>When the handsfree/speaker-phone mode is not enabled, the received audio is output via the
+     phone internal receiver piece or the headset that is connected to the phone audio jack.</div>
+
    <div class='innerText'>When user switches to chat mode, all video streaming will be paused as there is no focus window
      for video display. However audio streaming remains active at all time. When user switches back to video call,
      the video streaming will resume automatically.</div>
    <div class='innerText'>When in chat mode, user may peform some simple tasks with the active call using the 
-     call notification panel as shown below, without actually switching back to call mode.</div>
-   <div class='innerText'><image src="./img/atalk_call_notifications.png" align="right" width="30%" style="margin:5px 0px 5px 15px" /></div>
+     <b>Call Control</b> panel on notificatgion bar as shown, without actually switching back to call mode.
+     The <b>Call Control</b> panel is also used to switch between two active calls during Attended call transfer setup.</div>
+   <div class='innerText'><image src="./img/atalk_call_notifications.png" align="right" width="30%" style="margin:5px 0px 5px 15px" /></div>   
    <ul>
      <li><b>Back-To-Call</b>: Click to return to media call that is in progress</li>
      <li><b>Speaker-Phone</b>: Click to route incoming audio via phone receiver piece or speaker</li>
      <li><b>Mute/Unmute-Mic</b>: Click to mute/unmute mic</li>
      <li><b>Call-Hold</b>: Click to hold/unhold call</li>
+     <li><b>Call-Transfer</b>: Click to launch the Call Transfer dialog for call transfer setup</li>
      <li><b>Call-HangUp</b>: Click to end the call</li>
+     <li><b>Avatar</b>: Click this to switch between the two active calls; during Attended call transfer</li>
    </ul>
 
    <div class='innerText'><image src="./img/atalk_video_call.png" align="right" width="20%" style="margin:5px 5px 0px 15px" /></div>
@@ -1584,6 +1589,59 @@ ul li {
      option items in the action bar. To toggle front and back camera, long press the video icon at the bottom of the 
      display.</div>
 
+   <span id='media_07'></span>
+   <div class='blueText'>[20220510] Call Transfer for Unattended and Attended mode <a href=#content>{ Content }</a></div>
+   <div class='innerText'>aTalk supports both Unattended and Attended call transfer as outlines in: 
+   <a href="https://xmpp.org/extensions/xep-0251.html">XEP-0251: Jingle Session Transfer</a>. All call parties involved
+     must support this feature for the Call Transfer to work properly.</div>
+   <div class='innerText'><image src="./img/atalk_call_ui.png" align="right" width="20%" style="margin:5px 5px 0px 15px" /></div> 
+   <div class='innerText'>This section describes the procedure flow for the Unattended and Attended Call Transfer.
+     Assuming the call parties involved are:
+     <ul>
+       <li><b>Caller</b>: The person who initiate the call to Secretary.</li>
+       <li><b>Secretary</b>: The callee who initiate the call transfer from Caller to Boss.</li>
+       <li><b>Boss</b>: The person whom the call is beign transferred to via the Secretary.</li>
+     </ul>
+     </div>
+
+   <div class='innerText'><b>Unattended Call Transfer:</b></div>
+   <div class='innerText'>The session procedure flow for the Unattended call is as follow:
+     <ul>
+       <li>The Caller initiates a call to the Secretary.</li>
+       <li>The Secretary takes the call. After verification of the caller, she proceeds with the call transfer setup.</li>
+       <li>The Secretary clicks the <b>Call Transfer</b> button to lauch the Call Transfer dialog. Then she selects
+         the Boss e.g. abc123@atalk.sytes.net as shown in the image, and click the <b>Transfer</b> button.</li>
+       <li>This initiates a Call Transfer request to the Caller. The Secretary call is then ended after Caller
+         acknowledges the call transfer request.</li>
+       <li>Unpon received the Call Transfer request from Secretary, the Caller automatic starts a new call setup with
+         the boss. The call transfer is completed when the Bos;ss phone auto answers the call.</li>
+     </ul>
+   </div>
+
+
+   <div class='innerText'><b>Attended Call Transfer:</b></div>
+   <div class='innerText'><image src="./img/atalk_call_transfer.png" align="right" width="20%" style="margin:5px 5px 0px 15px" /></div> 
+   <div class='innerText'>The session procedure flow for the Attended call is as follow:
+     <ul>
+       <li>The Caller initiates a call to the Secretary.</li>
+       <li>The Secretary takes the call, and verifies with the caller intents.</li>
+       <li>The Secretary presses the BackKey, the current active call control is pushed onto the notification bar.
+         This allows the Secrectary to start a new call with the boss from the contact list UI.</li>
+       <li>After confirmation by the Boss to take the call, the Secretary then accesses the previous active
+         call via <b>Call Control</b> panel on notification bar, and selects the <b>Call Transfer</b> option.</li> 
+       <li>The <b>Call Transfer</b> button click lauches the Call Transfer dialog. In an Attended call transfer flow,
+         the Boss contact item is automatically selected. The Secretary confirms the selection and clicks the 
+         <b>Transfer</b> button.</li>
+       <li>This initiates an Attended Call Transfer request to the Caller. The Secretary call is then ended after Caller
+         acknowledges the call transfer request.</li>
+       <li>Unpon received the Call Transfer request from Secretary, the Caller automatic starts a new call setup with
+         the boss. The call transfer is completed when the Boss answers the call.</li>
+     </ul>   
+     <b>Note:</b> if the Secretary clicks the <b>Call Transfer</b> button on the UI of the call with the boss; the
+     Attended Call Transfer request is sent to the Boss phone to perform the call transfer. In this call transfer setup,
+     the Caller contact is automatically selected in the Transfer dialog UI.
+   </div>
+
    <span id='media_04'></span>
    <div class='blueText'>[20210208] Jabber VoIP-PBX gateway Telephony (experimental) <a href=#content>{ Content }</a></div>
    <div class='innerText'>One distinguishing characteristic of Jabber technologies has been the existence of gateways
@@ -1593,7 +1651,7 @@ ul li {
      <image src="./img/12.atalk_telephony.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
      <ul>
        <li><b>Gateway</b>: A service on the Jabber network that translates between the Jabber/XMPP protocols and
-         the protocol used by a Legacy Service (non-XMPP instant messaging service etc); in this context, "gateway"
+         the protocol usd by a Legacy Service (non-XMPP instant messaging service etc); in this context, "gateway"
          means a "client proxy service" that acts as a client with regard to a Legacy Service and thereby
          "masquerades" as a user on such a service.</li>
      </ul>
