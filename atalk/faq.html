@@ -1590,22 +1590,22 @@ ul li {
      display.</div>
 
    <span id='media_07'></span>
-   <div class='blueText'>[20220510] Call Transfer for Unattended and Attended mode <a href=#content>{ Content }</a></div>
-   <div class='innerText'>aTalk supports both Unattended and Attended call transfer as outlines in: 
-   <a href="https://xmpp.org/extensions/xep-0251.html">XEP-0251: Jingle Session Transfer</a>. All call parties involved
-     must support this feature for the Call Transfer to work properly.</div>
+   <div class='blueText'>[20220510] Call Transfer for Unattended and <Attended mode <a href=#content>{ Content }</a></div>
    <div class='innerText'><image src="./img/atalk_call_ui.png" align="right" width="20%" style="margin:5px 5px 0px 15px" /></div> 
+   <div class='innerText'>aTalk supports both <b>Unattended</b> and <b>Attended</b> call transfer as outlines in: 
+   <a href="https://xmpp.org/extensions/xep-0251.html">XEP-0251: Jingle Session Transfer</a>. All call parties involved
+     must support this feature for the Attended Call Transfer to work properly.</div>
    <div class='innerText'>This section describes the procedure flow for the Unattended and Attended Call Transfer.
      Assuming the call parties involved are:
      <ul>
        <li><b>Caller</b>: The person who initiate the call to Secretary.</li>
        <li><b>Secretary</b>: The callee who initiate the call transfer from Caller to Boss.</li>
-       <li><b>Boss</b>: The person whom the call is beign transferred to via the Secretary.</li>
+       <li><b>Boss</b>: The person whom the call is being transferred to via the Secretary.</li>
      </ul>
      </div>
 
-   <div class='innerText'><b>Unattended Call Transfer:</b></div>
-   <div class='innerText'>The session procedure flow for the Unattended call is as follow:
+   <div class='innerText'><b><u>Unattended Call Transfer:</u></b></div>
+   <div class='innerText'>The session procedure flow for the Unattended call transfer is as follow:
      <ul>
        <li>The Caller initiates a call to the Secretary.</li>
        <li>The Secretary takes the call. After verification of the caller, she proceeds with the call transfer setup.</li>
@@ -1613,29 +1613,38 @@ ul li {
          the Boss e.g. abc123@atalk.sytes.net as shown in the image, and click the <b>Transfer</b> button.</li>
        <li>This initiates a Call Transfer request to the Caller. The Secretary call is then ended after Caller
          acknowledges the call transfer request.</li>
-       <li>Unpon received the Call Transfer request from Secretary, the Caller automatic starts a new call setup with
-         the boss. The call transfer is completed when the Bos;ss phone auto answers the call.</li>
+       <div class='innerText'><image src="./img/atalk_call_transfer.png" align="right" width="20%" style="margin:5px 5px 0px 15px" /></div> 
+       <li>Unpon received the Call Transfer request from Secretary, the Caller phone automatic initiate a new call
+         with the boss. The call transfer is completed when the Boss answers the call.</li>
      </ul>
-   </div>
+     <b>Note:</b> In the case for Unattended Call Transfer, the boss phone is not required to support XEP-0251 protocol.</div>
 
 
-   <div class='innerText'><b>Attended Call Transfer:</b></div>
-   <div class='innerText'><image src="./img/atalk_call_transfer.png" align="right" width="20%" style="margin:5px 5px 0px 15px" /></div> 
-   <div class='innerText'>The session procedure flow for the Attended call is as follow:
+   <div class='innerText'><b><u>Attended Call Transfer:</u></b></div>
+   <div class='innerText'>The session procedure flow for the Attended call transfer is as follow:
      <ul>
        <li>The Caller initiates a call to the Secretary.</li>
-       <li>The Secretary takes the call, and verifies with the caller intents.</li>
-       <li>The Secretary presses the BackKey, the current active call control is pushed onto the notification bar.
+       <li>The Secretary takes the call, and verifies with the caller intent.</li>
+       <li>The Secretary clicks the BackKey, the current active call UI is pushed onto the notification bar.
          This allows the Secrectary to start a new call with the boss from the contact list UI.</li>
-       <li>After confirmation by the Boss to take the call, the Secretary then accesses the previous active
-         call via <b>Call Control</b> panel on notification bar, and selects the <b>Call Transfer</b> option.</li> 
+       <li>The Caller phone is automatically being put onhold while the Secretary making the new call with the Boss.</li>
+       <li>After confirm with the Boss to take the call, the Secretary makes access to the previous active
+         call via <b>Call Control</b> panel on notification bar, and selects the <b>Call Transfer</b> option.
+         On some phone UI, the last active <b>Call Control</b> panel overlay on top of the current active call
+         UI for user access.</li> 
+       <div class='innerText'><image src="./img/atalk_call_transfer_cp.png" align="right" width="25%" style="margin:5px 5px 0px 15px" /></div> 
        <li>The <b>Call Transfer</b> button click lauches the Call Transfer dialog. In an Attended call transfer flow,
          the Boss contact item is automatically selected. The Secretary confirms the selection and clicks the 
          <b>Transfer</b> button.</li>
-       <li>This initiates an Attended Call Transfer request to the Caller. The Secretary call is then ended after Caller
-         acknowledges the call transfer request.</li>
+       <li>Before an Attended Call Transfer request to the Caller is initiated, aTalk on Secretary phone makes a check
+         for the XEP-0251 support on Boss phone. An alert dialog is shown if the Boss phone does not support the
+         Attended Call transfer protocol. Call transfer failed with both Caller and Boss phones put onHold; waiting for
+         the Secretary to take necessary action.</li>
+      <div class='innerText'><image src="./img/atalk_call_transfer_failed.png" align="right" width="30%" style="margin:5px 5px 0px 15px" /></div> 
+       <li>On successful check, aTalk initiates an Attended Call Transfer request to the Caller. The Secretary call is
+         then ended after Caller acknowledges the call transfer request.</li>
        <li>Unpon received the Call Transfer request from Secretary, the Caller automatic starts a new call setup with
-         the boss. The call transfer is completed when the Boss answers the call.</li>
+         the boss. The call transfer is completed when the Boss phone auto answers the call.</li>
      </ul>   
      <b>Note:</b> if the Secretary clicks the <b>Call Transfer</b> button on the UI of the call with the boss; the
      Attended Call Transfer request is sent to the Boss phone to perform the call transfer. In this call transfer setup,
