@@ -478,8 +478,8 @@ header.dark nav ul li a:hover{
 
 .blog_posts ul li .media{
     position: relative;
-	width: 240px;
-    height: 480px;
+    width: 240px;
+    height: 450px;
     margin-bottom: 110px;
 }
 
@@ -524,11 +524,15 @@ header.dark nav ul li a:hover{
     margin: 20px 0 0 0;
 }
 
+.blog_posts a{  
+    color: blue;
+}
+
 /*    feature    */
 .feature{
     max-width: 920px;
     margin: 0 auto;
-    margin-top: 120px;
+    margin-top: 100px;
 }
 
 .feature ul{
@@ -537,10 +541,10 @@ header.dark nav ul li a:hover{
 
 .feature ul li{
     margin-left: 20px;
-    margin-bottom:10px;
+    margin-bottom: 10px;
     color: #424242;
     font-family: "raleway-regular", arial;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .feature ul li p{

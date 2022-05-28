@@ -113,7 +113,10 @@ ul li {
        <li><a href=#hymnch_0070>[20220105] User defined media configuration</a></li>
      </ul>
      <ul>
-       <li><a href=#hymnch_0080>[20220106] User defined media database configuration</a></li>
+       <li><a href=#hymnch_0080>[20220528] User defined media database configuration</a></li>
+     </ul>
+     <ul>
+       <li><a href=#hymnch_0090>[20220528] Hymnchtv debug version installation</a></li>
      </ul>
 
 
@@ -474,7 +477,7 @@ ul li {
   </div>
 
    <span id='hymnch_0080'></span>
-   <div class='blueText'>[[20220106] User defined media database configuration <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[[20220528] User defined media database configuration <a href=#content>{ Content }</a></div>
    <div class='innerText'>Hymnchtv provides other tools to ease user in managing the user defined media record/database.
      All the user defined media configureations are stored in the hymnchtv internal database as media records. The
      included functions provided allow one user to share his media contents setup in the database with another user by
@@ -487,7 +490,7 @@ ul li {
          Hymn_all-&lt;timestamp>, where the timestamp format is "YYYYMMDD_HHMMSS". If you long click on the button, the
          file will contain all the media records with url links only and the file is named with
          hymn_link-&lt;timestamp>.txt.</li>
-       <li><b><a href="./index.html#create_export">自建导出</a></b>: Instead of creating an individual media record per user desired media content, as described
+       <li><b><a href="./index.html#create_export">自建导入</a></b>: Instead of creating an individual media record per user desired media content, as described
          in the <a href='#hymnch_0070'>previous section</a>; one can actually use the auto-create export file for a
          batch media contents import. See below on the actual process and operation.</li>
        <li><b>数库列项</b>: Select this option to show a list of all the media records saved in the database. The list
@@ -499,7 +502,7 @@ ul li {
        <li><b>数库导入</b>: Import all the media record contents as defined in the exported txt file into the hymnchtv database.
          Each media record will be saved in the respective database per the defined HymnType of the media record.</li>
        <li><b>覆盖现有</b>: Check this option if you want hymnchtv to overwrite any existing media record in the
-         database during the database import process.</li>
+         database during the database import 数库导入 process.</li>
          <li><b>QQ&#x2B07;</b>: Click this button to create all the QQ hymn info links, the process may take some time
          pending on the network condition; the links are used in the QQ-info search in
          <a href=#hymnch_0050>Hymn media player UI interface, control and playback operations</a></li>
@@ -511,8 +514,8 @@ ul li {
        <li><image src="./img/ic_edit.png" width="24" height="24" align="middle" style="margin:5px 5px"/> When user clicks
          on this icon while there is a valid export filename entry in the <b>数据库导入文件</b> field, hymnchtv opens the
          RichText editor with the inserted file content for editing.
-         <br />When the user has peformed one of the <b>[数库导出|自建导出]</b> operations, the generated export filepath
-         is shown in the <b>数据库导入文件</b> field, and the RichText Editor is launched with the exported file content
+         <br />When the user has peformed one of the <b>[数库导出|自建导入]</b> operations, the generated export filepath
+         is shown in the <b>数据库导入文件</b> field, and the RichText Editor is launched with the generated file content
          inserted for verification.</li>
        <li><image src="./img/ic_help_video.png" width="24" height="24" align="middle" style="margin:5px 5px"/> When user 
        clicks on this icon, hymnchtv will playback two demo media for user defined media configuration setup i.e.
@@ -520,27 +523,28 @@ ul li {
          hymnchtv media directory.</li>
      </ul>
 
-     <b>自建导出 process and operation:</b>
-     <br />One can use the <b>自建导出</b> to auto-create the export file for a batch media contents import; instead of
+     <b>自建导入 process and operation:</b>
+     <br />One can use the <b>自建导入</b> to auto-create the import file for a batch media contents import; instead of
      doing the media record one at a time. Follow the steps given below to perform this operation. For this to work
-     properly and effectively, the media file should contain the actual HymnNo as part of the filename.
+     properly and effectively, the media file must contain the actual HymnNo as part of the filename e.g. ChHymns-0264.mp3
+     or xb0079憐憫.mp3.
      <div class='innerText'><image src="./img/hymnchtv_rich_editor.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/></div>
      <ul>
        <li>Copy all the user desired media files into their associated HymnType/MediaType sub-directory.
          Please refer to <a href="#hymnch_0060">Hymn media storage and selection algorithm for playback</a>
          on the directory structure used by hymnchtv. It is recommended that you use the defined directory structure,
          to ease this process.</li>
-       <li>From the user defined media configuration page, select the HymnType, to specify to the auto generation
-         routine the location where all the media files are being saved.</li>
-       <li>Click the <b>自建导出</b> button to proceed with the auto export file creation process. Basing on the given
-         HymnType, and the HymnNo embedded in the media file name, each media record is created and added to the
-         export text file.</li>
-       <li>After the <b>自建导出</b> operation, the actual created filename/path is shown in the <b>数据库导入文件</b> field
+       <li>From the user defined media configuration UI page, first select the HymnType/MediaType i.e.<br />
+         [诗歌类别|媒体类型], to specify to the auto generation routine the location where all the media files are being saved.</li>
+       <li>Click the <b>自建导入</b> button to proceed with the auto import file creation process. Basing on the given
+         HymnType/MediaType [诗歌类别|媒体类型], and the HymnNo embedded in the media file name, each media record is
+         created and added to the import text file, sorted with hymnNo in ascending order.</li>
+       <li>After the <b>自建导入</b> operation, the actual created filename/path is shown in the <b>数据库导入文件</b> field
          and a RichText Editor is launched with the file content inserted for user verification and correction. After
          the modifications, click the <b>确认</b> to save the changes</li>
        <li><b>覆盖现有</b> Check this option if you want hymnchtv to overwrite any existing media record in the
          database during the database import process.</li>
-       <li>Click the <b>数据库导入</b> button to import the file content into the hymnchtv database.</li>
+       <li>Click the <b>数库导入</b> button to import the file content into the hymnchtv database.</li>
        <li>Click the <b>数库列项</b> button to check all the media records that have been imported into the hymnchtv
          database properly.</li>
        <li>If there is any error found in <b>数库列项</b>, you can make minor correction, using either one of the
@@ -548,7 +552,7 @@ ul li {
         <br />* click on the error item in the list and use the media record UI to make changes before saving the
         updated record; or
         <br />* return to the exported file using the embedded RichText Editor to do the correction. Then perform the
-        <b>数据库导入</b> process with <b>覆盖现有</b> option checked.</li>
+        <b>数据导入</b> process with <b>覆盖现有</b> option checked.</li>
      </ul>
      <b>Export file media record string format:</b>
      <br />Each media record string is consisted of the following parameters separated by commas:
@@ -575,6 +579,28 @@ ul li {
      </ul>
    </div> 
 
+   <span id='hymnch_0090'></span>
+   <div class='blueText'>[[20220528] [20220528] Hymnchtv debug version installation <a href=#content>{ Content }</a></div>
+   <div class='innerText'>
+     You may obtain a copy of the latest hymnchtv debug apk for your personal evaluation from the link below:
+     <li><a href="https://atalk.sytes.net/releases/hymnchtv/hymnchtv-debug.apk">https://atalk.sytes.net/releases/hymnchtv/hymnchtv-debug.apk</a></li>
+   </div>
+   <div class='innerText'>Please note that the debug apk contains a different signature from the one in android
+     playstore apk. Android OS will prompt you to uninstall the existing app if any, before you can install the debug
+     apk with a different signature.</div>
+   <div class='innerText'>
+     <b>Warning:</b> Please perform the following before you uninstall the existing app if any; otherwise you may loose
+       all the media url and file links information previously saved in the database; although all the media contents
+       in the Download/hymnchtv directly are intact.
+     <ul>
+       <li>Go to menu [用户定义媒体设置]</li>
+       <li>Export the database [数库导出]. Take note of the import file name.</li>
+       <li>Install the debug apk</li>
+       <li>Import the previously save text file into the database [数库导入]</li>
+     </ul>
+   </div>
+
+
    <span id=''></span>
    <div class='blueText'> <a href=#content>{ Content }</a></div>
    <div class='innerText'></div>
@@ -584,7 +610,7 @@ ul li {
        <li></li>
      </ul>
 
-   <div class='blueText'> <a href="./index.html">...back</a></div>
+   <div class='blueText'> <a href="./index.html">...back to main page</a></div>
 </div>
 </div>
 </body>
