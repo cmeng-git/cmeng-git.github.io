@@ -142,6 +142,7 @@ ul li {
          <li><a href=#media_02>[20220510] Media Call and Chat Message sessions</a></li>
          <li><a href=#media_03>[20181228] Video Call session</a></li>
          <li><a href=#media_07>[20220510] Call Transfer for Unattended and Attended mode</a></li>
+         <li><a href=#media_08>[20220614] Call Waiting and Call Switching</a></li>
          <li><a href=#media_04>[20210208] Jabber VoIP-PBX gateway Telephony (experimental)</a></li>
          <li><a href=#media_05>[20181228] VoIP communications security via SRTP with ZRTP, DTLS and SDES protocol.</a></li>
          <li><a href=#media_06>[20210302] STUN, TURN, ICE &amp; Jingle for NAT Traversal in media call setup</a></li>
@@ -1590,7 +1591,7 @@ ul li {
      display.</div>
 
    <span id='media_07'></span>
-   <div class='blueText'>[20220510] Call Transfer for Unattended and <Attended mode <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20220510] Call Transfer for Unattended and Attended mode <a href=#content>{ Content }</a></div>
    <div class='innerText'><image src="./img/atalk_call_ui.png" align="right" width="20%" style="margin:5px 5px 0px 15px" /></div> 
    <div class='innerText'>aTalk supports both <b>Unattended</b> and <b>Attended</b> call transfer as outlines in: 
    <a href="https://xmpp.org/extensions/xep-0251.html">XEP-0251: Jingle Session Transfer</a>. All call parties involved
@@ -1650,6 +1651,23 @@ ul li {
      Attended Call Transfer request is sent to the Boss phone to perform the call transfer. In this call transfer setup,
      the Caller contact is automatically selected in the Transfer dialog UI.
    </div>
+
+
+   <span id='media_08'></span>
+   <div class='blueText'>[20220614] Call Waiting and Call Switching <a href=#content>{ Content }</a></div>
+   <div class='innerText'>aTalk has implemented call waiting to accept a second incoming call by placing the in-progress
+     call on hold; and allow user alternative switching between the calls.</div>
+   <div class='innerText'>While user is engaged in a call, the phone will ring when a second incoming call is received.
+     User may cancel or accept the second call. On user accepts the second call, aTalk place the in-progress call on hold;
+     before swithing to the second call. The first caller will remain on hold until he or she either ends the call,
+     or you switch back to that call and end it.</div>   
+   <div class='innerText'>With call waiting, you can alternate back and forth as many times as you want between the two
+     calls. Each inbound caller will alternate being on hold. The calls are entirely separate and private. The two
+     inbound callers cannot hear one another or communicate. They will not even know that you are on another call
+     unless you tell them.</div>
+   <div class='innerText'>Call waiting only works for two inbound calls. A third caller will be rejected with a busy
+    message.</div>
+
 
    <span id='media_04'></span>
    <div class='blueText'>[20210208] Jabber VoIP-PBX gateway Telephony (experimental) <a href=#content>{ Content }</a></div>
