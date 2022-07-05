@@ -80,7 +80,7 @@ ul li {
    
    <div style='clear: both; height: 10px;'></div>
 
-   <div class='innerText'><image src="./img/qrcode_hymnchtv.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/></div>
+   <div class='innerText'></div>
    <div class='innerText'>This FAQ section is created to provide a better understanding
       to hymnchtv users on the application features and observed behaviour. This section
       will continuously be updated as inputs are feedback from hymnchtv users.
@@ -91,6 +91,7 @@ ul li {
    <div id='subSection' onclick=$("#accordion").accordion("disable")>CONTENT</div> 
    <div id="accordion">
      <h4>hymnchtv UI desgin &amp; Implementation</h4>
+     <image src="./img/hymnchtv_help_qrcode.png" align="right" width="20%" style="margin:5px 0px 20px 15px"/>
      <ul>
        <li><a href=#hymnch_0010>[20201229] hymnchtv UI design &amp; Implementation</a></li>
      </ul>
@@ -104,7 +105,7 @@ ul li {
        <li><a href=#hymnch_0040>[20220105] Hymn lyrics and media player UI interface</a></li>
      </ul>
      <ul>
-       <li><a href=#hymnch_0050>[20220105] Hymn media player UI interface, control and playback operations</a></li>
+       <li><a href=#hymnch_0050>[20220705] Hymn media player UI interface, control and playback operations</a></li>
      </ul>
      <ul>
        <li><a href=#hymnch_0060>[20201231] Hymn media storage and selection algorithm for playback</a></li>
@@ -113,7 +114,7 @@ ul li {
        <li><a href=#hymnch_0070>[20220105] User defined media configuration</a></li>
      </ul>
      <ul>
-       <li><a href=#hymnch_0080>[20220528] User defined media database configuration</a></li>
+       <li><a href=#hymnch_0080>[20220705] User defined media database configuration</a></li>
      </ul>
      <ul>
        <li><a href=#hymnch_0090>[20220528] Hymnchtv debug version installation</a></li>
@@ -241,16 +242,16 @@ ul li {
    </div>
 
    <span id='hymnch_0050'></span>
-   <div class='blueText'>[20220105] Hymn media player UI interface, control and playback operations <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20220705] Hymn media player UI interface, control and playback operations <a href=#content>{ Content }</a></div>
    <div class='innerText'>Beside showing the hymn lyrics of the user selected HymnNo, Hymnchtv allows the playback of the
      media content of the user selected HymnNo. Below lists the various hymn media available for the playback.
      <ul>
        <div class='innerText'><image src="./img/hymnchtv_media_player_ui.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/></div>
        <li><b>搜索</b>: Search the relevant contents for the user selected HymnNo per the button actions below:<br/></li>
          <ul>
-           <li><b>singleTap</b> to perform hymn info search via qq.com; Will show the QQ main page if none found. You may
-           then navigate to the required hymn title for viewing, or share the link with hymnchtv for later retrieval. 
-           See also <a href=#hymnch_0070>User defined media configuration</a></li>
+           <li><b>singleTap</b> to perform hymn info search via Notion/QQ sites; Will show the Notion main page if none
+           found. You may then navigate to the required hymn title for viewing, or share the link with hymnchtv for
+           later retrieval. See also <a href=#hymnch_0070>User defined media configuration</a></li>
            <li><b>longPress</b> to perform hymn info search via youtube.com</li>
            <li><b>DoubleTap</b> to perform hymn info search via google.com</li>
            <li>Note: The user selected HymnNo info is also copied to the clipboard. You may paste this clipboard
@@ -260,7 +261,7 @@ ul li {
          Pending on the media type for video content, the player used for playback can either be exoplayer or youtube
          player as shown on the right. The button text greyed out when there is no user media content defined in the
          database.<br />
-         Note: LongPress on this button to show QQ-info main page; allowing user to enter QQ main page in case
+         <b>Long Press</b> on this button to show Notion-info main page; allowing user to enter Notion main page in case
          the <b>搜索</b> failed.</li>
        <div class='innerText'><image border="2px solid blue" src="./img/hymnchtv_media_player_youtube.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/></div>
        <li><b>伴奏</b>: Hymn accompany music only media playback. The playback media can be using embedded midi files or
@@ -269,7 +270,9 @@ ul li {
        <li><b>教唱</b>: Hymn singing practice. Currently this is only available for 大本诗歌 DaBen HymnType. The button
          text greyed out when there is no user media content defined in the database.</li>
        <li><b>唱诗</b>: Hymn singing music with lyrics. The button text greyed out when there is no user media content
-         defined in the database.</li>
+         defined in the database.<br />
+         <b>Long Press</b> on this button to show QQ-info main page; allowing user to enter QQ main page in case
+         the <b>搜索</b> failed.</li>
        <li><b>Repeat/Loop Count</b>: Disable/Enable repeat playback with user defined loop count.</li>
        <li><b>Playback speed</b>: Variable playback speed. The available playback speed varies from 0.6x~1.4x of the
          orignal hymn tempo.</li>
@@ -356,9 +359,10 @@ ul li {
    <div class='innerText'>Hymnchtv allows user to define a given media content playback to be associated with a
      HymnType/MediaType/HymnNo. The media content can either be a local saved medium file, an url link of an online
      audio/video media address, including the youtube shared link; the url link can also be a downloadable link of 
-     an audio media which can either be in mp3 or midi format. Hymnchtv supports both the video, and audio media playback. The user defined media is 
-     primarily meant for the 媒体 MediaType, however you may also apply it to other MediaType [伴奏|教唱|唱诗] if desired.
-     Please follow below steps to add a user defined media to associate it with a given HymnType/MediaType/HymnNo.
+     an audio media which can either be in mp3 or midi format. Hymnchtv supports both the video, and audio media playback.
+     The user defined media is primarily meant for the 媒体 MediaType, however you may also apply it to other MediaType
+     [伴奏|教唱|唱诗] if desired. Please follow below steps to add a user defined media to associate it with a given
+     HymnType/MediaType/HymnNo.
      <div class='innerText'><image src="./img/hymnchtv_media_record_config.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/></div>
     <b>Local media file association</b>
      <ul>
@@ -477,49 +481,57 @@ ul li {
   </div>
 
    <span id='hymnch_0080'></span>
-   <div class='blueText'>[[20220528] User defined media database configuration <a href=#content>{ Content }</a></div>
-   <div class='innerText'>Hymnchtv provides other tools to ease user in managing the user defined media record/database.
-     All the user defined media configureations are stored in the hymnchtv internal database as media records. The
+   <div class='blueText'>[[20220705] User defined media database configuration <a href=#content>{ Content }</a></div>
+   <div class='innerText'>Hymnchtv has built-in tools to ease user in managing the user defined media record/database.
+     All the user defined media configurations are stored in the hymnchtv internal database as media records. The
      included functions provided allow one user to share his media contents setup in the database with another user by
      using the tools described below: 
      <ul>
        <div class='innerText'><image src="./img/hymnchtv_media_db_config.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/></div>
-       <li><b>数库导出</b>: Click this option button to export all the media records for all the four defined HymnType's.
-         The exported file is named as hymn_all-&lt;timestamp>.txt, and is saved in the hymnchtv pre-defined directory 
-         e.g. Download/hymnchtv/import_export/hymn_all-20201213_142504.txt. The format of the filename used is
-         Hymn_all-&lt;timestamp>, where the timestamp format is "YYYYMMDD_HHMMSS". If you long click on the button, the
-         file will contain all the media records with url links only and the file is named with
-         hymn_link-&lt;timestamp>.txt.</li>
-       <li><b><a href="./index.html#create_export">自建导入</a></b>: Instead of creating an individual media record per user desired media content, as described
-         in the <a href='#hymnch_0070'>previous section</a>; one can actually use the auto-create export file for a
-         batch media contents import. See below on the actual process and operation.</li>
+       <li><b>数库导出</b>: Click this option button to export all the four defined HymnType's media records and the
+         网页链接 links. The exported file is saved as hymn_all-&lt;timestamp>.txt in the hymnchtv pre-defined directory 
+         e.g. Download/hymnchtv/import_export/hymn_all-20201213_142504.txt. The format of the filename is
+         Hymn_all-&lt;timestamp>, where the timestamp format is "YYYYMMDD_HHMMSS". If you long press on this option button,
+         the file will only contain the media records with url links, and the file is named with hymn_link-&lt;timestamp>.txt.
+         This url link-only file is shared with others without the need to transfer the actual media files </li>
+       <li><b><a href="./index.html#create_export">自建导入</a></b>: Instead of creating an individual media record for
+         each of the user desired media content saved locally, as described in the <a href='#hymnch_0070'>previous section</a>;
+         one can actually use the auto-create import file for batch media contents import. See below on the actual
+         process and operation.</li>
        <li><b>数库列项</b>: Select this option to show a list of all the media records saved in the database. The list
-         shows only the media records for the user currently selected HymnType. Page title indicates the number of 
-       <div class='innerText'><image src="./img/hymnchtv_media_record_list.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/></div>
+         shows only the media records for the user currently selected HymnType. The UI heading shows the number of 
          records in the database. Scroll up/down to see all the media records. Click on any of the record items, its
          media record info will be updated to the media record fields. User may proceed to edit/update or delete the
-         media record in the database. Click the <b>退出</b> button to close the media record listing window.</li>
-       <li><b>数库导入</b>: Import all the media record contents as defined in the exported txt file into the hymnchtv database.
-         Each media record will be saved in the respective database per the defined HymnType of the media record.</li>
+         media record in the database. Click the <b>退出</b> button to close the media record list view window.</li>
+         <image src="./img/hymnchtv_media_record_list.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/>
+       <li><b>数库导入</b>: <b>Short click</b> to import all the media record contents as defined in the import txt file into
+         the hymnchtv database. Each media record will be saved in the respective database per the defined HymnType of
+         the media record. See <b>覆盖现有</b> associates with this process.<br />
+         <b>Long press</b> to import url links from an internal hymnchtv saved assest file for the Notion 网页链接 links.
+         User should use this option in preference of the <b>NQ&#x2B07;</b>, using the later only for new update if any.</li>
        <li><b>覆盖现有</b>: Check this option if you want hymnchtv to overwrite any existing media record in the
-         database during the database import 数库导入 process.</li>
-         <li><b>QQ&#x2B07;</b>: Click this button to create all the QQ hymn info links, the process may take some time
-         pending on the network condition; the links are used in the QQ-info search in
-         <a href=#hymnch_0050>Hymn media player UI interface, control and playback operations</a></li>
+         database during the database import <b>数库导入</b> process.</li>
+         <li><b>NQ&#x2B07;</b>: <b>Short click</b> this button to create all the Notion hymn info links in the database.
+         The web url fetching process is carried out in backgroud, and take some time pending on the network condition.
+         However the user may continue to use the app while the processs in running in background. These links are used
+         in the NQ-info search in <a href=#hymnch_0050>Hymn media player UI interface, control and playback operations</a><br />
+         <b>Long press</b> to fetch all the QQ hymn info links and saved in the database.<br />
+         <b>Note:</b> Some of the QQ links are currently being blocked by the service provider for user access. Notion
+         url fetching is now preferred, and both give the same final output results.</li>
        <li><image src="./img/ic_folder.png" width="24" height="24" align="middle" style="margin:5px 5px"/>
-         Use the Folder explorer to select the desired exported text file for import into the database. After selected
-         the desired export file, on returning to media configuration page; the selected text file will be opened in
-         a RichText Editor for viewing. User may make any necessary changes if necessary before import its content
-         into the database.</li>
+         Use the Folder explorer to select the text file for import the media records into the database. After selected
+         the desired import file, and on returning to media configuration page; the selected text file will be
+         displayed in a RichText Editor for viewing. User may make any necessary changes if desired before import its
+         content into the database.</li>
        <li><image src="./img/ic_edit.png" width="24" height="24" align="middle" style="margin:5px 5px"/> When user clicks
-         on this icon while there is a valid export filename entry in the <b>数据库导入文件</b> field, hymnchtv opens the
-         RichText editor with the inserted file content for editing.
-         <br />When the user has peformed one of the <b>[数库导出|自建导入]</b> operations, the generated export filepath
+         on this icon while there is a valid text filename entry in the <b>数据库导入文件</b> field, hymnchtv launches the
+         RichText editor with the file content inserted for editing.<br />
+         When the user has peformed one of the <b>[数库导出|自建导入]</b> operations, the generated text filepath
          is shown in the <b>数据库导入文件</b> field, and the RichText Editor is launched with the generated file content
          inserted for verification.</li>
        <li><image src="./img/ic_help_video.png" width="24" height="24" align="middle" style="margin:5px 5px"/> When user 
        clicks on this icon, hymnchtv will playback two demo media for user defined media configuration setup i.e.
-         android share sheet from a youtube link, and auto create export file from media contents stored in the local
+         android share sheet from a youtube link, and auto create import file from media contents stored in the local
          hymnchtv media directory.</li>
      </ul>
 
@@ -530,7 +542,7 @@ ul li {
      or xb0079憐憫.mp3.
      <div class='innerText'><image src="./img/hymnchtv_rich_editor.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/></div>
      <ul>
-       <li>Copy all the user desired media files into their associated HymnType/MediaType sub-directory.
+       <li>Copy all the user required media files into the associated HymnType/MediaType sub-directory.
          Please refer to <a href="#hymnch_0060">Hymn media storage and selection algorithm for playback</a>
          on the directory structure used by hymnchtv. It is recommended that you use the defined directory structure,
          to ease this process.</li>
@@ -584,6 +596,7 @@ ul li {
    <div class='innerText'>
      You may obtain a copy of the latest hymnchtv debug apk for your personal evaluation from the link below:
      <li><a href="https://atalk.sytes.net/releases/hymnchtv/hymnchtv-debug.apk">https://atalk.sytes.net/releases/hymnchtv/hymnchtv-debug.apk</a></li>
+     <image src="./img/hymnchtv_apk_qrcode.png" align="right" width="20%" style="margin:5px 0px 20px 15px"/>
    </div>
    <div class='innerText'>Please note that the debug apk contains a different signature from the one in android
      playstore apk. Android OS will prompt you to uninstall the existing app if any, before you can install the debug
