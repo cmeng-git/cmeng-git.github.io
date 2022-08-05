@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <title>aTalk.org</title>
+   <meta charset="utf-8" />
+   <meta name="author" content="cmeng" />
+   <meta name="description" content="Sublime Stunning free HTML5/CSS3 website template" />
+
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<style>
+#ppBody {
+   max-width: 920px;
+   margin: 0 auto;
+   padding: 50px 100px;
+   font-size: 11pt;
+   font-family: "raleway-regular", arial;
+   text-align: justify;
+   background: url("./img/bg-body.gif");
+   background-position: top;
+   background-repeat: repeat-x;
+   background-color: #f0f0f0;
+}
+
+#ppHeader {
+   width: 100%;
+   margin: 0 auto;
+   font-size: 24pt;
+   color: DarkBlue;
+}
+
+#subSection {
+   width: 100%;
+   margin-top: 30px;
+   margin-bottom: 0px;
+   font-size: 18px;
+   font-weight: bold;
+   color: LightBlue;
+}
+
+.blueText {
+   width: 100%;
+   margin-top: 30px;
+   font-size: 14px;
+   font-weight: bold;
+   color: DarkBlue;
+}
+
+.innerText {
+   width: 100%;
+   margin-top: 5px;
+   font-size: 11pt;
+}
+
+.innerText ul{
+   margin-top: 5px;
+}
+
+.innerText ul li{
+   margin-top: 3px;
+}
+</style>
+</head>
+<body>
+
+<div id='ppBody'>
+   <div id='ppHeader'>Frequently Ask Question (FAQ)</div>
+   <p id="fm_date"></p>
+   <script>
+      var x = new Date(document.lastModified);
+      document.getElementById("fm_date").innerHTML= "Last update: " + x;
+   </script>
+   
+   <div style='clear: both; height: 10px;'></div>
+
+   <div class='innerText'>This FAQ section is created to provide a better understanding to XryptoMail users on the
+      application features and observed behavior. This section  will continuously be updated as more inputs are
+      feedback from XryptoMail users.
+   </div>
+
+   <!-- ========================= Account setup ====================== -->
+   <div id='subSection'>Account Setup</div>
+
+   <span id=''></span>
+   <div class='blueText'>What are the email access methods supported by XryptoMail?</div>
+   <div class='innerText'>Email account setup on XryptoMail may use either IMAP or POP pending your mail server
+      configuration and support.
+      <p><strong>IMAP - Internet Messaging Access Protocol</strong> allows you to access your email wherever you are,
+      from any device. When you read an email message using IMAP, you do not actually downloading or storing it on
+      your device; instead, you are reading it from the email service. As a result, you can check your email from
+      different devices, and anywhere in the world. IMAP only downloads a message when you click on it, and
+      attachments are not automatically downloaded. This allows you to check your messages a lot more quickly than POP.
+      IMAP also allows you to synchronise mail folders between your device and mail client on the web, so that you
+      see the same folders and messages wherever and however you access your email.</p>
+
+      <p><strong>POP - Post Office Protocol</strong> is a very simple protocol that only allows downloading new
+      messages from your Inbox to your local computer. Generally, once transferred, the email are deleted from the
+      email server. This means that after the email is downloaded, it can only be accessed using the same computer.
+      If you try to access your email from a different device, the messages that have been previously downloaded won't
+      be available to you. Sent mail is stored locally on your device, not on the email server.</p>
+
+      <h3>Differences at a glance</h3>
+
+      <table cellpadding="5" border="1px solid black">
+          <tr>
+              <th></th>
+              <th>IMAP (Internet Messaging Access Protocol)</th>
+              <th>POP (Post Office Protocol)</th>
+          </tr>
+          <tr>
+              <td rowspan="3">Flexibility</td>
+              <td>Can view just message headers, then choose which messages to download.</td>
+              <td>Have to download all new messages at once.</td>
+          </tr>
+          <tr>
+              <td>Delete or move a message without having to download it.</td>
+              <td>Must download all messages.</td>
+          </tr>
+          <tr>
+              <td>Download only the body of a message.</td>
+              <td>Must download entire message, including attachments.</td>
+          </tr>
+          <tr>
+              <td rowspan="4">Synchronisation</td>
+              <td>View messages in various folders.</td>
+              <td>Only view messages from Inbox.</td>
+          </tr>
+          <tr>
+              <td>Changes made via email client or webmail interface stay in sync.</td>
+              <td>Once downloaded, changes can only be made on local email client.</td>
+          </tr>
+          <tr>
+              <td>Sent mail stays on the server so you can see it from any device.</td>
+              <td>Sent mail is stored locally on your PC, not on mail server.</td>
+          </tr>
+          <tr>
+              <td>Access messages at home, work, and via web.</td>
+              <td>Access messages only from a single device.</td>
+          </tr>
+          <tr>
+              <td>Safety</td>
+              <td>All messages kept with multiple redundant copies on mail server</td>
+              <td>Once downloaded, the messages exist only on your local device. If it crashes, all the messages are lost.</td>
+          </tr>
+      </table>
+   </div>
+
+   <span id=''></span>
+   <div class='blueText'>What is OAuth2</div>
+   <div class='innerText'>OAuth2 is an open standard authorization framework that enables applications to obtain
+      limited access to user accounts on an HTTP service. It works by delegating
+      user authentication to the service that hosts the user account, and authorizing third-party applications
+      to access the user account informaton without giving them the passwords. OAuth 2 provides authorization
+      flows for web and desktop applications, and mobile devices.
+   </div>
+   <div class='innerText'>Gmail uses OAuth2. If you disable 'Less secure apps' in Gmail Sign-in Security setting,
+      You must then use OAuth2 method for your Gmail account setup in XryptoMail.</div>
+
+   <!-- ========================= MAIL Cryptography ====================== -->
+   <div id='subSection'>XryptoMail Cryptography</div>
+
+   <span id=''></span>
+   <div class='blueText'>Why is OpenPGP?</div>
+   <div class='innerText'><a href="https://www.openpgp.org/about/standard/">OpenPGP</a> is a non-proprietary protocol
+      for encrypting email communication using public key
+      cryptography. It is based on the original PGP (Pretty Good Privacy) software. The OpenPGP protocol defines
+      standard formats for encrypted messages, signatures, and certificates for exchanging public keys.
+      As an <a href="https://www.openpgp.org/about/standard/">IETF Proposed Standard RFC 4880</a>, OpenPGP can be
+      implemented and used by any individual without paying any licensing fees to anyone.</div>
+
+
+   <span id=''></span>
+   <div class='blueText'>What is Autocrypt?</div>
+   <div class='innerText'>XryptoMail supports <a href="https://autocrypt.org/level1.html">Autocrypt Level 1 standard.</a>
+      However only basic features for Autocrypt are implemented. Autocrypt aims to incrementally replace cleartext
+      email with end-to-end encrypted email. An Autocrypt-specific mail header is sent with each outgoing mail, which
+      contains among other information, the sender’s public key. Transferring public key in-band means that key
+      fetching in Autocrypt does not require external infrastructure like OpenPGP keyservers or x509 PKI.
+      Autocrypt Level 1 specification focuses on the use of Autocrypt on a single device. Users get rudimentary
+      support on using Autocrypt on more than one device or mail app. This is realized through sending and receiving
+      an Autocrypt Setup Message, secured by manually entering a long string of numbers.
+   </div>
+
+   <span id=''></span>
+   <div class='blueText'>What is Stealth Message?</div>
+   <div class='innerText'>Stealth message is an unique implementation for XryptoMail; whereby a received mail is
+      auto deleted after it has been read. An acknowledge mail is returned to the sender after the message is deleted.
+   </div>
+   <div class='innerText'>When the recipient first opens a Stealth message, a 30-seconds timer starts to count down.
+      The message is deleted when this 30-second timer has elapsed. However if the recipient exits the message view
+      window before the timer timeout, XryptoMail will assume that the recipient has read the message and deleted
+      it if there is <10 seconds in the countdown timer. Otherwise the recipient may re-open the message to read
+      until 30-seconds timeout.
+   </div>
+   <div class='innerText'>Note: Do not include any attachement in Stealth message as it can be accessed with
+      other mail client that supports openPGP.</div>
+
+   <span id=''></span>
+   <div class='blueText'></div>
+   <div class='innerText'></div>
+
+   <span id=''></span>
+   <div class='blueText'></div>
+   <div class='innerText'></div>
+
+   <span id=''></span>
+   <div class='blueText'></div>
+   <div class='innerText'></div>
+
+
+   <!-- ========================= General ====================== -->
+   <div id='subSection'>General</div>
+
+
+
+   <span id=''></span>
+   <div class='blueText'></div>
+   <div class='innerText'></div>
+
+      <ul>
+         <li></li>
+         <li></li>
+         <li></li>
+      </ul>
+
+   <div class='blueText'> <a href="./index.html">...back</a></div>
+</div>
+</div>
+</body>
+</html>
