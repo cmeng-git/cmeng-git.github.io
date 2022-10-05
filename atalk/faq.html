@@ -110,7 +110,7 @@ ul li {
      <h4>Enhanced Features</h4>
       <ul>
          <li><a href=#feature_01>[20190626] Adding Contact</li>
-         <li><a href=#feature_02>[20181017] StreetViews & Map</a></li>
+         <li><a href=#feature_02>[20221004] StreetViews & Map</a></li>
          <li><a href=#feature_03>[20200330] XEP-0045: Multi-User Chat</a></li>
          <li><a href=#feature_09>[20200330] XEP-0048: Bookmarks and autoJoin option for conference</a></li>
          <li><a href=#feature_10>[20191004] XEP-0070: Verifying HTTP Requests via XMPP and WebView Implementation</a></li>
@@ -653,44 +653,61 @@ ul li {
      <a href="https://xmpp.org/rfcs/rfc6121.html#sub">Managing Presence Subscriptions</a></div>
 
    <span id='feature_02'></span>
-   <div class='blueText'>[20181017] StreetViews &amp; Map <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20121004] StreetViews &amp; Map <a href=#content>{ Content }</a></div>
    <div class='innerText'>Every location on earth has a global address, given as two numbers called coordinates.
     The two numbers ("Lat/Long") are a location's latitude number (north-south) and its longitude number (east-west).
-    Together with help from google global location service, you can display the global address in graphical views as
-    streetViews and map of the location understand by human.</div>
-   <div class='innerText'>aTalk has implemented GPS location tracking, displaying both the streetViews and map on user
-     device screen. The tool allows either a single location fix update or in continuous locations fix update mode.
-     The continuous mode update is triggered by two parameters changes i.e. <b>distance delta</b> or <b>elapsed time</b>.
-     Either condition will trigger a new location fix fetch. The user selectable distance range varies from 0~500m
-     with 5m steps; while the elapse time can range from 5~1000S in 10S interval. In continuous mode, user may choose
-     only to send the location messages without displaying the real-time updates of streetViews and map information.
-     This is done by not selecting the <b>Continuous StreetViews &amp; Map update</b> option to conserve data usage.</div>
-   <div class='innerText'>On the streetViews and map display screen, you can select (press and hold) the little orange
-     man figure and then drag to a new location on the display map, the streetView display will also be updated
-     according to the new selected map location. You can also change the device pointing direction for a 360° panoramic
-     view of the current select location on the map.</div>
-   <div class='innerText'><b>Send GPS-Location message:</b> The tool allows user to relay his/her current GPS
-     location in a single or continuous mode to his/her buddy as Geo-Location chat messages, i.e. only the longitude
-     and latitude information are being sent to conserve data usage. This feature is enabled from within the chat
-     window menu <b>Send GPS-Location</b> option. When your buddy clicks the <b>SteetView &amp; Map</b> button on
-     the received location message on his/her device, your current location is displayed on his/her device screen.
-     The steetViews and map display on your buddy device automatically gets updated each time your new location
-     is being streamed via continuous mode; tracking your move in real time.</div>
-   <image src="./img/08.gps_map.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
+    Location may also contain the altitude, the elevated height of the current location on Earth, relative to the sea
+    <image src="./img/08.gps_map_gms.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
+    level which is counted as the base altitude (0 meters). Together with help from global location service, the
+    geo-location is displayed in graphical views as streetViews and map of the location understand by human. i.e. gms
+    (google-service) for playstore release (top right), or osm (open street map) for fdroid release (bottom-right).</div>
+   <div class='innerText'>aTalk has implemented GPS location tracking displaying both the panoramic streetView &amp; map
+     (playstore - right), and only street map view (fdroid - bottom-right) on user device display. The feature allows
+     either a single location fix or in continuous locations update in <b>Follow me</b> mode.</div>
+   <div class='innerText'>For playstore release, on the streetViews &amp; map display screen, you may select (press and
+     hold) the little orange man figure and then drag to a new location on the display map, the panoramic streetView
+     display will also be updated according to the new selected map location. You can also orientate the device pointing
+     direction for a 360° panoramic view of the current select location on the map.</div>
+   <div class='innerText'> The <b>Follow me</b> location fetch/update is determined by two parameters defined by user
+     i.e. <b>Distance Delta</b> and <b>Elapsed Time</b> using the horizontal sliders. Both conditions must be met
+     before a new location fix is fetched/displayed. The <b>Follow me</b> text flashes while this mode is activate.
+     User must manually stop the <b>Follow me</b> update when not in use, else the location updates will continue
+     in background. This will consume battery, and data usage if share option is checked.</div>
+  
+   <image src="./img/gps_share_ui.png" align="left" width="30%" style="margin:5px 25px 0px 0px"/>
+   <div class='innerText'>
+     <ul>
+       <li><b>Distance Delta:</b> User selectable distance range varies from 0~500m with 5m steps; it is the horizontal
+         slider with pink background colour.</li>
+       <li><b>Elapsed Time:</b> Elapse time range is from 5~1000S in 10S interval; it is the horizontal slider with
+         cyan background colour.</li>
+       <li><b>Share geo-locations:</b> This option when checked, allows user to share his/her newly fetched geo-location
+         in a single or continuous <b>Follow me</b> updates with his/her buddy as Geo-Location chat messages, i.e.
+         messages with longitude, latitude, altitude and address information in text are being sent to conserve data
+         usage. This <b>Share geo-locations</b> option is only available when user accessed via chat session menu
+         <b>Send GPS-Location</b> option. The <b>Share geo-locations</b> is always disabled, when the feature is
+         accessed from the contact list main menu <b>StreetViews &amp; Map</b>.
+         When your buddy clicks the <b>SteetView &amp; Map</b> button on the received location message on his/her device,
+         your share location is displayed on his/her device screen. The steetViews and map displayed on your buddy device
+         automatically gets updated, each time your new location is being streamed via <b>Follow me</b> mode; tracking
+         your move in real time.<br/>
+         <b>Note:</b> None of the newly fetched location is shared, unless the <b>share geo-locations</b> option is
+         checked prior to the update.</li>
+     </ul>
+     </div>
+
+   <image src="./img/08.gps_map_osm.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
    <div class='innerText'><b>Note:</b> To protect your privacy, this feature can neither be accessed nor enabled
      remotely; neither it can be accessed from any other applications installed on your device.</div>
-   <div class='innerText'><b>Show GPS Location:</b> You may use the tool as it without sending any of your current
-     GPS location as message. This feature is accessed from the contact list main menu <b>StreetViews &amp; Map</b>.
-   </div>
    <div class='innerText'><b>Locations playback animation:</b> If you have the location history messages in the
      chat window, long press <b>SteetView &amp; Map</b> button on any of location messages starts the location
      playback animation at interval of 2S. The playback animation either applies to incoming or outgoing messages
      grouping pending on which message you have initiated the playback animation mode.</div>
    <div class='innerText'><b>GPS Location Demo:</b> The feature has a built-in demo. Long press the
-     <b>Cont. Location update (xm) @xSec</b> button starts the Geo-Location in demo mode. The streetViews and map
-     will continuous get updated at 2S interval assuming user is moving in the north-west direction. If you enable
-     this demo while in chat mode with another device as your buddy, you can see that the buddy device tracks
-     and synchronizes the streetViews and map display following the user device.
+     <b>Follow me (xm) @xSec</b> button starts the Geo-Location in demo mode. The streetViews and map
+     will continuous get updated at 2S interval assuming user is moving in the north-west direction. If you run this
+     demo with <b>Share geo-locations</b> checked while in a chat session your buddy, the buddy device tracks and
+     synchronizes the streetViews and map display with your device.
    </div>
    <div class='innerText'>Followings are some possible use of the StreetViews & Map feature:</div>
      <ul>
@@ -700,8 +717,8 @@ ul li {
          with friends of all the places you have visited.</li>
        <li>Lost your way while visiting your friend? Just share your GPS-location and start a voice call. Your friend
          can guide you until you have safely arrived at the destination.</li>
-       <li>In the remote chance that you are in trouble; just start the continuous location update to activate the 
-         location streaming. Your love one can track your location and help will be on the way.</li>
+       <li>In the remote chance that you are in trouble; just start the followMe update to activate the location streaming.
+       Your love one can track your location and help will be on the way.</li>
        <li>stand-alone feature without sending location messages: Travel alone and lost your direction bearing?
          Just enable the feature, realign your current location and direction using the streetViews and map information.
          This should help you to avoid unnecessary walking in the wrong direction.</li>
@@ -1275,7 +1292,7 @@ ul li {
          <li>Camera - for video call or capture picture or record video for sharing</li>
          <li>Contacts - needed for phone state access and call setup e.g. telephony</li>
          <li>Location - GPS SteetView and Map display for a 360° panoramic view; Location sharing with buddy.
-           <b> Note:</b> Fdroid version does not support Location sharing.</li>
+           <b> Note:</b> Fdroid version support Location sharing with street map view only.</li>
          <li>Audio - audio chat, voice and video calls</li>
          <li>Phone - phone features support - telephony gateway</li>
          <li>Storage - Access to android local storage for saving aTalk vital operational data and files. aTalk will
