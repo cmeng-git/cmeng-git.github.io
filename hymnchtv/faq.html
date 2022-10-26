@@ -96,13 +96,16 @@ ul li {
        <li><a href=#hymnch_0010>[20201229] hymnchtv UI design &amp; Implementation</a></li>
      </ul>
      <ul>
-       <li><a href=#hymnch_0020>[20210216] hymnchtv main user interface</a></li>
+       <li><a href=#hymnch_0020>[hymnchtv main user interface] hymnchtv main user interface</a></li>
      </ul>
      <ul>
        <li><a href=#hymnch_0030>[20201220] <b>Hymn Category</b> and <b>Content Search</b> result display</a></li>
      </ul>
      <ul>
-       <li><a href=#hymnch_0040>[20220105] Hymn lyrics and media player UI interface</a></li>
+       <li><a href=#hymnch_0040>[20221026] Hymn lyrics and media player UI interface</a></li>
+     </ul>
+     <ul>
+       <li><a href=#hymnch_0042>[20221026] Chinese Simplified, Traditional or English lyrics selection</a></li>
      </ul>
      <ul>
        <li><a href=#hymnch_0050>[20221013] Hymn media player UI interface, control and playback operations</a></li>
@@ -157,7 +160,7 @@ ul li {
 
    <span id='hymnch_0020'></span>
    <div class='innerText'><image src="./img/hymnchtv_main_ui.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/></div>
-   <div class='blueText'>[20210216] hymnchtv main user interface <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[hymnchtv main user interface] hymnchtv main user interface <a href=#content>{ Content }</a></div>
    <div class='innerText'>This is the main hymnchtv UI that is shown when user launches the hymnchtv application. From
      this main UI window, you can access to all the hymnchtv features implementation, pop-up menu and the main pull down menu.
      <ul>
@@ -179,7 +182,7 @@ ul li {
    </div>
 
    <div class='innerText'><b>Main UI pull down menu</b></div>
-   <div class='innerText'><image border="2px solid blue" src="./img/hymnchtv_main_menu.png" align="right" width="20%" style="margin:5px 0px 20px 15px"/></div>
+   <image border="2px solid blue" src="./img/hymnchtv_main_menu.png" align="right" width="20%" style="margin:5px 0px 20px 15px"/>
    <div class='innerText'>The main UI pull down menu is acessed via the oveflow icon on the top-right corner of the
      main UI. It contains the following user selectable options:
      <ul>
@@ -191,9 +194,6 @@ ul li {
          小 (30sp); 默认 (35sp); 大 (40sp); 超大 (45sp); and 加大/减小 +2/-2 of the current set font size for user selection.</li>     
        <li><b>设置主面版字体颜色</b>: The main UI font color can be changed via this option; there are 8 predefined colors
          for user selection.</li>     
-       <li><b>歌词文字最大比例</b>: The hymn lyrics display text size can be changed i.e. toggle via 2-fingers double click,
-         between the predefined default and this user defined scaling factor. User may also use pinch-to-zoom gesture
-         to change he lyrics display text size.</li>     
        <li><b>用户定义媒体设置</b>: User defined media configuration setup. See <a href=#hymnch_0070>below</a> for details.</li>     
        <li><b>网上帮助</b>: Click on option will display this online help page/</li>     
        <li><b>关于</b>: About the basic info of the hymnchtv, including install apk version and history.</li>     
@@ -216,8 +216,8 @@ ul li {
    </div>
 
    <span id='hymnch_0040'></span>
-   <div class='blueText'>[20220105] Hymn lyrics and media player UI interface <a href=#content>{ Content }</a></div>
-   <div class='innerText'><image src="./img/11.hymnchtv_context_menu.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/></div>
+   <div class='blueText'>[20221026] Hymn lyrics and media player UI interface <a href=#content>{ Content }</a></div>
+   <image border="2px solid blue" src="./img/11.hymnchtv_context_menu.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/>
    <div class='innerText'>The screenshot on the right shows the hymn info display page after user has selected
      the desired HymnNo and HymnType. The window displays the actual hymn lyrics score, and the lyrics text just below
      it. User scrolls up/down to bring the score or text into viewing area. To view the previous or next hymn info, user
@@ -233,22 +233,55 @@ ul li {
          portrait and landscape, but applicable to all other hymnn titles.</li>
        <li><b>英文歌词</b>: This option is available only if the user selected HymnNo has an associated lyrics in English.
          Click on this option item opens the web page linked to the English lyrics. Press <b>BackKey</b> to go back.</li>
+       <li><b>英文歌词删除</b>: This option is available only if the English lyrics is shown. Select this option item
+         if you found that the displayed English lyrics is incorrect. The action will purged the saved English lyrics
+         recored in the database.</li>
        <li><b>帮助</b>: clicks on this option item, hymnchtv will display the help content for:
          <a href=#hymnch_0050>Hymn media player UI interface, control and playback operations</a></li>
        <li><b>主页</b>: Returns user to the hymnchtv main UI page, or the Hymn Category selection page.</li>
      </ul>
+     <image border="2px solid blue" src="./img/10.hymnchtv_lyrics_text.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/>
      you may copy text diplays in lyrics text content. To do this, double quick clicks on the desired text location; 
      adust the text cursors and then select copy option. This option is also availble during the hymn content search.
    </div>
 
+
+   <span id='hymnch_0042'></span>
+   <div class='blueText'>[20221026] Chinese Simplified, Traditional or English lyrics selection <a href=#content>{ Content }</a></div>
+   <div class='innerText'>The screenshot on the right shows the hymn lyrics display page after user has selected
+     the desired HymnNo and HymnType. On entry, the window displays the lyrics text in Chinese Simplified by default.
+     <image  border="2px solid blue" src="./img/12.hymnchtv_lyrics_english.png" align="left" width="25%" style="margin:15px 30px 0px 0px"/>
+     Using the two lyrics option buttons (see below), user may choose to change displayed lyrics to Chinese Traditional
+     or English. If the Enlgish lyrics cannot be displayed in the current lyrics text window, it will instead provide
+     a clickable link for user to launch an external web browser for English lyrics view.
+     <ul>
+       <li><b>英文歌词</b>: Click on this button to toggle the lyrcis display between Chinese and English text.</li>
+       <li><b>简体&#x2B0C;繁体歌词</b>: Short click on the button, will toggle lyrics display between Chinese Simplified and
+         Traditional. The action will switch between Chinse and English lyrics if the English lyrcis is currently being
+         displayed.<br />
+         <b>Long press</b> on this button pop-up a sub-menu as shown on the right i.e. <b>字词转换标准表</b>. The option menu
+         allows user to select the final conversion type for Traditional Chinse lyrics display:</li>
+       <ul>
+         <li><b>简体到繁体</b>: Simplified Chinese to Traditional Chinese (Standard).</li>
+         <li><b>简体到香港繁</b>: Simplified Chinese to Traditional Chinese (Hong Kong Standard).</li>
+         <image border="2px solid blue" src="./img/hymnchtv_conversion_ui.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/>
+         <li><b>简体到台湾正体，并转换为台湾常用词汇</b>: Simplified Chinese to Traditional Chinese (Taiwan Standard) with Taiwanese idiom.</li>
+         <li><b>简体到台湾正体</b>: Simplified Chinese to Traditional Chinese (Taiwan Standard)</li>
+       </ul>
+     </ul>
+     Once user has confirmed the selected Chinese Tranditional conversion type, it will be used for all subsequent
+     Tradtional Chinese lyrics display until the next conversion type changes by user.
+   </div>
+
+
    <span id='hymnch_0050'></span>
    <div class='blueText'>[20221013] Hymn media player UI interface, control and playback operations <a href=#content>{ Content }</a></div>
-   <image border="2px solid blue" src="./img/hymnchtv_media_player_youtube.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/>
    <div class='innerText'>Beside showing the hymn lyrics of the user selected HymnNo, Hymnchtv can playback the selected
      media content associated with any of the four buttons i.e. <b>媒体</b>, <b>伴奏</b>, <b>教唱</b> and <b>唱诗</b>.
      The media content may include local stored video &amp; audio files, or media url for youtube or other internet
      link shared via media configure UI. Pending the media content, the player used for playback can either be android
-     media player (midi), exo-player or youtube player as shown on the right. <br /><br />
+     media player (midi), exo-player or youtube player as shown on the right. <br />
+     <image border="2px solid blue" src="./img/hymnchtv_media_player_youtube.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/>
      Each hymn media button also provides the availability staus/indication of the media content for playback. The
      button text is greyed when there is no associated media content for playback.
      <ul>
@@ -256,7 +289,6 @@ ul li {
          via media configure UI.</li>
        <li><b>伴奏</b>: Hymn accompany music only media playback. The playback media can either be from the embedded
          midi files or downloaded from the predefined site.</li>
-       <image src="./img/hymnchtv_media_player_ui.png" align="right" width="26%" style="margin:5px 0px 20px 15px"/>
        <li><b>教唱</b>: Hymn singing practice. Currently this is used to access the QQ url links available for <b>补充本</b>
          HymnType; the databse records are being updated in new installation of hymnchtv v1.7.6 and above. When click
          on the button with text greyed out will bring you to QQ main page. <b>Long Press</b> this button will also
@@ -266,6 +298,7 @@ ul li {
            You may then navigate to the required hymn for playback, or share the link with hymnchtv for
            later retrieval. When an url link is shared via this button, hymnchtv will auto fill all the <b>诗歌类别, 
            诗歌编号, 媒体类型</b> and <b>附歌</b> entries. See also <a href=#hymnch_0070>User defined media configuration.</a></li>
+       <image src="./img/hymnchtv_media_player_ui.png" align="right" width="26%" style="margin:5px 0px 20px 15px"/>
          <ul>
            <li><b>Single Tap</b> to perform hymn info search via youtube.com</li>
            <li><b>Long Press</b> to perform hymn info search via google.com</li>
@@ -420,8 +453,8 @@ ul li {
        <li>If the option <b>Share link</b> is not available, then select <b>Copy link</b> to save a copy in the
          android clipboard.</li>
        <li>Lauch hymnchtv app, then goes to <b>User media configuration</b> page.</li>
-       <image border="2px solid blue" src="./img/hymnchtv_share_link.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/>
        <li>Long click on the <b>媒体链接</b> field entry, and select <b>Paste</b> option.</li>
+       <image border="2px solid blue" src="./img/hymnchtv_share_link.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/>
        <li>If the pasted link is safe url encoded; it may contain unreadable charaters e.g. %xx. Just click the
          <image src="./img/ic_uri_decode.png" width="24" height="24" align="middle" style="margin:5px 5px"/> icon;
          and the url link is decoded to human readable character. You need to toggle back to url encoded link for
@@ -448,7 +481,7 @@ ul li {
      <br/>Hymnchtv now supports the sharing of the user media record with others. The shared media record can either
      contains a local copy of the media file and an url link, or just a url link. Both of these cases are shown in the
      image of the recipient device on the right.  
-     <div class='innerText'><image src="./img/hymnchtv_share_with.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/></div>
+     <image  border="2px solid blue" src="./img/hymnchtv_share_with.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/>
      <ul>
        <li>For url link sharing without an actual media content, just copy the whole text string of the link.
        e.g. hymn_bb,336,0,HYMN_MEDIA,https://youtu.be/dNHe_ELI7NU,null.<br />
@@ -469,7 +502,6 @@ ul li {
          to enter any of the info below i.e. HymnType/MediaType/HymnNo etc. Hymnchtv will extract all these info
          from the pasted link text.</li>
      </ul>
-
      <li><image src="./img/ic_share.png" width="24" height="24" align="middle" style="margin:5px 5px"/>This button allows
        user to share the media contents with other. The share with item can be an exported text file indicated in the
        <b>数据库导入文件</b> entry field; a single media record selected and shown in the entry fields, and the local
@@ -540,8 +572,8 @@ ul li {
      doing the media record one at a time. Follow the steps given below to perform this operation. For this to work
      properly and effectively, the media file must contain the actual HymnNo as part of the filename e.g. ChHymns-0264.mp3
      or xb0079憐憫.mp3.
-     <div class='innerText'><image src="./img/hymnchtv_rich_editor.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/></div>
      <ul>
+     <image border="2px solid blue" src="./img/hymnchtv_rich_editor.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/>
        <li>Copy all the user required media files into the associated HymnType/MediaType sub-directory.
          Please refer to <a href="#hymnch_0060">Hymn media storage and selection algorithm for playback</a>
          on the directory structure used by hymnchtv. It is recommended that you use the defined directory structure,
@@ -592,7 +624,8 @@ ul li {
    <div class='blueText'>[[20220528] [20220528] Hymnchtv debug version installation <a href=#content>{ Content }</a></div>
    <div class='innerText'>
      You may obtain a copy of the latest hymnchtv debug apk for your personal evaluation from the link below:
-     <li><a href="https://atalk.sytes.net/releases/hymnchtv/hymnchtv-debug.apk">https://atalk.sytes.net/releases/hymnchtv/hymnchtv-debug.apk</a></li>
+     <li><a href="https://raw.githubusercontent.com/cmeng-git/hymnchtv/master/hymnchtv/release/hymnchtv-debug.apk">
+     https://raw.githubusercontent.com/cmeng-git/hymnchtv/master/hymnchtv/release/hymnchtv-debug.apk</a></li>
      <image src="./img/hymnchtv_apk_qrcode.png" align="right" width="20%" style="margin:5px 0px 20px 15px"/>
    </div>
    <div class='innerText'>Please note that the debug apk contains a different signature from the one in android
@@ -625,3 +658,4 @@ ul li {
 </div>
 </body>
 </html>
+border
