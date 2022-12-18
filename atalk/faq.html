@@ -145,7 +145,7 @@ ul li {
          <li><a href=#media_07>[20220510] Call Transfer for Unattended and Attended mode</a></li>
          <li><a href=#media_08>[20220614] Call Waiting and Call Switching</a></li>
          <li><a href=#media_04>[20210208] Jabber VoIP-PBX gateway Telephony (experimental)</a></li>
-         <li><a href=#media_05>[20181228] VoIP communications security via SRTP with ZRTP, DTLS and SDES protocol.</a></li>
+         <li><a href=#media_05>[20221218] VoIP communications security via SRTP with ZRTP, DTLS and SDES protocol.</a></li>
          <li><a href=#media_06>[20210302] STUN, TURN, ICE &amp; Jingle for NAT Traversal in media call setup</a></li>
       </ul>
 
@@ -1733,41 +1733,57 @@ ul li {
      option <b>Disable media calls (Jingle)</b>.</div>
 
    <span id='media_05'></span>
-   <div class='blueText'>[20181228] VoIP communications security via SRTP with ZRTP, DTLS and SDES protocol. <a href=#content>{ Content }</a></div></div>
+   <div class='blueText'>[20221218] VoIP communications security via SRTP with ZRTP, DTLS and SDES protocol. <a href=#content>{ Content }</a></div></div>
+   <image src="./img/atalk_call_encryption.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
    <div class='innerText'>The Voice over IP (VoIP) and other media applications uses Real-time Transfer Protocol (RTP).
      Many VoIP applications send RTP data over the public Internet in clear, thus the data is not protected from
      eavesdropping or modification. Therefore most VoIP applications are considered insecure today. aTalk supports SRTP
-     <image src="./img/atalk_call_encryption.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
      and ZRTP etc to enhance the security for VoIP communications.</div>
        <ul>
-         <li><b>SRTP</b>: Secure Real-time Transfer Protocol enhances security for RTP and provides integrity and
-           privacy for RTP media connections. To use SRTP in an efficient way, VoIP applications should be
-           able to negotiate keys and other parameters automatically.
          <li><b>ZRTP</b>: Media Path Diffie-Hellman session key exchange Agreement for Unicast Secure RTP, is a
            protocol that negotiates the keys and other information required to setup a SRTP audio and video session,
            without additional infrastructure, server programs, registration, and alike. It indicates to the VoIP user
            if a session is secure or not, inform about problems and thier severity. ZRTP cannot automatically
            authenticate the end-users, this is task of the users once they can talk to each other.</li>
+         <li><b>SRTP</b>: Secure Real-time Transfer Protocol enhances security for RTP and provides integrity and
+           privacy for RTP media connections. To use SRTP in an efficient way, VoIP applications should be
+           able to negotiate keys and other parameters automatically.
       </ul>
-   <div class='innerText'>To enable SRTP call ecryption in aTalk. From main meneu select <b>Account settings...</b> and
-     user account properties to edit, follow by <b>Call Encryption setting</b>. Check <b>Enable call encryption</b>
-     option and select the desired <b>Encryption protocols</b> and arrange them in the preference order. Check the
-     <b>ZRTP signalling</b> advertise over signalling if ZRTP protocol is selected.</div>
+   <div class='innerText'>SRTP call ecryption in aTalk are defined per account. From main meneu select <b>Account settings...</b>,
+     and user account properties to edit, follow by <b>Call Encryption setting</b>. Check <b>Enable call encryption</b>
+     option and select the desired <b>Encryption protocols</b>. You may arrange the selected <b>Encryption protocols</b>
+     in the order of deployment preference. Check the <b>ZRTP signalling</b> to advertise its availability for use
+     over signalling if ZRTP protocol is selected.</div>
       <ul>
-         <li><b>Encryption protocols:</b> ZRTP will detect any MITM (Man In The Middle), whereas DTLS versus
-           SDES will not. Generally select ZRTP > DTLS > SDES in this preference order</li>
+         <li><b>Encryption protocols:</b> ZRTP will detect any MITM (Man In The Middle), whereas DTLS_SRTP and
+           SDES will not. Generally arrange <b>ZRTP > DTLS_SRTP > SDES</b> in this preference order</li>
             <ul>
                <li><b>ZRTP</b>: The key exchange negotiation happens in the media stream, except that rather than
                  rely on TLS for the establishment of keys, Diffie-Hellman key agreement takes place and key
                  verification is done by verifying "fingerprints" in the form of short strings. You can think of this
                  as the voice equivalent of OTR</li>
-               <li><b>SDES</b>: Session Description Protocol Security Descriptions for Media Streams and is a way
-                 to negotiate the key for Secure Real-time Transport Protocol.</li>
-               <image src="./img/atalk_zrtp_off.png" align="right" width="25%" style="margin:5px 0px 0px 15px"/>
                <li><b>DTLS_SRTP</b>: This is another way to negotiate keys but rather than use an extension to SIP
                  to do it, SIP simply indicates the media stream uses DTLS-SRTP and key negotiation happens in the
                  media stream. Key negotiation happens as in TLS and thus relies on PKI.</li>
+               <li><b>SDES</b>: Session Description Protocol Security Descriptions for Media Streams and is a way
+                 to negotiate the key for Secure Real-time Transport Protocol.</li>
             </ul>
+         <li><b>TLS Certificate Signature Algorithm</b>: aTalk supports both CipherSuite.TLS_ECDHE_ECDSA... and
+           <image src="./img/atalk_dtls_cert_sa.png" align="left" width="25%" style="margin:5px 15px 5px -15px""/>
+           CipherSuite.TLS_ECDHE_RSA... since v3.1.0. ECDSA and RSA are two of most widely adopted asymmetric algorithms, and are used
+           in aTalk DTLS_SRTP SSL/TLS certificates generation. ECDSA provides the same level of security as RSA but it
+           does so while using much shorter key lengths. Therefore, for longer keys, ECDSA will take considerably more
+           time to crack through brute-forcing attacks. Another advantage that ECDSA offers over RSA is the advantage
+           of performance and scalability. As ECC gives optimal security with shorter key lengths, it requires a lesser
+           load for network and computing power. For more reading:
+           <a href="https://sectigostore.com/blog/ecdsa-vs-rsa-everything-you-need-to-know/">ECDSA vs RSA: Everything You Need to Know.</a>
+           <br/><br/>aTalk provides user selectable option to support TLS certification Signature Algorithm for both
+           ECDSA and RSA, with Hash SHA256, SHA384 and SHA512 as shown on the left. Although Conversations (webrtc-104.aar),
+           TLS client offered CipherSuits containing CipherSuite.TLS_ECDHE_ECDSA_..., but seems unable to support
+           <image src="./img/atalk_zrtp_off.png" align="right" width="25%" style="margin:5px 0px 0px 15px"/>
+           ECDSA signed certificate. Conversations 2.10.10 (webrtc-104.aar) is compatible and works with aTalk,
+           and TLS certification with RSA Signature Algorithm only. Hence user can only select RSA Signature Algorithm
+           if you need aTalk to work with Conversations 2.10.10 (webrtc-104.aar).</li>
          <li><b>SDES cipher suites</b>: Simplified Data Encryption Standard, the process of encrypting a plain data
            to an encrypted data stream with the use of SDES cipher as defined below</li>
            <image src="./img/atalk_zrtp_info.png" align="right" width="25%" style="margin:5px 0px 0px 15px"/>
