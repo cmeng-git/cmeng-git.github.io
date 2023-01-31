@@ -115,7 +115,7 @@ ul li {
          <li><a href=#feature_09>[20200330] XEP-0048: Bookmarks and autoJoin option for conference</a></li>
          <li><a href=#feature_10>[20191004] XEP-0070: Verifying HTTP Requests via XMPP and WebView Implementation</a></li>
          <li><a href=#feature_04>[20190526] Stickers, Bitmoji and Emoji rich content sharing </a></li>
-         <li><a href=#feature_05>[20220414] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
+         <li><a href=#feature_05>[20230131] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
          <li><a href=#feature_10>[20200417] Text to Speech and speech recognition in chat/groupChat session</a></li>
          <li><a href=#feature_11>[20191218] Share, Quote and Forward of messages and media contents</a></li>
          <li><a href=#feature_12>[20200619] aTalk Heads-Up Notification and Quiet-Hours</a></li>
@@ -956,7 +956,7 @@ ul li {
    </ul>
 
    <span id='feature_05'></span>
-   <div class='blueText'>[20220414] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20230131] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements <a href=#content>{ Content }</a></div>
    <div class='innerText'>aTalk file sharing implementation uses the following XEP protocols:
      <li><a href="https://xmpp.org/extensions/xep-0234.html">XEP-0234: Jingle File Transfer</a></li>
      <li><a href="https://xmpp.org/extensions/xep-0096.html">XEP-0096: SI File Transfer</a></li>
@@ -966,18 +966,23 @@ ul li {
      <li><a href="https://xmpp.org/extensions/inbox/omemo-media-sharing.html">XEP-xxxx: OMEMO Media Sharing</a></li>
    </div>
    <div class='innerText'>aTalk supports send and receive files for all document types and images. There is an option
-     to enable thumbnail preview for media file before the actual file is being sent. To send or receipt of thumbnail,
-     both the sender and recipient devices must have this option enabled; and the transfer file size is larger than
-     the 'Auto accept max file size'. The actual file is sent upon acceptance by your buddy. aTalk allows automatic
-     acceptance of file transfer request or stickers sending if the size of the file to be transferred is less than
-     or equal to the user defined max file size option.</div>
+     to enable thumbnail preview for media file i.e. image and video before the actual file is being sent. To send or
+     receipt of thumbnail, both the sender and recipient devices must have this option enabled; and the transfer file
+     size is larger than the 'Auto accept max file size'. The actual file is sent upon acceptance by your buddy. aTalk
+     allows automatic acceptance of file transfer request or stickers sending if the size of the file to be transferred
+     is less than or equal to the user defined max file size option.<br/>
+     Note: Thumbnail sending is only available for SI File Transfer protocol. </div>
    <div class='innerText'><image src="./img/atalk_file_sharing.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'>aTalk implements intelligent fault-tolerance file sharing algorithm. aTalk file sharing methods
      include the use of <b>Jingle File Transfer</b> and legacy <b>SI File Transfer</b> protocols supporting both the
      SOCK5 and IBB BytesStreams options; and together with <b>HTTP File Upload service</b> to ensure reliability.
      Files encryption using OMEMO are supported in both the Jingle File Transfer via XEP-0391: Jingle Encrypted
-     Transports, and HTTP File Upload via XEP-xxxx: OMEMO Media Sharing. aTalk file transfer handling priority is as follow:</br>
-     (online) Jingle File Transfer &#8658 SI File Transfer &#8658 (offline and fallback) HTTP File Upload.</div>
+     Transports, and HTTP File Upload via XEP-xxxx: OMEMO Media Sharing. aTalk file transfer handling priority order
+     is as follow:</br></br>
+     <li>Jingle File Transfer with JET support ((online)</li>
+     <li>HTTP File Upload (offline and JFT/JET fallback, if supported by service provider)</li>
+     <li>SI File Transfer; fallback to IBB on SOCK5 failure</li><br/>
+   </div>
    <div class='innerText'><image src="./img/atalk_file_xfer_prompt.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'>During file transfer negotiation, aTalk uses the agreed protocol per predefined priorty for
      sharing the file. However if the agreed protocol method failed for reason e.g. client symmetric NAT firewall,
@@ -987,7 +992,7 @@ ul li {
     <b>HTTP File Upload service</b> for the next 10 files sharing with your buddy.</div>
    <div class='innerText'><image src="./img/atalk_file_xfer_failed.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'>When aTalk detects the remote is offline, it automatically selects the HTTP File Upload
-     facility, if the protocol is supported by your xmpp service, to continue with the file transfer.</div>
+     facility, if the protocol is supported by your xmpp service provider, to continue with the file transfer.</div>
    <div class='innerText'>Both XEP-0234: Jingle File Transfer and XEP-0096: SI File Transfer specification have no
      provision to transfer file when you are in a muc/conference session. Under this condition, aTalk checks the server
      for HTTP File Upload service support, and uses it if available to support file sharing between muc members.</div>
@@ -996,14 +1001,19 @@ ul li {
      In muc OMEMO chat session, all file sharing will be encrypted using <b>OMEMO Media Sharing</b> before sending via
      <b>HTTP File Upload</b> service.</div>
    <div class='innerText'>aTalk harmonizes and uses a common UI in file sharing, irrespective of which file sharing
-     protocols is being used, and in all the various chat sessions. Unlike all other file transfer protocols, when file
-     transfer is via <b>HTTP File Upload service</b>, the sender is unaware of the recipient status. After the sender
-     has succcesfully uploaded the file to the server, it forwards the file download link embedded as a chat message
-     to the recipient. To allow recipient to retrieve the file, aTalk always shows the received file download link as
-     a file transfer request. Selecting the <b>Decline</b> button does not actually delete the file link message. aTalk
-     will show the prompt after user returns to the chat session later, even the user has previously selected the
-     <b>Decline</b> button, either intentionally or unintentionally. To remove the prompt, user must manually select
-     and delete the link message/prompt.</div>
+     protocols is being used, and for all the various chat sessions. The file transfer status UI display is always in
+     synchronise with the actual file transfer protocol state changes, byte send/receive progress status, file encryption
+     type etc. The file transfer UI is always in foucs and fully visible to user, override android UI refresh limitation
+     i.e. android does not realign the focus on view holder size change;
+     </div>
+   <div class='innerText'>Unlike all other file transfer protocols, when file transfer is via <b>HTTP File Upload service</b>,
+     the sender is unaware of the recipient status, with no protocol handshake in place. After the sender has succcesfully
+     uploaded the file to the server, it forwards the file download link embedded as a chat message to the recipient.
+     To allow recipient to retrieve the file, aTalk always shows the received file download link as a file transfer request.
+     Selecting the <b>Decline</b> button does not actually delete the file link message. aTalk will show the prompt again
+     after user returns to the chat session later, even the user has previously selected the <b>Decline</b> button,
+     either intentionally or unintentionally. To remove the file download prompt, user must manually select and delete
+     the link message/prompt.</div>
 
    <span id='feature_10'></span>
    <div class='blueText'>[20200417] Text to speech and speech recognition in chat/groupChat session <a href=#content>{ Content }</a></div>
@@ -1940,7 +1950,6 @@ ul li {
 
   <hr/>
   <!-- ========================= General ====================== -->
-  <hr/>
   <div id='subSection'>General</div>
 
    <span id='general_01'></span>
