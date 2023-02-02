@@ -109,11 +109,12 @@ ul li {
      </ul>
      <h4>Enhanced Features</h4>
       <ul>
-         <li><a href=#feature_01>[20190626] Adding Contact</li>
+         <li><a href=#feature_01>[20230202] Adding Contact</li>
          <li><a href=#feature_02>[20221004] StreetViews & Map</a></li>
          <li><a href=#feature_03>[20200330] XEP-0045: Multi-User Chat</a></li>
          <li><a href=#feature_09>[20200330] XEP-0048: Bookmarks and autoJoin option for conference</a></li>
          <li><a href=#feature_10>[20191004] XEP-0070: Verifying HTTP Requests via XMPP and WebView Implementation</a></li>
+         <li><a href=#feature_14>[20230202] XEP-0313: Message Archive Management</a></li>
          <li><a href=#feature_04>[20190526] Stickers, Bitmoji and Emoji rich content sharing </a></li>
          <li><a href=#feature_05>[20230131] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
          <li><a href=#feature_10>[20200417] Text to Speech and speech recognition in chat/groupChat session</a></li>
@@ -583,7 +584,7 @@ ul li {
    <div id='subSection'>Enhanced Features</div>
 
    <span id='feature_01'></span>
-   <div class='blueText'>[20190626] Adding Contact <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20220202] Adding Contact <a href=#content>{ Content }</a></div>
    <image src="./img/atalk_contact_add.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>     
    <div class='innerText'>In order to protect the privacy of XMPP users, presence information is disclosed only
        to other entities that a user has approved. When a user has agreed that another entity is allowed to view
@@ -644,13 +645,22 @@ ul li {
      buddy. It will also revert a request to your buddy for approval.</div>
    <div class='innerText'><b>Note:</b> When you remove a buddy from your contact list, it automatically triggers the
      server to remove him/her from your Presence Subscription.
-   <image src="./img/atalk_contact_presence_accept.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
+   <image src="./img/atalk_contact_presence_accept.png" align="right" width="30%" style="margin:5px 0px 15px 15px"/></div>
    <div class='innerText'>Your XMPP service admin may choose to create share-rosters on the server, grouping all the
     related members in each categorid roster group. Upon first login, every member of the group will have his/her
     contactList populated with all the members within his/her roster group. This saves the member to manually subscribe
     to everyone in the related entity.</div>
    <div class='innerText'>For more information on Presence Subscription, please see    
      <a href="https://xmpp.org/rfcs/rfc6121.html#sub">Managing Presence Subscriptions</a></div>
+
+   <div class='innerText'><br/><b>Adding Oneself to Contact List:</b></div>
+   <div class='innerText'>When aTalk is first installed, the user own account is not included in the contact list view.
+     The initial contact list is only populated with contacts from the roster, if any defined by the administrator. However
+     one can add him/herself as one of the contacts via the <b>Add contact</b> option, just like adding other contact;
+     all messages conversed with other contacts will not appear in the oneself chat session. You are not able
+     to remove oneself from the contact list if you are part of the roster; this behaviour is similar to other
+     contacts included in the roster.</div>
+
 
    <span id='feature_02'></span>
    <div class='blueText'>[20121004] StreetViews &amp; Map <a href=#content>{ Content }</a></div>
@@ -930,6 +940,28 @@ ul li {
     to leave the WebView and return to other slider pages. If you change the <b>Web Access Page</b> settings, you must
     navigate the slider to the Contact list page. This is to trigger android OS to invalidate the last accessed web page.
     Only then, WebView can load the new user defined web page.</div>
+
+   <span id='feature_14'></span>
+   <div class='blueText'>[20230202] XEP-0313: Message Archive Management <a href=#content>{ Content }</a></div>
+   <div class='innerText'>aTalk has added support for Message Archive Management since aTalk v3.1.2. Take note the
+    followings to understand MAM implementation, and for it to work properly on aTalk:
+     <ul>
+     <ul>
+       <li>The user registered server must support archiving of all chat messages on server.</li>
+       <li>The MAM supported is not available when user has the <b>Chat hitory logging</b> option disabled.</li>
+       <li>The retrieval of MAM messages can only be done while the user is registered with the server.</li>
+       <li>All messages sent directly to user while offline, are not part of MAM. The sending of any offline messages
+         are taken care by the server.</li>
+     </ul>
+     In aTalk MAM implementation, MAM messages are fetched only ONCE, when the user first launches the chat session for
+     the specific contact; and only downloaded for MAM messages that are being sent after the last user received message. 
+     Currently aTalk allows launching the chat session even when user is offline; this is to allow user viewing of the
+     chat history messages. However no MAM message is being fetched nor displayed. These MAM, if any will remain on
+     server even after user has logged into the server. For display of MAM messages if any after user has registered with
+     the server, user must close the current chat session and launch again for aTalk to fetch MAM messages from the server.
+     If new messages are received after user registration with the server, all previous MAM prior to the new message
+     received date remain forever on the server and not visible to aTalk for fetching.  
+   </div>
 
    <span id='feature_04'></span>
    <div class='blueText'>[20190526] Stickers, Bitmoji and Emoji rich content sharing <a href=#content>{ Content }</a></div>
