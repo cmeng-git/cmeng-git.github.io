@@ -114,9 +114,9 @@ ul li {
          <li><a href=#feature_03>[20200330] XEP-0045: Multi-User Chat</a></li>
          <li><a href=#feature_09>[20200330] XEP-0048: Bookmarks and autoJoin option for conference</a></li>
          <li><a href=#feature_10>[20191004] XEP-0070: Verifying HTTP Requests via XMPP and WebView Implementation</a></li>
-         <li><a href=#feature_14>[20230202] XEP-0313: Message Archive Management</a></li>
+         <li><a href=#feature_14>[20230211] XEP-0313: Message Archive Management</a></li>
          <li><a href=#feature_04>[20190526] Stickers, Bitmoji and Emoji rich content sharing </a></li>
-         <li><a href=#feature_05>[20230131] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
+         <li><a href=#feature_05>[20230211] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
          <li><a href=#feature_10>[20200417] Text to Speech and speech recognition in chat/groupChat session</a></li>
          <li><a href=#feature_11>[20191218] Share, Quote and Forward of messages and media contents</a></li>
          <li><a href=#feature_12>[20200619] aTalk Heads-Up Notification and Quiet-Hours</a></li>
@@ -942,26 +942,35 @@ ul li {
     Only then, WebView can load the new user defined web page.</div>
 
    <span id='feature_14'></span>
-   <div class='blueText'>[20230202] XEP-0313: Message Archive Management <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20230211] XEP-0313: Message Archive Management <a href=#content>{ Content }</a></div>
    <div class='innerText'>aTalk has added support for Message Archive Management since aTalk v3.1.2. Take note the
     followings to understand MAM implementation, and for it to work properly on aTalk:
      <ul>
      <ul>
-       <li>The user registered server must support archiving of all chat messages on server.</li>
-       <li>The MAM supported is not available when user has the <b>Chat hitory logging</b> option disabled.</li>
-       <li>The retrieval of MAM messages can only be done while the user is registered with the server.</li>
-       <li>All messages sent directly to user while offline, are not part of MAM. The sending of any offline messages
-         are taken care by the server.</li>
-     </ul>
-     In aTalk MAM implementation, MAM messages are fetched only ONCE, when the user first launches the chat session for
-     the specific contact; and only downloaded for MAM messages that are being sent after the last user received message. 
-     Currently aTalk allows launching the chat session even when user is offline; this is to allow user viewing of the
-     chat history messages. However no MAM message is being fetched nor displayed. These MAM, if any will remain on
-     server even after user has logged into the server. For display of MAM messages if any after user has registered with
-     the server, user must close the current chat session and launch again for aTalk to fetch MAM messages from the server.
-     If new messages are received after user registration with the server, all previous MAM prior to the new message
-     received date remain forever on the server and not visible to aTalk for fetching.  
-   </div>
+       <li>The user registered server must support XEP-0313 MAM of all chat messages.</li>
+       <li>The MAM supported is not available on aTalk when user has the <b>Chat hitory logging</b> option disabled.</li>
+       <li>When user changes <b>Chat hitory logging</b> option while offline, the MAM setting on server will not be
+         updated until next user login. If user enables <b>Chat hitory logging</b> option while offline, and exit aTalk
+         after that. None of the MAM messages sent to the user will be saved on the server for later retrieval when
+         user goes online.</li>
+       <li>The retrieval of MAM messages can only be done while the user is online and registered with the server.</li>
+     </ul></div>
+
+   <div class='innerText'>In aTalk MAM implementation, MAM messages are fetched only ONCE, when the user newly launches
+     the chat session for the specific contact. Currently aTalk allows launching the chat session even when user is
+     offline; this is to allow the offline user to view the chat history messages. Under this case, no MAM message is
+     being fetched nor displayed in the chatSession UI. These MAM messages, if any will remain on the server even after
+     user has later registered with the server. For display of MAM messages, after user has registered with the server,
+     user must close the current chat session and launch again for aTalk to retrieve the MAM messages and display on
+     the chatSession UI.</div>
+
+   <div class='innerText'>Messages sent directly to user while offline: The forwarding of any offline messages to the
+     user when online, are usually taken care by the server, but pending server configuration. In ejabberd server v20.02
+     <b>mod_mam</b> module configuration settings, if the <a href="https://docs.ejabberd.im/admin/configuration/modules/#mod-mam">
+     <b>assume_mam_usage</b></a> option is set to true, the offline messages are considered as part of MAM; hence will
+     not be forward according when user goes online. The offline messages are only retrieved during mamQuery. Therefore
+     user registered with such server, will never receive any offline messages if the user has the <b>Chat hitory logging</b>
+     option disabled.</div>
 
    <span id='feature_04'></span>
    <div class='blueText'>[20190526] Stickers, Bitmoji and Emoji rich content sharing <a href=#content>{ Content }</a></div>
@@ -988,7 +997,7 @@ ul li {
    </ul>
 
    <span id='feature_05'></span>
-   <div class='blueText'>[20230131] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20230211] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements <a href=#content>{ Content }</a></div>
    <div class='innerText'>aTalk file sharing implementation uses the following XEP protocols:
      <li><a href="https://xmpp.org/extensions/xep-0234.html">XEP-0234: Jingle File Transfer</a></li>
      <li><a href="https://xmpp.org/extensions/xep-0096.html">XEP-0096: SI File Transfer</a></li>
@@ -1011,14 +1020,19 @@ ul li {
      Files encryption using OMEMO are supported in both the Jingle File Transfer via XEP-0391: Jingle Encrypted
      Transports, and HTTP File Upload via XEP-xxxx: OMEMO Media Sharing. aTalk file transfer handling priority order
      is as follow:</br></br>
-     <li>Jingle File Transfer with JET support ((online)</li>
-     <li>HTTP File Upload (offline and JFT/JET fallback, if supported by service provider)</li>
+     <li>Jingle File Transfer with JET support (online and supported by recipient client)</li>
+     <li>HTTP File Upload (if supported by service provider) when recipient is offline, and for JFT/JET fallback</li>
      <li>SI File Transfer; fallback to IBB on SOCK5 failure</li><br/>
    </div>
+
    <div class='innerText'><image src="./img/atalk_file_xfer_prompt.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
-   <div class='innerText'>During file transfer negotiation, aTalk uses the agreed protocol per predefined priorty for
-     sharing the file. However if the agreed protocol method failed for reason e.g. client symmetric NAT firewall,
+   <div class='innerText'>During file transfer negotiation, aTalk uses the agreed protocol per above defined priorty
+     for sharing the file. However if the agreed protocol method failed for reason e.g. client symmetric NAT firewall,
      aTalk automatically fallback to use <b>HTTP File Upload service</b> to ensure a successful file transfer.</div>
+   <div class='innerText'>aTalk supports both the <b>Jingle Encrypted Transports</b> and <b>OMEMO Media Sharing</b>
+     protocol. During 1:1 OMEMO chat session, it uses Jingle File Trasfer with JET if supported by the remote client. 
+     In muc OMEMO chat session, all file sharing will be encrypted using <b>OMEMO Media Sharing</b> before sending via
+     <b>HTTP File Upload</b> service.</div>
    <div class='innerText'>In the event if the remote client advertised e.g conversations, but does not support the
     XEP-0391: JET protocol. The trasfer failed with user retry. aTalk will automatic proceed to use the
     <b>HTTP File Upload service</b> for the next 10 files sharing with your buddy.</div>
@@ -1028,10 +1042,6 @@ ul li {
    <div class='innerText'>Both XEP-0234: Jingle File Transfer and XEP-0096: SI File Transfer specification have no
      provision to transfer file when you are in a muc/conference session. Under this condition, aTalk checks the server
      for HTTP File Upload service support, and uses it if available to support file sharing between muc members.</div>
-   <div class='innerText'>aTalk supports both the <b>Jingle Encrypted Transports</b> and <b>OMEMO Media Sharing</b>
-     protocol. During 1:1 OMEMO chat session, it uses Jingle File Trasfer with JET if supported by the remote client. 
-     In muc OMEMO chat session, all file sharing will be encrypted using <b>OMEMO Media Sharing</b> before sending via
-     <b>HTTP File Upload</b> service.</div>
    <div class='innerText'>aTalk harmonizes and uses a common UI in file sharing, irrespective of which file sharing
      protocols is being used, and for all the various chat sessions. The file transfer status UI display is always in
      synchronise with the actual file transfer protocol state changes, byte send/receive progress status, file encryption
@@ -1041,11 +1051,11 @@ ul li {
    <div class='innerText'>Unlike all other file transfer protocols, when file transfer is via <b>HTTP File Upload service</b>,
      the sender is unaware of the recipient status, with no protocol handshake in place. After the sender has succcesfully
      uploaded the file to the server, it forwards the file download link embedded as a chat message to the recipient.
-     To allow recipient to retrieve the file, aTalk always shows the received file download link as a file transfer request.
-     Selecting the <b>Decline</b> button does not actually delete the file link message. aTalk will show the prompt again
-     after user returns to the chat session later, even the user has previously selected the <b>Decline</b> button,
-     either intentionally or unintentionally. To remove the file download prompt, user must manually select and delete
-     the link message/prompt.</div>
+     To allow recipient to retrieve the file, aTalk always shows the received file download link as a file transfer offer.
+     Selecting the <b>Decline</b> button does not actually delete the file link message, except UI changes to show user
+     has declined the file offer. If the user make a copy from the file transfer UI, and paste in the text entry. The
+     actual url link is shown. For an unencrypted file transfer, user can click the link to fetch the file via web UI.
+     However user is unable to fetch an encrypted file via this method once the user has declined the file offer.</div>
 
    <span id='feature_10'></span>
    <div class='blueText'>[20200417] Text to speech and speech recognition in chat/groupChat session <a href=#content>{ Content }</a></div>
