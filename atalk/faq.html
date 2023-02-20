@@ -102,7 +102,7 @@ ul li {
        <li><a href=#account_02>[20190731] What information to enter in "Override server setting" when I setup a new account?</a></li>
        <li><a href=#account_03>[20180818] SSL Certificate Authentication, DNSSEC and DANE Security Implementation for Connection Establishment</a></li>
        <li><a href=#account_07>[20200228] XEP-0178: Best Practices for Use of SASL EXTERNAL with Certificates for client authentication (experimental)</a></li>
-       <li><a href=#account_08>[20191102] Bidirectional-streams Over Synchronous HTTP (BOSH) with Proxy support</a></li>
+       <li><a href=#account_08>[20230220] Bidirectional-streams Over Synchronous HTTP (BOSH) with Proxy support</a></li>
        <li><a href=#account_04>Do I have to enable IB Registration option when I setup a new account?</a></li>
        <li><a href=#account_05>[20191002] Google Talk account setup</a></li>
        <li><a href=#account_06>[20190620] Why my first login in sometimes fails when a new account is created?</a></li>
@@ -114,7 +114,7 @@ ul li {
          <li><a href=#feature_03>[20200330] XEP-0045: Multi-User Chat</a></li>
          <li><a href=#feature_09>[20200330] XEP-0048: Bookmarks and autoJoin option for conference</a></li>
          <li><a href=#feature_10>[20191004] XEP-0070: Verifying HTTP Requests via XMPP and WebView Implementation</a></li>
-         <li><a href=#feature_14>[20230211] XEP-0313: Message Archive Management</a></li>
+         <li><a href=#feature_14>[20230220] XEP-0313: Message Archive Management</a></li>
          <li><a href=#feature_04>[20190526] Stickers, Bitmoji and Emoji rich content sharing </a></li>
          <li><a href=#feature_05>[20230211] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
          <li><a href=#feature_10>[20200417] Text to Speech and speech recognition in chat/groupChat session</a></li>
@@ -414,16 +414,17 @@ ul li {
      authentication via SASL EXTERNAL mechanism.</div>
 
    <span id='account_08'></span>
-   <div class='blueText'>[20191102] Bidirectional-streams Over Synchronous HTTP (BOSH) with Proxy support <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20230220] Bidirectional-streams Over Synchronous HTTP (BOSH) with Proxy support <a href=#content>{ Content }</a></div>
    <div class='innerText'>Bidirectional-streams Over Synchronous HTTP (BOSH) is a transport protocol that emulates a
      bidirectional stream between two entities (such as a client and a server) by using multiple synchronous HTTP
      request/response pairs without requiring the use of frequent polling or asynchronous chunked responses.</div>
-     <image src="./img/atalk_bosh_proxy_configuration.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
+     <image src="./img/atalk_bosh_proxy_configuration_setting.png" align="right" width="32%" style="margin:5px 0px 0px 15px"/>
    <div class='innerText'>Hypertext Transfer Protocol Secure (HTTPS) is an extension of the Hypertext Transfer Protocol
      (HTTP). It is used for secure communication over a computer network, and is widely used on the Internet. In HTTPS,
      the communication protocol is encrypted using Transport Layer Security (TLS), or formerly its predecessor Secure
      Sockets Layer (SSL). The protocol is therefore also often referred to as HTTP over TLS or HTTP over SSL.</div>
    <div class='innerText'>Most companies restrict their internet access for their employees with a firewall and proxy.
+     <image src="./img/atalk_bosh_proxy_option.png" align="right" width="20%" style="margin:5px 0px 5px 15px"/>
      Normally only port 80 (HTTP) and 443 (HTTPS) are opened, which means no access to the xmpp port 5222. With aTalk
      xmpp client, you can tunnel through the firewall to reach your desired xmpp server via BOSH connection.</div>
    <div class='innerText'>
@@ -443,14 +444,13 @@ ul li {
      select <b>Account settings...</b>. Follow the instructions herein on how to create a new account. By default aTalk
      will connect to the user server via XMPPTCP connection on first login. You will need to cancel the login prompt
      upon login failure in order to configure the BOSH settings.<br/>
+     <image src="./img/atalk_bosh_proxy_configuration.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
      <ul>
-       <image src="./img/atalk_bosh_proxy_configuration_setting.png" align="right" width="32%" style="margin:5px 0px 0px 15px"/>
        <li>On returning to the account list, click on the newly created account.</li>
        <li>From the account settings menu, select <b>BOSH-Proxy Configuration</b> to setup connection via BOSH/Proxy
          for the account.</li>
        <li>The default configuration is <b>NONE</b>. Select <b>BOSH</b> from the <b>Type</b> pull down menu</li>
-       <image src="./img/atalk_bosh_proxy_option.png" align="right" width="20%" style="margin:5px 0px 5px 15px"/>
-       <li>Enter the <b>BOSH URL</b> link e.g. https://example.net:443/http-bind. You need to refer to the xmpp service
+       <li>Enter the <b>BOSH URL</b> link e.g. https://example.net:5443/bosh. You need to refer to your xmpp service
          provider to find the correct setting.</li>
        <li>If the firewall was your only problem, then you are done with the BOSH settings. If not, you then have to
          configure the Proxy settings too.</li>
@@ -942,7 +942,7 @@ ul li {
     Only then, WebView can load the new user defined web page.</div>
 
    <span id='feature_14'></span>
-   <div class='blueText'>[20230211] XEP-0313: Message Archive Management <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20230220] XEP-0313: Message Archive Management <a href=#content>{ Content }</a></div>
    <div class='innerText'>aTalk has added support for Message Archive Management since aTalk v3.1.2. Take note the
     followings to understand MAM implementation, and for it to work properly on aTalk:
      <ul>
@@ -965,8 +965,10 @@ ul li {
      the chatSession UI.</div>
 
    <div class='innerText'>Messages sent directly to user while offline: The forwarding of any offline messages to the
-     user when online, are usually taken care by the server, but pending server configuration. In ejabberd server v20.02
-     <b>mod_mam</b> module configuration settings, if the <a href="https://docs.ejabberd.im/admin/configuration/modules/#mod-mam">
+     user when online, are usually taken care by the server, but pending server configuration.<br />
+     <b>Note:</b> The problem desribed below has been tested and does not happen on ejabberd v23.01.<br />
+     In ejabberd server v20.12 <b>mod_mam</b> module configuration settings, if the
+     <a href="https://docs.ejabberd.im/admin/configuration/modules/#mod-mam">
      <b>assume_mam_usage</b></a> option is set to true, the offline messages are considered as part of MAM; hence will
      not be forward according when user goes online. The offline messages are only retrieved during mamQuery. Therefore
      user registered with such server, will never receive any offline messages if the user has the <b>Chat hitory logging</b>
