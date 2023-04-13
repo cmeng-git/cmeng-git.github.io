@@ -93,7 +93,7 @@ ul li {
      <h4>hymnchtv UI desgin &amp; Implementation</h4>
      <image src="./img/hymnchtv_help_qrcode.png" align="right" width="20%" style="margin:5px 0px 20px 15px"/>
      <ul>
-       <li><a href=#hymnch_0010>[20201229] hymnchtv UI design &amp; Implementation</a></li>
+       <li><a href=#hymnch_0010>[20230413] hymnchtv UI design &amp; Implementation</a></li>
      </ul>
      <ul>
        <li><a href=#hymnch_0020>[hymnchtv main user interface] hymnchtv main user interface</a></li>
@@ -105,7 +105,7 @@ ul li {
        <li><a href=#hymnch_0040>[20221026] Hymn lyrics and media player UI interface</a></li>
      </ul>
      <ul>
-       <li><a href=#hymnch_0042>[20221026] Chinese Simplified, Traditional or English lyrics selection</a></li>
+       <li><a href=#hymnch_0042>[20230413] Chinese Simplified, Traditional or English lyrics selection</a></li>
      </ul>
      <ul>
        <li><a href=#hymnch_0050>[20221013] Hymn media player UI interface, control and playback operations</a></li>
@@ -141,7 +141,7 @@ ul li {
    <div id='subSection'>hymnchtv UI design &amp; Implementation</div>
 
    <span id='hymnch_0010'></span>
-   <div class='blueText'>[20201229] hymnchtv UI design &amp; Implementation <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20230413] hymnchtv UI design &amp; Implementation <a href=#content>{ Content }</a></div>
    <div class='innerText'>In hymnchtv UI design, user interaction with the application uses mainly android device touch
      screen and gestures to navigate or access to other menu. Generally hymnchtv uses the following gestures and click
      actions to access to other part of the menus.
@@ -159,7 +159,7 @@ ul li {
    </div>
 
    <span id='hymnch_0020'></span>
-   <div class='innerText'><image src="./img/hymnchtv_main_ui.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/></div>
+   <div class='innerText'><image src="./img/01.hymnchtv_main.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/></div>
    <div class='blueText'>[hymnchtv main user interface] hymnchtv main user interface <a href=#content>{ Content }</a></div>
    <div class='innerText'>This is the main hymnchtv UI that is shown when user launches the hymnchtv application. From
      this main UI window, you can access to all the hymnchtv features implementation, pop-up menu and the main pull down menu.
@@ -183,17 +183,19 @@ ul li {
 
    <div class='innerText'><b>Main UI pull down menu</b></div>
    <image border="2px solid blue" src="./img/hymnchtv_main_menu.png" align="right" width="20%" style="margin:5px 0px 20px 15px"/>
-   <div class='innerText'>The main UI pull down menu is acessed via the oveflow icon on the top-right corner of the
+   <div class='innerText'>The main UI pull down menu is accessed via the overflow icon on the top-right corner of the
      main UI. It contains the following user selectable options:
      <ul>
-       <li><b>墙纸</b>: This option allows user to select one of the 15 hymnchtv predefined images to use as the
+       <li><b>应用界面主题</b>: Hymnchtv supports both Theme.DARK and Theme.LIGHT, including WebViewe theme update</li> 
+       <li><b>应用界面语言</b>: Hymnchtv supports both 简体中文 and English locales</li> 
+       <li><b>主界面壁纸</b>: This option allows user to select one of the 15 hymnchtv predefined images to use as the
          main UI wallpaper. The sub-menu also contains the option to allow user to define and use own image as the 
          wallpaper. <a href="./index.html#wallpaper_user">Watch demo video for details.</a>.  
 				</li>   
-       <li><b>设置主面版文字大小</b>: The main UI font size can be changed via this option; there are 4 predefined sizes i.e.
-         小 (30sp); 默认 (35sp); 大 (40sp); 超大 (45sp); and 加大/减小 +2/-2 of the current set font size for user selection.</li>     
        <li><b>设置主面版字体颜色</b>: The main UI font color can be changed via this option; there are 8 predefined colors
          for user selection.</li>     
+       <li><b>设置主面版文字大小</b>: The main UI font size can be changed via this option; there are 4 predefined sizes i.e.
+         小 (30sp); 默认 (35sp); 大 (40sp); 超大 (45sp); and 加大/减小 +2/-2 of the current set font size for user selection.</li>     
        <li><b>用户定义媒体设置</b>: User defined media configuration setup. See <a href=#hymnch_0070>below</a> for details.</li>     
        <li><b>网上帮助</b>: Click on option will display this online help page/</li>     
        <li><b>关于</b>: About the basic info of the hymnchtv, including install apk version and history.</li>     
@@ -241,35 +243,36 @@ ul li {
        <li><b>主页</b>: Returns user to the hymnchtv main UI page, or the Hymn Category selection page.</li>
      </ul>
      <image border="2px solid blue" src="./img/10.hymnchtv_lyrics_text.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/>
-     you may copy text diplays in lyrics text content. To do this, double quick clicks on the desired text location; 
-     adust the text cursors and then select copy option. This option is also availble during the hymn content search.
+     you may copy text displays in lyrics text content. To do this, double quick clicks on the desired text location; 
+     adust the text cursors and then select copy option. This option is also available during the hymn content search.
    </div>
 
 
    <span id='hymnch_0042'></span>
-   <div class='blueText'>[20221026] Chinese Simplified, Traditional or English lyrics selection <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20230413] Chinese Simplified, Traditional or English lyrics selection <a href=#content>{ Content }</a></div>
    <div class='innerText'>The screenshot on the right shows the hymn lyrics display page after user has selected
      the desired HymnNo and HymnType. On entry, the window displays the lyrics text in Chinese Simplified by default.
      <image  border="2px solid blue" src="./img/12.hymnchtv_lyrics_english.png" align="left" width="25%" style="margin:15px 30px 0px 0px"/>
      Using the two lyrics option buttons (see below), user may choose to change displayed lyrics to Chinese Traditional
-     or English. If the Enlgish lyrics cannot be displayed in the current lyrics text window, it will instead provide
-     a clickable link for user to launch an external web browser for English lyrics view.
+     or English. If the English lyrics cannot be displayed in the current lyrics text window, it will instead provide
+     a clickable external link for user to launch an external web browser for English lyrics view.
      <ul>
-       <li><b>英文歌词</b>: Click on this button to toggle the lyrcis display between Chinese and English text.</li>
+       <li><b>英文歌词</b>: Click this button to display English lyrics after online content is fetched, or from database
+         if it has been fetched previsouly. The action will toggle between Chinse and English lyrics if the English
+          lyrcis is currently being displayed.</li>
        <li><b>简体&#x2B0C;繁体歌词</b>: Short click on the button, will toggle lyrics display between Chinese Simplified and
-         Traditional. The action will switch between Chinse and English lyrics if the English lyrcis is currently being
-         displayed.<br />
+         Traditional.<br />
          <b>Long press</b> on this button pop-up a sub-menu as shown on the right i.e. <b>字词转换标准表</b>. The option menu
-         allows user to select the final conversion type for Traditional Chinse lyrics display:</li>
+         allows user to select the final conversion type for Traditional Chinese lyrics display:</li>
        <ul>
          <li><b>简体到繁体</b>: Simplified Chinese to Traditional Chinese (Standard).</li>
-         <li><b>简体到香港繁</b>: Simplified Chinese to Traditional Chinese (Hong Kong Standard).</li>
          <image border="2px solid blue" src="./img/hymnchtv_conversion_ui.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/>
+         <li><b>简体到香港繁</b>: Simplified Chinese to Traditional Chinese (Hong Kong Standard).</li>
          <li><b>简体到台湾正体，并转换为台湾常用词汇</b>: Simplified Chinese to Traditional Chinese (Taiwan Standard) with Taiwanese idiom.</li>
          <li><b>简体到台湾正体</b>: Simplified Chinese to Traditional Chinese (Taiwan Standard)</li>
        </ul>
      </ul>
-     Once user has confirmed the selected Chinese Tranditional conversion type, it will be used for all subsequent
+     Once user has confirmed the selected Chinese Traditional conversion type, it will be used for all subsequent
      Tradtional Chinese lyrics display until the next conversion type changes by user.
    </div>
 
@@ -290,7 +293,7 @@ ul li {
        <li><b>伴奏</b>: Hymn accompany music only media playback. The playback media can either be from the embedded
          midi files or downloaded from the predefined site.</li>
        <li><b>教唱</b>: Hymn singing practice. Currently this is used to access the QQ url links available for <b>补充本</b>
-         HymnType; the databse records are being updated in new installation of hymnchtv v1.7.6 and above. When click
+         HymnType; the database records are being updated in new installation of hymnchtv v1.7.6 and above. When click
          on the button with text greyed out will bring you to QQ main page. <b>Long Press</b> this button will also
          show the QQ main page.</li>
        <li><b>唱诗</b>: Local stored hymn music with words or associated url link.</li>
@@ -303,7 +306,7 @@ ul li {
            <li><b>Single Tap</b> to perform hymn info search via youtube.com</li>
            <li><b>Long Press</b> to perform hymn info search via google.com</li>
            <li>Note: The user selected HymnNo info is also copied to the clipboard. You may paste this clipboard
-             text into any of your preferred search engine to perform addtional content searching.</li>
+             text into any of your preferred search engine to perform additional content searching.</li>
          </ul>
        <li><b>Repeat/Loop Count</b>: Disable/Enable repeat playback with user defined loop count.</li>
        <li><b>Playback speed</b>: Variable playback speed. The available playback speed varies from 0.6x~1.4x of the
@@ -330,7 +333,7 @@ ul li {
      HymnNo; all the downloaded media files are stored in the local storage for next time use.
    </div>
    <div class='innerText'>If the user closes the current downloading UI by click the <b>X</b>, the downloading process
-     will continue in backgroud until completion. User may select another media type to playback; only returns to the
+     will continue in background until completion. User may select another media type to playback; only returns to the
      the downloading hymn when it has completed.
    </div>
 
@@ -408,7 +411,7 @@ ul li {
          This newly added media content will be used for the playback when user selects its associated hymn data i.e.
          HymnType/MediaType/HymnNo in the lyrics display window.
        <li><b>删除</b>: Use this button to delete media record that is no further required. If you re-assign/move a medium
-         content to a different HymnType, user must peform the re-assignment, then followed by a deletion of the old media 
+         content to a different HymnType, user must perform the re-assignment, then followed by a deletion of the old media 
          record of the previous HymnType manually; else the old media record will remain in the old HymnType database.
          This is not necessary if you are just modified the HymnNo of a media record within the same HymnType category. 
        </li>
