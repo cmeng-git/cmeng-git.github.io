@@ -111,7 +111,7 @@ ul li {
       <ul>
          <li><a href=#feature_01>[20230202] Adding Contact</li>
          <li><a href=#feature_02>[20221004] StreetViews & Map</a></li>
-         <li><a href=#feature_03>[20200330] XEP-0045: Multi-User Chat</a></li>
+         <li><a href=#feature_03>[20230614] XEP-0045: Multi-User Chat</a></li>
          <li><a href=#feature_09>[20200330] XEP-0048: Bookmarks and autoJoin option for conference</a></li>
          <li><a href=#feature_10>[20191004] XEP-0070: Verifying HTTP Requests via XMPP and WebView Implementation</a></li>
          <li><a href=#feature_14>[20230220] XEP-0313: Message Archive Management</a></li>
@@ -735,7 +735,7 @@ ul li {
      </ul> 
 
    <span id='feature_03'></span>
-   <div class='blueText'>[20200330] XEP-0045: Multi-User Chat <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20230614] XEP-0045: Multi-User Chat <a href=#content>{ Content }</a></div>
    <div class='innerText'>Multi-User Chat (MUC) or group chat protocols are defined in XMPP XEP-0045 specifications;
      several users participate in room discussion can exchange chat messages at the same time. aTalk implements most
      of the room common features for MUC messaging. Please refer to <a href="https://xmpp.org/extensions/xep-0045.html">XEP-0045: Multi-User Chat</a>
@@ -800,10 +800,10 @@ ul li {
          the occupants currently have active participation in the room. The list is displayed in the chat window..</li>
       </ul>
 
+   <div class='innerText'> <image src="./img/atalk_muc_join.png" align="left" width="30%" style="margin:5px 25px 5px 0px"/></div>
    <div class='innerText'>The privilege of a registered user to create a new room on server is defined by the XMPP
      server configuration set by the administrator. In aTalk, with the right privilege, you may create a new room
      using one of the two methods described below.</div> 
-   <div class='innerText'> <image src="./img/atalk_muc_join.png" align="left" width="30%" style="margin:5px 25px 5px 0px"/></div>
    <div class='innerText'><b>Create / Join Chat Room:</b> Select this option from the main menu to create a new or
      join an existing room on the server. You need to provide a Nick Name, if necessary update the room subject if
      permitted pending room configuration settings. You must also provide a valid password when the room is configured
@@ -823,6 +823,20 @@ ul li {
      the room member list, the process will failed with an error message. You will no be able to receive or send any
      messages in the chat room. Likewise you will receive an error message if you attempt to destroy chatRoom when
      you are not the room owener.</div>
+   <div class='innerText'> <image src="./img/atalk_muc_buddy_context.png" align="right" width="40%" style="margin:5px 0px 0px 15px"/></div>
+   <div class='innerText'><br /><b>Participant Context Menu:</b><br />During a group chat session, long click on a participant avatar will bring up a context menu
+    for user to take action; the available options are pending user role in the group chat:
+     <ul>
+       <li><b>Start conversation:</b> Start a chat session for the non-anoymous participant; otherwise launch the contact
+         list UI for user selection to start a chat session. This option is availble to all members in group chat.</li>
+       <li><b>Grant/Revoke owner privileges:</b> Allow an owner to grant the participant with the moderator privileges.</li>
+       <li><b>Remove from group chat:</b> Allow a moderator to remove a buddy from participanting in the current group
+         chat.</li>
+      </ul>
+      A short click on the avatar will copy/remove the buddy nick name in the message send entry box.
+    </div> 
+   <div class='innerText'>aTalk supports receive and display of an incoming Private Messaging; it auto starts a chat
+    session upon received the message.</div> 
 
    <span id='feature_09'></span>
    <div class='blueText'>[20200330] XEP-0048: Bookmarks and autoJoin option for conference <a href=#content>{ Content }</a></div>
