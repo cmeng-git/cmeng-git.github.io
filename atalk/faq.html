@@ -105,6 +105,7 @@ ul li {
        <li><a href=#account_08>[20230220] Bidirectional-streams Over Synchronous HTTP (BOSH) with Proxy support</a></li>
        <li><a href=#account_04>Do I have to enable IB Registration option when I setup a new account?</a></li>
        <li><a href=#account_05>[20191002] Google Talk account setup</a></li>
+       <li><a href=#account_09>[20231210] Account delete and password change</a></li>
        <li><a href=#account_06>[20190620] Why my first login in sometimes fails when a new account is created?</a></li>
      </ul>
      <h4>Enhanced Features</h4>
@@ -542,6 +543,49 @@ ul li {
          on Hangouts can initial a media call with you.</li>
      </ul>
 
+   <span id='account_09'></span>
+   <div class='blueText'>[20231210] Account delete and password change <a href=#content>{ Content }</a></div>
+   <div class='innerText'>Both the Account delete and password change options are accessed via the main menu
+     <b>Account settings...</b>:</div>
+   <div class='blueText'>Account Deletion:</div>
+   <div class='innerText'>The User Account delete option is accessed via either one of the following two UI:</div>
+   <image src="./img/atalk_account_delete_ui.png" align="left" width="30%" style="margin:10px 30px 5px 0px"/>
+   <div class='innerText'>
+     <ul>
+       <li>Acount settings... | long preess on desired Account to be deleted | Remove account</li>
+       <li>Acount settings... | long preess on desired Account to be deleted | Account Info</li>
+     </ul>
+   </div>
+   <image src="./img/atalk_account_delete_ai.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
+   <div class='innerText'>An account delete dialog is displayed upon user selected the delete option. There is an
+     user selectable option i.e. <b>Delete account on the server</b>. This option is valid only for account that is
+     currently login on server. If you proceed when the user is not login, or when the option is not selected, only
+     the local account data is deleted. An alert dialog is shown upon a successful or failure to delete an account on
+     the server.</div>
+     <image src="./img/atalk_account_delete.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
+     <div class='innerText'>If the user proceeded with account deletion without the <b>Delete account on the server</b>
+     option being seleted; and decided to remove the acount on the server at a later stage. User must recreate the local
+     user account that was being deleted, and login. Then proceed again to perform the account deletion with the
+     <b>Delete account on the server</b> selected.</div>
+   <div class='innerText'><b>Note: </b> Delete account on server is only possible if the server admin granted the
+       account deletion access right to user.</div>
+
+   <div class='blueText'>Password Change:</div>
+   <div class='innerText'>User has the option to change the account login password via:</div>
+    <image src="./img/atalk_account_enter_password.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
+    <image src="./img/atalk_account_settings.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
+    <ul>
+      <li>Acount settings... | click on desired Account to change password | Enter password</li>
+    </ul>
+
+    <div class='innerText'>Password change may affect the local or local + on server pending on user login state.</div>
+    <div class='innerText'><b>User not login:</b> Changing of user password will only change the local stored password.</div>
+    <div class='innerText'><b>User login:</b> When a login user changes the password, both the local and the server
+      passwords are being modified. However this happens only if the modfied password is accepted by the server.</div>
+    <div class='innerText'><b>Note: </b> Change of password may fail if the server admin does not grant the password
+      change access right to user. A password string may be rejected by server if it is too weak, according to criteria
+      defined by the server.</div>
+
    <span id='account_06'></span>
    <div class='blueText'>[20190620] Why my first login in sometimes fails when a new account is created? <a href=#content>{ Content }</a></div>
        <image src="./img/atalk_certificate_verify.png" align="left" width="30%" style="margin:5px 15px 5px 0px"/>
@@ -824,8 +868,9 @@ ul li {
      messages in the chat room. Likewise you will receive an error message if you attempt to destroy chatRoom when
      you are not the room owener.</div>
    <div class='innerText'> <image src="./img/atalk_muc_buddy_context.png" align="right" width="40%" style="margin:5px 0px 0px 15px"/></div>
-   <div class='innerText'><br /><b>Participant Context Menu:</b><br />During a group chat session, long click on a participant avatar will bring up a context menu
-    for user to take action; the available options are pending user role in the group chat:
+   <div class='innerText'><br /><b>Participant Context Menu:</b><br />During a group chat session, long click on
+     a participant avatar will bring up a context menu for user to take action; the available options are pending
+     user role in the group chat:
      <ul>
        <li><b>Start conversation:</b> Start a chat session for the non-anoymous participant; otherwise launch the contact
          list UI for user selection to start a chat session. This option is availble to all members in group chat.</li>
