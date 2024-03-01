@@ -115,9 +115,10 @@ ul li {
          <li><a href=#feature_03>[20230614] XEP-0045: Multi-User Chat</a></li>
          <li><a href=#feature_09>[20200330] XEP-0048: Bookmarks and autoJoin option for conference</a></li>
          <li><a href=#feature_10>[20191004] XEP-0070: Verifying HTTP Requests via XMPP and WebView Implementation</a></li>
-         <li><a href=#feature_14>[20230220] XEP-0313: Message Archive Management</a></li>
+         <li><a href=#feature_14>[20240301] XEP-0191: Blocking Command</a></li>
+         <li><a href=#feature_15>[20230220] XEP-0313: Message Archive Management</a></li>
          <li><a href=#feature_04>[20190526] Stickers, Bitmoji and Emoji rich content sharing </a></li>
-         <li><a href=#feature_05>[20230211] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
+         <li><a href=#feature_05>[20240301] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
          <li><a href=#feature_10>[20200417] Text to Speech and speech recognition in chat/groupChat session</a></li>
          <li><a href=#feature_11>[20191218] Share, Quote and Forward of messages and media contents</a></li>
          <li><a href=#feature_12>[20200619] aTalk Heads-Up Notification and Quiet-Hours</a></li>
@@ -1000,7 +1001,24 @@ ul li {
     navigate the slider to the Contact list page. This is to trigger android OS to invalidate the last accessed web page.
     Only then, WebView can load the new user defined web page.</div>
 
+
    <span id='feature_14'></span>
+   <div class='blueText'>[20240301] XEP-0191: Blocking Command <a href=#content>{ Content }</a></div>
+   <div class='innerText'> <image src="./img/atalk_mm_blocking.png" align="right" width="20%" style="margin:5px 0px 0px 15px"/></div>
+   <div class='innerText'> <image src="./img/atalk_contact_block_list.png" align="left" width="30%" style="margin:5px 25px 5px 0px"/></div>
+   <div class='innerText'>aTalk includes an XMPP protocol extension support for communications blocking in an instant
+     messaging system. This gives the user ability to block communications with selected users or domains. To block or
+     unblock a contact/domain, long press on the contact/domain to launch the context menu. Select <b>Block contact</b>
+     option.</div>
+   <div class='innerText'> <image src="./img/atalk_contact_block.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
+   <div class='innerText'>From the contact block UI, there is an option to enable blocking applies to the contact domain.
+     When checked, this will block communications for all the buddies on the same Domain. This option is disabled when
+     you are also a part of the domain; otherwise you will not be able to unblock yourself once it is blocked. The
+     block state remains active even you have deleted the contact/domain from your contact list. However the deleted
+     blocked contact/domain will still appear in the <b>Block list</b>; reflecting the actual block list on the server.
+     </br>Note: A blocked contact/domain state will appear on your user account that have been installed on all the devices.</div>
+
+   <span id='feature_15'></span>
    <div class='blueText'>[20230220] XEP-0313: Message Archive Management <a href=#content>{ Content }</a></div>
    <div class='innerText'>aTalk has added support for Message Archive Management since aTalk v3.1.2. Take note the
     followings to understand MAM implementation, and for it to work properly on aTalk:
@@ -1058,7 +1076,7 @@ ul li {
    </ul>
 
    <span id='feature_05'></span>
-   <div class='blueText'>[20230211] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20240301] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements <a href=#content>{ Content }</a></div>
    <div class='innerText'>aTalk file sharing implementation uses the following XEP protocols:
      <li><a href="https://xmpp.org/extensions/xep-0234.html">XEP-0234: Jingle File Transfer</a></li>
      <li><a href="https://xmpp.org/extensions/xep-0096.html">XEP-0096: SI File Transfer</a></li>
@@ -1080,11 +1098,11 @@ ul li {
      SOCK5 and IBB BytesStreams options; and together with <b>HTTP File Upload service</b> to ensure reliability.
      Files encryption using OMEMO are supported in both the Jingle File Transfer via XEP-0391: Jingle Encrypted
      Transports, and HTTP File Upload via XEP-xxxx: OMEMO Media Sharing. aTalk file transfer handling priority order
-     is as follow:</br></br>
-     <li>Jingle File Transfer with JET support (online and supported by recipient client)</li>
-     <li>HTTP File Upload (if supported by service provider) when recipient is offline, and for JFT/JET fallback</li>
-     <li>SI File Transfer; fallback to IBB on SOCK5 failure</li><br/>
-   </div>
+     is as follow:<br /><br />
+     <li>HTTP File Upload if supported by service provider; Use for JFT/JET file transfer, and/or when recipient is offline.</li>
+     <li>Jingle File Transfer with JET support; if online, and protocol supported by recipient client</li>
+     <li>SI File Transfer with SOCK5 as first proriority; fallback to IBB on SOCK5 failure</li><br />
+    </div>
 
    <div class='innerText'><image src="./img/atalk_file_xfer_prompt.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'>During file transfer negotiation, aTalk uses the agreed protocol per above defined priorty
@@ -1120,6 +1138,7 @@ ul li {
 
    <span id='feature_10'></span>
    <div class='blueText'>[20200417] Text to speech and speech recognition in chat/groupChat session <a href=#content>{ Content }</a></div>
+   <div class='innerText'> <image src="./img/atalk_mm_tts.png" align="left" width="20%" style="margin:5px 25px 5px 0px"/></div>
    <div class='innerText'><image src="./img/atalk_tts_settings.png" align="right" width="30%" style="margin:0px 0px 15px 15px"/></div>
    <div class='innerText'>aTalk supports speech synthesis from an incoming chat messages for immediate playback
      during chat or group chat session. To allow speech synthesis on an incoming message, user must enable both the
@@ -1148,7 +1167,7 @@ ul li {
        <li><b>Play</b> Playback the demo text using the user default selected voice output</li>
        <li><b>OK</b> Exit the user configuration settings menu.</li>
      </ul>
-   <div class='innerText'><image src="./img/atalk_tts_enable_opt.png" align="left" width="30%" style="margin:0px 15px 15px 0px"/></div>
+   <div class='innerText'><image src="./img/atalk_tts_enable_opt.png" align="left" border="2px solid #555" width="30%" style="margin:0px 15px 15px 0px"/></div>
    <div class='innerText'>After you have enabled the global TTS option from the main menu, you may now procced to
      enable/disable the TTS operation for the individual chat or group chat session. To enable TTS feature for the
      desired chat session, long click on the specific contact or chatroom item in the respective item list display;
@@ -1159,7 +1178,7 @@ ul li {
      the incoming or outgoing message view holder, the selected text will also be playback in synthesized voice.</div>
 
    <div class='innerText'><br/><b>Speech Recognition Input</b></div>
-   <div class='innerText'><image src="./img/atalk_tts_sk_mic_input.png" align="right" width="30%" style="margin:0px 0px 15px 15px"/></div>
+   <div class='innerText'><image src="./img/atalk_tts_sk_mic_input.png" align="right" width="28%" style="margin:0px 0px 15px 15px"/></div>
    <div class='innerText'>aTalk supports input of message text via speech recognition. Voice input recognition can be
      acheive with either of the methods described below.</div>
    <ul>
