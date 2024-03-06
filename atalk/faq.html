@@ -104,7 +104,7 @@ ul li {
        <li><a href=#account_07>[20200228] XEP-0178: Best Practices for Use of SASL EXTERNAL with Certificates for client authentication (experimental)</a></li>
        <li><a href=#account_08>[20230220] Bidirectional-streams Over Synchronous HTTP (BOSH) with Proxy support</a></li>
        <li><a href=#account_04>Do I have to enable IB Registration option when I setup a new account?</a></li>
-       <li><a href=#account_05>[20191002] Google Talk account setup</a></li>
+       <li><a href=#account_05>[20240306] Google Talk account setup</a></li>
        <li><a href=#account_09>[20231210] Account delete and password change</a></li>
        <li><a href=#account_06>[20190620] Why my first login in sometimes fails when a new account is created?</a></li>
      </ul>
@@ -118,7 +118,7 @@ ul li {
          <li><a href=#feature_14>[20240301] XEP-0191: Blocking Command</a></li>
          <li><a href=#feature_15>[20230220] XEP-0313: Message Archive Management</a></li>
          <li><a href=#feature_04>[20190526] Stickers, Bitmoji and Emoji rich content sharing </a></li>
-         <li><a href=#feature_05>[20240301] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
+         <li><a href=#feature_05>[20240306] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
          <li><a href=#feature_10>[20200417] Text to Speech and speech recognition in chat/groupChat session</a></li>
          <li><a href=#feature_11>[20191218] Share, Quote and Forward of messages and media contents</a></li>
          <li><a href=#feature_12>[20200619] aTalk Heads-Up Notification and Quiet-Hours</a></li>
@@ -514,9 +514,12 @@ ul li {
    </div>
 
    <span id='account_05'></span>
-   <div class='blueText'>[20191002] Google Talk account setup <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20240306] Google Talk account setup <a href=#content>{ Content }</a></div>
    
-   <div class='innerText'><b>Note:</b> Google server has its own xmpp implementation which may not compliant fully with
+   <div class='innerText'><b>Note:</b> Google gmail.com servers do not allow xmpp port 5222 connection in any its
+     public IP addresses provided. Therefore gmail.com servers do not support the standard xmpp protocols.
+     All information provided herewith is no further valid, unless Google returns its support for xmpp port connection.</div>
+     <div class='innerText'>Google server has its own xmpp implementation which may not compliant fully with
      the standard XEP standards. You may found that certain features are not supported e.g. Omemo messaging. Therefore
      it is not encouraged for user to use aTalk to sign in to the google server. You may send chat messages to another
      Google account login using google own Hangouts app.</div>
@@ -1076,7 +1079,7 @@ ul li {
    </ul>
 
    <span id='feature_05'></span>
-   <div class='blueText'>[20240301] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20240306] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements <a href=#content>{ Content }</a></div>
    <div class='innerText'>aTalk file sharing implementation uses the following XEP protocols:
      <li><a href="https://xmpp.org/extensions/xep-0234.html">XEP-0234: Jingle File Transfer</a></li>
      <li><a href="https://xmpp.org/extensions/xep-0096.html">XEP-0096: SI File Transfer</a></li>
@@ -1105,6 +1108,8 @@ ul li {
     </div>
 
    <div class='innerText'><image src="./img/atalk_file_xfer_prompt.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
+   <div class='innerText'>Since aTalk v3.3.4, it has reordered and placed <b>HTTP File Upload service</b> as first 
+     priority, therefore following description may only valid for aTalk prior to v3.3.4.</div>
    <div class='innerText'>During file transfer negotiation, aTalk uses the agreed protocol per above defined priorty
      for sharing the file. However if the agreed protocol method failed for reason e.g. client symmetric NAT firewall,
      aTalk automatically fallback to use <b>HTTP File Upload service</b> to ensure a successful file transfer.</div>
