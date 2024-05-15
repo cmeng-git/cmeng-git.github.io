@@ -118,7 +118,7 @@ ul li {
          <li><a href=#feature_14>[20240301] XEP-0191: Blocking Command</a></li>
          <li><a href=#feature_15>[20230220] XEP-0313: Message Archive Management</a></li>
          <li><a href=#feature_04>[20190526] Stickers, Bitmoji and Emoji rich content sharing </a></li>
-         <li><a href=#feature_05>[20240306] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
+         <li><a href=#feature_05>[20240515] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
          <li><a href=#feature_10>[20200417] Text to Speech and speech recognition in chat/groupChat session</a></li>
          <li><a href=#feature_11>[20191218] Share, Quote and Forward of messages and media contents</a></li>
          <li><a href=#feature_12>[20200619] aTalk Heads-Up Notification and Quiet-Hours</a></li>
@@ -1079,32 +1079,34 @@ ul li {
    </ul>
 
    <span id='feature_05'></span>
-   <div class='blueText'>[20240306] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20240515] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements <a href=#content>{ Content }</a></div>
    <div class='innerText'>aTalk file sharing implementation uses the following XEP protocols:
+     <li><a href="https://xmpp.org/extensions/xep-0363.html">XEP-0363: HTTP File Upload</a></li>
      <li><a href="https://xmpp.org/extensions/xep-0234.html">XEP-0234: Jingle File Transfer</a></li>
      <li><a href="https://xmpp.org/extensions/xep-0096.html">XEP-0096: SI File Transfer</a></li>
-     <li><a href="https://xmpp.org/extensions/xep-0363.html">XEP-0363: HTTP File Upload</a></li>
+     <li><a href="https://xmpp.org/extensions/xep-0391.html">XEP-0396: Jingle Encrypted Transports-OMEMO</a></li>
+     <li><a href="https://xmpp.org/extensions/xep-0454.html">XEP-0454: OMEMO Media Sharing</a></li>
      <li><a href="https://xmpp.org/extensions/xep-0264.html">XEP-0264: Jingle Content Thumbnails</a></li>
-     <li><a href="https://xmpp.org/extensions/xep-0391.html">XEP-0391: Jingle Encrypted Transports</a></li>
-     <li><a href="https://xmpp.org/extensions/inbox/omemo-media-sharing.html">XEP-xxxx: OMEMO Media Sharing</a></li>
    </div>
-   <div class='innerText'>aTalk supports send and receive files for all document types and images. There is an option
+   <div class='innerText'>aTalk supports send and receive files for all document and media types. There is an option
      to enable thumbnail preview for media file i.e. image and video before the actual file is being sent. To send or
      receipt of thumbnail, both the sender and recipient devices must have this option enabled; and the transfer file
      size is larger than the 'Auto accept max file size'. The actual file is sent upon acceptance by your buddy. aTalk
      allows automatic acceptance of file transfer request or stickers sending if the size of the file to be transferred
      is less than or equal to the user defined max file size option.<br/>
-     Note: Thumbnail sending is only available for SI File Transfer protocol. </div>
+     Note: Thumbnail sending is only available for SI File Transfer protocol and Jingle File Transfer. Thumnnail sending
+     is disabled during encrypted file sharing.</div>
    <div class='innerText'><image src="./img/atalk_file_sharing.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
    <div class='innerText'>aTalk implements intelligent fault-tolerance file sharing algorithm. aTalk file sharing methods
      include the use of <b>Jingle File Transfer</b> and legacy <b>SI File Transfer</b> protocols supporting both the
      SOCK5 and IBB BytesStreams options; and together with <b>HTTP File Upload service</b> to ensure reliability.
-     Files encryption using OMEMO are supported in both the Jingle File Transfer via XEP-0391: Jingle Encrypted
-     Transports, and HTTP File Upload via XEP-xxxx: OMEMO Media Sharing. aTalk file transfer handling priority order
-     is as follow:<br /><br />
+     Files encryption using OMEMO are supported in both the Jingle File Transfer via XEP-0396: Jingle Encrypted
+     Transports; and HTTP File Upload via XEP-0454: OMEMO Media Sharing. aTalk file transfer handling priority orders
+     are as follow:<br /><br />
      <li>HTTP File Upload if supported by service provider; Use for JFT/JET file transfer, and/or when recipient is offline.</li>
      <li>Jingle File Transfer with JET support; if online, and protocol supported by recipient client</li>
-     <li>SI File Transfer with SOCK5 as first proriority; fallback to IBB on SOCK5 failure</li><br />
+     <li>SI File Transfer with SOCK5 as first proriority; fallback to IBB on SOCK5 failure. Sedinfg of encrypted file
+       is not support in this protocol.</li><br />
     </div>
 
    <div class='innerText'><image src="./img/atalk_file_xfer_prompt.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/></div>
