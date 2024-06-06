@@ -93,13 +93,13 @@ ul li {
      <h4>hymnchtv UI desgin &amp; Implementation</h4>
      <image src="./img/hymnchtv_help_qrcode.png" align="right" width="20%" style="margin:5px 0px 20px 15px"/>
      <ul>
-       <li><a href=#hymnch_0090>[20220528] Hymnchtv debug version installation</a></li>
+       <li><a href=#hymnch_0090>[20240606] Hymnchtv debug version installation</a></li>
      </ul>
      <ul>
        <li><a href=#hymnch_0010>[20240518] hymnchtv UI design &amp; Implementation</a></li>
      </ul>
      <ul>
-       <li><a href=#hymnch_0020>[20240522] hymnchtv main user interface</a></li>
+       <li><a href=#hymnch_0020>[20240606] hymnchtv main user interface</a></li>
      </ul>
      <ul>
        <li><a href=#hymnch_0030>[20201220] <b>Hymn Category</b> and <b>Content Search</b> result display</a></li>
@@ -120,7 +120,7 @@ ul li {
        <li><a href=#hymnch_0070>[20240524] User defined media configuration</a></li>
      </ul>
      <ul>
-       <li><a href=#hymnch_0080>[20240524] User defined media database configuration</a></li>
+       <li><a href=#hymnch_0080>[20240606] User defined media database configuration</a></li>
      </ul>
 
 
@@ -141,12 +141,15 @@ ul li {
    <div id='subSection'>hymnchtv UI design &amp; Implementation</div>
 
    <span id='hymnch_0090'></span>
-   <div class='blueText'>[20220528] Hymnchtv debug version installation <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20240606] Hymnchtv debug version installation <a href=#content>{ Content }</a></div>
    <div class='innerText'>
-     You may obtain a copy of the latest hymnchtv debug apk for your personal evaluation from the link below:
-     <li><a href="https://raw.githubusercontent.com/cmeng-git/hymnchtv/master/hymnchtv/release/hymnchtv-debug.apk">
-     https://raw.githubusercontent.com/cmeng-git/hymnchtv/master/hymnchtv/release/hymnchtv-debug.apk</a></li>
      <image src="./img/hymnchtv_apk_qrcode.png" align="right" width="20%" style="margin:5px 0px 20px 15px"/>
+     You may obtain a copy of the latest hymnchtv debug apk for your personal evaluation from the directory:<br />
+     <a href="https://github.com/cmeng-git/hymnchtv/releases">"https://github.com/cmeng-git/hymnchtv/releases</a>, the
+     lastest release at the time of this help update is: </div>
+   <div class='innerText'>
+     <li><a href="https://github.com/cmeng-git/hymnchtv/releases/download/2.3.0/hymnchtv-debug.apk">
+     https://github.com/cmeng-git/hymnchtv/releases/download/2.3.0/hymnchtv-debug.apk</a></li>
    </div>
    <div class='innerText'>Please note that the debug apk contains a different signature from the one in android
      playstore apk. Android OS will prompt you to uninstall the existing app if any, before you can install the debug
@@ -183,14 +186,14 @@ ul li {
    </div>
 
    <span id='hymnch_0020'></span>
-   <div class='blueText'>[20240522] hymnchtv main user interface <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20240606] hymnchtv main user interface <a href=#content>{ Content }</a></div>
    <div class='innerText'>This is the main hymnchtv UI that is shown when user launches the hymnchtv application. From
      the main UI, you have accessed to all the hymnchtv features implementation, pop-up menu and the main pull down options menu.
      <image src="./img/01.hymnchtv_main.png" align="left" width="25%" style="margin:5px 25px 5px 0px"/>
-     <image src="./img/hymnchtv_recent_hymns.png" align="right" width="20%" style="margin:5px 0px 20px 15px"/>
      <ul>
        <li><b>Hymn Selection</b>: User enters the required hymn number using the numerical and <b>附</b>/fu buttons if
-         applicable. Then select the HymnType i.e. <b>[大本|补充|新颂|儿诗|英文]</b> to enter the hymn lyrics display and media playback UI page.
+         applicable. Then select the HymnType i.e. <b>[大本|补充|新诗|新颂|儿诗|英文]</b> to enter the hymn lyrics display and media playback UI page.
+         <image src="./img/hymnchtv_recent_hymns.png" align="right" width="20%" style="margin:5px 0px 20px 15px"/>
          <br />When user selects the <b>英文</b> button, the entered hymnNo is treated as English Hymn number. The app
          will search and display the corresponding Chinese Hymn UI, and start fetching its corresponding English lyrics.</li>
        <li><b>输入诗歌编号&#11015;</b>: If user clicks on this field title, a list of most recent user selected hymns
@@ -258,9 +261,9 @@ ul li {
 
    <span id='hymnch_0040'></span>
    <div class='blueText'>[20240517] Hymn lyrics and media player UI interface <a href=#content>{ Content }</a></div>
-   <image border="2px solid blue" src="./img/11.hymnchtv_context_menu.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/>
    <div class='innerText'>The image on the right shows the hymn content display UI after user has selected
      the desired HymnNo and HymnType. The window displays the actual hymn lyrics score, and the lyrics text just below
+     <image border="2px solid blue" src="./img/11.hymnchtv_context_menu.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/>
      it. User scrolls up/down to bring the score or text into viewing area. To view the previous or next hymn info, user
      slides left or right. The hymn info displays in the media player UI will change according to the user selected HymnNo.
      Long press within the lyrics display area will popup the context menu with options as follows:
@@ -308,8 +311,8 @@ ul li {
          allows user to select the final conversion type for Traditional Chinese lyrics display:</li>
        <ul>
          <li><b>简体到繁体</b>: Simplified Chinese to Traditional Chinese (Standard).</li>
-         <image border="2px solid blue" src="./img/hymnchtv_conversion_ui.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/>
          <li><b>简体到香港繁体</b>: Simplified Chinese to Traditional Chinese (Hong Kong Standard).</li>
+         <image border="2px solid blue" src="./img/hymnchtv_conversion_ui.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/>
          <li><b>简体到台湾正体</b>: Simplified Chinese to Traditional Chinese (Taiwan Standard)</li>
          <li><b>简体到台湾正体，并转换为台湾常用词汇</b>: Simplified Chinese to Traditional Chinese (Taiwan Standard) with Taiwanese idiom.</li>
        </ul>
@@ -613,7 +616,7 @@ ul li {
   </div>
 
    <span id='hymnch_0080'></span>
-   <div class='blueText'>[[20240524] User defined media database configuration <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[[20240606] User defined media database configuration <a href=#content>{ Content }</a></div>
    <div class='innerText'><b>Note:</b> When a new hymnchtv version is installed, its database media links are updated
      with new records from an asset file. User old media records in the databse, if any will be left untouched. A copy
      of the asset file will be saved in the "./import_export/url_import-&lt;timeStamp>.txt". User may refer to this
@@ -626,13 +629,15 @@ ul li {
      using the tools described below: 
      <ul>
        <image src="./img/hymnchtv_media_db_config.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/>
-       <li><b>数库导出</b>: <b>Short click</b> this option button to export all the four defined HymnType's media records and
-         the <b>网页链接</b> links. The exported file is saved in the hymnchtv pre-defined directory e.g.
-         Download/hymnchtv/import_export/hymn_all-20211213_142504.txt. The format of the filename is
-         Hymn_all-&lt;timestamp>.txt, where the timestamp format is "YYYYMMDD_HHMMSS".<br />
-         <b>Long press</b>: If you long press</b> on this option button,
-         the file will only contain the media records with url links, and the file is named with hymn_link-&lt;timestamp>.txt.
-         This url link-only file is shared with others without the need to transfer the actual media files </li>
+       <li><b>数库导出</b>: <b>Short click</b> this option button to export all the four defined HymnType's media records
+         that contain only the <b>网页链接</b> links. This url link-only file is shared with others without the need to
+         transfer the actual media files. The exported file is saved in the hymnchtv pre-defined directory
+         e.g. Download/hymnchtv/import_export/hymn_link-20240606_142504.txt. The format of the filename is
+         hymn_link-&lt;timestamp>.txt, where the timestamp format is "YYYYMMDD_HHMMSS".<br />
+         <b>Long press</b>: this option button to export all media records with url links, including local media file
+         paths. When sharing this file with others, you must also transfer all your local media files to your buddy.
+         The exported file is saved in the hymnchtv pre-defined directory e.g.
+         Download/hymnchtv/import_export/hymn_all-20240213_142504.txt. />
        <li><b><a href="./index.html#create_export">自建导入</a></b>: Instead of creating an individual media record for
          each of the user desired media content saved locally, as described in the <a href='#hymnch_0070'>previous section</a>;
          one can actually use the auto-create import file for batch media contents import. See below on the actual
