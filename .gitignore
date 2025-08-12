@@ -1,0 +1,5 @@
+# ignore all files type below
+*.log
+*.json
+*~
+

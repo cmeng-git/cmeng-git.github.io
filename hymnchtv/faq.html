@@ -93,7 +93,7 @@ ul li {
      <h4>hymnchtv UI desgin &amp; Implementation</h4>
      <image src="./img/hymnchtv_help_qrcode.png" align="right" width="20%" style="margin:5px 0px 20px 15px"/>
      <ul>
-       <li><a href=#hymnch_0090>[20241005] Hymnchtv debug version installation</a></li>
+       <li><a href=#hymnch_0090>[20250812] Hymnchtv apk installation</a></li>
      </ul>
      <ul>
        <li><a href=#hymnch_0010>[20240518] hymnchtv UI design &amp; Implementation</a></li>
@@ -112,6 +112,9 @@ ul li {
      </ul>
      <ul>
        <li><a href=#hymnch_0050>[20240523] Hymn media player UI interface, control and playback operations</a></li>
+     </ul>
+     <ul>
+       <li><a href=#hymnch_0051>[20251012] Auto next media playback</a></li>
      </ul>
      <ul>
        <li><a href=#hymnch_0060>[20241129] Hymn media storage and selection algorithm for playback</a></li>
@@ -141,18 +144,18 @@ ul li {
    <div id='subSection'>hymnchtv UI design &amp; Implementation</div>
 
    <span id='hymnch_0090'></span>
-   <div class='blueText'>[20241005] Hymnchtv debug version installation <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20250812] Hymnchtv apk installation <a href=#content>{ Content }</a></div>
    <div class='innerText'>
      <image src="./img/hymnchtv_apk_qrcode.png" align="right" width="20%" style="margin:5px 0px 20px 15px"/>
-     You may obtain a copy of the latest hymnchtv debug apk for your personal evaluation from the directory:<br />
+     You may obtain a copy of the latest hymnchtv debug/release apk for your personal evaluation from the directory:<br />
      i.e. <a href="https://github.com/cmeng-git/hymnchtv/releases">https://github.com/cmeng-git/hymnchtv/releases</a>.<br />
      The lastest release at the time of this online help update is: </div>
    <div class='innerText'>
      <li><a href="https://github.com/cmeng-git/hymnchtv/releases/download/2.7.1/hymnchtv-release.apk">
      https://github.com/cmeng-git/hymnchtv/releases/download/2.7.1/hymnchtv-release.apk</a></li>
    </div>
-   <div class='innerText'>Please note that the debug apk contains a different signature from the release apk.
-     Android OS will prompt you to uninstall the existing app if any, before you can install the debug apk with a
+   <div class='innerText'>Please note that the debug and release apk contains different signatures.
+     Android OS will prompt you to uninstall the existing app if any, before you can install theapk with a
      different signature. Both versions support auto-update function, prompting the user if there is a new release.</div>
    <div class='innerText'>
      <b>Warning:</b> Please perform the following before you uninstall the existing app if any; otherwise you may loose
@@ -403,6 +406,16 @@ ul li {
      will continue in background until completion. User may select another media type to playback; only returns to the
      the downloading hymn when it has completed.
    </div>
+
+   <span id='hymnch_0051'></span>
+   <div class='blueText'>[[20251012] Auto next media playback <a href=#content>{ Content }</a></div>
+   <div class='innerText'><image src="./img/hymnchtv_auto_stream.png" align="right" width="25%" style="margin:5px 0px 20px 15px"/></div>
+   <div class='innerText'>Hymnchtv release version >= 2.7.1 supports auto next media playback <b>自动连播/在线下载</b> for all
+     the media types except media <b>教唱</b>. In the hymn lyrics content view UI page, long press the playback button
+     after selected the media type. A dialog popup for user confirmation. After user confirmed, it starts playback from
+     the current user selected hymnNo. If the user selected <b>唱诗</b> media type, it attempts to fetch the online media,
+     if the local media file/url link is missing. For all other media types auto playback, when encountered any unspecified
+     url or file, it skips to the next media to continue.</div>
 
    <span id='hymnch_0060'></span>
    <div class='blueText'>[20241129] Hymn media storage and selection algorithm for playback <a href=#content>{ Content }</a></div>
