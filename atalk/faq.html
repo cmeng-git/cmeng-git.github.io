@@ -102,7 +102,7 @@ ul li {
        <li><a href=#account_02>[20190731] What information to enter in "Override server setting" when I setup a new account?</a></li>
        <li><a href=#account_03>[20180818] SSL Certificate Authentication, DNSSEC and DANE Security Implementation for Connection Establishment</a></li>
        <li><a href=#account_07>[20200228] XEP-0178: Best Practices for Use of SASL EXTERNAL with Certificates for client authentication (experimental)</a></li>
-       <li><a href=#account_08>[20230220] Bidirectional-streams Over Synchronous HTTP (BOSH) with Proxy support</a></li>
+       <li><a href=#account_08>[20250825] Bidirectional-streams Over Synchronous HTTP (BOSH) with Proxy support</a></li>
        <li><a href=#account_04>Do I have to enable IB Registration option when I setup a new account?</a></li>
        <li><a href=#account_05>[20240306] Google Talk account setup</a></li>
        <li><a href=#account_09>[20231210] Account delete and password change</a></li>
@@ -418,7 +418,7 @@ ul li {
      authentication via SASL EXTERNAL mechanism.</div>
 
    <span id='account_08'></span>
-   <div class='blueText'>[20230220] Bidirectional-streams Over Synchronous HTTP (BOSH) with Proxy support <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20250825] Bidirectional-streams Over Synchronous HTTP (BOSH) with Proxy support <a href=#content>{ Content }</a></div>
    <div class='innerText'>Bidirectional-streams Over Synchronous HTTP (BOSH) is a transport protocol that emulates a
      bidirectional stream between two entities (such as a client and a server) by using multiple synchronous HTTP
      request/response pairs without requiring the use of frequent polling or asynchronous chunked responses.</div>
@@ -454,8 +454,8 @@ ul li {
        <li>From the account settings menu, select <b>BOSH-Proxy Configuration</b> to setup connection via BOSH/Proxy
          for the account.</li>
        <li>The default configuration is <b>NONE</b>. Select <b>BOSH</b> from the <b>Type</b> pull down menu</li>
-       <li>Enter the <b>BOSH URL</b> link e.g. https://example.net:5443/bosh. You need to refer to your xmpp service
-         provider to find the correct setting.</li>
+       <li>Enter the <b>BOSH URL</b> link e.g. https://example.net:443/http-bind. You need to refer to your xmpp service
+         provider to find the correct url setting; port '443' and 'http-bind' may vary.</li>
        <li>If the firewall was your only problem, then you are done with the BOSH settings. If not, you then have to
          configure the Proxy settings too.</li>
        <li>There is a checkbox <b>Use HTTP-Proxy</b> in the dialog when you enable BOSH option. Choose this
