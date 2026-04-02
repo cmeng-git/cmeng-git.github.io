@@ -132,7 +132,7 @@ ul li {
      </ul>
       <h4>OMEMO Messaging</h4>
       <ul>
-         <li><a href=#omemo_05>[20260312] XEP-0384: OMEMO Encryption support in aTalk</a></li>
+         <li><a href=#omemo_05>[20260402] XEP-0384: OMEMO Encryption support in aTalk</a></li>
          <li><a href=#omemo_01>[20200714] Why the OMEMO option is greyed out in my chat session menu?</a></li>
          <li><a href=#omemo_02>[20190916] Why am I being asked to authenticate the contact during secured chat?</a></li>
          <li><a href=#omemo_03>[20190716] What is Blind Trust Before Verification?</a></li>
@@ -1656,23 +1656,28 @@ ul li {
    <div id='subSection'>OMEMO Messaging</div>
 
    <span id='omemo_05'></span>
-   <div class='blueText'>[20260312] XEP-0384: OMEMO Encryption support in aTalk <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20260402] XEP-0384: OMEMO Encryption support in aTalk <a href=#content>{ Content }</a></div>
    <div class='innerText'><image src="./img/atalk_omemo2_option.png" align="left" width="30%" style="margin:5px 15px 0px 0px"/></div>
    <div class='innerText'>Since aTalk v5.2.0 release, it now supports both the OMEMO namespaces i.e.
      <a href="https://xmpp.org/extensions/attic/xep-0384-0.3.0.html">'eu.siacs.conversations.axolotl'</a>
      and <a href="https://xmpp.org/extensions/xep-0384.html">'urn:xmpp:omemo:2'</a>. These options
      are mutually exclusive, and is defined per user account i.e. <b>Enable omemo2 support</b> option
-     in <b>Account settings...</b>. Client that supports only the old namespace cannot receive
-<image src="./img/atalk_omemo2_opt-out.png" align="right" width="20%" style="margin:5px 0px 0px 15px"/>
+     in <b>Account settings...</b>. Note that client that supports only the old namespace cannot receive
+     <image src="./img/atalk_omemo2_opt-out.png" align="right" width="20%" style="margin:5px 0px 0px 15px"/>
      OMEMO message sent with the new namespace and vice versa. aTalk internal implementation
      supports the decryption of OMEMO messages, and Jet files receive sent with either namespace</div>
    <div class='innerText'>Omemo <b>publish-options: Access Model</b> is supported in aTalk during
-     devices and bundles publishes. Set to "NONE" if your xmpp server does not support this option,
-     otherwise OMEMO will not work properly. e.g. when enabled with ejabberd 25.10, it has errors
-     i.e. precondition-not-met and conflict.</div>
+     devices and bundles publishing; option available only if <b>Enable omemo2 support</b> is selected.
+     See <a href="https://xmpp.org/extensions/xep-0060.html#accessmodels">4.5 Node Access Models</a>
+     for detail explanation of the options. Be caution that incorrect setting of this
+     option can prevent others to exchange OMEMO chat messages with you. The ejabberd server v25.10
+     default this option to <b>Presence</b> upon the node creations. Set the <b>Acess Model</b>
+     option to "NONE" if you do not wish to change this option; or if your xmpp server does not
+     support the <b>Acess Model</b> option, otherwise OMEMO will not work properly.</div>
    <div class='innerText'>When <b>Enable omemo2 support</b> is selected, user may send the
-     <b>OMEMO chat opt-out</b> with reason from user or using the aTalk default text. User reason
-     is entered in the text entry box before select the <b>OMEMO chat opt-out</b> option.</div>
+     <b>OMEMO chat opt-out</b> with reason from user or using the aTalk default text i.e. "OMEMO chat opt-out.
+     Sorry, for compliance reasons I need a permanent, server-side, record of our conversation.".
+     If desired, user reason is entered in the text entry box before select the <b>OMEMO chat opt-out</b> option.</div>
    <div class='innerText'></div>
 
 
