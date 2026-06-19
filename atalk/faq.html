@@ -118,9 +118,10 @@ ul li {
          <li><a href=#feature_14>[20240301] XEP-0191: Blocking Command</a></li>
          <li><a href=#feature_15>[20230220] XEP-0313: Message Archive Management</a></li>
          <li><a href=#feature_04>[20190526] Stickers, Bitmoji and Emoji rich content sharing </a></li>
-         <li><a href=#feature_05>[20240515] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements </a></li>
+         <li><a href=#feature_05>[20240515] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements</a></li>
+         <li><a href=#feature_18>[20260618] Language Translation in sent/received messages</a></li>
          <li><a href=#feature_10>[20200417] Text to Speech and speech recognition in chat/groupChat session</a></li>
-         <li><a href=#feature_11>[20191218] Share, Quote and Forward of messages and media contents</a></li>
+         <li><a href=#feature_11>[20260618] Retract, Last Message Correction, Share, Quote and Forward of messages</a></li>
          <li><a href=#feature_12>[20200619] aTalk Heads-Up Notification and Quiet-Hours</a></li>
          <li><a href=#feature_13>[20200619] aTalk Notification Events</a></li>
          <li><a href=#feature_06>[20180710] XEP-0198:Stream Management and ReConnection Manager</a></li>
@@ -1146,19 +1147,40 @@ ul li {
      actual url link is shown. For an unencrypted file transfer, user can click the link to fetch the file via web UI.
      However user is unable to fetch an encrypted file via this method once the user has declined the file offer.</div>
 
+
+   <span id='feature_18'></span>
+   <div class='blueText'>[20260618] Language Translation in sent/received messages <a href=#content>{ Content }</a></div>
+   <div class='innerText'> <image src="./img/atalk_lt_language.png" align="left" width="30%" style="margin:5px 15px 5px 0px"/></div>
+   <div class='innerText'><image src="./img/atalk_lt_en_dis.png" align="right" width="25%" style="margin:0px 0px 15px 15px"/></div>
+   <div class='innerText'>aTalk v6.2.0 now supports language translation in sent/received messages during
+     chat/multi-user chat sessions. The translated languages used during sending and receiving messages are defined
+     seperately, and per user account e.g. as shown in diagram on the left. Outgoing message is translated to Chinese
+     before sending, and incoming messages are translated to English. Enabling of incoming message translation is not
+     recommended if remote already sends text with translation. Incoming message translated text is not saved in DB,
+     <image src="./img/atalk_lt_selection.png" align="right" width="25%" style="margin:5px 0px 15px 15px"/>
+     but performed and shown in chat view using the current user selected Translation Language. User can enable or
+     disable the translation for each single user chat/multi-user chat session. These options are accessible in the
+     contact list view and conference chatroom view. There are also accessible right within each chat session.</div>
+   <div class='innerText'>Translation of outgoing/incoming message is done online via remote translation server. 
+     <image src="./img/atalk_lt_server_url.png" align="left" width="30%" style="margin:5px 25px 5px 0px"/>
+     Currently there are a total of 50 languages for user selection, supported by the aTalk default translation server
+     i.e. "https://translate.fedilab.app/translate". User may specify his own translation server URL for use during
+     tanslation if so required. This gives user full control and privacy on text sharing with the server for translation. 
+     </div>
+
    <span id='feature_10'></span>
    <div class='blueText'>[20200417] Text to speech and speech recognition in chat/groupChat session <a href=#content>{ Content }</a></div>
-   <div class='innerText'> <image src="./img/atalk_mm_tts.png" align="left" width="20%" style="margin:5px 25px 5px 0px"/></div>
-   <div class='innerText'><image src="./img/atalk_tts_settings.png" align="right" width="30%" style="margin:0px 0px 15px 15px"/></div>
    <div class='innerText'>aTalk supports speech synthesis from an incoming chat messages for immediate playback
      during chat or group chat session. To allow speech synthesis on an incoming message, user must enable both the
      global TTS and the specific chat session option for speech playback. The global TTS option is accessed via the
+     <image src="./img/atalk_mm_tts.png" align="left" width="20%" style="margin:5px 25px 5px 0px"/>
      main menu <b>General TTS settings...</b>. The main TTS settings menu provides the following options:</div>
      <ul>
        <li><b>Default TTS voice:</b> displays the current selected voice speech. During playback of the text message,
          android auto-detect the text language type and playback with the correct spoken language. However android
          will playback language independent text e.g. 140,000 in the default selected language voice.</li>
-       <li><b>Message Text to Speech delay (ms)</b>In android, all notification alerts always have higher priority over
+       <image src="./img/atalk_tts_settings.png" align="left" width="30%" style="margin:5px 25px 5px -40px"/>
+       <li><b>Message Text to Speech delay (ms)</b> In android, all notification alerts always have higher priority over
          any other media including the speech playback. aTalk waits for this specified delay (ms) before starting the
          text to speech synthesis. If you enable and change the incoming message alert to other than the default,
          then adjust this duration until the start of the text speech is not being clipped by the alert.</li>
@@ -1207,7 +1229,7 @@ ul li {
    </ul>
 
    <span id='feature_11'></span>
-   <div class='blueText'>[20191218] Share, Quote and Forward of messages and media contents <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20260618] Retract, Last Message Correction, Share, Quote and Forward of messages <a href=#content>{ Content }</a></div>
    <div class='innerText'><image src="./img/atalk_share_action_bar.png" align="right" width="30%" style="margin:0px 0px 15px 15px"/>
      aTalk supports messages and media contents sharing either from an external application or sharing with an external
      application. Within aTalk app, it also supports features like Quote of message in reply, and Forward of contents
@@ -1219,35 +1241,45 @@ ul li {
      the contact to share. On return to the same UI after sharing with a contact, you can select another contact to
      share the same contents. Once you have done with sharing the contents, just press the BackKey or click the Done
      action icon in the action bar.</div>
-    <div class='innerText'>From within aTalk app, while you are in a chat session, following actions are possible with
+    <div class='innerText'>
+    <image src="./img/atalk_share_action_icon.png" align="right" width="40%" style="margin:0px 0px 15px 15px"/>
+    From within aTalk app, while you are in a chat session, following actions are possible with
+    
       the selected messages or media contents. Below provide a brief description on each of the action icon and its
       supported function starting from left to right.</div>
+    <div class='innerText'>
     <ul>
-      <li><b>Edit:</b> Last sent message correction edit. If the selected message is the last sent message, click on 
-        this icon to perform the last message correction. You may also just click on the last sent message to access
-        to the message correction option.</li>
-      <div class='innerText'><image src="./img/atalk_share_action_icon.png" align="right" width="30%" style="margin:0px 0px 15px 15px"/></div>
-      <li><b>Quote:</b> Quote the selected message in the reply message send to a contact. The image on the right shows
-        the quoted content that is displayed on the contact received message.</li>
-      <li><b>Delete:</b> Purge the selected messages and media contents from database. Media contents deletion is
-        only performed if user enable the Delete Media option in the confirmation dialog. aTalk will not delete any
-        sent media file unless it is a voice message file or media file in tmp directory created by aTalk app.</li>
+      <li><b>Edit:</b> XEP-0308: Last Message Correction. When an outgoing message is selected, click on
+        this action icon to perform the the last message correction. This option is not visible if the remote
+        does not advertised support of this feature.</li>
+      <li><b>Delete:</b> Purge the selected messages and media contents from database. The attached media
+        contents deletion is performed only if user enable the 'Delete Media" option in the confirmation dialog.
+        aTalk will NOT delete any sent media files that are in local user saved directory, even when the
+        'Delete Media' option is selected; Exception if it is a voice message file or media file in tmp
+        directory created by aTalk app.</li>
+      <li><b>Retract:</b> XEP-0424: Message Retraction. Message retraction applies only to outgoing messages.
+        This option is similar to 'Delete for all'. When multiple outgoing and incoming messages are selected, 
+        click on this action icon will only apply to all incoming messages. A prompt message will be shown
+        for user confirmation before proceed.</li>
       <div class='innerText'><image src="./img/atalk_quote.png" align="right" width="30%" style="margin:10px 0px 15px 15px"/></div>
-      <li><b>Share:</b> Share the messages and media contents of a user to an external application. You may select
-        messages and/or media contents from the chat window to share with an external application. Android allows only
-        one type of content i.e. text or media content to be shared at any one time.  If you have selected both the
-        messages and media contents for sharing, aTalk will start with text message sharing followed by the media
-        sharing. Upon chosen the app for text sharing by user, aTalk will wait for 6 seconds for user to complete the
-        first transaction before launching the chooser for the media contents.</li>
-      <li><b>Forward:</b> Forward the messages and media contents of a user to other contacts within aTalk. The
-        operation is similar to Share option. However forward operation does not have time bound. Text message
-        will be shown for edit and send, followed by media contents. User is allow the share the same selected contents
-        to more than on contacts. In both Share and Forward operation, all the selected messages are merged into a
+      <li><b>Forward:</b> Forward the messages and media contents to other contacts within aTalk roster. The
+        operation is similar to 'Share' option. However forward operation does not have time bound. After user
+        has selected the recipients, the selected text message will be displayed for user edit, followed by
+        media contents before they are sent. User is allow the share the same selected contents to multiple
+        contacts. In both Share and Forward operation, all the selected messages are merged into a
         single text string before sending.</li>
-      <li><b>Copy:</b> Copy all the selected messages text and merged all messages into a single text message before
-        placing it on the clipboard for pasting.</li>
-      <li><b>Select All:</b> Select all the messages and media contents that are currently visible in the chat view
-        window.</li>
+      <li><b>Quote:</b> Quote the selected message in the reply message send to contact. The image on the
+        right shows the quoted content that is displayed on the contact received message.</li>
+      <li><b>Share:</b> Share the messages and media contents of a user to an external application. You may
+        select messages and/or media contents from the chat window to share. Android allows only one type of
+        content i.e. text or media content to be shared at any one time.  If you have selected both the
+        messages and media contents for sharing, aTalk will start with text message sharing, followed by
+        the media sharing. Upon chosen the app for text sharing by you, aTalk will wait for 6 seconds for
+        user to complete the first transaction before launching the chooser for the media contents.</li>
+      <li><b>Copy:</b> Copy all the selected messages text and merged all messages into a single text
+        message before placing them on the clipboard for pasting in the entry box, edit before sending.</li>
+      <li><b>Select All:</b> Select all the messages and media contents that are currently visible in the
+        chat view window.</li>
     </ul>
     </div>
 
