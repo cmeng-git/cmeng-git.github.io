@@ -119,9 +119,9 @@ ul li {
          <li><a href=#feature_15>[20230220] XEP-0313: Message Archive Management</a></li>
          <li><a href=#feature_04>[20190526] Stickers, Bitmoji and Emoji rich content sharing </a></li>
          <li><a href=#feature_05>[20240515] aTalk Fault-Tolerance File Sharing Implementation &amp; Enhancements</a></li>
-         <li><a href=#feature_18>[20260618] Language Translation in sent/received messages</a></li>
+         <li><a href=#feature_18>[20260708] Language Translation in sent/received messages</a></li>
          <li><a href=#feature_10>[20200417] Text to Speech and speech recognition in chat/groupChat session</a></li>
-         <li><a href=#feature_11>[20260618] Retract, Last Message Correction, Share, Quote and Forward of messages</a></li>
+         <li><a href=#feature_11>[20260708] Retract, Last Message Correction, Share, Quote and Forward of messages</a></li>
          <li><a href=#feature_12>[20200619] aTalk Heads-Up Notification and Quiet-Hours</a></li>
          <li><a href=#feature_13>[20200619] aTalk Notification Events</a></li>
          <li><a href=#feature_06>[20180710] XEP-0198:Stream Management and ReConnection Manager</a></li>
@@ -1149,24 +1149,31 @@ ul li {
 
 
    <span id='feature_18'></span>
-   <div class='blueText'>[20260618] Language Translation in sent/received messages <a href=#content>{ Content }</a></div>
-   <div class='innerText'> <image src="./img/atalk_lt_language.png" align="left" width="30%" style="margin:5px 15px 5px 0px"/></div>
+   <div class='blueText'>[20260708] Language Translation in sent/received messages <a href=#content>{ Content }</a></div>
+   <div class='innerText'><image src="./img/atalk_lt_language.png" align="left" width="30%" style="margin:5px 15px 5px 0px"/></div>
    <div class='innerText'><image src="./img/atalk_lt_en_dis.png" align="right" width="25%" style="margin:0px 0px 15px 15px"/></div>
-   <div class='innerText'>aTalk v6.2.0 now supports language translation in sent/received messages during
+   <div class='innerText'>aTalk since v6.2.0 supports language translation in sent/received messages during
      chat/multi-user chat sessions. The translated languages used during sending and receiving messages are defined
      seperately, and per user account e.g. as shown in diagram on the left. Outgoing message is translated to Chinese
      before sending, and incoming messages are translated to English. Enabling of incoming message translation is not
-     recommended if remote already sends text with translation. Incoming message translated text is not saved in DB,
+     recommended if remote already sends text with translation. Incoming message translated text is not saved in DB
+     as it is not part the message received; it is performed and shown in chat view using the current user selected     
+     Translation Language.</div>
+   <div class='innerText'>User can enable or disable the translation per each user chat/multi-user chat session.
      <image src="./img/atalk_lt_selection.png" align="right" width="25%" style="margin:5px 0px 15px 15px"/>
-     but performed and shown in chat view using the current user selected Translation Language. User can enable or
-     disable the translation for each single user chat/multi-user chat session. These options are accessible in the
-     contact list view and conference chatroom view. There are also accessible right within each chat session.</div>
+     These options are available only if the translated languages are already defined. The options are accessible
+     in the contact list and conference chatroom UI's. They are also accessible right within each chat session.</div>
+     
    <div class='innerText'>Translation of outgoing/incoming message is done online via remote translation server. 
-     <image src="./img/atalk_lt_server_url.png" align="left" width="30%" style="margin:5px 25px 5px 0px"/>
-     Currently there are a total of 50 languages for user selection, supported by the aTalk default translation server
+     <image src="./img/atalk_lt_server_url.png" align="left" width="30%" style="margin:5px 15px 5px 0px"/>
+     Currently there are a total of 50 translation languages for user selection, using aTalk default translation server
      i.e. "https://translate.fedilab.app/translate". User may specify his own translation server URL for use during
-     tanslation if so required. This gives user full control and privacy on text sharing with the server for translation. 
-     </div>
+     tanslation if so required. This gives user full control and privacy on text sharing with the server for translation.
+     aTalk default Translator server has rate limiting. Too many history messages translation on new chat session
+     start up will give raise to error code 429. User can use 'Translate message receive' option in the chat session
+     pull down menu, to translate messages that have failed. Alternatively, user can specify an API key if available,
+     for the server to enjoy the full support without rate limiting. aTalk uses background runnable thread to handle
+     history messages translation; hence eliminate ~1s/message delay in translation and hang chat session UI.</div>
 
    <span id='feature_10'></span>
    <div class='blueText'>[20200417] Text to speech and speech recognition in chat/groupChat session <a href=#content>{ Content }</a></div>
@@ -1229,7 +1236,7 @@ ul li {
    </ul>
 
    <span id='feature_11'></span>
-   <div class='blueText'>[20260618] Retract, Last Message Correction, Share, Quote and Forward of messages <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20260708] Retract, Last Message Correction, Share, Quote and Forward of messages <a href=#content>{ Content }</a></div>
    <div class='innerText'><image src="./img/atalk_share_action_bar.png" align="right" width="30%" style="margin:0px 0px 15px 15px"/>
      aTalk supports messages and media contents sharing either from an external application or sharing with an external
      application. Within aTalk app, it also supports features like Quote of message in reply, and Forward of contents
@@ -1242,17 +1249,18 @@ ul li {
      share the same contents. Once you have done with sharing the contents, just press the BackKey or click the Done
      action icon in the action bar.</div>
     <div class='innerText'>
-    <image src="./img/atalk_share_action_icon.png" align="right" width="40%" style="margin:0px 0px 15px 15px"/>
-    From within aTalk app, while you are in a chat session, following actions are possible with
-    
-      the selected messages or media contents. Below provide a brief description on each of the action icon and its
-      supported function starting from left to right.</div>
+      <image src="./img/atalk_share_action_icon.png" align="left" width="40%" style="margin:5px 15px 5px 0px"/>
+      From within aTalk app, while you are in a chat session, following actions are possible with the selected messages
+      or media contents. Below provide a brief description on each of the action icon and its supported function starting
+      from left to right.</div>
     <div class='innerText'>
     <ul>
       <li><b>Edit:</b> XEP-0308: Last Message Correction. When an outgoing message is selected, click on
-        this action icon to perform the the last message correction. This option is not visible if the remote
-        does not advertised support of this feature.</li>
-      <li><b>Delete:</b> Purge the selected messages and media contents from database. The attached media
+        this action icon to perform the the last message correction. Last Message Correction supports all the 
+        outgoing messages, and not just the last sent message. 'Last Message Correction' is also available
+        in multi-user chat session. This option is not visible if the remote does not advertised support
+        of this feature.</li>
+      <li><b>Delete:</b> Purge the selected messages and media contents from the local database. The attached media
         contents deletion is performed only if user enable the 'Delete Media" option in the confirmation dialog.
         aTalk will NOT delete any sent media files that are in local user saved directory, even when the
         'Delete Media' option is selected; Exception if it is a voice message file or media file in tmp
@@ -1278,6 +1286,8 @@ ul li {
         user to complete the first transaction before launching the chooser for the media contents.</li>
       <li><b>Copy:</b> Copy all the selected messages text and merged all messages into a single text
         message before placing them on the clipboard for pasting in the entry box, edit before sending.</li>
+      <li><b>Translate message receive:</b> Select the desired incoming messages that had failed translation
+        in the chat session launch, then select this option to perform the text translation.</li>
       <li><b>Select All:</b> Select all the messages and media contents that are currently visible in the
         chat view window.</li>
     </ul>
