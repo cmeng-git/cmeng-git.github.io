@@ -151,7 +151,7 @@ ul li {
          <li><a href=#media_03>[20181228] Video Call session</a></li>
          <li><a href=#media_07>[20220510] Call Transfer for Unattended and Attended mode</a></li>
          <li><a href=#media_08>[20220614] Call Waiting and Call Switching</a></li>
-         <li><a href=#media_04>[20210208] Jabber VoIP-PBX gateway Telephony (experimental)</a></li>
+         <li><a href=#media_04>[20261003] Jabber VoIP-PBX gateway Telephony (experimental)</a></li>
          <li><a href=#media_05>[20221218] VoIP communications security via SRTP with ZRTP, DTLS and SDES protocol.</a></li>
          <li><a href=#media_06>[20210302] STUN, TURN, ICE &amp; Jingle for NAT Traversal in media call setup</a></li>
       </ul>
@@ -2030,12 +2030,11 @@ ul li {
 
 
    <span id='media_04'></span>
-   <div class='blueText'>[20210208] Jabber VoIP-PBX gateway Telephony (experimental) <a href=#content>{ Content }</a></div>
+   <div class='blueText'>[20261003] Jabber VoIP-PBX gateway Telephony (experimental) <a href=#content>{ Content }</a></div>
    <div class='innerText'>One distinguishing characteristic of Jabber technologies has been the existence of gateways
      (also called "transports") between the Jabber network and legacy services. The legacy services can be other IM
      protocols like SIP, AIM, ICQ or even a PBX gateway allowing a jabber entity to make voice/video call to phones
      via landline or GSM network.</div>
-     <image src="./img/12.atalk_telephony.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
      <ul>
        <li><b>Gateway</b>: A service on the Jabber network that translates between the Jabber/XMPP protocols and
          the protocol usd by a Legacy Service (non-XMPP instant messaging service etc); in this context, "gateway"
@@ -2043,9 +2042,10 @@ ul li {
          "masquerades" as a user on such a service.</li>
      </ul>
    <div class='innerText'>aTalk provides the necessary interface to allow user to make jabber voice/video call to
-     PBX gateway installed on the user registered service as shown on the right. The gateway however must support
-     the following XEP protocols.</div>
+     PBX gateway installed on the user registered service, using UI as shown on the right. The gateway however must
+     support the following XEP protocols.</div>
      <ul>
+       <image src="./img/12.atalk_telephony.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
        <li><b>XEP-0166: Jingle</b> This specification defines an XMPP protocol extension for initiating and managing
          peer-to-peer media sessions between two XMPP entities in a way that is interoperable with existing Internet
          standards.</li>
@@ -2058,15 +2058,37 @@ ul li {
          client proxy gateways to legacy services; but disco#info must be updated to confirm to XEP-0115</li>
      </ul>
 
+ 		<div class='innerText'>To make a media voice/video call using PBX gateway installed on the user registered service.
+ 		  From the main pull down menu, select <b>Telephony Voip-PBX.</b> The UI on the right is shown. Enter all the
+ 		  necessary info, then click <b>Video call</b> or <b>Audio call</b> button.</b>.
+ 		</div>
+
+     <ul>
+       <li><b>Contact Name/Phone/Jid</b>: The field value i.e. <b>LocalPart</b> is concatenated with the <b>Telephony Domain</b>,
+         forming the calling recipient Jid. This Jid is used in setting up the VoIP-PBX call via the <b>Telephony Gateway</b>
+         service on your registed server. If android READ_CONTACTS is granted, a list of Android Contacts, filtered with the
+         entered text in this field, is displayed for user selection. Otherwise, User will have to enter the phone number
+         manually. Embedding the phone number in recipient Jid ease the Telephony Gateway implementation; without a need
+         for a pre-configured jid to phonenumber conversion map to be setup. When user enter an Jid instead i.e. containing
+         '@', it will be used as it, ignoring the <b>Telephony Domain</b>, for the calling Jid.</li>
+       <li><b>Telephony Domain</b>: Read only field showing the default, or overrided <b>Telephony Gateway</b> domain name
+         defined for the current user shown in <b>Call via</b>, when making telephony call.</li>
+       <li><b>Call via</b>: Any change of this selected user Jid will update the <b>Telephony Domain</b> as shown in the
+         previous field.</li>
+     </ul>
+
     <image src="./img/atalk_telephony.png" align="right" width="30%" style="margin:5px 0px 0px 15px"/>
     <div class='innerText'>aTalk Telepohny option uses the following two paramteres, and are required to be setup if
      you want to override the defaults. These parameters can be found in [Account settings... | Telephony} section</div>
+
      <ul>
-       <li><b>Telephony Domain</b>: The override domain name when making telephone call. If Jabber account is able to
-         make call using PSTN number; but the domain name of the telephony switch is different from the service domain
-         of the account e.g. pbx.domain.org for telephony call instead of the service name domain.org. Then you can use
-         this field property to define the switch domain e.g. pbx.domain.org. When this field is not defined, aTalk
-         uses e.g. 87456078@domain.org as contact to make call via the server pbx switch.</li>
+       <li><b>Telephony Domain</b>: The override domain server that is used for setting up the telephony VoIP-PBX call.
+         The default telephony gateway switch used by aTalk is the service domain of the registered account prefixed with
+         'pbx." If an Jabber account is able to make a telephony VoIP-PBX call, but the domain name of the telephony gateway
+         switch is different from the default telephony gateway switch of the registered account, then you can use
+         this field property to define the switch domain e.g. pbx.domain_gateway.org. When this field is not defined,
+         aTalk uses e.g. +6587456078@pbx.domain.org as recipient Jid to make call via the server telephony gateway switch.</li>
+
        <li><b>Domain that will be using GTalk call</b>: When not null, this domain name will be used when making
          telephony call from user account containing "google.com". If the value is not defined for "google.com"
          account, then the default "voice.google.com" domain will be used instead.</li>
